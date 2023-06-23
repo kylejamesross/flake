@@ -50,7 +50,7 @@
     ];
 
     pointerCursor = {
-      gtk.enable = true;
+      gtk.enable = false;
       name = "Dracula-cursors";
       package = pkgs.dracula-theme;
       size = 16;
@@ -63,7 +63,7 @@
   };
 
   gtk = {
-    enable = true;
+    enable = false;
     theme = {
       name = "Dracula";
       package = pkgs.dracula-theme;
