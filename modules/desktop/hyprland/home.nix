@@ -120,7 +120,7 @@ windowrulev2 = opacity 0.95 0.95,class:^(thunar)$
 $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-bind = $mainMod, Return, exec,kitty --title Kitty
+bind = $mainMod, Return, exec,kitty --title Kitty tmux
 bind = $mainMod, C, killactive, 
 bind = $mainMod, B, exec, brave 
 bind = $mainMod, E, exit, 

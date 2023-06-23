@@ -47,10 +47,11 @@
       tldr
       joplin
       nodePackages.typescript
+      dbus
     ];
 
     pointerCursor = {
-      gtk.enable = false;
+      gtk.enable = true;
       name = "Dracula-cursors";
       package = pkgs.dracula-theme;
       size = 16;
@@ -63,7 +64,7 @@
   };
 
   gtk = {
-    enable = false;
+    enable = true;
     theme = {
       name = "Dracula";
       package = pkgs.dracula-theme;
