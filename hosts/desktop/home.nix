@@ -14,6 +14,7 @@
     packages = with pkgs; [
       ansible
       sshpass
+      networkmanagerapplet
     ];
   };
 }

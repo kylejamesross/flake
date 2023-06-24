@@ -30,7 +30,6 @@
       curl
       lazygit
       tig
-      networkmanagerapplet
       ripgrep
       fd
       exa

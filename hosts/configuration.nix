@@ -9,7 +9,7 @@
 
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = false;
@@ -26,6 +26,7 @@
 
   security.rtkit.enable = true;
   security.polkit.enable = true;
+
 
   fonts.fonts = with pkgs; [
     carlito
@@ -88,6 +89,10 @@
       '';
     };
     flatpak.enable = true;
+  };
+
+  networking = {
+    networkmanager.enable = true;
   };
 
   nix = {
