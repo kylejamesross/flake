@@ -7,7 +7,6 @@ let
   exec = "exec Hyprland";
 in
 {
-  imports = [ ../../programs/waybar.nix ];
 
   environment = {
     loginShellInit = ''
@@ -28,6 +27,7 @@ in
       MOZ_ENABLE_WAYLAND = "1";
     };
     systemPackages = with pkgs; [
+      waybar
       grim
       swww
       slurp

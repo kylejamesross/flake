@@ -19,7 +19,7 @@ monitor=HDMI-A-1, 1920x1080, 0x0, 1
 
 # Execute your favorite apps at launch
 exec-once = ${pkgs.swww}/bin/swww init
-exec-once = ~/.dotfiles/bin/swww_randomizer
+exec-once = ${pkgs.waybar}/bin/waybar 
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
@@ -155,7 +155,7 @@ bind = $mainMod, J, movefocus, d
 bind = $mainMod, F1, workspace, 1
 bind = $mainMod, F1, exec, brave --new-window
 bind = $mainMod, F2, workspace, 2
-bind = $mainMod, F2, exec, kitty --title Kitty
+bind = $mainMod, F2, exec, kitty --title Kitty tmux
 bind = $mainMod, F3, workspace, 3
 bind = $mainMod, F3, exec, brave --new-window
 bind = $mainMod, F4, workspace, 4
@@ -169,15 +169,15 @@ bind = $mainMod, F8, exec, brave --new-window https://teams.microsoft.com/
 bind = $mainMod, F9, workspace, 9
 bind = $mainMod, F9, exec, brave --new-window https://music.youtube.com/
 
-workspace=1,DP-1
-workspace=2,DP-1
-workspace=3,DP-1
-workspace=4,DP-1
-workspace=5,DP-1
-workspace=6,DP-1
-workspace=7,HDMI-A-1
-workspace=8,HDMI-A-1
-workspace=9,DP-2
+workspace=DP-1,1
+workspace=DP-1,2
+workspace=DP-1,3
+workspace=DP-1,4
+workspace=DP-1,5
+workspace=DP-1,6
+workspace=HDMI-A-1,7
+workspace=HDMI-A-1,8
+workspace=DP-2,9
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1
