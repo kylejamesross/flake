@@ -19,29 +19,6 @@
     defaultLocale = "en_US.UTF-8";
   };
 
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-
-
-  fonts.fonts = with pkgs; [
-    carlito
-    vegur
-    source-code-pro
-    jetbrains-mono
-    font-awesome
-    corefonts
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
-  ];
-
   environment = {
     variables = {
       TERMINAL = "kitty";
@@ -58,41 +35,6 @@
       usbutils
       wget
     ];
-  };
-
-  services = {
-    printing = {
-      enable = true;
-    };
-    keyd = {
-      enable = true;
-      settings = {
-        main = {
-          capslock = "overload(control, esc)";
-        };
-      };
-    };
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse.enable = true;
-      jack.enable = true;
-    };
-    openssh = {
-      enable = true;
-      allowSFTP = true;
-      extraConfig = ''
-        HostKeyAlgorithms +ssh-rsa
-      '';
-    };
-    flatpak.enable = true;
-  };
-
-  networking = {
-    networkmanager.enable = true;
   };
 
   nix = {
