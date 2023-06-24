@@ -21,6 +21,7 @@ monitor=HDMI-A-1, 1920x1080, 0x0, 1
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
+exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --watch cliphist store
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
@@ -124,14 +125,14 @@ $mainMod = SUPER
 bind = $mainMod, Return, exec,kitty --title Kitty tmux
 bind = $mainMod, C, killactive, 
 bind = $mainMod, B, exec, brave 
-bind = $mainMod, E, exit, 
+bind = $mainMod, Q, exit, 
 bind = $mainMod, M, exec, systemctl suspend 
-bind = $mainMod, R, exec, killall waybar && waybar
-bind = $mainMod, F, exec, thunar
+bind = $mainMod, E, exec, thunar
 bind = $mainMod, V, togglefloating, 
 bind = $mainMod, P, exec, wofi --allow-images --show drun
 bind = $mainMod, D, pseudo, # dwindle
 bind = $mainMod, T, togglesplit, # dwindle
+bind = ALT, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy
 
 # Clipboard binds
 bind = SHIFT, Print, exec , grim -g "$(slurp)" - | swappy -f -

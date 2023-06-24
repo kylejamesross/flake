@@ -26,15 +26,6 @@ in
       WLR_NO_HARDWARE_CURSORS = "1";
       MOZ_ENABLE_WAYLAND = "1";
     };
-    systemPackages = with pkgs; [
-      waybar
-      grim
-      swww
-      slurp
-      swappy
-      wl-clipboard
-      wlr-randr
-    ];
   };
 
   programs = {
