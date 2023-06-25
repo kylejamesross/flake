@@ -11,21 +11,24 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      ansible
+      git
       btop
       tldr
+      gnutar
       unzip
       unrar
       zip
-      git
-      lf
       curl
       lazygit
       tig
       ripgrep
       fd
       exa
+      bat
       du-dust
       nodejs_18
+      optipng
       gcc
       neofetch
       stow
@@ -33,6 +36,7 @@
       tldr
       joplin
       nodePackages.typescript
+      z-lua
     ];
   };
 

@@ -26,6 +26,7 @@
       VISUAL = "nvim";
     };
     systemPackages = with pkgs; [
+      git
       neovim
       vim
       nano

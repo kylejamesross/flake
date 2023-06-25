@@ -38,6 +38,8 @@
     jetbrains-mono
     font-awesome
     corefonts
+    noto-fonts
+    noto-fonts-emoji
     (nerdfonts.override {
       fonts = [
         "JetBrainsMono"

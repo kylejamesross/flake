@@ -20,6 +20,7 @@ monitor=HDMI-A-1, 1920x1080, 0x0, 1
 # Execute your favorite apps at launch
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
+exec-once = ${pkgs.mako}/bin/mako 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
 exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --watch cliphist store
 

@@ -12,13 +12,15 @@
 
   home = {
     packages = with pkgs; [
-      ansible
       firefox
       brave
       okular
       vlc
       gimp
+      inkscape
       libreoffice-still
+      pdfarranger
+      notepadqq
       kitty
       pamixer
       playerctl
@@ -28,6 +30,7 @@
       networkmanagerapplet
       waybar
       wofi
+      mako
       grim
       swww
       slurp

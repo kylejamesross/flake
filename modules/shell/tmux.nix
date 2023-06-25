@@ -28,7 +28,6 @@
         bind-key -r / run-shell "tmux neww -S -n playground"
         bind-key -r t run-shell "tmux neww -S -n terminal"
         bind-key -r e run-shell "tmux neww -S -n nvim nvim"
-        bind-key -r l run-shell "tmux neww -S -n lf lf"
         bind-key -r - run-shell "tmux neww -S -n tig tig"
 
         set -g default-terminal "screen-256color"
