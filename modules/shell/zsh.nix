@@ -17,8 +17,6 @@
         cat = "bat";
         pb = "git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches";
         v = "nvim";
-        docker = "sudo docker";
-        docker-compose = "sudo docker-compose";
         fonts = "fc-list";
         gp = "git push origin HEAD 2>&1 | grep -o 'http[s]\?://[^\"]\+' | xargs git web--browse";
       };

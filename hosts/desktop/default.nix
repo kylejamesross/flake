@@ -82,6 +82,11 @@
     networkmanager.enable = true;
   };
 
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
   hardware = {
     opengl = {
       enable = true;

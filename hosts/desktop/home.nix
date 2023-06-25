@@ -39,6 +39,12 @@
       cliphist
       wlr-randr
       dbus
+
+      docker-compose
+      azure-cli
+      insomnia
+      dbeaver
+      jetbrains.rider
     ];
     pointerCursor = {
       gtk.enable = true;
