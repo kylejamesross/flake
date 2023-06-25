@@ -2,7 +2,7 @@
 #  These are the different profiles that can be used when building NixOS.
 #
 
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, hyprland, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, hyprland, neovim-overlay, ... }:
 
 let
   system = "x86_64-linux";
@@ -23,7 +23,7 @@ in
   desktop = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs unstable system user hyprland;
+      inherit inputs unstable system user hyprland neovim-overlay;
       host = {
         hostName = "desktop";
       };

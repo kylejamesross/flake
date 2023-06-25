@@ -19,9 +19,11 @@
         url = "github:vaxerski/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, hyprland, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, hyprland, neovim-overlay, ... }:
     let
       user = "kyle";
     in
@@ -29,7 +31,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager nur user hyprland;
+          inherit inputs nixpkgs nixpkgs-unstable home-manager nur user hyprland neovim-overlay;
         }
       );
     };

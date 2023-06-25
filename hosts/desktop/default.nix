@@ -2,7 +2,7 @@
 #  Specific system configuration settings for desktop
 #
 
-{ pkgs, lib, user, ... }:
+{ pkgs, lib, user, neovim-overlay, ... }:
 
 {
   imports =
@@ -86,6 +86,10 @@
     enable = true;
     setSocketVariable = true;
   };
+
+  nixpkgs.overlays = [
+    neovim-overlay.overlay
+  ];
 
   hardware = {
     opengl = {
