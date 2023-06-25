@@ -24,13 +24,13 @@
       TERMINAL = "kitty";
       EDITOR = "nvim";
       VISUAL = "nvim";
+      BAT_THEME = "Dracula";
     };
     systemPackages = with pkgs; [
       git
       neovim
       vim
       nano
-      git
       killall
       pciutils
       usbutils

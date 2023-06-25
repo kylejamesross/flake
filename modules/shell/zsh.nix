@@ -12,30 +12,23 @@
       syntaxHighlighting.enable = true;
       enableCompletion = true;
       histSize = 100000;
-
-      ohMyZsh = {                               # Extra plugins for zsh
+      shellAliases = {
+        ls = "exa -labg --git --color auto";
+        cat = "bat";
+        pb = "git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches";
+        v = "nvim";
+        docker = "sudo docker";
+        docker-compose = "sudo docker-compose";
+        fonts = "fc-list";
+        gp = "git push origin HEAD 2>&1 | grep -o 'http[s]\?://[^\"]\+' | xargs git web--browse";
+      };
+      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      ohMyZsh = {
         enable = true;
-        plugins = [ "git" ];
+        plugins = [ "git" "git-extras" "docker" "docker-compose" "npm" "ripgrep"];
       };
 
       shellInit = ''
-source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-
-alias ls='exa -labg --git --color auto'
-alias cat='bat'
-alias pb='git branch --merged | grep -v -E "main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches'
-alias vim='nvim'
-alias v='nvim'
-alias docker="sudo docker"
-alias docker-compose="sudo docker-compose"
-alias fonts="fc-list"
-alias gp="git push origin HEAD 2>&1 | grep -o 'http[s]\?://[^\"]\+' | xargs git web--browse"
-
-export EDITOR="nvim"
-export OPENER="xdg-open"
-export BAT_THEME="Dracula"
-
-
 if [ -f "$HOME/.dotfiles/zsh/feed-access-token" ]; then
   export FEED_ACCESSTOKEN=$(cat $HOME/.dotfiles/zsh/feed-access-token)
   export ENV DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
