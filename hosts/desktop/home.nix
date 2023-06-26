@@ -45,6 +45,7 @@
       insomnia
       dbeaver
       jetbrains.rider
+      dotnet-runtime_7
     ];
     pointerCursor = {
       gtk.enable = true;

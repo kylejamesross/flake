@@ -25,6 +25,7 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
       BAT_THEME = "Dracula";
+      USERNAME = user;
     };
     systemPackages = with pkgs; [
       git
