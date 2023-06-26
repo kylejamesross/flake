@@ -46,7 +46,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 2d";
+      options = "--delete-older-than 14d";
     };
     package = pkgs.nixVersions.unstable;
     registry.nixpkgs.flake = inputs.nixpkgs;
@@ -61,6 +61,7 @@
   system = {
     autoUpgrade = {
       enable = true;
+      dates = "Sat *-*-* 00:00:00";
       channel = "https://nixos.org/channels/nixos-unstable";
     };
     stateVersion = "22.05";
