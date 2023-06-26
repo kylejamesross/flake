@@ -49,9 +49,9 @@
     ];
     pointerCursor = {
       gtk.enable = true;
-      name = "Dracula-cursors";
-      package = pkgs.dracula-theme;
-      size = 16;
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+      size = 32;
     };
     stateVersion = "22.05";
   };
