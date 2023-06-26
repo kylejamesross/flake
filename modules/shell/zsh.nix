@@ -18,7 +18,6 @@
         pb = "git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches";
         v = "nvim";
         fonts = "fc-list";
-        gp = "git push origin HEAD 2>&1 | grep -o 'http[s]\?://[^\"]\+' | xargs git web--browse";
         wlogin = "az acr login -n nsolutionsacregistry";
       };
       promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
