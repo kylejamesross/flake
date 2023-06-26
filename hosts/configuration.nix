@@ -29,6 +29,7 @@
     };
     systemPackages = with pkgs; [
       git
+      stow
       neovim
       vim
       nano
@@ -63,6 +64,13 @@
       enable = true;
       dates = "Sat *-*-* 00:00:00";
       channel = "https://nixos.org/channels/nixos-unstable";
+    };
+    userActivationScripts = {
+      stow = {
+        text = ''
+          ${pkgs.stow}/bin/stow --restow --target='/home/${user}/' --dir='/home/${user}/flake/' .config
+        '';
+      };
     };
     stateVersion = "22.05";
   };
