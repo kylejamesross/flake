@@ -36,7 +36,7 @@
       tldr
       joplin
       nodePackages.typescript
-      z-lua
+      zoxide
     ];
   };
 

@@ -15,7 +15,9 @@ PATH="$PATH:$HOME/.dotfiles/bin"
 PATH="$PATH:/usr/share/dotnet"
 PATH="$PATH:$HOME/.dotnet/tools"
 
-alias gp="git push origin HEAD 2>&1 | grep -o 'http[s]\?://[^\"]\+' | xargs git web--browse"
+# alias gp="git push origin HEAD 2>&1 | grep -o 'http[s]\?://[^\"]\+' | xargs git web--browse"
 
 # advanced completions
 autoload -Uz compinit && compinit
+
+eval "$(zoxide init zsh)"
