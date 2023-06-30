@@ -130,6 +130,7 @@ bind = $mainMod, Q, exit,
 bind = $mainMod, M, exec, systemctl suspend 
 bind = $mainMod, E, exec, thunar
 bind = $mainMod, V, togglefloating, 
+bind = $mainMod, F, fullscreen, # fullscreen
 bind = $mainMod, P, exec, wofi --allow-images --show drun
 bind = $mainMod, D, pseudo, # dwindle
 bind = $mainMod, T, togglesplit, # dwindle
