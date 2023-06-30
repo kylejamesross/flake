@@ -72,7 +72,9 @@
     userActivationScripts = {
       stow = {
         text = ''
-          ${pkgs.stow}/bin/stow --restow --target='/home/${user}/' .config
+        if [ -d "/home/${user}/flake" ]; then
+          ${pkgs.stow}/bin/stow --restow --target='/home/${user}/' --dir='/home/${user}/flake/' .config
+        fi
         '';
       };
     };
