@@ -25,3 +25,5 @@
     browser = brave
 [browser "brave"]
     cmd = brave
+[init]
+    defaultBranch = main

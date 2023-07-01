@@ -40,12 +40,20 @@
       wlr-randr
       dbus
 
+      cargo
+      rustc
       docker-compose
       azure-cli
       insomnia
       dbeaver
       jetbrains.rider
       dotnet-sdk_7
+
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      rust-analyzer
+      lua-language-server
+      lua-language-server
     ];
     pointerCursor = {
       gtk.enable = true;

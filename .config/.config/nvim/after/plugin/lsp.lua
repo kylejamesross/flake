@@ -9,13 +9,7 @@ end
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-  "html",
-  "cssls",
-  "tsserver",
-  "eslint",
-  "lua_ls",
-})
+lsp.setup_servers({ 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls' })
 
 lsp.set_sign_icons({
   error = "",
