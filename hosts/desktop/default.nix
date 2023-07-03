@@ -71,7 +71,7 @@
       jack.enable = true;
     };
     openssh = {
-      enable = true;
+      enable = false;
       allowSFTP = true;
       extraConfig = ''
         HostKeyAlgorithms +ssh-rsa
