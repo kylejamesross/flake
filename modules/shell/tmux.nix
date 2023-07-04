@@ -34,12 +34,11 @@
         set -ga terminal-overrides ",xterm-256color:Tc"
 
         set -g @dracula-show-left-icon 
-        set -g @dracula-plugins "cpu-usage ram-usage weather time"
+        set -g @dracula-plugins "cpu-usage git ram-usage time"
         set -g @dracula-show-powerline true
-        set -g @dracula-show-fahrenheit false
         set -g @dracula-military-time false
         set -g @dracula-cpu-usage-colors "pink dark_gray"
-        set -g @dracula-ram-usage-colors "green dark_gray"
+        set -g @dracula-ram-usage-colors "orange dark_gray"
         run-shell ${pkgs.tmuxPlugins.dracula}/share/tmux-plugins/dracula/dracula.tmux
         '';
     };
