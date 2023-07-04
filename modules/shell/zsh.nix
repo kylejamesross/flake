@@ -21,15 +21,18 @@
         wlogin = "az acr login -n nsolutionsacregistry";
       };
       promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      ohMyZsh = {
-        enable = true;
-        plugins = [ "git" "git-extras" "docker" "docker-compose" "npm" "ripgrep"];
-      };
       setOptions = [
         "APPEND_HISTORY"
         "INC_APPEND_HISTORY"
         "SHARE_HISTORY"
       ];
+      interactiveShellInit = ''
+        source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh;
+        source ${pkgs.zsh-better-npm-completion}/share/zsh-better-npm-completion;
+        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions
+        source ${pkgs.zsh-completions}/share/zsh/site-functions
+        source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      '';
     };
   };
 }
