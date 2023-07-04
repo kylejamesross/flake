@@ -28,8 +28,15 @@
     keyMap = "us";
   };
 
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+    pam.services.swaylock = {
+      text = ''
+       auth include login
+      '';
+    };
+  };
 
   fonts.fonts = with pkgs; [
     carlito

@@ -35,6 +35,8 @@
       swww
       slurp
       swappy
+      wlogout
+      swaylock-effects
       wl-clipboard
       cliphist
       wlr-randr

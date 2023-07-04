@@ -21,7 +21,7 @@
     ],
     "custom/logo": {
         "format": "  ",
-        "on-click": "pkill wofi || wofi -n -c ~/.dotfiles/.config/.config/waybar/top-bar-wofi-config",
+        "on-click": "pkill wlogout || wlogout",
         "tooltip": false
     },
     "wlr/workspaces": {
