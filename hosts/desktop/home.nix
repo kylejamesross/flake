@@ -57,7 +57,6 @@
       nodePackages.vscode-langservers-extracted
       rust-analyzer
       lua-language-server
-      lua-language-server
     ];
     pointerCursor = {
       gtk.enable = true;
