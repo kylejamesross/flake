@@ -27,6 +27,8 @@
       xfce.thunar
       xfce.thunar-archive-plugin
       gnome.file-roller
+      xfce.tumbler
+      ffmpegthumbnailer
       networkmanagerapplet
       waybar
       wofi
