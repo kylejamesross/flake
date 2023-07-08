@@ -24,12 +24,16 @@
       kitty
       pamixer
       playerctl
-      xfce.thunar
-      xfce.thunar-archive-plugin
       gnome.file-roller
       xfce.tumbler
+      (
+        xfce.thunar.override {
+          thunarPlugins = [
+            xfce.thunar-archive-plugin
+          ];
+        }
+      )
       ffmpegthumbnailer
-      networkmanagerapplet
       waybar
       wofi
       mako
@@ -52,6 +56,9 @@
       dbeaver
       jetbrains.rider
       dotnet-sdk_7
+      azuredatastudio
+      powershell
+      sqlcmd
 
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted

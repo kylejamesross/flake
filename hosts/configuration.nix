@@ -5,7 +5,10 @@
 { config, lib, pkgs, inputs, user, ... }:
 
 {
-  imports = (import ../modules/shell);
+  imports = [
+    ../modules/shell/tmux.nix
+    ../modules/shell/zsh.nix
+  ];
 
   users.users.${user} = {
     isNormalUser = true;
@@ -17,6 +20,15 @@
   time.timeZone = "America/Edmonton";
   i18n = {
     defaultLocale = "en_US.UTF-8";
+  };
+  environment.etc = {
+    "openfortivpn/config" = {
+      text = ''
+        host = vpn.nudesolutions.com
+        port = 8443
+        username = kyler
+      '';
+    };
   };
 
   environment = {
@@ -37,6 +49,37 @@
       pciutils
       usbutils
       wget
+      xdg-utils
+      bash
+      inetutils
+
+      autoconf
+      automake
+      /* binutils */
+      bison
+      debugedit
+      fakeroot
+      file
+      findutils
+      flex
+      /* gcc             */
+      gnat
+      gettext
+      gnugrep
+      groff
+      gzip
+      libtool
+      gnum4
+      gnumake
+      gnupatch
+      pkgconf
+      gnused
+      sudo
+      texinfo
+      which
+      pkgs.zlib
+      libpng
+      nasm
     ];
   };
 
