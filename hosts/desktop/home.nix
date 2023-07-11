@@ -53,6 +53,7 @@
       azuredatastudio
       azure-cli
       insomnia
+      jetbrains.rider
     ];
     pointerCursor = {
       gtk.enable = true;
