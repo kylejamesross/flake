@@ -89,16 +89,14 @@
   };
 
   networking = {
+    firewall.enable = false;
     networkmanager = {
       enable = true;
       plugins = [ pkgs.networkmanager-openconnect ];
     };
   };
 
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
+  virtualisation.docker.enable = true;
 
   nixpkgs.overlays = [
     neovim-overlay.overlay

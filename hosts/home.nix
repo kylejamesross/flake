@@ -27,7 +27,8 @@
       exa
       bat
       du-dust
-      nodejs_18
+      nodejs
+      nodePackages.npm
       optipng
       gcc
       neofetch
