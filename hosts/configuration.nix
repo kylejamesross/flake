@@ -49,21 +49,21 @@
       pciutils
       usbutils
       wget
+      curl
       xdg-utils
       bash
       inetutils
 
+      # base-devel
       autoconf
       automake
-      /* binutils */
       bison
       debugedit
       fakeroot
       file
       findutils
       flex
-      /* gcc             */
-      gnat
+      gcc            
       gettext
       gnugrep
       groff
@@ -77,8 +77,6 @@
       sudo
       texinfo
       which
-      pkgs.zlib
-      libpng
       nasm
     ];
   };

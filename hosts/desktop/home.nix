@@ -15,6 +15,7 @@
       firefox
       brave
       okular
+      dbeaver
       vlc
       gimp
       inkscape
@@ -48,22 +49,10 @@
       wlr-randr
       dbus
 
-      cargo
-      rustc
-      docker-compose
+      # work
+      azuredatastudio
       azure-cli
       insomnia
-      dbeaver
-      jetbrains.rider
-      dotnet-sdk_7
-      azuredatastudio
-      powershell
-      sqlcmd
-
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      rust-analyzer
-      lua-language-server
     ];
     pointerCursor = {
       gtk.enable = true;

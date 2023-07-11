@@ -12,14 +12,12 @@
 
     packages = with pkgs; [
       ansible
-      git
       btop
       tldr
       gnutar
       unzip
       unrar
       zip
-      curl
       lazygit
       tig
       ripgrep
@@ -30,14 +28,27 @@
       nodejs
       nodePackages.npm
       optipng
-      gcc
       neofetch
-      stow
       fzf
       tldr
       joplin
       nodePackages.typescript
+      nodePackages.svgo
       zoxide
+      docker-compose
+
+      # work
+      powershell
+      dotnet-sdk_7
+      sqlcmd
+
+      # lsp
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      rust-analyzer
+      lua-language-server
+      cargo
+      rustc
     ];
   };
 
