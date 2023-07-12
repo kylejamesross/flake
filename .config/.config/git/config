@@ -1,19 +1,19 @@
 [user]
-	name = Kyle Ross
-	email = kylejamesross@gmail.com
-	username = kylejamesross
+    name = Kyle Ross
+    email = kylejamesross@gmail.com
+    username = kylejamesross
 
 [core]
-	editor = nvim
-	autocrlf = input
+    editor = nvim
+    autocrlf = input
 [alias]
-	c = commit
-	co = checkout
-	b = branch
-	lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-	ac="!git add -A && git commit -m"
-  po="push origin"
-  ph="push origin HEAD"
+    c = commit
+    co = checkout
+    b = branch
+    lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    ac="!git add -A && git commit -m"
+    po="push origin"
+    ph="push origin HEAD"
 [pull]
     rebase = false
 [push]
