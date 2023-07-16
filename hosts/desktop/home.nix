@@ -13,7 +13,6 @@
   home = {
     packages = with pkgs; [
       firefox
-      thunderbirdPackages.thunderbird-115
       brave
       okular
       dbeaver
