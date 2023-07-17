@@ -94,7 +94,12 @@ function ProjectFiles()
   end
 end
 
+function MRUBuffers()
+  require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })
+end
+
 keymap("n", "<c-p>", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = true, desc = "Search for file" })
+keymap("n", "<leader>t", "<CMD>lua MRUBuffers()<CR>", { noremap = true, silent = true, desc = "Most recently used buffers" })
 
 -- markdown
 keymap("n", "<leader>mc", "0ci]x<Esc>j", { noremap = true, silent = true, desc = "Complete markdown list item" })
