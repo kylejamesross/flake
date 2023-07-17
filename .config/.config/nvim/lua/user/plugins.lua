@@ -58,7 +58,6 @@ local plugins = {
     },
   },
   "JoosepAlviste/nvim-ts-context-commentstring",
-  "p00f/nvim-ts-rainbow",
   "windwp/nvim-ts-autotag",
 
   -- AI
