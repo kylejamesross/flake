@@ -32,7 +32,7 @@
       fzf
       tldr
       joplin
-      nodePackages.typescript
+      unstable.nodePackages.typescript
       nodePackages.svgo
       zoxide
       docker-compose
@@ -43,12 +43,12 @@
       sqlcmd
 
       # lsp
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      rust-analyzer
-      lua-language-server
-      cargo
-      rustc
+      unstable.nodePackages.typescript-language-server
+      unstable.nodePackages.vscode-langservers-extracted
+      unstable.rust-analyzer
+      unstable.lua-language-server
+      unstable.cargo
+      unstable.rustc
     ];
   };
 
