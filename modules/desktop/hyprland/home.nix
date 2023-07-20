@@ -125,7 +125,7 @@ $mainMod = SUPER
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Return, exec,kitty --title Kitty tmux
 bind = $mainMod, C, killactive, 
-bind = $mainMod, B, exec, librewolf 
+bind = $mainMod, B, exec, brave 
 bind = $mainMod, Q, exit, 
 bind = $mainMod, M, exec, swaylock
 bind = SUPER_SHIFT, M, exec, systemctl suspend
@@ -158,23 +158,23 @@ bind = $mainMod, J, movefocus, d
 
 # Launching apps
 bind = $mainMod, F1, workspace, 1
-bind = $mainMod, F1, exec, librewolf --new-window
+bind = $mainMod, F1, exec, brave --new-window
 bind = $mainMod, F2, workspace, 2
 bind = $mainMod, F2, exec, kitty --title Kitty tmux
 bind = $mainMod, F3, workspace, 3
-bind = $mainMod, F3, exec, librewolf --new-window
+bind = $mainMod, F3, exec, brave --new-window
 bind = $mainMod, F4, workspace, 4
 bind = $mainMod, F4, exec, dbeaver
 bind = $mainMod, F5, workspace, 5
 bind = $mainMod, F5, exec, rider
 bind = $mainMod, F7, workspace, 7
-bind = $mainMod, F7, exec, librewolf --new-window https://outlook.office.com/
+bind = $mainMod, F7, exec, brave --new-window https://outlook.office.com/
 bind = SUPER_SHIFT, F7, workspace, 7
 bind = SUPER_SHIFT, F7, exec, thunderbird
 bind = $mainMod, F8, workspace, 8
-bind = $mainMod, F8, exec, librewolf --new-window https://teams.microsoft.com/
+bind = $mainMod, F8, exec, brave --new-window https://teams.microsoft.com/
 bind = $mainMod, F9, workspace, 9
-bind = $mainMod, F9, exec, librewolf --new-window https://music.youtube.com/
+bind = $mainMod, F9, exec, brave --new-window https://music.youtube.com/
 
 workspace=DP-1,1
 workspace=DP-1,2
