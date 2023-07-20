@@ -75,7 +75,7 @@
         }
     },
     "wlr/taskbar": {
-        "format": "{icon} {title:.30}",
+        "format": "{icon} {title:.25}",
         "icon-size": 24,
         "all-outputs": false,
         "tooltip-format": "{title}",
@@ -83,7 +83,6 @@
         "on-click-middle": "close",
         "ignore-list": [
             "wofi",
-            "Kitty"
         ]
     },
     "tray": {
