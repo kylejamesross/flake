@@ -14,6 +14,7 @@
     packages = with pkgs; [
       firefox
       thunderbird
+      librewolf
       brave
       okular
       dbeaver

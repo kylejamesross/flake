@@ -22,8 +22,8 @@
     branch = false
     log =  false
 [web]
-    browser = brave
-[browser "brave"]
-    cmd = brave
+    browser = librewolf
+[browser "librewolf"]
+    cmd = librewolf
 [init]
     defaultBranch = main
