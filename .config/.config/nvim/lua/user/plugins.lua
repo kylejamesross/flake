@@ -144,6 +144,7 @@ local plugins = {
     }
   },
   "jose-elias-alvarez/typescript.nvim",
+  "Hoffs/omnisharp-extended-lsp.nvim",
   "RRethy/vim-illuminate",
 }
 

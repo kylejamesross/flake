@@ -49,6 +49,7 @@
       unstable.lua-language-server
       unstable.cargo
       unstable.rustc
+      omnisharp-roslyn
     ];
   };
 

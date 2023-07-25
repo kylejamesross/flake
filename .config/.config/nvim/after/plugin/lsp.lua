@@ -9,7 +9,7 @@ end
 
 lsp.preset("recommended")
 
-lsp.setup_servers({ 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls' })
+lsp.setup_servers({ 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' })
 
 lsp.set_sign_icons({
   error = "",
@@ -71,6 +71,17 @@ lsp.configure("omnisharp", {
   on_attach = function(client)
     client.server_capabilities.semanticTokensProvider = nil
   end,
+  handlers = {
+    ["textDocument/definition"] = require('omnisharp_extended').handler,
+  },
+  cmd = { "/etc/profiles/per-user/kyle/bin/OmniSharp" },
+    enable_editorconfig_support = true,
+    enable_ms_build_load_projects_on_demand = false,
+    enable_roslyn_analyzers = false,
+    organize_imports_on_format = false,
+    enable_import_completion = false,
+    sdk_include_prereleases = true,
+    analyze_open_documents_only = false,
 })
 
 -- snippets
