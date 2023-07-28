@@ -2,7 +2,7 @@
 #  Home-manager configuration for desktop
 #
 
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 {
   imports =
@@ -13,7 +13,7 @@
   home = {
     packages = with pkgs; [
       firefox
-      thunderbird
+      unstable.thunderbird
       brave
       okular
       dbeaver
