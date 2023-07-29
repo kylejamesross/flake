@@ -56,4 +56,9 @@
   programs = {
     home-manager.enable = true;
   };
+
+  home.file.".config/btop/btop.conf" = {
+    source = "../nix-config/btop/btop.conf";
+  };
+
 }
