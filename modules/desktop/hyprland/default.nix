@@ -2,7 +2,7 @@
 #  Hyprland configuration
 #
 
-{ config, lib, pkgs, host, system, hyprland, ... }:
+{ config, lib, pkgs, host, system, ... }:
 let
   exec = "exec Hyprland";
 in
@@ -42,10 +42,12 @@ in
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      waybar = hyprland.packages.${system}.waybar-hyprland;
-    })
-  ];
+  
+  nixpkgs.overlays = [(
+    self: super: {
+      waybar = super.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
+    }
+  )];
 }
