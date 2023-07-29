@@ -65,10 +65,10 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", { noremap = true, silent = true, desc = 
 keymap("x", "K", ":move '<-2<CR>gv-gv", { noremap = true, silent = true, desc = "Move line up" })
 
 -- insert mode movements
-keymap("i", "<C-k>", "<Up>", { noremap = true, silent = true, desc = "Move up" })
-keymap("i", "<C-j>", "<Down>", { noremap = true, silent = true, desc = "Move down" })
-keymap("i", "<C-l>", "<Right>", { noremap = true, silent = true, desc = "Move right" })
-keymap("i", "<C-h>", "<Left>", { noremap = true, silent = true, desc = "Move left" })
+--[[ keymap("i", "<C-k>", "<Up>", { noremap = true, silent = true, desc = "Move up" }) ]]
+--[[ keymap("i", "<C-j>", "<Down>", { noremap = true, silent = true, desc = "Move down" }) ]]
+--[[ keymap("i", "<C-l>", "<Right>", { noremap = true, silent = true, desc = "Move right" }) ]]
+--[[ keymap("i", "<C-h>", "<Left>", { noremap = true, silent = true, desc = "Move left" }) ]]
 
 -- tab enhancements
 keymap("v", "<Tab>", ">><Esc>gv", { noremap = true, silent = true, desc = "Increase Indent" })
