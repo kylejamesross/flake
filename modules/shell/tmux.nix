@@ -22,7 +22,7 @@
         bind-key -r f run-shell "tmux neww ~/.dotfiles/bin/tmux-sessionizer"
         bind-key -r h run-shell "tmux neww ~/.dotfiles/bin/cht"
         bind-key -r v run-shell "tmux neww -S -n lazygit lazygit"
-        bind-key -r , run-shell "tmux neww -S -n joplin joplin"
+        # bind-key -r , run-shell "tmux neww -S -n joplin joplin"
         bind-key -r . run-shell "tmux neww -S -n bpytop btop"
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
         bind-key -r / run-shell "tmux neww -S -n playground"
