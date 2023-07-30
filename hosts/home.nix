@@ -4,7 +4,11 @@
 
 { config, lib, pkgs, unstable, user, ... }:
 
-{ 
+{
+  imports =
+  [
+ 	../modules/editors/nvim/home.nix
+  ];
 
   home = {
     username = "${user}";

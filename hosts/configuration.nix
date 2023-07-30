@@ -42,7 +42,6 @@
     systemPackages = with pkgs; [
       git
       stow
-      unstable.neovim
       vim
       nano
       killall
