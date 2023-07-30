@@ -2,8 +2,19 @@
 # Neovim
 #
 
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
+let
+  fromGithub = rev: ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = ref;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      ref = ref;
+      rev = rev;
+    };
+  };
+in
 {
   programs = {
     neovim = {
@@ -67,6 +78,8 @@
         typescript-nvim
         omnisharp-extended-lsp-nvim
         vim-illuminate
+        (fromGithub "65e47be935080f112f219b5f0bc1bf411c783f27" "master" "rstacruz/vim-xtract")
+        (fromGithub "248c2001d0b24e58049eeb6884a79860923cfe13" "main" "Bryley/neoai.nvim")
       ];
 
       extraConfig = ''
