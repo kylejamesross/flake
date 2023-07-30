@@ -6,6 +6,10 @@ local status_ok_cmp, cmp = pcall(require, "cmp")
 if not status_ok_cmp then
   return
 end
+local status_ok_lspConfig, lspConfig = pcall(require, "lspconfig")
+if not status_ok_lspConfig then
+  return
+end
 
 lsp.preset("recommended")
 
@@ -50,7 +54,7 @@ lsp.on_attach(function(_, bufnr)
   end, { buffer = bufnr, remap = false, silent = true, desc = "Format file (LSP)" })
 end)
 
-lsp.configure("lua_ls", {
+lspConfig.lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
@@ -60,14 +64,14 @@ lsp.configure("lua_ls", {
   },
 })
 
-lsp.configure("eslint", {
+lspConfig.eslint.setup({
   on_attach = function(_, bufnr)
     vim.keymap.set("n", "<leader>le", ":EslintFixAll<CR>",
       { buffer = bufnr, remap = false, silent = true, desc = "Eslint fix all" })
   end,
 })
 
-lsp.configure("omnisharp", {
+lspConfig.omnisharp.setup({
   on_attach = function(client)
     client.server_capabilities.semanticTokensProvider = nil
   end,
@@ -109,7 +113,7 @@ function PopulateQuickfixWithTypescriptErrors()
 end
 
 -- Extra typescript support
-lsp.configure("tsserver", {
+lspConfig.tsserver.setup({
   on_attach = function(_, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "TypescriptRemoveUnused", function(opts)
       local typescript_status_ok, typescript = pcall(require, "typescript")
@@ -148,10 +152,10 @@ lsp.configure("tsserver", {
 
   end,
 })
+
 -- cmp
 cmp.setup()
 
-lsp.nvim_workspace() -- To be removed
 lsp.setup()
 
 -- show diagnostic messages inline
