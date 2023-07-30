@@ -35,7 +35,7 @@
       neofetch
       fzf
       tldr
-      unstable.nodePackages.typescript
+      nodePackages.typescript
       nodePackages.svgo
       zoxide
       docker-compose
@@ -46,12 +46,12 @@
       sqlcmd
 
       # lsp
-      unstable.nodePackages.typescript-language-server
-      unstable.nodePackages.vscode-langservers-extracted
-      unstable.rust-analyzer
-      unstable.lua-language-server
-      unstable.cargo
-      unstable.rustc
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      rust-analyzer
+      lua-language-server
+      cargo
+      rustc
       omnisharp-roslyn
     ];
   };
