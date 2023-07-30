@@ -1,3 +1,1 @@
-require("user.options")
-require("user.keymaps")
-require("user.plugins")
+/nix/store/89id9l8ds195y3q2jfhnyfyghii02n47-home-manager-files/.config/nvim/init.lua
