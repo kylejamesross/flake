@@ -85,7 +85,7 @@ lsp.configure("omnisharp", {
 })
 
 -- snippets
-require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip/loaders/from_vscode").lazy_load({ paths = { "../../snippets/" } })
 
 function PopulateQuickfixWithTypescriptErrors()
   local command_output = vim.fn.systemlist("tsc --noEmit --pretty false 2>&1 | grep '([^,]*,[^)]*)'")

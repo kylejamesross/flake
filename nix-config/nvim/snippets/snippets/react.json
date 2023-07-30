@@ -1,0 +1,110 @@
+{
+  "react typescript funcional component": {
+    "prefix": "rtfc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export interface I${TM_FILENAME_BASE} {",
+      "  ${1}",
+      "}",
+      "",
+      "const ${TM_FILENAME_BASE} = ({${2}}: I${TM_FILENAME_BASE} ) => {",
+      "  return (",
+      "    ${3}",
+      "  );",
+      "};",
+      "",
+      "export { ${TM_FILENAME_BASE} };",
+      ""
+    ],
+    "description": "React Typescript funcional component"
+  },
+  "react typescript functional component observer": {
+    "prefix": "rtfco",
+    "body": [
+      "import React from 'react';",
+      "import { observer } from 'mobx-react-lite';",
+      "",
+      "export interface I${TM_FILENAME_BASE} {",
+      "  ${1}",
+      "}",
+      "",
+      "const ${TM_FILENAME_BASE} = observer(({${2}}: I${TM_FILENAME_BASE} ) => {",
+      "  return (",
+      "    ${3}",
+      "  );",
+      "});",
+      "",
+      "export { ${TM_FILENAME_BASE} };",
+      ""
+    ],
+    "description": "React typescript functional component observer"
+  },
+  "react typescript stateful component": {
+    "prefix": "rtsc",
+    "body": [
+      "import React, { Component } from 'react';",
+      "",
+      "export interface I${TM_FILENAME_BASE} {",
+      "  ${1}",
+      "}",
+      "",
+      "class ${TM_FILENAME_BASE} extends Component<I${TM_FILENAME_BASE}> {",
+      "  public static defaultProps = {",
+      "    ${4}",
+      "  };",
+      "  public render() {",
+      "    const {${2}} = this.props;",
+      "    return (",
+      "      ${3}",
+      "    );",
+      "  }",
+      "}",
+      "",
+      "export { ${TM_FILENAME_BASE}; }",
+      ""
+    ],
+    "description": "React Typescript stateful component"
+  },
+  "react functional component": {
+    "prefix": "rfc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${TM_FILENAME_BASE} = () => (",
+      "  ${1}",
+      ");",
+      "",
+      "export { ${TM_FILENAME_BASE} };",
+      ""
+    ],
+    "description": "React functional component"
+  },
+  "useCallback": {
+    "key": "useCallback",
+    "prefix": "useCallbackSnippet",
+    "body": [
+      "useCallback(",
+      "  () => {",
+      "    ${1:first}",
+      "  },",
+      "  [${2:second}],",
+      ")",
+      ""
+    ]
+  },
+  "useMemo": {
+    "key": "useMemo",
+    "prefix": "useMemoSnippet",
+    "body": ["useMemo(() => ${1:first}, [${2:second}])"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useState": {
+    "key": "useState",
+    "prefix": "useStateSnippet",
+    "body": [
+      "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:second})"
+    ],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  }
+}
