@@ -80,9 +80,6 @@ keymap("n", "Y", "y$", { noremap = true, silent = true, desc = "Yank Line" })
 -- editor
 keymap("n", "<Leader>e", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true, desc = "Explorer" })
 
--- easy motion
-keymap("", "<c-s>", "<cmd>:HopChar1<cr>", { noremap = true, desc = "Search for character" })
-
 -- telescope
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>",
   { noremap = true, silent = true, desc = "Search for string in all files" })
@@ -135,5 +132,3 @@ vim.keymap.set("n", "<leader>ac", "<cmd>:NeoAIContext<CR>", { noremap = true, si
 vim.keymap.set("v", "<leader>ac", "<cmd>:'<,'>NeoAIContext<CR>", { noremap = true, silent = true, desc = "Open editor with context" })
 vim.keymap.set("n", "<leader>ai", ":NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })
 vim.keymap.set("v", "<leader>ai", ":'<,'>NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })
-vim.keymap.set("n", "<leader>ae", ":Chat", { noremap = true, desc = "AI Text Edit" })
-vim.keymap.set("v", "<leader>ae", ":'<,'>Chat ", { noremap = true, desc = "AI Text Edit" })
