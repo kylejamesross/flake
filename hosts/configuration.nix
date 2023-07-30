@@ -2,7 +2,7 @@
 #  Main system configuration. More information available in configuration.nix(5) man page.
 #
 
-{ config, lib, pkgs, inputs, user, ... }:
+{ config, lib, pkgs, inputs, user, unstable, ... }:
 
 {
   imports = [
@@ -42,7 +42,7 @@
     systemPackages = with pkgs; [
       git
       stow
-      neovim
+      unstable.neovim
       vim
       nano
       killall

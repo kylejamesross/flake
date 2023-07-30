@@ -2,7 +2,7 @@
 #  Specific system configuration settings for desktop
 #
 
-{ pkgs, lib, user, neovim-overlay, ... }:
+{ pkgs, lib, user, ... }:
 
 {
   imports =
@@ -97,10 +97,6 @@
   };
 
   virtualisation.docker.enable = true;
-
-  nixpkgs.overlays = [
-    neovim-overlay.overlay
-  ];
 
   hardware = {
     opengl = {

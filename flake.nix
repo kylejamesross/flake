@@ -14,11 +14,9 @@
       nur = {
         url = "github:nix-community/NUR";
       };
-
-      neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, neovim-overlay, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
       user = "kyle";
     in
@@ -26,7 +24,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager nur user neovim-overlay;
+          inherit inputs nixpkgs nixpkgs-unstable home-manager nur user;
         }
       );
     };
