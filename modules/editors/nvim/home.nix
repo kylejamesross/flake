@@ -70,7 +70,8 @@
       ];
 
       extraConfig = ''
-      :luafile ~/.config/nvim/init.lua
+      :luafile ~/.config/nvim/lua/user/keymaps.lua
+      :luafile ~/.config/nvim/lua/user/options.lua
       :luafile ~/.config/nvim/after/plugin/alpha.lua
       :luafile ~/.config/nvim/after/plugin/autopairs.lua
       :luafile ~/.config/nvim/after/plugin/bufferline.lua
