@@ -19,6 +19,7 @@
         v = "nvim";
         fonts = "fc-list";
         wlogin = "az acr login -n nsolutionsacregistry";
+        g = "sudo nixos-rebuild switch --flake .#desktop";
       };
       promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       setOptions = [
