@@ -11,7 +11,12 @@ if not status_ok_lspConfig then
   return
 end
 
-lsp.preset("recommended")
+lsp.preset({
+  name = 'minimal',
+  set_lsp_keymaps = true,
+  manage_nvim_cmp = true,
+  suggest_lsp_servers = false,
+})
 
 lsp.setup_servers({ 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' })
 
@@ -22,8 +27,7 @@ lsp.set_sign_icons({
   info = "",
 })
 
--- lsp config
-lsp.on_attach(function(_, bufnr)
+local function on_attach_global(_, bufnr)
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "Hover (LSP)" })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition,
     { buffer = bufnr, remap = false, silent = true, desc = "Go to definition (LSP)" })
@@ -49,10 +53,10 @@ lsp.on_attach(function(_, bufnr)
     { buffer = bufnr, remap = false, silent = true, desc = "Set quickfix list" })
   vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { buffer = bufnr, remap = false, silent = true, desc = "Next diagnostic (LSP)" })
   vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { buffer = bufnr, remap = false, silent = true, desc = "Previous diagnostic (LSP)" })
-  vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format({ bufnr, async = true })
-  end, { buffer = bufnr, remap = false, silent = true, desc = "Format file (LSP)" })
-end)
+  vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ bufnr, async = true }) end, { buffer = bufnr, remap = false, silent = true, desc = "Format file (LSP)" })
+end
+
+lsp.on_attach(on_attach_global)
 
 lspConfig.lua_ls.setup({
   settings = {
@@ -65,15 +69,17 @@ lspConfig.lua_ls.setup({
 })
 
 lspConfig.eslint.setup({
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>le", ":EslintFixAll<CR>",
       { buffer = bufnr, remap = false, silent = true, desc = "Eslint fix all" })
+    on_attach_global(client, bufnr)
   end,
 })
 
 lspConfig.omnisharp.setup({
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
+    on_attach_global(client, bufnr)
   end,
   handlers = {
     ["textDocument/definition"] = require('omnisharp_extended').handler,
@@ -114,7 +120,7 @@ end
 
 -- Extra typescript support
 lspConfig.tsserver.setup({
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "TypescriptRemoveUnused", function(opts)
       local typescript_status_ok, typescript = pcall(require, "typescript")
       if typescript_status_ok then
@@ -149,12 +155,14 @@ lspConfig.tsserver.setup({
       { buffer = bufnr, remap = false, silent = true, desc = "File rename" })
     vim.keymap.set("n", "<Leader>qt", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
       { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors" })
+    on_attach_global(client, bufnr)
 
   end,
 })
 
--- cmp
 cmp.setup()
+
+lsp.nvim_workspace()
 
 lsp.setup()
 
