@@ -50,6 +50,7 @@ in
         nvim-treesitter-parsers.vim
         nvim-treesitter-parsers.regex
         nvim-treesitter-parsers.markdown
+        nvim-treesitter-parsers.nix
         nvim-ts-context-commentstring
         nvim-ts-autotag
         nui-nvim
