@@ -54,7 +54,7 @@ button {
     color: #7ebae4;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    background: url('/home/kyle/flake/.config/.config/waybar/nix-snowflake.svg'), alpha(@theme_bg_color, 0.7);
+    background: url('/home/kyle/.config/waybar/nix-snowflake.svg'), alpha(@theme_bg_color, 0.7);
     background-size: 24px 24px, cover;
     background-repeat: no-repeat;
     background-position: center;
