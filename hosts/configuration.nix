@@ -41,7 +41,6 @@
     };
     systemPackages = with pkgs; [
       git
-      stow
       vim
       nano
       killall
