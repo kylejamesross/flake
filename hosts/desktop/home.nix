@@ -13,7 +13,7 @@
   home = {
     packages = with pkgs; [
       firefox
-      unstable.thunderbird
+      thunderbird
       brave
       okular
       dbeaver
