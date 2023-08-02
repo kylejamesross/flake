@@ -174,24 +174,15 @@ bind = $mainMod, F8, exec, brave --new-window https://teams.microsoft.com/
 bind = $mainMod, F9, workspace, 9
 bind = $mainMod, F9, exec, brave --new-window https://music.youtube.com/
 
-# workspace=DP-1,1
-# workspace=DP-1,2
-# workspace=DP-1,3
-# workspace=DP-1,4
-# workspace=DP-1,5
-# workspace=DP-1,6
-# workspace=HDMI-A-1,7
-# workspace=HDMI-A-1,8
-# workspace=DP-2,9
-wsbind=1,DP-1
-wsbind=2,DP-1
-wsbind=3,DP-1
-wsbind=4,DP-1
-wsbind=5,DP-1
-wsbind=6,DP-1
-wsbind=7,HDMI-A-1
-wsbind=8,HDMI-A-1
-wsbind=9,DP-2
+workspace=DP-1,1
+workspace=DP-1,2
+workspace=DP-1,3
+workspace=DP-1,4
+workspace=DP-1,5
+workspace=DP-1,6
+workspace=HDMI-A-1,7
+workspace=HDMI-A-1,8
+workspace=DP-2,9
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1

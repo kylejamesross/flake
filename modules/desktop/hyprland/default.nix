@@ -2,7 +2,7 @@
 #  Hyprland configuration
 #
 
-{ config, lib, pkgs, host, system, ... }:
+{ config, lib, pkgs, host, system, hyprland, ... }:
 let
   exec = "exec Hyprland";
 in
@@ -25,12 +25,14 @@ in
       GDK_BACKEND = "wayland";
       WLR_NO_HARDWARE_CURSORS = "1";
       MOZ_ENABLE_WAYLAND = "1";
+      _JAVA_AWT_WM_NONREPARENTING = "1";
     };
   };
 
   programs = {
     hyprland = {
       enable = true;
+      package = hyprland.packages.${pkgs.system}.hyprland;
       xwayland = {
         enable = true;
         hidpi = false;

@@ -14,9 +14,11 @@
       nur = {
         url = "github:nix-community/NUR";
       };
+
+      hyprland.url = "github:hyprwm/Hyprland";
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, hyprland, ... }:
     let
       user = "kyle";
     in
@@ -24,7 +26,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager nur user;
+          inherit inputs nixpkgs nixpkgs-unstable home-manager nur user hyprland;
         }
       );
     };
