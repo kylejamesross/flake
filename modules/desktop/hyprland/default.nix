@@ -25,7 +25,6 @@ in
       GDK_BACKEND = "wayland";
       WLR_NO_HARDWARE_CURSORS = "1";
       MOZ_ENABLE_WAYLAND = "1";
-      _JAVA_AWT_WM_NONREPARENTING = "1";
     };
   };
 
