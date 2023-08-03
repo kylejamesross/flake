@@ -2,7 +2,7 @@
   "interface for file": {
     "prefix": "interface",
 		"body": [
-			"export interface I${TM_FILENAME_BASE} {",
+			"export interface ${TM_FILENAME_BASE} {",
 			"  $1",
 			"}"
 		],
