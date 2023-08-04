@@ -46,19 +46,26 @@ local function on_attach_global(_, bufnr)
   vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
     { buffer = bufnr, remap = false, silent = true, desc = "Code action" })
   vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, silent = true, desc = "Rename" })
-  vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, silent = true, desc = "Signature help" })
+  vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help,
+    { buffer = bufnr, remap = false, silent = true, desc = "Signature help" })
   vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist,
     { buffer = bufnr, remap = false, silent = true, desc = "Set location list" })
   vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist,
     { buffer = bufnr, remap = false, silent = true, desc = "Set quickfix list" })
-  vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { buffer = bufnr, remap = false, silent = true, desc = "Next diagnostic (LSP)" })
-  vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { buffer = bufnr, remap = false, silent = true, desc = "Previous diagnostic (LSP)" })
-  vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ bufnr, async = true }) end, { buffer = bufnr, remap = false, silent = true, desc = "Format file (LSP)" })
+  vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>",
+    { buffer = bufnr, remap = false, silent = true, desc = "Next diagnostic (LSP)" })
+  vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+    { buffer = bufnr, remap = false, silent = true, desc = "Previous diagnostic (LSP)" })
+  vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ bufnr, async = true }) end,
+    { buffer = bufnr, remap = false, silent = true, desc = "Format file (LSP)" })
 end
 
 lsp.on_attach(on_attach_global)
 
 lspConfig.lua_ls.setup({
+  on_attach = function(client, bufnr)
+    on_attach_global(client, bufnr)
+  end,
   settings = {
     Lua = {
       diagnostics = {
@@ -85,13 +92,13 @@ lspConfig.omnisharp.setup({
     ["textDocument/definition"] = require('omnisharp_extended').handler,
   },
   cmd = { "/etc/profiles/per-user/kyle/bin/OmniSharp" },
-    enable_editorconfig_support = true,
-    enable_ms_build_load_projects_on_demand = false,
-    enable_roslyn_analyzers = false,
-    organize_imports_on_format = false,
-    enable_import_completion = false,
-    sdk_include_prereleases = true,
-    analyze_open_documents_only = false,
+  enable_editorconfig_support = true,
+  enable_ms_build_load_projects_on_demand = false,
+  enable_roslyn_analyzers = false,
+  organize_imports_on_format = false,
+  enable_import_completion = false,
+  sdk_include_prereleases = true,
+  analyze_open_documents_only = false,
 })
 
 -- snippets
@@ -156,7 +163,6 @@ lspConfig.tsserver.setup({
     vim.keymap.set("n", "<Leader>qt", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
       { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors" })
     on_attach_global(client, bufnr)
-
   end,
 })
 
