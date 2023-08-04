@@ -137,7 +137,6 @@ bind = $mainMod, F, fullscreen, # fullscreen
 bind = $mainMod, P, exec, wofi --allow-images --show drun
 bind = $mainMod, D, pseudo, # dwindle
 bind = $mainMod, T, togglesplit, # dwindle
-bind = $mainMod, W, exec, pkill -SIGUSR1 waybar || pidof -x waybar || waybar
 bind = ALT, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy
 
 # Clipboard binds
