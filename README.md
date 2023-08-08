@@ -6,13 +6,13 @@ This repository houses my Nix configuration files for setting up my operating sy
 
 ### Desktop
 1. sudo nixos-generate-config --root /mnt
-2. cp -r /mnt/etc/nixos /mnt/flake/hosts/desktop
+2. cp /mnt/etc/nixos/hardware-configuration.nix /mnt/flake/hosts/desktop/
 3. sudo rm /mnt/etc/nixos/configuration.nix
 4. sudo nixos-install --flake .#desktop
 
 ### Laptop
 1. sudo nixos-generate-config --root /mnt
-2. cp -r /mnt/etc/nixos /mnt/flake/hosts/laptop
+2. cp /mnt/etc/nixos/hardware-configuration.nix /mnt/flake/hosts/laptop/
 3. sudo rm /mnt/etc/nixos/configuration.nix
 4. sudo nixos-install --flake .#laptop
 
