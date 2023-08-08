@@ -1,6 +1,6 @@
 # .dotfiles
 
-This repository contains the necessary configuration files and instructions to set up NixOS on your laptop and desktop using the flake-based approach. With the provided instructions and configuration files, you can easily deploy a NixOS system tailored to your needs on both your laptop and desktop.
+This repository houses my Nix configuration files for setting up my operating system. This encompasses not only the configuration of various applications but also includes any additional app plugins that I use.
 
 ## Installation Steps
 
