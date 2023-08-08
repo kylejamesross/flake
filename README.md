@@ -5,16 +5,18 @@ This repository houses my Nix configuration files for setting up my operating sy
 ## Installation Steps
 
 ### Desktop
-1. sudo nixos-generate-config --root /mnt
-2. cp -r /mnt/etc/nixos /mnt/flake/hosts/desktop
-3. sudo rm /mnt/etc/nixos/configuration.nix
-4. sudo nixos-install --flake .#desktop
+1. git clone https://github.com/kylejamesross/flake.git
+2. sudo nixos-generate-config --root /mnt
+3. cp -r /mnt/etc/nixos /mnt/flake/hosts/desktop
+4. sudo rm /mnt/etc/nixos/configuration.nix
+5. sudo nixos-install --flake .#desktop
 
 ### Laptop
-1. sudo nixos-generate-config --root /mnt
-2. cp -r /mnt/etc/nixos /mnt/flake/hosts/laptop
-3. sudo rm /mnt/etc/nixos/configuration.nix
-4. sudo nixos-install --flake .#laptop
+1. git clone https://github.com/kylejamesross/flake.git
+2. sudo nixos-generate-config --root /mnt
+3. cp -r /mnt/etc/nixos /mnt/flake/hosts/laptop
+4. sudo rm /mnt/etc/nixos/configuration.nix
+5. sudo nixos-install --flake .#laptop
 
 ### Post-installation
 1. ansible-playbook --ask-become-pass install-workplace.yml
