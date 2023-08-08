@@ -32,18 +32,9 @@ in
     hyprland = {
       enable = true;
       package = hyprland.packages.${pkgs.system}.hyprland;
-      xwayland = {
-        enable = true;
-        hidpi = false;
-      };
     };
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-  
   nixpkgs.overlays = [(
     self: super: {
       waybar = super.waybar.overrideAttrs (oldAttrs: {
