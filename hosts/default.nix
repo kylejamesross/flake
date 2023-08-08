@@ -30,6 +30,7 @@ in
     };
     modules = [
       nur.nixosModules.nur
+      ./common
       ./desktop
       ./configuration.nix
 
@@ -45,7 +46,39 @@ in
         home-manager.users.${user} = {
           imports = [
             ./home.nix
-            ./desktop/home.nix
+            ./common/home.nix
+          ];
+        };
+      }
+    ];
+  };
+  laptop = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs unstable system user hyprland;
+      host = {
+        hostName = "laptop";
+      };
+    };
+    modules = [
+      nur.nixosModules.nur
+      ./common
+      ./laptop
+      ./configuration.nix
+
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit unstable user;
+          host = {
+            hostName = "laptop";
+          };
+        };
+        home-manager.users.${user} = {
+          imports = [
+            ./home.nix
+            ./common/home.nix
           ];
         };
       }
