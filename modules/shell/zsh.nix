@@ -2,7 +2,7 @@
 # Shell
 #
 
-{ pkgs, ... }:
+{ pkgs, host, ... }:
 
 {
   programs = {
@@ -19,6 +19,7 @@
         v = "nvim";
         fonts = "fc-list";
         wlogin = "az acr login -n nsolutionsacregistry";
+        t = "if [[ \"${host.hostName}\" == \"laptop\" ]]; then echo 'awesome'; else echo 'great'; fi";
         g = "sudo nixos-rebuild switch --flake .#desktop";
       };
       promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
