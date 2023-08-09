@@ -1,1 +1,8 @@
- swww img -o DP-1 $(fd -e png -e jpg . ~/flake/wallpaper/ | sort -R | head -n 1) && swww img -o DP-2 $(fd -e png -e jpg . ~/flake/wallpaper/ | sort -R | head -n 1) && swww img -o HDMI-A-1 $(fd -e png -e jpg . ~/flake/wallpaper/ | sort -R | head -n 1) # Source a file (multi-file configs)ne
+#!/usr/bin/env bash
+
+wallpaper_dir=~/flake/wallpaper/
+
+for display in $(wlr-randr | awk '/^[^ ]+ / {print $1}'); do
+    random_wallpaper=$(fd -e png -e jpg . "$wallpaper_dir" | sort -R | head -n 1)
+    swww img -o "$display" "$random_wallpaper"
+done
