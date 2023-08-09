@@ -5,7 +5,7 @@
 { pkgs, lib, user, ... }:
 
 {
-  imports = [(import ../../modules/desktop/hyprland/default.nix)];
+  imports = [(import ../../modules/common/hyprland/default.nix)];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

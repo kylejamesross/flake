@@ -5,6 +5,8 @@
 { pkgs, unstable, ... }:
 
 {
+  imports = [(import ../../modules/common/hyprland/home.nix)];
+
   home = {
     packages = with pkgs; [
       firefox
