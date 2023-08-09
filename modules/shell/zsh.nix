@@ -19,8 +19,7 @@
         v = "nvim";
         fonts = "fc-list";
         wlogin = "az acr login -n nsolutionsacregistry";
-        t = "if [[ \"${host.hostName}\" == \"laptop\" ]]; then echo 'awesome'; else echo 'great'; fi";
-        g = "sudo nixos-rebuild switch --flake .#desktop";
+        g = "if [[ \"${host.hostName}\" == \"laptop\" ]]; then sudo nixos-rebuild switch --flake .#laptop; else sudo nixos-rebuild switch --flake .#desktop; fi";
       };
       promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       setOptions = [
