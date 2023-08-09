@@ -150,7 +150,7 @@ bind = , Print, exec , grim -g "$(slurp)" - | wl-copy
 # System keys
 bind = SUPER_SHIFT, F12, exec, shutdown now
 bind = SUPER_SHIFT, F11, exec, reboot
-bind = $mainMod, F12, exec, ~/.dotfiles/bin/swww_randomizer
+bind = $mainMod, F12, exec, ~/flake/bin/swww_randomizer
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l

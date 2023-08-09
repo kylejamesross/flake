@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+parent_directory="${1:-$HOME/source}"
+directories=$(ls $parent_directory)
+
+for folder in $directories
+do
+  cd "$parent_directory/$folder"
+  git pull -q
+  if [ $? -eq 0 ]; then
+    echo "Git pull executed successfully for $folder"
+  else
+    echo -e "\e[1;31m Git pull executed incorrectly for $folder \e[0m"
+  fi
+done
