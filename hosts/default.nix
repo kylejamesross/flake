@@ -47,6 +47,7 @@ in
           imports = [
             ./home.nix
             ./common/home.nix
+            ./desktop/home.nix
           ];
         };
       }
@@ -79,6 +80,7 @@ in
           imports = [
             ./home.nix
             ./common/home.nix
+            ./laptop/home.nix
           ];
         };
       }

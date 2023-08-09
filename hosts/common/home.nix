@@ -1,15 +1,10 @@
 #
-#  Home-manager configuration for desktop
+#  Home-manager configuration for common
 #
 
 { pkgs, unstable, ... }:
 
 {
-  imports =
-    [
-      ../../modules/desktop/hyprland/home.nix
-    ];
-
   home = {
     packages = with pkgs; [
       firefox
