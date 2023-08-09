@@ -11,7 +11,7 @@ if [ -f "$HOME/.openai-api-key" ]; then
 fi
 
 PATH="$PATH:$HOME/.local/bin"
-PATH="$PATH:$HOME/.dotfiles/bin"
+PATH="$PATH:$HOME/flake/bin"
 PATH="$PATH:/usr/share/dotnet"
 PATH="$PATH:$HOME/.dotnet/tools"
 
