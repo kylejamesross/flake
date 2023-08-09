@@ -1,4 +1,4 @@
-# .dotfiles
+# flake
 
 This repository houses my Nix configuration files for setting up my operating system. This encompasses not only the configuration of various applications but also includes any additional app plugins that I use.
 
