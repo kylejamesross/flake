@@ -102,7 +102,7 @@ button {
 #taskbar {
 }
 
-#cpu {
+#cpu, #battery {
     color: #8aff80;
 }
 
