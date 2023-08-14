@@ -25,6 +25,8 @@
         # bind-key -r , run-shell "tmux neww -S -n joplin joplin"
         bind-key -r . run-shell "tmux neww -S -n bpytop btop"
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
+        bind-key -r , run-shell "tmux neww -S -n work_notes nvim -c ':Neorg workspace work'"
+        bind-key -r m run-shell "tmux neww -S -n personal_notes nvim -c ':Neorg workspace personal'"
         bind-key -r / run-shell "tmux neww -S -n playground"
         bind-key -r t run-shell "tmux neww -S -n terminal"
         bind-key -r e run-shell "tmux neww -S -n nvim nvim"

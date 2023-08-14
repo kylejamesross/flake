@@ -44,6 +44,12 @@ which_key.register({
 }, { prefix = "<leader>" })
 
 which_key.register({
+  n = {
+    name = "[Neorg]"
+  }
+}, { prefix = "<leader>" })
+
+which_key.register({
   r = {
     name = "[REFACTORING]"
   }

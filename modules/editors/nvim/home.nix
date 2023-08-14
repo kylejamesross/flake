@@ -51,6 +51,7 @@ in
         nvim-treesitter-parsers.regex
         nvim-treesitter-parsers.markdown
         nvim-treesitter-parsers.nix
+        nvim-treesitter-parsers.norg
         nvim-ts-context-commentstring
         nvim-ts-autotag
         nui-nvim
@@ -79,6 +80,7 @@ in
         typescript-nvim
         omnisharp-extended-lsp-nvim
         vim-illuminate
+        neorg
         (fromGithub "65e47be935080f112f219b5f0bc1bf411c783f27" "master" "rstacruz/vim-xtract")
         (fromGithub "248c2001d0b24e58049eeb6884a79860923cfe13" "main" "Bryley/neoai.nvim")
       ];

@@ -73,7 +73,7 @@
       package = pkgs.papirus-icon-theme;
     };
     font = {
-      name = "JetBrains Mono Medium";
+      name = "JetBrains Mono";
     };
   };
 
