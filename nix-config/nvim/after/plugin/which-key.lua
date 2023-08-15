@@ -56,6 +56,12 @@ which_key.register({
 }, { prefix = "<leader>" })
 
 which_key.register({
+  d = {
+    name = "[DAP]"
+  }
+}, { prefix = "<leader>" })
+
+which_key.register({
   r = {
     name = "[REFACTORING]"
   }
