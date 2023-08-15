@@ -50,6 +50,9 @@
       cargo
       rustc
       omnisharp-roslyn
+
+      # debug adapters
+      netcoredbg
     ];
   };
 

@@ -81,6 +81,9 @@ in
         omnisharp-extended-lsp-nvim
         vim-illuminate
         neorg
+        nvim-dap
+        nvim-dap-ui
+        nvim-dap-virtual-text  
         (fromGithub "65e47be935080f112f219b5f0bc1bf411c783f27" "master" "rstacruz/vim-xtract")
         (fromGithub "248c2001d0b24e58049eeb6884a79860923cfe13" "main" "Bryley/neoai.nvim")
       ];
