@@ -33,6 +33,7 @@ in
         nvim-web-devicons
         nvim-autopairs
         vim-fugitive
+        harpoon
         nvim-tree-lua
         nvim-treesitter
         nvim-treesitter-textobjects

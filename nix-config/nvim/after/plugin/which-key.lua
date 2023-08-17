@@ -14,12 +14,6 @@ which_key.register({
 }, { prefix = "<leader>" })
 
 which_key.register({
-  m = {
-    name = "[MARKDOWN]"
-  }
-}, { prefix = "<leader>" })
-
-which_key.register({
   t = {
     name = "[TYPESCRIPT]",
   }
@@ -34,6 +28,12 @@ which_key.register({
 which_key.register({
   q = {
     name = "[QUICK_FIX_LIST]"
+  }
+}, { prefix = "<leader>" })
+
+which_key.register({
+  m = {
+    name = "[HARPOON]"
   }
 }, { prefix = "<leader>" })
 

@@ -99,10 +99,6 @@ end
 keymap("n", "<c-p>", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = true, desc = "Search for file" })
 keymap("n", "<leader>t", "<CMD>lua MRUBuffers()<CR>", { noremap = true, silent = true, desc = "Most recently used buffers" })
 
--- markdown
-keymap("n", "<leader>mc", "0ci]x<Esc>j", { noremap = true, silent = true, desc = "Complete markdown list item" })
-keymap("n", "<leader>mu", "0ci]<Space><Esc>j", { noremap = true, silent = true, desc = "Uncomplete markdown list item" })
-
 -- git
 keymap("n", "<leader>vf", ":Gllog %<CR>", { noremap = true, silent = true, desc = "Display commits for current file" })
 keymap("n", "<leader>vm", ":Gvdiffsplit!<CR>",
