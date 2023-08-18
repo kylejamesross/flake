@@ -65,9 +65,10 @@ in
         telescope-media-files-nvim
         dracula-nvim
         gitsigns-nvim
-        bufferline-nvim
         lualine-nvim
         nvim-scrollbar
+        nvim-notify
+        noice-nvim
         undotree
         lsp-zero-nvim
         nvim-lspconfig
