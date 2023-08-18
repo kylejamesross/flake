@@ -100,7 +100,7 @@ lspConfig.omnisharp.setup({
   organize_imports_on_format = false,
   enable_import_completion = false,
   sdk_include_prereleases = true,
-  analyze_open_documents_only = false,
+  analyze_open_documents_only = true,
 })
 
 -- snippets
