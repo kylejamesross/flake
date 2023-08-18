@@ -19,6 +19,8 @@
     };
   };
 
+  systemd.watchdog.rebootTime = "5s";
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
