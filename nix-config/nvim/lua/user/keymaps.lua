@@ -24,8 +24,8 @@ keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Go to th
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", { noremap = true, silent = true, desc = "Increase window size vertically" })
 keymap("n", "<C-Down>", ":resize -2<CR>", { noremap = true, silent = true, desc = "Descrease window size vertically" })
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", { noremap = true, silent = true, desc = "Descrease window size horizontally" })
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", { noremap = true, silent = true, desc = "Increase window size horizontally" })
+keymap("n", "<C-Left>", ":vertical resize +2<CR>", { noremap = true, silent = true, desc = "Increase window size horizontally" })
+keymap("n", "<C-Right>", ":vertical resize -2<CR>", { noremap = true, silent = true, desc = "Decrease window size horizontally" })
 
 -- Navigate buffers
 keymap("n", "<M-l>", ":bnext<CR>", { noremap = true, silent = true, desc = "Go to next buffer" })
@@ -45,16 +45,12 @@ keymap("n", "[l", ":lprev<CR>", { noremap = true, silent = true, desc = "Previou
 keymap("n", "<Leader>x", ":!chmod +x %<CR>", { noremap = true, silent = true, desc = "Make file executeable" })
 
 -- paste enhancements
-keymap("n", "<Leader>p", '"_dP', { noremap = true, silent = true, desc = "Paste without replacing register" })
-keymap("v", "<Leader>p", '"_dP', { noremap = true, silent = true, desc = "Paste without replacing register" })
+keymap("x", "<Leader>p", '"_dP', { noremap = false, silent = true, desc = "Paste without replacing register" })
 keymap("v", "<Leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
 keymap("n", "<Leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
+keymap("n", "<Leader>Y", 'gg"+yG', { noremap = true, silent = true, desc = "Yank entire buffer to system clipboard" })
 keymap("v", "<Leader>w", '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard" })
 keymap("n", "<Leader>w", '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard" })
-keymap("v", "p", '"_dP', { noremap = true, silent = true, desc = "Paste" })
-
--- paste into system clipboard
-keymap("n", "<Leader>Y", 'gg"+yG', { noremap = true, silent = true, desc = "Yank entire buffer to system clipboard" })
 
 -- move select lines up down
 keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
@@ -82,9 +78,6 @@ keymap("n", "Y", "y$", { noremap = true, silent = true, desc = "Yank Line" })
 keymap("n", "<Leader>e", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true, desc = "Explorer" })
 
 -- telescope
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>",
-  { noremap = true, silent = true, desc = "Search for string in all files" })
-
 function ProjectFiles()
   local ok = pcall(require("telescope.builtin").git_files, { show_untracked = true })
   if not ok then
@@ -96,13 +89,19 @@ function MRUBuffers()
   require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })
 end
 
-keymap("n", "<c-p>", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = true, desc = "Search for file" })
-keymap("n", "<leader>t", "<CMD>lua MRUBuffers()<CR>", { noremap = true, silent = true, desc = "Most recently used buffers" })
+keymap("n", "<c-p>", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = true, desc = "Search for file (Telescope)" })
+keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>",
+  { noremap = true, silent = true, desc = "Search for string in all files (Telescope)" })
+keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>",
+  { noremap = true, silent = true, desc = "Search for string in all files (Telescope)" })
+keymap("n", "<leader>tp", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = true, desc = "Search for file (Telescope)" })
+keymap("n", "<leader>tb", "<CMD>lua MRUBuffers()<CR>", { noremap = true, silent = true, desc = "Most recently used buffers (Telescope)" })
+keymap("n", "<leader>tt", "<CMD>Telescope help_tags<CR>", { desc = "Help Tags (Telescope)"})
 
 -- git
 keymap("n", "<leader>vf", ":Gllog %<CR>", { noremap = true, silent = true, desc = "Display commits for current file" })
 keymap("n", "<leader>vm", ":Gvdiffsplit!<CR>",
-{ noremap = true, silent = true, desc = "Display side-by-side merge tool" })
+  { noremap = true, silent = true, desc = "Display side-by-side merge tool" })
 keymap("n", "<leader>vh", "<cmd>diffget //2<CR>",
   { noremap = true, silent = true, desc = "Accept code changes left side" })
 keymap("n", "<leader>vl", "<cmd>diffget //3<CR>",
@@ -124,8 +123,8 @@ keymap("n", "<Leader>r=", ":lua AutoIndent()<CR>", { noremap = true, silent = tr
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Open undo tree" })
 
 -- AI
-vim.keymap.set("n", "<leader>aa", "<cmd>:NeoAI<CR>", { noremap = true, silent = true, desc = "Open editor" })
-vim.keymap.set("n", "<leader>ac", "<cmd>:NeoAIContext<CR>", { noremap = true, silent = true, desc = "Open editor with context" })
-vim.keymap.set("v", "<leader>ac", "<cmd>:'<,'>NeoAIContext<CR>", { noremap = true, silent = true, desc = "Open editor with context" })
-vim.keymap.set("n", "<leader>ai", ":NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })
-vim.keymap.set("v", "<leader>ai", ":'<,'>NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })
+keymap("n", "<leader>aa", "<cmd>:NeoAI<CR>", { noremap = true, silent = true, desc = "Open editor" })
+keymap("n", "<leader>ac", "<cmd>:NeoAIContext<CR>", { noremap = true, silent = true, desc = "Open editor with context" })
+keymap("v", "<leader>ac", "<cmd>:'<,'>NeoAIContext<CR>", { noremap = true, silent = true, desc = "Open editor with context" })
+keymap("n", "<leader>ai", ":NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })
+keymap("v", "<leader>ai", ":'<,'>NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })

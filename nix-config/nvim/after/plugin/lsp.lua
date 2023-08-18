@@ -45,13 +45,13 @@ local function on_attach_global(_, bufnr)
     { buffer = bufnr, remap = false, silent = true, desc = "Workspace symbol (LSP)" })
   vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
     { buffer = bufnr, remap = false, silent = true, desc = "Code action" })
-  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, silent = true, desc = "Rename" })
+  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, silent = true, desc = "Rename (LSP)" })
   vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help,
-    { buffer = bufnr, remap = false, silent = true, desc = "Signature help" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Signature help (LSP)" })
   vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist,
-    { buffer = bufnr, remap = false, silent = true, desc = "Set location list" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Set location list (LSP)" })
   vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist,
-    { buffer = bufnr, remap = false, silent = true, desc = "Set quickfix list" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Set quickfix list (LSP)" })
   vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>",
     { buffer = bufnr, remap = false, silent = true, desc = "Next diagnostic (LSP)" })
   vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>",
@@ -84,8 +84,10 @@ lspConfig.eslint.setup({
 })
 
 lspConfig.omnisharp.setup({
-  on_attach = function(client, bufnr)
+  on_init = function(client)
     client.server_capabilities.semanticTokensProvider = nil
+  end,
+  on_attach = function(client, bufnr)
     on_attach_global(client, bufnr)
   end,
   handlers = {
@@ -94,7 +96,7 @@ lspConfig.omnisharp.setup({
   cmd = { "/etc/profiles/per-user/kyle/bin/OmniSharp" },
   enable_editorconfig_support = true,
   enable_ms_build_load_projects_on_demand = false,
-  enable_roslyn_analyzers = false,
+  enable_roslyn_analyzers = true,
   organize_imports_on_format = false,
   enable_import_completion = false,
   sdk_include_prereleases = true,
@@ -155,13 +157,13 @@ lspConfig.tsserver.setup({
     end, { bang = true })
 
     vim.keymap.set("n", "<leader>l1", ":TypescriptAddMissingImports<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports" })
+      { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports (LSP)" })
     vim.keymap.set("n", "<leader>l2", ":TypescriptRemoveUnused<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports" })
+      { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports (LSP)" })
     vim.keymap.set("n", "<leader>l3", ":TypescriptRenameFile<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "File rename" })
-    vim.keymap.set("n", "<Leader>qt", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
-      { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors" })
+      { buffer = bufnr, remap = false, silent = true, desc = "File rename (LSP)" })
+    vim.keymap.set("n", "<Leader>lq", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
+      { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors (LSP)" })
     on_attach_global(client, bufnr)
   end,
 })

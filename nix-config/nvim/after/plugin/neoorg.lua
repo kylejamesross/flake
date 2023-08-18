@@ -17,9 +17,9 @@ neorg.setup {
         }
     }
 }
-vim.keymap.set("n", "<leader>ni", "<cmd>:Neorg index<CR>", { noremap = true, silent = true, desc = "Go to index" })
-vim.keymap.set("n", "<leader>nr", "<cmd>:Neorg return<CR>", { noremap = true, silent = true, desc = "Return to" })
+vim.keymap.set("n", "<leader>ni", "<cmd>:Neorg index<CR>", { noremap = true, silent = true, desc = "Go to index (NEORG)" })
+vim.keymap.set("n", "<leader>nr", "<cmd>:Neorg return<CR>", { noremap = true, silent = true, desc = "Return to (NEORG)" })
 vim.keymap.set("n", "<leader>nw", "<cmd>:Neorg workspace work<CR>",
-    { noremap = true, silent = true, desc = "Go to work workspace" })
+    { noremap = true, silent = true, desc = "Go to work workspace (NEORG)" })
 vim.keymap.set("n", "<leader>np", "<cmd>:Neorg workspace personal<CR>",
-    { noremap = true, silent = true, desc = "Go to personal workspace" })
+    { noremap = true, silent = true, desc = "Go to personal workspace (NEORG)" })

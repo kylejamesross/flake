@@ -15,7 +15,7 @@ which_key.register({
 
 which_key.register({
   t = {
-    name = "[TYPESCRIPT]",
+    name = "[TELESCOPE]",
   }
 }, { prefix = "<leader>" })
 
@@ -45,7 +45,7 @@ which_key.register({
 
 which_key.register({
   n = {
-    name = "[Neorg]"
+    name = "[NEORG]"
   }
 }, { prefix = "<leader>" })
 
