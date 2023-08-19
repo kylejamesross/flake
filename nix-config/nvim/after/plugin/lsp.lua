@@ -7,10 +7,10 @@ if not status_ok_lspConfig then
   return
 end
 
-local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
-local servers  = { 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' };
+local capabilities = cmp_nvim_lsp.default_capabilities()
+local servers          = { 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' };
 
-local signs = {
+local signs            = {
   Error = "",
   Warn = "",
   Hint = "",
@@ -40,7 +40,8 @@ local function on_attach_global(_, bufnr)
     { buffer = bufnr, remap = false, silent = true, desc = "Workspace symbol (LSP)" })
   vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
     { buffer = bufnr, remap = false, silent = true, desc = "Code action" })
-  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, silent = true, desc = "Rename (LSP)" })
+  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
+    { buffer = bufnr, remap = false, silent = true, desc = "Rename (LSP)" })
   vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help,
     { buffer = bufnr, remap = false, silent = true, desc = "Signature help (LSP)" })
   vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist,
@@ -58,7 +59,7 @@ end
 for _, lsp in ipairs(servers) do
   lspConfig[lsp].setup {
     on_attach = on_attach_global,
-    capabilities = lsp_capabilities,
+    capabilities = capabilities,
   }
 end
 
@@ -73,6 +74,7 @@ lspConfig.lua_ls.setup({
       },
     },
   },
+  capabilities = capabilities,
 })
 
 lspConfig.eslint.setup({
@@ -81,6 +83,7 @@ lspConfig.eslint.setup({
       { buffer = bufnr, remap = false, silent = true, desc = "Eslint fix all" })
     on_attach_global(client, bufnr)
   end,
+  capabilities = capabilities,
 })
 
 lspConfig.omnisharp.setup({
@@ -101,6 +104,7 @@ lspConfig.omnisharp.setup({
   enable_import_completion = false,
   sdk_include_prereleases = true,
   analyze_open_documents_only = true,
+  capabilities = capabilities,
 })
 
 -- snippets
