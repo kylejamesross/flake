@@ -1,9 +1,5 @@
-local status_ok, lsp = pcall(require, "lsp-zero")
-if not status_ok then
-  return
-end
-local status_ok_cmp, cmp = pcall(require, "cmp")
-if not status_ok_cmp then
+local status_ok_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok_cmp_nvim_lsp then
   return
 end
 local status_ok_lspConfig, lspConfig = pcall(require, "lspconfig")
@@ -11,21 +7,20 @@ if not status_ok_lspConfig then
   return
 end
 
-lsp.preset({
-  name = 'minimal',
-  set_lsp_keymaps = true,
-  manage_nvim_cmp = true,
-  suggest_lsp_servers = false,
-})
+local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
+local servers  = { 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' };
 
-lsp.setup_servers({ 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' })
+local signs = {
+  Error = "",
+  Warn = "",
+  Hint = "",
+  Info = "",
+};
 
-lsp.set_sign_icons({
-  error = "",
-  warn = "",
-  hint = "",
-  info = "",
-})
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 local function on_attach_global(_, bufnr)
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "Hover (LSP)" })
@@ -60,7 +55,12 @@ local function on_attach_global(_, bufnr)
     { buffer = bufnr, remap = false, silent = true, desc = "Format file (LSP)" })
 end
 
-lsp.on_attach(on_attach_global)
+for _, lsp in ipairs(servers) do
+  lspConfig[lsp].setup {
+    on_attach = on_attach_global,
+    capabilities = lsp_capabilities,
+  }
+end
 
 lspConfig.lua_ls.setup({
   on_attach = function(client, bufnr)
@@ -167,12 +167,6 @@ lspConfig.tsserver.setup({
     on_attach_global(client, bufnr)
   end,
 })
-
-cmp.setup()
-
-lsp.nvim_workspace()
-
-lsp.setup()
 
 -- show diagnostic messages inline
 vim.diagnostic.config({

@@ -70,7 +70,6 @@ in
         nvim-notify
         noice-nvim
         undotree
-        lsp-zero-nvim
         nvim-lspconfig
         nvim-cmp
         cmp-nvim-lsp
