@@ -38,6 +38,7 @@
       VISUAL = "nvim";
       BAT_THEME = "Dracula";
       USERNAME = user;
+      VSCODE_CODELLDB = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}";
     };
     systemPackages = with pkgs; [
       git

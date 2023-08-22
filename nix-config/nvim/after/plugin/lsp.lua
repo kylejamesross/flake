@@ -6,11 +6,22 @@ local status_ok_lspConfig, lspConfig = pcall(require, "lspconfig")
 if not status_ok_lspConfig then
   return
 end
+local status_ok_rustTools, rustTools = pcall(require, "rust-tools")
+if not status_ok_rustTools then
+  return
+end
+local VSCODE_CODELLDB = os.getenv("VSCODE_CODELLDB")
+if VSCODE_CODELLDB == nil then
+  return
+end
 
-local capabilities = cmp_nvim_lsp.default_capabilities()
-local servers          = { 'rust_analyzer', 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' };
+local extension_path = VSCODE_CODELLDB .. "/share/vscode/extensions/vadimcn.vscode-lldb/"
+local codelldb_path  = extension_path .. 'adapter/codelldb'
+local liblldb_path   = extension_path .. 'lldb/lib/liblldb.so'
+local capabilities   = cmp_nvim_lsp.default_capabilities()
+local servers        = { 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp' };
 
-local signs            = {
+local signs          = {
   Error = "",
   Warn = "",
   Hint = "",
@@ -170,6 +181,27 @@ lspConfig.tsserver.setup({
       { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors (LSP)" })
     on_attach_global(client, bufnr)
   end,
+})
+
+rustTools.setup({
+  server = {
+    on_attach = function(client, bufnr)
+      vim.keymap.set("n", "<leader>l1", rustTools.hover_actions.hover_actions,
+        { buffer = bufnr, desc = "Hover actions (LSP)" })
+      vim.keymap.set("n", "<leader>l2", rustTools.code_action_group.code_action_group,
+        { buffer = bufnr, desc = "Code Action Group (LSP)" })
+      on_attach_global(client, bufnr)
+    end,
+    capabilities = capabilities,
+    tools = {
+      hover_actions = {
+        auto_focus = true,
+      },
+    },
+  },
+  dap = {
+    adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
+  },
 })
 
 -- show diagnostic messages inline

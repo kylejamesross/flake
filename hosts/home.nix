@@ -49,10 +49,13 @@
       lua-language-server
       cargo
       rustc
+      rustfmt
       omnisharp-roslyn
 
       # debug adapters
       netcoredbg
+      lldb
+      vscode-extensions.vadimcn.vscode-lldb
     ];
   };
 
