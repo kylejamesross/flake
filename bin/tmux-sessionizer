@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-session=$(fd . "/home/$USER" --min-depth 1 --max-depth 3 --type d --exec sh -c "test -e \"{}/.git\" && echo {}" \; | fzf)
+session=$(fd . "/home/$USER" --min-depth 1 --max-depth 3 --type d --exec sh -c 'test -e "$1/.git" && echo "$1"' sh {} \; | fzf)
 
 session_name=$(basename "$session" | tr . _);
 
