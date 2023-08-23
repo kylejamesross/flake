@@ -193,11 +193,6 @@ rustTools.setup({
       on_attach_global(client, bufnr)
     end,
     capabilities = capabilities,
-    tools = {
-      hover_actions = {
-        auto_focus = true,
-      },
-    },
   },
   dap = {
     adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),

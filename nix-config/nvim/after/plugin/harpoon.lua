@@ -1,4 +1,3 @@
-
 local status_ok = pcall(require, "harpoon")
 if not status_ok then
 	return
