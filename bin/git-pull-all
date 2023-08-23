@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-parent_directory="${1:-$HOME/source}"
-directories=$(ls $parent_directory)
+directories=$(fd . "/home/$USER/source" --min-depth 1 --max-depth 2 --type d --exec sh -c 'test -e "$1/.git" && echo "$1"' sh {} \;)
 
 for folder in $directories
 do
