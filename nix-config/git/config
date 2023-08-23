@@ -14,6 +14,9 @@
     ac="!git add -A && git commit -m"
     po="push origin"
     ph="push origin HEAD"
+    wl="worktree list"
+    wa="worktree add"
+    wr="worktree remove"
 [pull]
     rebase = false
 [push]

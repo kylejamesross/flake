@@ -177,7 +177,7 @@ lspConfig.tsserver.setup({
       { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports (LSP)" })
     vim.keymap.set("n", "<leader>l3", ":TypescriptRenameFile<CR>",
       { buffer = bufnr, remap = false, silent = true, desc = "File rename (LSP)" })
-    vim.keymap.set("n", "<Leader>lq", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
+    vim.keymap.set("n", "<Leader>l4", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
       { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors (LSP)" })
     on_attach_global(client, bufnr)
   end,
