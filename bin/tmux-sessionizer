@@ -2,7 +2,7 @@
 
 session=$(fd . "/home/$USER" --min-depth 1 --max-depth 3 --type d --exec sh -c 'test -e "$1/.git" && echo "$1"' sh {} \; | fzf)
 
-session_name=$(basename "$session" | tr . _);
+session_name=$(echo "$session" | tr . _)
 
 echo "$session_name"
 
