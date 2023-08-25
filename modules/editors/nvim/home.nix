@@ -68,7 +68,6 @@ in
         lualine-nvim
         nvim-scrollbar
         nvim-notify
-        noice-nvim
         undotree
         nvim-lspconfig
         nvim-cmp
