@@ -15,6 +15,7 @@ monitor=DP-2, 1920x1080, 4480x0, 1
 monitor=HDMI-A-1, 1920x1080, 0x0, 1
   '' else ''
 monitor=eDP-2, 1920x1080, 0x0, 0.95
+monitor=eDP-1, 1920x1080, 0x0, 0.95
   '';
 
   workspaceBindings = if isDesktop then ''
