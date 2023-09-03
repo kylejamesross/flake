@@ -43,3 +43,7 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+vim.api.nvim_exec([[
+	let g:fugitive_summary_format = "%cs || %<(20,trunc)%an || %s"
+]], true)

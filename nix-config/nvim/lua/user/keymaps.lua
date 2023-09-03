@@ -99,7 +99,7 @@ keymap("n", "<leader>tb", "<CMD>lua MRUBuffers()<CR>", { noremap = true, silent 
 keymap("n", "<leader>tt", "<CMD>Telescope help_tags<CR>", { desc = "Help Tags (Telescope)"})
 
 -- git
-keymap("n", "<leader>vf", ":Gllog %<CR>", { noremap = true, silent = true, desc = "Display commits for current file" })
+keymap("n", "<leader>vf", ":0GcLog<CR>", { noremap = true, silent = true, desc = "Display commits for current file" })
 keymap("n", "<leader>vm", ":Gvdiffsplit!<CR>",
   { noremap = true, silent = true, desc = "Display side-by-side merge tool" })
 keymap("n", "<leader>vh", "<cmd>diffget //2<CR>",
