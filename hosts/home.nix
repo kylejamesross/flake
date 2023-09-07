@@ -23,7 +23,7 @@
       tig
       ripgrep
       fd
-      exa
+      unstable.eza
       bat
       du-dust
       nodejs
