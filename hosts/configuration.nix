@@ -39,6 +39,7 @@
       BAT_THEME = "Dracula";
       USERNAME = user;
       VSCODE_CODELLDB = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}";
+      DOTNET_ROOT = "${pkgs.dotnet-sdk}";
     };
     systemPackages = with pkgs; [
       git

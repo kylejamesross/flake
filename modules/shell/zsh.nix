@@ -13,7 +13,7 @@
       enableCompletion = true;
       histSize = 100000;
       shellAliases = {
-        ls = "eza --icons --oneline --long --hyperlink --git --color auto";
+        ls = "eza -bhal --icons --hyperlink --git --color auto";
         cat = "bat";
         pb = "git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches";
         v = "nvim";

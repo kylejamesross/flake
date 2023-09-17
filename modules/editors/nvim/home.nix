@@ -53,6 +53,7 @@ in
         nvim-treesitter-parsers.markdown
         nvim-treesitter-parsers.nix
         nvim-treesitter-parsers.norg
+        nvim-treesitter-parsers.astro
         nvim-ts-context-commentstring
         nvim-ts-autotag
         nui-nvim
