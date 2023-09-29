@@ -27,6 +27,7 @@
       bat
       du-dust
       nodejs
+      unstable.bun
       nodePackages.npm
       optipng
       neofetch
