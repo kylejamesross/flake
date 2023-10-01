@@ -29,6 +29,7 @@
       nodejs
       unstable.bun
       nodePackages.npm
+      yarn
       optipng
       neofetch
       fzf
@@ -46,6 +47,7 @@
       # lsp
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
+      nodePackages."@astrojs/language-server"
       rust-analyzer
       lua-language-server
       cargo
