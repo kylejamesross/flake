@@ -88,13 +88,6 @@ lspConfig.lua_ls.setup({
   capabilities = capabilities,
 })
 
-lspConfig.astro.setup({
-  on_attach = function(client, bufnr)
-    on_attach_global(client, bufnr)
-  end,
-  capabilities = capabilities,
-})
-
 lspConfig.eslint.setup({
   on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>le", ":EslintFixAll<CR>",
