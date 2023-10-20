@@ -9,6 +9,7 @@
   home = {
     packages = with pkgs; [
       piper
+      xow_dongle-firmware
     ];
   };
 }
