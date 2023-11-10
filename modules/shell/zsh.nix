@@ -16,7 +16,7 @@
         ls = "eza -bhal --icons --hyperlink --git --color auto";
         cat = "bat";
         pb = "git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches";
-        v = "nvim";
+        n = "nvim";
         fonts = "fc-list";
         wlogin = "az acr login -n nsolutionsacregistry";
         g = "if [[ \"${host.hostName}\" == \"laptop\" ]]; then sudo nixos-rebuild switch --flake .#laptop; else sudo nixos-rebuild switch --flake .#desktop; fi";

@@ -1,6 +1,6 @@
 #
 # Shell
-#
+#tmp
 
 { pkgs, ... }:
 
@@ -10,9 +10,6 @@
       enable = true;
       keyMode = "vi";
       historyLimit = 100000;
-      plugins = [ 
-        pkgs.tmuxPlugins.yank 
-      ];
       extraConfig = ''
         set -s escape-time 100
         setw -g mouse on
@@ -21,11 +18,11 @@
 
         bind-key -T copy-mode-vi v send-keys -X begin-selection
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+        set -s set-clipboard on
 
         bind-key -r f run-shell "tmux neww ~/flake/bin/tmux-sessionizer"
         bind-key -r h run-shell "tmux neww ~/flake/bin/cht"
         bind-key -r v run-shell "tmux neww -S -n lazygit lazygit"
-        # bind-key -r , run-shell "tmux neww -S -n joplin joplin"
         bind-key -r . run-shell "tmux neww -S -n bpytop btop"
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
         bind-key -r , run-shell "tmux neww -S -n work_notes nvim -c ':Neorg workspace work'"
@@ -39,12 +36,13 @@
         set -ga terminal-overrides ",xterm-256color:Tc"
 
         set -g @dracula-show-left-icon 
-        set -g @dracula-plugins "cpu-usage git ram-usage time"
-        set -g @dracula-show-powerline true
-        set -g @dracula-military-time false
-        set -g @dracula-cpu-usage-colors "pink dark_gray"
-        set -g @dracula-ram-usage-colors "orange dark_gray"
+        set -g @dracula-plugins ""
+        set -g @dracula-show-battery false
+		set -g @dracula-show-powerline false
         run-shell ${pkgs.tmuxPlugins.dracula}/share/tmux-plugins/dracula/dracula.tmux
+        set -g status-position top
+        set -g status-right ""
+        set -g status-left "#[bg=#bd93f9,fg=#282a36]#{?client_prefix,#[bg=#f1fa8c],}  #S #[fg=#bd93f9,bg=#282a36]#{?client_prefix,#[fg=#f1fa8c],}"
         '';
     };
   };
