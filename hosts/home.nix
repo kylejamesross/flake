@@ -110,6 +110,7 @@
       "application/x-extension-xht" = "brave-browser.desktop";
       "text/html" = "brave-browser.desktop";
       "x-scheme-handler/chrome" = "brave-browser.desktop";
+      "text/plain" = "notepadqq.desktop";
     };
   };
 }
