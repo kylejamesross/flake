@@ -29,9 +29,7 @@
       ];
       interactiveShellInit = ''
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh;
-        source ${pkgs.zsh-better-npm-completion}/share/zsh-better-npm-completion;
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions
-        source ${pkgs.zsh-completions}/share/zsh/site-functions
         source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       '';
     };
