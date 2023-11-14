@@ -37,6 +37,7 @@
 
         set -g status-position top
         set -g status-right ""
+        set-option -g status-left-length 100
         set -g status-left "#[bg=#bd93f9,fg=#282a36]#{?client_prefix,#[bg=#f1fa8c],}  #S #[fg=#bd93f9,bg=#282a36]#{?client_prefix,#[fg=#f1fa8c],}"
         set-option -g pane-border-style "fg=#44475a"
         set-option -g pane-active-border-style "fg=#6272a4"
