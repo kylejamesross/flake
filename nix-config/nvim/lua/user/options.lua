@@ -37,6 +37,7 @@ local options = {
 	guifont = "monospace:h17",
 	termguicolors = true,
 	autoread = true,
+	virtualedit = 'block',
 	jumpoptions = 'stack'
 }
 -- set all options

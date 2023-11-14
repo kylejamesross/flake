@@ -35,14 +35,17 @@
         set -g default-terminal "screen-256color"
         set -ga terminal-overrides ",xterm-256color:Tc"
 
-        set -g @dracula-show-left-icon 
-        set -g @dracula-plugins ""
-        set -g @dracula-show-battery false
-		set -g @dracula-show-powerline false
-        run-shell ${pkgs.tmuxPlugins.dracula}/share/tmux-plugins/dracula/dracula.tmux
         set -g status-position top
         set -g status-right ""
         set -g status-left "#[bg=#bd93f9,fg=#282a36]#{?client_prefix,#[bg=#f1fa8c],}  #S #[fg=#bd93f9,bg=#282a36]#{?client_prefix,#[fg=#f1fa8c],}"
+        set-option -g pane-border-style "fg=#44475a"
+        set-option -g pane-active-border-style "fg=#6272a4"
+        set-option -g message-style "bg=#44475a,fg=#f8f8f2"
+        set-option -g status-style "bg=#44475a,fg=#f8f8f2"
+        set-window-option -g window-status-activity-style "bold"
+        set-window-option -g window-status-bell-style "bold"
+        set-window-option -g window-status-current-format "#[fg=#f8f8f2,bg=#6272a4] #I #W "
+        set-window-option -g window-status-format "#[fg=#f8f8f2]#[bg=#44475a] #I #W"
         '';
     };
   };
