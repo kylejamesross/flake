@@ -82,7 +82,6 @@ in
         rust-tools-nvim
         omnisharp-extended-lsp-nvim
         vim-illuminate
-        neorg
         nvim-dap
         nvim-dap-ui
         nvim-dap-virtual-text  

@@ -43,11 +43,11 @@ which_key.register({
   }
 }, { prefix = "<leader>" })
 
-which_key.register({
-  n = {
-    name = "[NEORG]"
-  }
-}, { prefix = "<leader>" })
+-- which_key.register({
+--   n = {
+--     name = "[NEORG]"
+--   }
+-- }, { prefix = "<leader>" })
 
 which_key.register({
   r = {

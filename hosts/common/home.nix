@@ -17,6 +17,7 @@
       vlc
       gimp
       inkscape
+      joplin-desktop
       anki-bin
       libreoffice-still
       pdfarranger
