@@ -170,10 +170,17 @@
                     "browser.bookmarks.openInTabClosesMenu" = false;
                     "browser.menu.showViewImageInfo" = true;
                     "findbar.highlightAll" = true;
+
+
                     "layout.css.color-mix.enabled" = true;
                     "browser.tabs.tabMinWidth" = 66;
                     "browser.tabs.tabClipWidth" = 86;
                     "browser.uidensity" = 1;
+                    "browser.startup.blankWindow" = true;
+                    "browser.sessionstore.restore_on_demand" = false;
+                    "browser.sessionstore.resume_from_crash" = false;
+                    "browser.startup.homepage" = "";
+                    "startup.homepage_welcome_url" = "";
                 };
             };
         };
