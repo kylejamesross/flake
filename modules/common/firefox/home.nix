@@ -180,6 +180,7 @@
                     "browser.sessionstore.restore_on_demand" = false;
                     "browser.sessionstore.resume_from_crash" = false;
                     "browser.startup.homepage" = "";
+                    "browser.startup.page" = 2;
                     "startup.homepage_welcome_url" = "";
                 };
             };
