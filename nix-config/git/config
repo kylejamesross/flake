@@ -26,8 +26,8 @@
     branch = false
     log =  false
 [web]
-    browser = brave
-[browser "brave"]
-    cmd = brave
+    browser = firefox
+[browser "firefox"]
+    cmd = firefox
 [init]
     defaultBranch = main

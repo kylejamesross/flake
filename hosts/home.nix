@@ -2,7 +2,7 @@
 #  General Home-manager configuration
 #
 
-{ config, lib, pkgs, unstable, user, ... }:
+{ config, lib, pkgs, unstable, user, inputs, ... }:
 
 {
   imports = [(import ../modules/editors/nvim/home.nix)];
@@ -88,6 +88,7 @@
   home.file.".face".source = ../nix-config/.face;
   home.file.".p10k.zsh".source = ../nix-config/.p10k.zsh;
   home.file.".zshrc".source = ../nix-config/.zshrc;
+  home.file.".mozilla/firefox/kyle/chrome/dracula".source = inputs.firefox-dracula-theme;
   xdg.configFile."nvim" = {
     source = ../nix-config/nvim;
     recursive = true;
@@ -100,16 +101,16 @@
       "image/svg+xml" = "org.inkscape.Inkscape.desktop";
       "image/png" = "swappy.desktop";
       "image/jpeg" = "swappy.desktop";
-      "x-scheme-handler/http" = "brave-browser.desktop";
-      "x-scheme-handler/https" = "brave-browser.desktop";
-      "application/x-extension-htm" = "brave-browser.desktop";
-      "application/x-extension-html" = "brave-browser.desktop";
-      "application/x-extension-shtml" = "brave-browser.desktop";
-      "application/xhtml+xml" = "brave-browser.desktop";
-      "application/x-extension-xhtml" = "brave-browser.desktop";
-      "application/x-extension-xht" = "brave-browser.desktop";
-      "text/html" = "brave-browser.desktop";
-      "x-scheme-handler/chrome" = "brave-browser.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "application/x-extension-htm" = "firefox.desktop";
+      "application/x-extension-html" = "firefox.desktop";
+      "application/x-extension-shtml" = "firefox.desktop";
+      "application/xhtml+xml" = "firefox.desktop";
+      "application/x-extension-xhtml" = "firefox.desktop";
+      "application/x-extension-xht" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/chrome" = "firefox.desktop";
       "text/plain" = "notepadqq.desktop";
     };
   };

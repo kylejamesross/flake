@@ -29,7 +29,6 @@ in
       };
     };
     modules = [
-      nur.nixosModules.nur
       ./common
       ./desktop
       ./configuration.nix
@@ -38,13 +37,14 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user;
+          inherit inputs unstable user;
           host = {
             hostName = "desktop";
           };
         };
         home-manager.users.${user} = {
           imports = [
+            nur.nixosModules.nur
             ./home.nix
             ./common/home.nix
             ./desktop/home.nix
@@ -71,7 +71,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user;
+          inherit inputs unstable user;
           host = {
             hostName = "laptop";
           };

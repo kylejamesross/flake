@@ -5,12 +5,16 @@
 { pkgs, unstable, ... }:
 
 {
-  imports = [(import ../../modules/common/hyprland/home.nix)];
+  imports = 
+    [
+    ../../modules/common/hyprland/home.nix
+    ../../modules/common/firefox/home.nix
+    ];
 
   home = {
     packages = with pkgs; [
-      firefox
       thunderbird
+      teams-for-linux
       brave
       okular
       dbeaver
