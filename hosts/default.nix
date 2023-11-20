@@ -78,6 +78,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
+            nur.nixosModules.nur
             ./home.nix
             ./common/home.nix
           ];
