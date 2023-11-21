@@ -73,7 +73,6 @@ exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
 exec-once = ${pkgs.mako}/bin/mako 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
-exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --watch cliphist store
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
@@ -192,7 +191,6 @@ bind = $mainMod, F, fullscreen, # fullscreen
 bind = $mainMod, P, exec, wofi --allow-images --show drun
 bind = $mainMod, D, pseudo, # dwindle
 bind = $mainMod, T, togglesplit, # dwindle
-bind = ALT, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy
 
 # Clipboard binds
 bind = SHIFT, Print, exec , grim -g "$(slurp)" - | swappy -f -

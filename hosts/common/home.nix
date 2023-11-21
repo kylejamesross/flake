@@ -48,7 +48,6 @@
       wlogout
       swaylock-effects
       wl-clipboard
-      cliphist
       wlr-randr
       dbus
 
