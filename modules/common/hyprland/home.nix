@@ -211,7 +211,7 @@ bind = $mainMod, F2, exec, kitty --title Kitty tmux
 bind = $mainMod, F3, workspace, 3
 bind = $mainMod, F3, exec, firefox --new-window
 bind = $mainMod, F4, workspace, 4
-bind = $mainMod, F4, exec, beekeeper-studio
+bind = $mainMod, F4, exec, dbeaver
 bind = $mainMod, F5, workspace, 5
 bind = $mainMod, F5, exec, rider
 bind = $mainMod, F6, workspace, 6
@@ -219,9 +219,9 @@ bind = $mainMod, F6, exec, joplin-desktop
 bind = $mainMod, F7, workspace, 7
 bind = $mainMod, F7, exec, thunderbird
 bind = $mainMod, F8, workspace, 8
-bind = $mainMod, F8, exec, teams-for-linux
+bind = $mainMod, F8, exec, brave --app=https://teams.microsoft.com/
 bind = $mainMod, F9, workspace, 9
-bind = $mainMod, F9, exec, firefox --new-window https://music.youtube.com/
+bind = $mainMod, F9, exec, brave --app=https://music.youtube.com/
 
 ${workspaceBindings}
 

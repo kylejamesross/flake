@@ -14,7 +14,6 @@
   home = {
     packages = with pkgs; [
       thunderbird
-      teams-for-linux
       brave
       okular
       dbeaver
