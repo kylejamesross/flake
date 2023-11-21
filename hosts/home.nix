@@ -88,7 +88,6 @@
   home.file.".face".source = ../nix-config/.face;
   home.file.".p10k.zsh".source = ../nix-config/.p10k.zsh;
   home.file.".zshrc".source = ../nix-config/.zshrc;
-  home.file.".mozilla/firefox/kyle/chrome/dracula".source = inputs.firefox-dracula-theme;
   xdg.configFile."nvim" = {
     source = ../nix-config/nvim;
     recursive = true;

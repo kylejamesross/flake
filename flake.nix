@@ -14,8 +14,6 @@
       nur = {
         url = "github:nix-community/NUR";
       };
-
-      firefox-dracula-theme = { url = "github:dracula/firefox"; flake = false; };
     };
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:

@@ -18,13 +18,8 @@
                     react-devtools
                     reduxdevtools
                     vimium
+                    dracula-dark-colorscheme
                 ];
-                userChrome = ''
-                    @import "firefox-dracula-theme/userChrome/chrome/userchrome.css";
-                '';
-                userContent = ''
-                    @import "firefox-dracula-theme/userChrome/chrome/userContent.css";
-                '';
                 settings = {
                     "nglayout.initialpaint.delay" = 0;
                     "nglayout.initialpaint.delay_in_oopif" = 0;

@@ -17,6 +17,16 @@ monitor=HDMI-A-1, 1920x1080, 0x0, 1
 monitor=eDP-2, 1920x1080, 0x0, 0.95
 monitor=eDP-1, 1920x1080, 0x0, 0.95
   '';
+  customF8Bindings = if isDesktop then ''
+bind = $mainMod, F8, exec, brave --app=https://teams.microsoft.com/
+  '' else ''
+bind = $mainMod, F8, exec, firefox --new-window https://teams.microsoft.com/
+  '';
+  customF9Bindings = if isDesktop then ''
+bind = $mainMod, F9, exec, brave --app=https://music.youtube.com/
+  '' else ''
+bind = $mainMod, F9, exec, firefox --new-window https://music.youtube.com/
+  '';
 
   workspaceBindings = if isDesktop then ''
 # workspace=DP-1,1
@@ -219,9 +229,9 @@ bind = $mainMod, F6, exec, joplin-desktop
 bind = $mainMod, F7, workspace, 7
 bind = $mainMod, F7, exec, thunderbird
 bind = $mainMod, F8, workspace, 8
-bind = $mainMod, F8, exec, brave --app=https://teams.microsoft.com/
+${customF8Bindings}
 bind = $mainMod, F9, workspace, 9
-bind = $mainMod, F9, exec, brave --app=https://music.youtube.com/
+${customF9Bindings}
 
 ${workspaceBindings}
 
