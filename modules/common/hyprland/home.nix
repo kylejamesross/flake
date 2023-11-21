@@ -219,7 +219,7 @@ bind = $mainMod, F6, exec, joplin-desktop
 bind = $mainMod, F7, workspace, 7
 bind = $mainMod, F7, exec, thunderbird
 bind = $mainMod, F8, workspace, 8
-bind = $mainMod, F8, exec, teams-for-linux
+bind = $mainMod, F8, exec, brave --app=https://teams.microsoft.com/
 bind = $mainMod, F9, workspace, 9
 bind = $mainMod, F9, exec, firefox --new-window https://music.youtube.com/
 

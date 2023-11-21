@@ -182,6 +182,12 @@
                     "browser.startup.homepage" = "";
                     "browser.startup.page" = 2;
                     "startup.homepage_welcome_url" = "";
+                    "browser.bookmarks.addedImportButton" = false;
+                    "browser.toolbars.bookmarks.showOtherBookmarks" = false;
+                    "browser.urlbar.shortcuts.bookmarks" = false;
+                    "browser.urlbar.suggest.bookmark" = false;
+                    "browser.migrate.bookmarks-file.enabled" = false;
+                    "browser.newtabpage.enabled" = false;
                 };
             };
         };
