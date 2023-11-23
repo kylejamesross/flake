@@ -8,13 +8,11 @@
       "  ${1}",
       "}",
       "",
-      "const ${TM_FILENAME_BASE} = ({${2}}: I${TM_FILENAME_BASE} ) => {",
+      "export const ${TM_FILENAME_BASE} = ({${2}}: I${TM_FILENAME_BASE} ) => {",
       "  return (",
       "    ${3}",
       "  );",
       "};",
-      "",
-      "export { ${TM_FILENAME_BASE} };",
       ""
     ],
     "description": "React Typescript funcional component"
