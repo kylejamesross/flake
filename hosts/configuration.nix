@@ -6,7 +6,6 @@
 
 {
   imports = [
-    ../modules/shell/tmux.nix
     ../modules/shell/zsh.nix
   ];
 

@@ -4,5 +4,4 @@
 
 [
   ./zsh.nix
-  ./tmux.nix
 ]

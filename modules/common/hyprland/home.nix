@@ -71,7 +71,6 @@ monitor=,preferred,auto,auto
 # Execute your favorite apps at launch
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
-exec-once = ${pkgs.mako}/bin/mako 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/

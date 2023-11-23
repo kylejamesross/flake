@@ -2,7 +2,7 @@
 # Shell
 #tmp
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs = {
@@ -35,18 +35,30 @@
         set -g default-terminal "screen-256color"
         set -ga terminal-overrides ",xterm-256color:Tc"
 
+        set-option -g status-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base01}"
+
+        set-window-option -g window-status-style "fg=#${config.colorScheme.colors.base04},bg=default"
+
+        set-window-option -g window-status-current-style "fg=#${config.colorScheme.colors.base0A},bg=default"
+
+        set-option -g pane-border-style "fg=#${config.colorScheme.colors.base01}"
+        set-option -g pane-active-border-style "fg=#${config.colorScheme.colors.base02}"
+
+        set-option -g message-style "fg=#${config.colorScheme.colors.base05},bg=#${config.colorScheme.colors.base01}"
+
+        set-option -g display-panes-active-colour "#${config.colorScheme.colors.base0B}"
+        set-option -g display-panes-colour "#${config.colorScheme.colors.base0A}"
+
+        set-window-option -g clock-mode-colour "#${config.colorScheme.colors.base0B}"
+
+        set-window-option -g mode-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base02}"
+
+        set-window-option -g window-status-bell-style "fg=#${config.colorScheme.colors.base01},bg=#${config.colorScheme.colors.base08}"
+
+
         set -g status-position top
         set -g status-right ""
         set-option -g status-left-length 100
-        set -g status-left "#[bg=#bd93f9,fg=#282a36]#{?client_prefix,#[bg=#f1fa8c],}  #S #[fg=#bd93f9,bg=#282a36]#{?client_prefix,#[fg=#f1fa8c],}"
-        set-option -g pane-border-style "fg=#44475a"
-        set-option -g pane-active-border-style "fg=#6272a4"
-        set-option -g message-style "bg=#44475a,fg=#f8f8f2"
-        set-option -g status-style "bg=#44475a,fg=#f8f8f2"
-        set-window-option -g window-status-activity-style "bold"
-        set-window-option -g window-status-bell-style "bold"
-        set-window-option -g window-status-current-format "#[fg=#f8f8f2,bg=#6272a4] #I #W "
-        set-window-option -g window-status-format "#[fg=#f8f8f2]#[bg=#44475a] #I #W"
         '';
     };
   };

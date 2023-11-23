@@ -18,7 +18,6 @@
                     react-devtools
                     reduxdevtools
                     vimium
-                    dracula-dark-colorscheme
                 ];
                 settings = {
                     "nglayout.initialpaint.delay" = 0;
@@ -183,6 +182,7 @@
                     "browser.urlbar.suggest.bookmark" = false;
                     "browser.migrate.bookmarks-file.enabled" = false;
                     "browser.newtabpage.enabled" = false;
+                    "alerts.useSystemBackend" = false;
                 };
             };
         };

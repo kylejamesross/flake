@@ -70,9 +70,7 @@
   xdg.configFile."btop/btop.conf".source = ../nix-config/btop/btop.conf;
   xdg.configFile."git/.gitignore_global".source = ../nix-config/git/.gitignore_global;
   xdg.configFile."git/config".source = ../nix-config/git/config;
-  xdg.configFile."kitty/kitty.conf".source = ../nix-config/kitty/kitty.conf;
   xdg.configFile."lazygit/config.yml".source = ../nix-config/lazygit/config.yml;
-  xdg.configFile."mako/config".source = ../nix-config/mako/config;
   xdg.configFile."swappy/config".source = ../nix-config/swappy/config;
   xdg.configFile."swaylock/config".source = ../nix-config/swaylock/config;
   xdg.configFile."waybar/config.jsonc".source = ../nix-config/waybar/config.jsonc;

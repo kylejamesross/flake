@@ -2,61 +2,64 @@
 #  Home-manager configuration for common
 #
 
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, nix-colors, ... }:
 
 {
   imports = 
     [
-    ../../modules/common/hyprland/home.nix
-    ../../modules/common/firefox/home.nix
+    nix-colors.homeManagerModules.default
+      ../../modules/common/hyprland/home.nix
+      ../../modules/common/firefox/home.nix
+      ../../modules/services/mako/home.nix
+      ../../modules/shell/tmux.nix
+      ../../modules/common/kitty/home.nix
     ];
+
 
   home = {
     packages = with pkgs; [
       thunderbird
-      brave
-      okular
-      dbeaver
-      vlc
-      gimp
-      inkscape
-      joplin-desktop
-      anki-bin
-      libreoffice-still
-      pdfarranger
-      notepadqq
-      kitty
-      pamixer
-      playerctl
-      gnome.file-roller
-      xfce.tumbler
-      (
-        xfce.thunar.override {
-          thunarPlugins = [
-            xfce.thunar-archive-plugin
-          ];
-        }
-      )
-      ffmpegthumbnailer
-      waybar
-      wofi
-      mako
-      grim
-      swww
-      slurp
-      swappy
-      wlogout
-      swaylock-effects
-      wl-clipboard
-      wlr-randr
-      dbus
+        brave
+        okular
+        dbeaver
+        vlc
+        gimp
+        inkscape
+        joplin-desktop
+        anki-bin
+        libreoffice-still
+        pdfarranger
+        notepadqq
+        pamixer
+        playerctl
+        gnome.file-roller
+        xfce.tumbler
+        (
+         xfce.thunar.override {
+         thunarPlugins = [
+         xfce.thunar-archive-plugin
+         ];
+         }
+        )
+        ffmpegthumbnailer
+        waybar
+        wofi
+        grim
+        swww
+        slurp
+        swappy
+        wlogout
+        swaylock-effects
+        wl-clipboard
+        wlr-randr
+        dbus
 
-      # work
-      azuredatastudio
-      azure-cli
-      insomnia
-      jetbrains.rider
-    ];
+# work
+        azuredatastudio
+        azure-cli
+        insomnia
+        jetbrains.rider
+        ];
     pointerCursor = {
       gtk.enable = true;
       name = "Bibata-Modern-Ice";
@@ -66,11 +69,17 @@
     stateVersion = "22.05";
   };
 
+  colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
   gtk = {
     enable = true;
     theme = {
-      name = "Dracula";
-      package = pkgs.dracula-theme;
+      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "pink" ];
+        size = "compact";
+        tweaks = [ "rimless" "black" ];
+        variant = "macchiato";
+      };
     };
     iconTheme = {
       name = "Papirus-Dark";
