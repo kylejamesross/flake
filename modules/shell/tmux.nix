@@ -50,7 +50,7 @@
         set -g status-style 'bg=colour18 fg=colour137 dim'
         set -g status-right '#[fg=colour233,bg=colour19] %d/%m #[fg=colour233,bg=colour8] %H:%M:%S '
         set -g status-right-length 50
-        set -g status-left-length 20
+        set -g status-left-length 100
         set -g status-left "#[bg=colour18,fg=colour9]#{?client_prefix,#[bg=colour18],}  #[fg=colour249,bg=colour18]#{?client_prefix,#[fg=colour249],}#S "
         setw -g window-status-current-style 'fg=colour1 bg=colour19 bold'
         setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
