@@ -98,8 +98,8 @@ general {
     gaps_out = 10
 
     border_size = 2.5
-    col.active_border = rgba(9b87ffff) rgba(ff8ec3ff) 45deg
-    col.inactive_border = rgba(595959ff)
+    col.active_border = rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base0D}ff) 45deg
+    col.inactive_border = rgba(${config.colorScheme.colors.base03}ff)
 
     layout = dwindle
 }

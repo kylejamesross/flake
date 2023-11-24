@@ -7,12 +7,14 @@
 {
   imports = 
     [
-    nix-colors.homeManagerModules.default
       ../../modules/common/hyprland/home.nix
       ../../modules/common/firefox/home.nix
       ../../modules/services/mako/home.nix
       ../../modules/shell/tmux.nix
       ../../modules/common/kitty/home.nix
+      ../../modules/common/gtk/home.nix
+      ../../modules/common/swaylock/home.nix
+      ../../modules/common/btop/theme/home.nix
     ];
 
 
@@ -48,7 +50,6 @@
         swww
         slurp
         swappy
-        wlogout
         swaylock-effects
         wl-clipboard
         wlr-randr
@@ -73,13 +74,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
-        tweaks = [ "rimless" "black" ];
-        variant = "macchiato";
-      };
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3";
     };
     iconTheme = {
       name = "Papirus-Dark";

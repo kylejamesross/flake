@@ -23,7 +23,7 @@
     ],
     "custom/logo": {
         "format": "  ",
-        "on-click": "pkill wlogout || wlogout",
+        "on-click": "",
         "tooltip": false
     },
     "hyprland/workspaces": {
