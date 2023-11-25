@@ -6,7 +6,6 @@
 
 {
   imports = [
-    ../modules/shell/tmux.nix
     ../modules/shell/zsh.nix
   ];
 
@@ -36,7 +35,7 @@
       TERMINAL = "kitty";
       EDITOR = "nvim";
       VISUAL = "nvim";
-      BAT_THEME = "Dracula";
+      BAT_THEME = "base16-256";
       USERNAME = user;
       VSCODE_CODELLDB = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}";
       DOTNET_ROOT = "${pkgs.dotnet-sdk}";

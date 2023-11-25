@@ -71,7 +71,6 @@ monitor=,preferred,auto,auto
 # Execute your favorite apps at launch
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
-exec-once = ${pkgs.mako}/bin/mako 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
@@ -99,8 +98,8 @@ general {
     gaps_out = 10
 
     border_size = 2.5
-    col.active_border = rgba(9b87ffff) rgba(ff8ec3ff) 45deg
-    col.inactive_border = rgba(595959ff)
+    col.active_border = rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base0D}ff) 45deg
+    col.inactive_border = rgba(${config.colorScheme.colors.base03}ff)
 
     layout = dwindle
 }

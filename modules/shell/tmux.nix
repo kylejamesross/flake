@@ -2,7 +2,7 @@
 # Shell
 #tmp
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs = {
@@ -23,10 +23,8 @@
         bind-key -r f run-shell "tmux neww ~/flake/bin/tmux-sessionizer"
         bind-key -r h run-shell "tmux neww ~/flake/bin/cht"
         bind-key -r v run-shell "tmux neww -S -n lazygit lazygit"
-        bind-key -r . run-shell "tmux neww -S -n bpytop btop"
+        bind-key -r . run-shell "tmux neww -S -n btop btop"
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
-        bind-key -r , run-shell "tmux neww -S -n work_notes nvim -c ':Neorg workspace work'"
-        bind-key -r m run-shell "tmux neww -S -n personal_notes nvim -c ':Neorg workspace personal'"
         bind-key -r / run-shell "tmux neww -S -n playground"
         bind-key -r t run-shell "tmux neww -S -n terminal"
         bind-key -r e run-shell "tmux neww -S -n nvim nvim"
@@ -35,18 +33,33 @@
         set -g default-terminal "screen-256color"
         set -ga terminal-overrides ",xterm-256color:Tc"
 
+        set -g visual-activity off
+        set -g visual-bell off
+        set -g visual-silence off
+        setw -g monitor-activity off
+        set -g bell-action none
+
+        setw -g clock-mode-colour colour5
+        setw -g mode-style 'fg=colour1 bg=colour18 bold'
+
+        set -g pane-border-style 'fg=colour19 bg=colour0'
+        set -g pane-active-border-style 'bg=colour0 fg=colour9'
+
+        set -g status-position bottom
+        set -g status-justify left
+        set -g status-style 'bg=colour18 fg=colour137 dim'
+        set -g status-right '#[fg=colour233,bg=colour19] %d/%m #[fg=colour233,bg=colour8] %H:%M:%S '
+        set -g status-right-length 50
+        set -g status-left-length 100
+        set -g status-left "#[bg=colour18,fg=colour9]#{?client_prefix,#[bg=colour18],}  #[fg=colour249,bg=colour18]#{?client_prefix,#[fg=colour249],}#S "
+        setw -g window-status-current-style 'fg=colour1 bg=colour19 bold'
+        setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
+        setw -g window-status-style 'fg=colour9 bg=colour18'
+        setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
+        setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
+        set -g message-style 'fg=colour232 bg=colour16 bold'
         set -g status-position top
         set -g status-right ""
-        set-option -g status-left-length 100
-        set -g status-left "#[bg=#bd93f9,fg=#282a36]#{?client_prefix,#[bg=#f1fa8c],}  #S #[fg=#bd93f9,bg=#282a36]#{?client_prefix,#[fg=#f1fa8c],}"
-        set-option -g pane-border-style "fg=#44475a"
-        set-option -g pane-active-border-style "fg=#6272a4"
-        set-option -g message-style "bg=#44475a,fg=#f8f8f2"
-        set-option -g status-style "bg=#44475a,fg=#f8f8f2"
-        set-window-option -g window-status-activity-style "bold"
-        set-window-option -g window-status-bell-style "bold"
-        set-window-option -g window-status-current-format "#[fg=#f8f8f2,bg=#6272a4] #I #W "
-        set-window-option -g window-status-format "#[fg=#f8f8f2]#[bg=#44475a] #I #W"
         '';
     };
   };
