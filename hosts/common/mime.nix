@@ -9,7 +9,7 @@
       vectorViewers = ["org.inkspace.Inkscape.desktop"];
       videoViewers = ["mpv.desktop"];
     in {
-      "inode/directory" = ["org.kde.dolphin.desktop"];
+      "inode/directory" = ["thundar.desktop"];
       "text/plain" = textEditors;
       "text/markdown" = textEditors;
       "text/xml" = textEditors;
@@ -31,11 +31,8 @@
       "x-scheme-handler/http" = browsers;
       "x-scheme-handler/https" = browsers;
       "x-scheme-handler/chrome" = browsers;
-      "x-scheme-handler/vscode" = ["code-url-handler.desktop"];
       "x-scheme-handler/mailto" = mailClients;
-      "x-scheme-handler/x-github-client" = ["github-desktop.desktop"];
       "x-scheme-handler/mid" = mailClients;
-      "x-scheme-handler/x-github-desktop-auth" = ["github-desktop.desktop"];
       "application/x-extension-htm" = browsers;
       "application/x-extension-html" = browsers;
       "application/x-extension-shtml" = browsers;
