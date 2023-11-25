@@ -35,7 +35,6 @@
         pdfarranger
         notepadqq
         pamixer
-        selectdefaultapplication
         playerctl
         gnome.file-roller
         xfce.tumbler
