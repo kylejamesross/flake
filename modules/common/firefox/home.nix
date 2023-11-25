@@ -182,7 +182,7 @@
                     "browser.urlbar.suggest.bookmark" = false;
                     "browser.migrate.bookmarks-file.enabled" = false;
                     "browser.newtabpage.enabled" = false;
-                    "alerts.useSystemBackend" = false;
+                    "alerts.useSystemBackend" = true;
                 };
             };
         };

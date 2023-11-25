@@ -82,6 +82,7 @@
     source = ../nix-config/nvim;
     recursive = true;
   };
+  xdg.configFile."lf/icons".source = ../nix-config/lf/icons;
 
   xdg.mimeApps = {
     enable = true;

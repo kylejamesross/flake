@@ -29,6 +29,7 @@
         bind-key -r t run-shell "tmux neww -S -n terminal"
         bind-key -r e run-shell "tmux neww -S -n nvim nvim"
         bind-key -r - run-shell "tmux neww -S -n tig tig"
+        bind-key -r l run-shell "tmux neww -S -n lf lf"
 
         set -g default-terminal "screen-256color"
         set -ga terminal-overrides ",xterm-256color:Tc"

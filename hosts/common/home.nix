@@ -15,6 +15,7 @@
       ../../modules/common/gtk/home.nix
       ../../modules/common/swaylock/home.nix
       ../../modules/common/btop/theme/home.nix
+      ../../modules/common/lf/home.nix
     ];
 
 
