@@ -6,7 +6,8 @@
       browsers = ["firefox.desktop"];
       mailClients = ["userapp-Thunderbird-WKLTC2.desktop"];
       imageViewers = ["swappy.desktop" "gimp.desktop"];
-      videoViewers = ["vlc.desktop"];
+      vectorViewers = ["org.inkspace.Inkscape.desktop"];
+      videoViewers = ["mpv.desktop"];
     in {
       "inode/directory" = ["org.kde.dolphin.desktop"];
       "text/plain" = textEditors;
@@ -48,8 +49,8 @@
       "audio/mpeg" = videoViewers;
       "audio/x-aiff" = videoViewers;
       "audio/x-wav" = videoViewers;
-      "application/pdf" = "okularApplication_pdf.desktop";
-      "image/svg+xml" = "org.inkscape.Inkscape.desktop";
+      "application/pdf" = browsers;
+      "image/svg+xml" = vectorViewers;
     };
   };
 }

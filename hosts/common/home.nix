@@ -24,9 +24,8 @@
     packages = with pkgs; [
       thunderbird
         brave
-        okular
         dbeaver
-        vlc
+        mpv
         gimp
         inkscape
         joplin-desktop
@@ -87,7 +86,14 @@
       name = "JetBrains Mono";
     };
   };
-
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";
