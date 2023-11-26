@@ -15,6 +15,7 @@
         "pulseaudio",
         "pulseaudio#microphone",
         "battery",
+        "custom/weather",
         "clock#date",
         "clock#time"
     ],
@@ -39,7 +40,8 @@
             "6": "",
             "7": "󰇮",
             "8": "",
-            "9": ""
+            "9": "",
+            "10": ""
         },
         "persistent_workspaces": {
             "1": [
@@ -170,5 +172,12 @@
     },
     "clock#time": {
         "format": "{: %I:%M %p}",
+    },
+    "custom/weather": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar --hide-conditions",
+        "return-type": "json"    
     },
 }

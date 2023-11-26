@@ -22,7 +22,7 @@
 
   home = {
     packages = with pkgs; [
-      thunderbird
+        thunderbird
         brave
         dbeaver
         mpv
@@ -32,7 +32,6 @@
         anki-bin
         libreoffice-still
         pdfarranger
-        notepadqq
         pamixer
         playerctl
         gnome.file-roller
@@ -46,6 +45,7 @@
         )
         ffmpegthumbnailer
         waybar
+        unstable.wttrbar
         wofi
         grim
         swww
@@ -56,11 +56,9 @@
         wlr-randr
         dbus
 
-# work
-        azuredatastudio
         azure-cli
         insomnia
-        jetbrains.rider
+        unstable.jetbrains.rider
         ];
     pointerCursor = {
       gtk.enable = true;
@@ -71,7 +69,7 @@
     stateVersion = "22.05";
   };
 
-  colorScheme = nix-colors.colorSchemes.catppuccin-macchiato;
+  colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
   gtk = {
     enable = true;
     theme = {

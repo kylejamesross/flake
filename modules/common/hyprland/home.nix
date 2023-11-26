@@ -175,6 +175,36 @@ device:epic-mouse-v1 {
 windowrulev2 = opacity 0.80 0.80,class:^(kitty)$
 windowrulev2 = opacity 0.95 0.95,class:^(thunar)$
 
+# Global persistent workspace rules 
+windowrule=float,title:^PERSISTENT_WORKSPACE.*$
+windowrule=nofocus,title:^PERSISTENT_WORKSPACE.*$
+windowrule=noblur,title:^PERSISTENT_WORKSPACE.*$
+windowrule=size 0 0,title:^PERSISTENT_WORKSPACE.*$
+windowrule=move 0 0,title:^PERSISTENT_WORKSPACE.*$
+windowrule=opacity 0,title:^PERSISTENT_WORKSPACE.*$
+
+# Individual persistent workspace rules
+windowrule=workspace 1,title:^(PERSISTENT_WORKSPACE_1)$
+windowrule=workspace 2,title:^(PERSISTENT_WORKSPACE_2)$
+windowrule=workspace 3,title:^(PERSISTENT_WORKSPACE_3)$
+windowrule=workspace 4,title:^(PERSISTENT_WORKSPACE_4)$
+windowrule=workspace 5,title:^(PERSISTENT_WORKSPACE_5)$
+windowrule=workspace 6,title:^(PERSISTENT_WORKSPACE_6)$
+windowrule=workspace 7,title:^(PERSISTENT_WORKSPACE_7)$
+windowrule=workspace 8,title:^(PERSISTENT_WORKSPACE_8)$
+windowrule=workspace 9,title:^(PERSISTENT_WORKSPACE_9)$
+
+# Exec commands to keep each workspace persistent 
+exec-once=kitty PERSISTENT_WORKSPACE_1 & 
+exec-once=kitty PERSISTENT_WORKSPACE_2 & 
+exec-once=kitty PERSISTENT_WORKSPACE_3 & 
+exec-once=kitty PERSISTENT_WORKSPACE_4 & 
+exec-once=kitty PERSISTENT_WORKSPACE_5 &
+exec-once=kitty PERSISTENT_WORKSPACE_6 &
+exec-once=kitty PERSISTENT_WORKSPACE_7 &
+exec-once=kitty PERSISTENT_WORKSPACE_8 &
+exec-once=kitty PERSISTENT_WORKSPACE_9 &
+
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER
 
