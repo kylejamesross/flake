@@ -4,6 +4,8 @@
 
 { pkgs, config, ... }:
 
+with config.colorScheme.colors;
+
 {
   programs = {
     tmux = {
@@ -40,26 +42,28 @@
         setw -g monitor-activity off
         set -g bell-action none
 
-        setw -g clock-mode-colour colour5
-        setw -g mode-style 'fg=colour1 bg=colour18 bold'
+        set-option -g status-style "fg=#${base04},bg=#${base01}"
 
-        set -g pane-border-style 'fg=colour19 bg=colour0'
-        set -g pane-active-border-style 'bg=colour0 fg=colour9'
+        set-window-option -g window-status-style "fg=#${base04},bg=default"
 
-        set -g status-position bottom
-        set -g status-justify left
-        set -g status-style 'bg=colour18 fg=colour137 dim'
-        set -g status-right '#[fg=colour233,bg=colour19] %d/%m #[fg=colour233,bg=colour8] %H:%M:%S '
-        set -g status-right-length 50
-        set -g status-left-length 100
-        set -g status-left "#[bg=colour18,fg=colour9]#{?client_prefix,#[bg=colour18],}  #[fg=colour249,bg=colour18]#{?client_prefix,#[fg=colour249],}#S "
-        setw -g window-status-current-style 'fg=colour1 bg=colour19 bold'
-        setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
-        setw -g window-status-style 'fg=colour9 bg=colour18'
-        setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
-        setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
-        set -g message-style 'fg=colour232 bg=colour16 bold'
+        set-window-option -g window-status-current-style "fg=#${base0A},bg=default"
+
+        set-option -g pane-border-style "fg=#${base01}"
+        set-option -g pane-active-border-style "fg=#${base02}"
+
+        set-option -g message-style "fg=#${base05},bg=#${base01}"
+
+        set-option -g display-panes-active-colour "#${base0B}"
+        set-option -g display-panes-colour "#${base0A}"
+
+        set-window-option -g clock-mode-colour "#${base0B}"
+
+        set-window-option -g mode-style "fg=#${base04},bg=#${base02}"
+
+        set-window-option -g window-status-bell-style "fg=#${base01},bg=#${base08}"
+
         set -g status-position top
+        set -g status-left-length 100
         set -g status-right ""
         '';
     };
