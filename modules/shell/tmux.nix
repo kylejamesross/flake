@@ -42,24 +42,23 @@ with config.colorScheme.colors;
         setw -g monitor-activity off
         set -g bell-action none
 
-        set-option -g status-style "fg=#${base04},bg=#${base01}"
+        set-option -g status-style "fg=#${base05},bg=#000000"
+        set-option -g status-left-style "bg=#${base0D},fg=#${base00}"
+        set-window-option -g window-status-style "bg=#${base04},fg=#${base05}"
+        set-window-option -g window-status-current-style "bg=#${base02},fg=#${base05},bold"
+        set-window-option -g window-status-format " #I #W "
+        set-window-option -g window-status-current-format " #I #W "
 
-        set-window-option -g window-status-style "fg=#${base04},bg=default"
-
-        set-window-option -g window-status-current-style "fg=#${base0A},bg=default"
+        set -g status-left "  #S #[bg=#000000] "
 
         set-option -g pane-border-style "fg=#${base01}"
-        set-option -g pane-active-border-style "fg=#${base02}"
-
+        set-option -g pane-active-border-style "fg=#${base03}"
         set-option -g message-style "fg=#${base05},bg=#${base01}"
 
         set-option -g display-panes-active-colour "#${base0B}"
         set-option -g display-panes-colour "#${base0A}"
 
-        set-window-option -g clock-mode-colour "#${base0B}"
-
         set-window-option -g mode-style "fg=#${base04},bg=#${base02}"
-
         set-window-option -g window-status-bell-style "fg=#${base01},bg=#${base08}"
 
         set -g status-position top
