@@ -6,7 +6,7 @@
 
 let
 colorUtils = import ../../../utils/colors.nix { lib = lib; };
-fromGithub = rev: ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+fromGithub = rev: ref: repo: pkgs.vimUtils.buildVimPlugin {
   pname = "${lib.strings.sanitizeDerivationName repo}";
   version = ref;
   src = builtins.fetchGit {
@@ -20,12 +20,13 @@ with colorUtils;
 with config.colorScheme.colors;
   let
     percent = -70;
-    darkBase0A = shadeColor { color = base0A; percent = percent; };
-    darkBase0B = shadeColor { color = base0B; percent = percent; };
-    darkBase0C = shadeColor { color = base0C; percent = percent; };
-    darkBase0D = shadeColor { color = base0D; percent = percent; };
-    darkBase0E = shadeColor { color = base0E; percent = percent; };
-    darkBase0F = shadeColor { color = base0F; percent = percent; };
+    darkRed = shadeColor { color = base08; percent = percent; };
+    darkYellow = shadeColor { color = base0A; percent = percent; };
+    darkBlue = shadeColor { color = base0D; percent = percent; };
+    darkOrange = shadeColor { color = base09; percent = percent; };
+    darkGreen = shadeColor { color = base0B; percent = percent; };
+    darkPurple = shadeColor { color = base0E; percent = percent; };
+    darkCyan = shadeColor { color = base0C; percent = percent; };
 in
 {
   programs = {
@@ -118,12 +119,35 @@ in
             base0C = '#${base0C}', base0D = '#${base0D}', base0E = '#${base0E}', base0F = '#${base0F}',
             });
 
-        vim.cmd [[highlight IndentBlanklineIndent1 guifg=#${darkBase0A} gui=nocombine]]
-        vim.cmd [[highlight IndentBlanklineIndent2 guifg=#${darkBase0B} gui=nocombine]]
-        vim.cmd [[highlight IndentBlanklineIndent3 guifg=#${darkBase0C} gui=nocombine]]
-        vim.cmd [[highlight IndentBlanklineIndent4 guifg=#${darkBase0D} gui=nocombine]]
-        vim.cmd [[highlight IndentBlanklineIndent5 guifg=#${darkBase0E} gui=nocombine]]
-        vim.cmd [[highlight IndentBlanklineIndent6 guifg=#${darkBase0F} gui=nocombine]]
+        local status_ok, indentBlankline = pcall(require, "ibl")
+
+        if not status_ok then
+          return
+        end
+
+        local highlight = {
+            "RainbowRed",
+            "RainbowYellow",
+            "RainbowBlue",
+            "RainbowOrange",
+            "RainbowGreen",
+            "RainbowViolet",
+            "RainbowCyan",
+        }
+
+        local hooks = require "ibl.hooks"
+
+        hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#${darkRed}"})
+            vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#${darkYellow}" })
+            vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#${darkBlue}" })
+            vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#${darkOrange}" })
+            vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#${darkGreen}" })
+            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#${darkPurple}" })
+            vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#${darkCyan}" })
+        end)
+
+        indentBlankline.setup { indent = { highlight = highlight } }
             '';
     };
   };

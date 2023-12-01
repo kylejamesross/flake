@@ -29,34 +29,16 @@ bind = $mainMod, F9, exec, firefox --new-window https://music.youtube.com/
   '';
 
   workspaceBindings = if isDesktop then ''
-# workspace=DP-1,1
-# workspace=DP-1,2
-# workspace=DP-1,3
-# workspace=DP-1,4
-# workspace=DP-1,5
-# workspace=DP-1,6
-# workspace=HDMI-A-1,7
-# workspace=HDMI-A-1,8
-# workspace=DP-2,9
-wsbind=1,DP-1
-wsbind=2,DP-1
-wsbind=3,DP-1
-wsbind=4,DP-1
-wsbind=5,DP-1
-wsbind=6,DP-1
-wsbind=7,HDMI-A-1
-wsbind=8,HDMI-A-1
-wsbind=9,DP-2
+workspace=DP-1,1, persistence:true
+workspace=DP-1,2, persistence:true
+workspace=DP-1,3, persistence:true
+workspace=DP-1,4, persistence:true
+workspace=DP-1,5, persistence:true
+workspace=DP-1,6, persistence:true
+workspace=HDMI-A-1,7, persistence:true
+workspace=HDMI-A-1,8, persistence:true
+workspace=DP-2,9, persistence:true
 '' else ''
-wsbind=1,eDP-2
-wsbind=2,eDP-2
-wsbind=3,eDP-2
-wsbind=4,eDP-2
-wsbind=5,eDP-2
-wsbind=6,eDP-2
-wsbind=7,eDP-2
-wsbind=8,eDP-2
-wsbind=9,eDP-2
   '';
 
   hyprlandConf = ''
@@ -102,6 +84,7 @@ general {
     col.inactive_border = rgba(${config.colorScheme.colors.base03}ff)
 
     layout = dwindle
+    allow_tearing = false
 }
 
 misc {
@@ -113,15 +96,13 @@ decoration {
 
     rounding = 10
 
-    blur = yes
-    blur_size = 3
-    blur_passes = 1
-    blur_new_optimizations = on
-    # blur {
-    #     enabled = true
-    #     size = 3
-    #     passes = 1
-    # }
+    blur {
+        enabled = true
+        size = 3
+        passes = 1
+        
+        vibrancy = 0.1696
+    }
 
     drop_shadow = true
     shadow_range = 4
@@ -174,36 +155,6 @@ device:epic-mouse-v1 {
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 windowrulev2 = opacity 0.80 0.80,class:^(kitty)$
 windowrulev2 = opacity 0.95 0.95,class:^(thunar)$
-
-# Global persistent workspace rules 
-windowrule=float,title:^PERSISTENT_WORKSPACE.*$
-windowrule=nofocus,title:^PERSISTENT_WORKSPACE.*$
-windowrule=noblur,title:^PERSISTENT_WORKSPACE.*$
-windowrule=size 0 0,title:^PERSISTENT_WORKSPACE.*$
-windowrule=move 0 0,title:^PERSISTENT_WORKSPACE.*$
-windowrule=opacity 0,title:^PERSISTENT_WORKSPACE.*$
-
-# Individual persistent workspace rules
-windowrule=workspace 1,title:^(PERSISTENT_WORKSPACE_1)$
-windowrule=workspace 2,title:^(PERSISTENT_WORKSPACE_2)$
-windowrule=workspace 3,title:^(PERSISTENT_WORKSPACE_3)$
-windowrule=workspace 4,title:^(PERSISTENT_WORKSPACE_4)$
-windowrule=workspace 5,title:^(PERSISTENT_WORKSPACE_5)$
-windowrule=workspace 6,title:^(PERSISTENT_WORKSPACE_6)$
-windowrule=workspace 7,title:^(PERSISTENT_WORKSPACE_7)$
-windowrule=workspace 8,title:^(PERSISTENT_WORKSPACE_8)$
-windowrule=workspace 9,title:^(PERSISTENT_WORKSPACE_9)$
-
-# Exec commands to keep each workspace persistent 
-exec-once=kitty PERSISTENT_WORKSPACE_1 & 
-exec-once=kitty PERSISTENT_WORKSPACE_2 & 
-exec-once=kitty PERSISTENT_WORKSPACE_3 & 
-exec-once=kitty PERSISTENT_WORKSPACE_4 & 
-exec-once=kitty PERSISTENT_WORKSPACE_5 &
-exec-once=kitty PERSISTENT_WORKSPACE_6 &
-exec-once=kitty PERSISTENT_WORKSPACE_7 &
-exec-once=kitty PERSISTENT_WORKSPACE_8 &
-exec-once=kitty PERSISTENT_WORKSPACE_9 &
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER

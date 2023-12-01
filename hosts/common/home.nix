@@ -45,7 +45,7 @@
         )
         ffmpegthumbnailer
         waybar
-        unstable.wttrbar
+        wttrbar
         wofi
         grim
         swww
@@ -58,7 +58,7 @@
 
         azure-cli
         insomnia
-        unstable.jetbrains.rider
+        jetbrains.rider
         ];
     pointerCursor = {
       gtk.enable = true;

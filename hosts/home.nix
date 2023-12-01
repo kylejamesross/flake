@@ -23,11 +23,11 @@
         tig
         ripgrep
         fd
-        unstable.eza
+        eza
         bat
         du-dust
         nodejs
-        unstable.bun
+        bun
         nodePackages.npm
         yarn
         optipng

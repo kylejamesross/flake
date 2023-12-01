@@ -39,7 +39,7 @@ button:hover {
 }
 
 #workspaces button.empty {
-    color: alpha(@base05, 0.6);
+    color: alpha(@base05, 0.5);
 }
 
 #workspaces button:hover {

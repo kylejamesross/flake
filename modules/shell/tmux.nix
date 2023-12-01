@@ -42,14 +42,14 @@ with config.colorScheme.colors;
         setw -g monitor-activity off
         set -g bell-action none
 
-        set-option -g status-style "fg=#${base05},bg=#000000"
+        set-option -g status-style "fg=#${base05},bg=#${base00}"
         set-option -g status-left-style "bg=#${base0D},fg=#${base00}"
         set-window-option -g window-status-style "bg=#${base04},fg=#${base05}"
         set-window-option -g window-status-current-style "bg=#${base02},fg=#${base05},bold"
         set-window-option -g window-status-format " #I #W "
         set-window-option -g window-status-current-format " #I #W "
 
-        set -g status-left "  #S #[bg=#000000] "
+        set -g status-left "  #S #[bg=#${base00}] "
 
         set-option -g pane-border-style "fg=#${base01}"
         set-option -g pane-active-border-style "fg=#${base03}"
