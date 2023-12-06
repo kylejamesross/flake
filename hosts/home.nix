@@ -26,9 +26,8 @@
         eza
         bat
         du-dust
-        nodejs
+        nodejs_20
         bun
-        nodePackages.npm
         yarn
         optipng
         neofetch
