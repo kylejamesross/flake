@@ -2,7 +2,7 @@
 #  These are the different profiles that can be used when building NixOS.
 #
 
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, nix-colors, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, nix-colors, hyprland, ... }:
 
 let
   system = "x86_64-linux";
@@ -44,6 +44,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
+            hyprland.homeManagerModules.default
             nix-colors.homeManagerModules.default
             nur.nixosModules.nur
             ./home.nix
@@ -79,6 +80,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
+            hyprland.homeManagerModules.default
             nix-colors.homeManagerModules.default
             nur.nixosModules.nur
             ./home.nix

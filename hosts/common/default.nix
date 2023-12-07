@@ -5,8 +5,6 @@
 { pkgs, lib, user, ... }:
 
 {
-  imports = [(import ../../modules/common/hyprland/default.nix)];
-
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
@@ -94,7 +92,6 @@
       vt = 7;
     };
     gnome.gnome-keyring.enable = true;
-    flatpak.enable = true;
   };
 
   networking = {
