@@ -54,7 +54,6 @@ monitor=,preferred,auto,auto
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
-exec-once=${pkgs.swayidle}/bin/swayidle -w timeout 300 '${pkgs.swaylock-effects}/bin/swaylock -f' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f && ${pkgs.hyprland}/bin/hyprctl dispatch dpms off'
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
@@ -263,6 +262,5 @@ bind = , xf86audioPre, exec, playerctl previous
   '';
 in
 {
-  wayland.windowManager.hyprland.enable = true;
   xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 }
