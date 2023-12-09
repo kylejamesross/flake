@@ -52,6 +52,7 @@
         slurp
         swappy
         swaylock-effects
+        swayidle
         wl-clipboard
         wlr-randr
         dbus

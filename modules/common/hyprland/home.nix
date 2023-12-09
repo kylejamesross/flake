@@ -51,11 +51,12 @@ monitor=,preferred,auto,auto
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
+
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
+exec-once = swayidle -w timeout 1200 'swaylock -f' timeout 2400 'systemctl suspend' before-sleep 'swaylock -f' &
 
-# For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
     kb_layout = us
     kb_variant =
@@ -178,7 +179,7 @@ bind = , Print, exec , grim -g "$(slurp)" - | wl-copy
 
 # System keys
 bind = SUPER_SHIFT, F12, exec, shutdown now
-bind = SUPER_SHIFT, F11, exec, reboot
+bind = SUPER_SHIFT, F11, exec, systemctl reboot
 bind = $mainMod, F12, exec, ~/flake/bin/swww_randomizer
 
 # Move focus with mainMod + arrow keys
