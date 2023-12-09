@@ -12,9 +12,9 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
-      ansible
+        ansible
         btop
-        tldr
+        tealdeer
         gnutar
         unzip
         unrar
@@ -22,6 +22,7 @@
         lazygit
         tig
         ripgrep
+        jaq
         fd
         eza
         bat
@@ -32,18 +33,17 @@
         optipng
         neofetch
         fzf
-        tldr
         nodePackages.typescript
         nodePackages.svgo
         zoxide
         docker-compose
 
-# work
+        # work
         powershell
         dotnet-sdk_7
         sqlcmd
 
-# lsp
+        # lsp
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
         nodePackages."@astrojs/language-server"
@@ -54,7 +54,7 @@
         rustfmt
         omnisharp-roslyn
 
-# debug adapters
+        # debug adapters
         netcoredbg
         lldb
         vscode-extensions.vadimcn.vscode-lldb
@@ -82,4 +82,5 @@
     recursive = true;
   };
   xdg.configFile."lf/icons".source = ../nix-config/lf/icons;
+  xdg.configFile."tealdeer/config.toml".source = ../nix-config/tealdeer/config.toml;
 }
