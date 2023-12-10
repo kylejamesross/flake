@@ -19,16 +19,16 @@
                         reduxdevtools
                         vimium
                 ];
-                search.default = "BraveSearch";
+                search.default = "searxng";
                 search.engines = {
-                    "BraveSearch" = {
+                    "searxng" = {
                         urls = [{
-                            template = "https://search.brave.com/search";
+                            template = "https://searxng.online/search";
                             params = [
                             { name = "q"; value = "{searchTerms}"; }
                             ];
                         }];
-                        definedAliases = [ ",b" ];
+                        definedAliases = [ "@s" ];
                     };
                     "Nix Packages" = {
                         urls = [{
@@ -38,16 +38,7 @@
                             { name = "query"; value = "{searchTerms}"; }
                             ];
                         }];
-                        definedAliases = [ ",ns" ];
-                    };
-                    "DuckDuckGo" = {
-                        urls = [{
-                            template = "https://duckduckgo.com";
-                            params = [
-                            { name = "q"; value = "{searchTerms}"; }
-                            ];
-                        }];
-                        definedAliases = [ ",d" ];
+                        definedAliases = [ "@n" ];
                     };
                     "Wikipedia" = {
                         urls = [{
@@ -56,7 +47,7 @@
                             { name = "search"; value = "{searchTerms}"; }
                             ];
                         }];
-                        definedAliases = [ ",w" ];
+                        definedAliases = [ "@w" ];
                     };
                 };
                 settings = {
