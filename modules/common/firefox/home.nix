@@ -13,12 +13,52 @@
                 isDefault = true;
                 extensions = with config.nur.repos.rycee.firefox-addons; [
                     ublock-origin
-                    raindropio
-                    bitwarden
-                    react-devtools
-                    reduxdevtools
-                    vimium
+                        raindropio
+                        bitwarden
+                        react-devtools
+                        reduxdevtools
+                        vimium
                 ];
+                search.default = "BraveSearch";
+                search.engines = {
+                    "BraveSearch" = {
+                        urls = [{
+                            template = "https://search.brave.com/search";
+                            params = [
+                            { name = "q"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        definedAliases = [ ",b" ];
+                    };
+                    "Nix Packages" = {
+                        urls = [{
+                            template = "https://search.nixos.org/packages";
+                            params = [
+                            { name = "type"; value = "packages"; }
+                            { name = "query"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        definedAliases = [ ",ns" ];
+                    };
+                    "DuckDuckGo" = {
+                        urls = [{
+                            template = "https://duckduckgo.com";
+                            params = [
+                            { name = "q"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        definedAliases = [ ",d" ];
+                    };
+                    "Wikipedia" = {
+                        urls = [{
+                            template = "https://en.wikipedia.org/wiki/Special:Search";
+                            params = [
+                            { name = "search"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        definedAliases = [ ",w" ];
+                    };
+                };
                 settings = {
                     "nglayout.initialpaint.delay" = 0;
                     "nglayout.initialpaint.delay_in_oopif" = 0;
