@@ -29,34 +29,16 @@ bind = $mainMod, F9, exec, firefox --new-window https://music.youtube.com/
   '';
 
   workspaceBindings = if isDesktop then ''
-# workspace=DP-1,1
-# workspace=DP-1,2
-# workspace=DP-1,3
-# workspace=DP-1,4
-# workspace=DP-1,5
-# workspace=DP-1,6
-# workspace=HDMI-A-1,7
-# workspace=HDMI-A-1,8
-# workspace=DP-2,9
-wsbind=1,DP-1
-wsbind=2,DP-1
-wsbind=3,DP-1
-wsbind=4,DP-1
-wsbind=5,DP-1
-wsbind=6,DP-1
-wsbind=7,HDMI-A-1
-wsbind=8,HDMI-A-1
-wsbind=9,DP-2
+workspace=DP-1,1, persistence:true
+workspace=DP-1,2, persistence:true
+workspace=DP-1,3, persistence:true
+workspace=DP-1,4, persistence:true
+workspace=DP-1,5, persistence:true
+workspace=DP-1,6, persistence:true
+workspace=HDMI-A-1,7, persistence:true
+workspace=HDMI-A-1,8, persistence:true
+workspace=DP-2,9, persistence:true
 '' else ''
-wsbind=1,eDP-2
-wsbind=2,eDP-2
-wsbind=3,eDP-2
-wsbind=4,eDP-2
-wsbind=5,eDP-2
-wsbind=6,eDP-2
-wsbind=7,eDP-2
-wsbind=8,eDP-2
-wsbind=9,eDP-2
   '';
 
   hyprlandConf = ''
@@ -69,11 +51,12 @@ monitor=,preferred,auto,auto
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
+
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
+exec-once = swayidle -w timeout 1200 'swaylock -f' timeout 2400 'systemctl suspend' before-sleep 'swaylock -f' &
 
-# For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
     kb_layout = us
     kb_variant =
@@ -102,6 +85,7 @@ general {
     col.inactive_border = rgba(${config.colorScheme.colors.base03}ff)
 
     layout = dwindle
+    allow_tearing = false
 }
 
 misc {
@@ -113,15 +97,13 @@ decoration {
 
     rounding = 10
 
-    blur = yes
-    blur_size = 3
-    blur_passes = 1
-    blur_new_optimizations = on
-    # blur {
-    #     enabled = true
-    #     size = 3
-    #     passes = 1
-    # }
+    blur {
+        enabled = true
+        size = 3
+        passes = 1
+        
+        vibrancy = 0.1696
+    }
 
     drop_shadow = true
     shadow_range = 4
@@ -197,7 +179,7 @@ bind = , Print, exec , grim -g "$(slurp)" - | wl-copy
 
 # System keys
 bind = SUPER_SHIFT, F12, exec, shutdown now
-bind = SUPER_SHIFT, F11, exec, reboot
+bind = SUPER_SHIFT, F11, exec, systemctl reboot
 bind = $mainMod, F12, exec, ~/flake/bin/swww_randomizer
 
 # Move focus with mainMod + arrow keys

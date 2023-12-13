@@ -36,7 +36,7 @@
     };
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     carlito
     vegur
     source-code-pro
@@ -60,9 +60,11 @@
     };
     keyd = {
       enable = true;
-      settings = {
-        main = {
-          capslock = "overload(control, esc)";
+      keyboards.default = {
+        settings = {
+          main = {
+            capslock = "overload(control, esc)";
+          };
         };
       };
     };
@@ -80,7 +82,7 @@
       allowSFTP = true;
       extraConfig = ''
         HostKeyAlgorithms +ssh-rsa
-      '';
+        '';
     };
     greetd = {
       enable = true;

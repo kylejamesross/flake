@@ -7,7 +7,7 @@ session_name=$(echo "$session" | tr . _)
 echo "$session_name"
 
 if ! tmux has-session -t "$session_name" 2> /dev/null; then
-  tmux new-session -s "$session_name" -c "$session" -n terminal -d
+  tmux new-session -s "$session_name" -c "$session" -n '' -d
 fi
 
 tmux switch-client -t "$session_name"

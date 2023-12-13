@@ -12,54 +12,53 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
-      ansible
-      btop
-      tldr
-      gnutar
-      unzip
-      unrar
-      zip
-      lazygit
-      tig
-      ripgrep
-      fd
-      unstable.eza
-      bat
-      du-dust
-      nodejs
-      unstable.bun
-      nodePackages.npm
-      yarn
-      optipng
-      neofetch
-      fzf
-      tldr
-      nodePackages.typescript
-      nodePackages.svgo
-      zoxide
-      docker-compose
+        ansible
+        btop
+        tealdeer
+        gnutar
+        unzip
+        unrar
+        zip
+        lazygit
+        tig
+        ripgrep
+        jaq
+        fd
+        eza
+        bat
+        du-dust
+        nodejs_20
+        bun
+        yarn
+        optipng
+        neofetch
+        fzf
+        nodePackages.typescript
+        nodePackages.svgo
+        zoxide
+        docker-compose
 
-      # work
-      powershell
-      dotnet-sdk_7
-      sqlcmd
+        # work
+        powershell
+        dotnet-sdk_7
+        sqlcmd
 
-      # lsp
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages."@astrojs/language-server"
-      rust-analyzer
-      lua-language-server
-      cargo
-      rustc
-      rustfmt
-      omnisharp-roslyn
+        # lsp
+        nodePackages.typescript-language-server
+        nodePackages.vscode-langservers-extracted
+        nodePackages."@astrojs/language-server"
+        rust-analyzer
+        lua-language-server
+        cargo
+        rustc
+        rustfmt
+        omnisharp-roslyn
 
-      # debug adapters
-      netcoredbg
-      lldb
-      vscode-extensions.vadimcn.vscode-lldb
-    ];
+        # debug adapters
+        netcoredbg
+        lldb
+        vscode-extensions.vadimcn.vscode-lldb
+        ];
   };
 
   programs = {
@@ -82,25 +81,6 @@
     source = ../nix-config/nvim;
     recursive = true;
   };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "application/pdf" = "okularApplication_pdf.desktop";
-      "image/svg+xml" = "org.inkscape.Inkscape.desktop";
-      "image/png" = "swappy.desktop";
-      "image/jpeg" = "swappy.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "application/x-extension-htm" = "firefox.desktop";
-      "application/x-extension-html" = "firefox.desktop";
-      "application/x-extension-shtml" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
-      "application/x-extension-xhtml" = "firefox.desktop";
-      "application/x-extension-xht" = "firefox.desktop";
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/chrome" = "firefox.desktop";
-      "text/plain" = "notepadqq.desktop";
-    };
-  };
+  xdg.configFile."lf/icons".source = ../nix-config/lf/icons;
+  xdg.configFile."tealdeer/config.toml".source = ../nix-config/tealdeer/config.toml;
 }

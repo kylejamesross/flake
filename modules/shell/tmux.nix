@@ -4,6 +4,8 @@
 
 { pkgs, config, ... }:
 
+with config.colorScheme.colors;
+
 {
   programs = {
     tmux = {
@@ -22,13 +24,14 @@
 
         bind-key -r f run-shell "tmux neww ~/flake/bin/tmux-sessionizer"
         bind-key -r h run-shell "tmux neww ~/flake/bin/cht"
-        bind-key -r v run-shell "tmux neww -S -n lazygit lazygit"
-        bind-key -r . run-shell "tmux neww -S -n btop btop"
+        bind-key -r v run-shell "tmux neww -S -n '󰊢' lazygit"
+        bind-key -r . run-shell "tmux neww -S -n '' btop"
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
-        bind-key -r / run-shell "tmux neww -S -n playground"
-        bind-key -r t run-shell "tmux neww -S -n terminal"
-        bind-key -r e run-shell "tmux neww -S -n nvim nvim"
-        bind-key -r - run-shell "tmux neww -S -n tig tig"
+        bind-key -r / run-shell "tmux neww -S -n ''"
+        bind-key -r t run-shell "tmux neww -S -n ''"
+        bind-key -r e run-shell "tmux neww -S -n '' nvim"
+        bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
+        bind-key -r l run-shell "tmux neww -S -n '󱋣' lf"
 
         set -g default-terminal "screen-256color"
         set -ga terminal-overrides ",xterm-256color:Tc"
@@ -39,26 +42,26 @@
         setw -g monitor-activity off
         set -g bell-action none
 
-        setw -g clock-mode-colour colour5
-        setw -g mode-style 'fg=colour1 bg=colour18 bold'
+        set-option -g status-style "fg=#${base05},bg=#${base00}"
+        # set-window-option -g window-status-style "bg=#${base02},fg=#${base03}"
+        # set-window-option -g window-status-current-style "bg=#${base02},fg=#${base05},bold"
+        set-window-option -g window-status-format "#[bg=#${base00},fg=#${base02}]#[bg=#${base02},fg=#${base05}]#W #[bg=#${base09},fg=#${base02}] #I#[bg=#${base00},fg=#${base09}]#[bg=#${base00}] "
+        set-window-option -g window-status-current-format "#[bg=#${base00},fg=#${base02}]#[bg=#${base02},fg=#${base05},bold]#W #[bg=#${base0D},fg=#${base02}] #I#[bg=#${base00},fg=#${base0D}]#[bg=#${base00}] "
 
-        set -g pane-border-style 'fg=colour19 bg=colour0'
-        set -g pane-active-border-style 'bg=colour0 fg=colour9'
+        set -g status-left "#[bg=#${base00}] #[fg=#${base0D}]#{?client_prefix,#[fg=#${base0B}],}#[bg=#${base0D},fg=#${base00}]#{?client_prefix,#[bg=#${base0B}],} #[bg=#${base02},fg=#${base05}] #S#[bg=#${base00},fg=#${base02}]#[bg=#${base00}] "
 
-        set -g status-position bottom
-        set -g status-justify left
-        set -g status-style 'bg=colour18 fg=colour137 dim'
-        set -g status-right '#[fg=colour233,bg=colour19] %d/%m #[fg=colour233,bg=colour8] %H:%M:%S '
-        set -g status-right-length 50
-        set -g status-left-length 100
-        set -g status-left "#[bg=colour18,fg=colour9]#{?client_prefix,#[bg=colour18],}  #[fg=colour249,bg=colour18]#{?client_prefix,#[fg=colour249],}#S "
-        setw -g window-status-current-style 'fg=colour1 bg=colour19 bold'
-        setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
-        setw -g window-status-style 'fg=colour9 bg=colour18'
-        setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
-        setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
-        set -g message-style 'fg=colour232 bg=colour16 bold'
+        set-option -g pane-border-style "fg=#${base01}"
+        set-option -g pane-active-border-style "fg=#${base03}"
+        set-option -g message-style "fg=#${base05},bg=#${base01}"
+
+        set-option -g display-panes-active-colour "#${base0B}"
+        set-option -g display-panes-colour "#${base0A}"
+
+        set-window-option -g mode-style "fg=#${base04},bg=#${base02}"
+        set-window-option -g window-status-bell-style "fg=#${base01},bg=#${base08}"
+
         set -g status-position top
+        set -g status-left-length 100
         set -g status-right ""
         '';
     };

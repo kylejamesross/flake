@@ -14,24 +14,23 @@
       ../../modules/common/kitty/home.nix
       ../../modules/common/gtk/home.nix
       ../../modules/common/swaylock/home.nix
-      ../../modules/common/btop/theme/home.nix
+      ../../modules/common/lf/home.nix
+      ./mime.nix
     ];
 
 
   home = {
     packages = with pkgs; [
-      thunderbird
+        thunderbird
         brave
-        okular
         dbeaver
-        vlc
+        mpv
         gimp
         inkscape
         joplin-desktop
         anki-bin
         libreoffice-still
         pdfarranger
-        notepadqq
         pamixer
         playerctl
         gnome.file-roller
@@ -45,18 +44,18 @@
         )
         ffmpegthumbnailer
         waybar
+        wttrbar
         wofi
         grim
         swww
         slurp
         swappy
         swaylock-effects
+        swayidle
         wl-clipboard
         wlr-randr
         dbus
 
-# work
-        azuredatastudio
         azure-cli
         insomnia
         jetbrains.rider
@@ -70,7 +69,7 @@
     stateVersion = "22.05";
   };
 
-  colorScheme = nix-colors.colorSchemes.catppuccin-macchiato;
+  colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
   gtk = {
     enable = true;
     theme = {
@@ -85,7 +84,14 @@
       name = "JetBrains Mono";
     };
   };
-
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";

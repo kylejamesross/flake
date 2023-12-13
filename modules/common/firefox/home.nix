@@ -13,12 +13,43 @@
                 isDefault = true;
                 extensions = with config.nur.repos.rycee.firefox-addons; [
                     ublock-origin
-                    raindropio
-                    bitwarden
-                    react-devtools
-                    reduxdevtools
-                    vimium
+                        raindropio
+                        bitwarden
+                        react-devtools
+                        reduxdevtools
+                        vimium
                 ];
+                search.default = "searxng";
+                search.engines = {
+                    "searxng" = {
+                        urls = [{
+                            template = "https://searxng.online/search";
+                            params = [
+                            { name = "q"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        definedAliases = [ "@s" ];
+                    };
+                    "Nix Packages" = {
+                        urls = [{
+                            template = "https://search.nixos.org/packages";
+                            params = [
+                            { name = "type"; value = "packages"; }
+                            { name = "query"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        definedAliases = [ "@n" ];
+                    };
+                    "Wikipedia" = {
+                        urls = [{
+                            template = "https://en.wikipedia.org/wiki/Special:Search";
+                            params = [
+                            { name = "search"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        definedAliases = [ "@w" ];
+                    };
+                };
                 settings = {
                     "nglayout.initialpaint.delay" = 0;
                     "nglayout.initialpaint.delay_in_oopif" = 0;
@@ -182,7 +213,7 @@
                     "browser.urlbar.suggest.bookmark" = false;
                     "browser.migrate.bookmarks-file.enabled" = false;
                     "browser.newtabpage.enabled" = false;
-                    "alerts.useSystemBackend" = false;
+                    "alerts.useSystemBackend" = true;
                 };
             };
         };
