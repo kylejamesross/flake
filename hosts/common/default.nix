@@ -95,6 +95,8 @@
     };
     gnome.gnome-keyring.enable = true;
     flatpak.enable = true;
+    gvfs.enable = true;
+    tumbler.enable = true;
   };
 
   networking = {

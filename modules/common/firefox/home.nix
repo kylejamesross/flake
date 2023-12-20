@@ -12,7 +12,7 @@
                 name = "Kyle Ross";
                 isDefault = true;
                 extensions = with config.nur.repos.rycee.firefox-addons; [
-                    ublock-origin
+                        ublock-origin
                         raindropio
                         bitwarden
                         react-devtools
@@ -214,6 +214,8 @@
                     "browser.migrate.bookmarks-file.enabled" = false;
                     "browser.newtabpage.enabled" = false;
                     "alerts.useSystemBackend" = true;
+                    "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+                    "browser.preferences.search" = false;
                 };
             };
         };
