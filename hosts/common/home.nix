@@ -28,6 +28,7 @@
         gimp
         inkscape
         joplin-desktop
+        nextcloud-client
         anki-bin
         libreoffice-still
         pdfarranger

@@ -18,6 +18,7 @@
                         react-devtools
                         reduxdevtools
                         vimium
+                        torrent-control
                 ];
                 search.default = "searxng";
                 search.engines = {
