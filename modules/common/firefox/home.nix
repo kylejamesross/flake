@@ -12,42 +12,46 @@
                 name = "Kyle Ross";
                 isDefault = true;
                 extensions = with config.nur.repos.rycee.firefox-addons; [
-                    ublock-origin
+                        ublock-origin
                         raindropio
                         bitwarden
                         react-devtools
                         reduxdevtools
                         vimium
+                        torrent-control
                 ];
-                search.default = "searxng";
-                search.engines = {
-                    "searxng" = {
-                        urls = [{
-                            template = "https://searxng.online/search";
-                            params = [
-                            { name = "q"; value = "{searchTerms}"; }
-                            ];
-                        }];
-                        definedAliases = [ "@s" ];
-                    };
-                    "Nix Packages" = {
-                        urls = [{
-                            template = "https://search.nixos.org/packages";
-                            params = [
-                            { name = "type"; value = "packages"; }
-                            { name = "query"; value = "{searchTerms}"; }
-                            ];
-                        }];
-                        definedAliases = [ "@n" ];
-                    };
-                    "Wikipedia" = {
-                        urls = [{
-                            template = "https://en.wikipedia.org/wiki/Special:Search";
-                            params = [
-                            { name = "search"; value = "{searchTerms}"; }
-                            ];
-                        }];
-                        definedAliases = [ "@w" ];
+                search = {
+                    default = "searxng";
+                    force = true;
+                    engines = {
+                        "searxng" = {
+                            urls = [{
+                                template = "https://searxng.online/search";
+                                params = [
+                                { name = "q"; value = "{searchTerms}"; }
+                                ];
+                            }];
+                            definedAliases = [ "@s" ];
+                        };
+                        "Nix Packages" = {
+                            urls = [{
+                                template = "https://search.nixos.org/packages";
+                                params = [
+                                { name = "type"; value = "packages"; }
+                                { name = "query"; value = "{searchTerms}"; }
+                                ];
+                            }];
+                            definedAliases = [ "@n" ];
+                        };
+                        "Wikipedia" = {
+                            urls = [{
+                                template = "https://en.wikipedia.org/wiki/Special:Search";
+                                params = [
+                                { name = "search"; value = "{searchTerms}"; }
+                                ];
+                            }];
+                            definedAliases = [ "@w" ];
+                        };
                     };
                 };
                 settings = {
@@ -214,6 +218,8 @@
                     "browser.migrate.bookmarks-file.enabled" = false;
                     "browser.newtabpage.enabled" = false;
                     "alerts.useSystemBackend" = true;
+                    "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+                    "browser.preferences.search" = false;
                 };
             };
         };

@@ -28,16 +28,17 @@
         gimp
         inkscape
         joplin-desktop
+        nextcloud-client
         anki-bin
         libreoffice-still
         pdfarranger
         pamixer
         playerctl
         gnome.file-roller
-        xfce.tumbler
         (
          xfce.thunar.override {
          thunarPlugins = [
+         xfce.thunar-volman
          xfce.thunar-archive-plugin
          ];
          }
