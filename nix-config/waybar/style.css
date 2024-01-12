@@ -132,63 +132,24 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-    color: @red_1;
+#battery, #battery.charging, #battery.plugged, #cpu {
+    color: @green_1;
 }
 
-#clock.date {
+#clock.date, #battery.warning:not(.charging), #disk {
     color: @yellow_1;
 }
 
-#battery {
-    color: #ffffff;
-}
-
-#battery.charging, #battery.plugged {
-    color: #26A65B;
-}
-
-@keyframes blink {
-    to {
-    color: #ffffff;
-    }
-}
-
-#battery.critical:not(.charging) {
-    color: #f53c3c;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-label:focus {
-    color: #000000;
-}
-
-#cpu {
-    color: @green_1;
+#clock, #battery.critical:not(.charging), #network.disconnected {
+    color: @red_1;
 }
 
 #memory {
     color: @orange_1;
 }
 
-#disk {
-    color: @yellow_1;
-}
-
 #backlight {
     color: #90b1b1;
-}
-
-#network {
-        color: #2980b9;
-}
-
-#network.disconnected {
-    color: #f53c3c;
 }
 
 #pulseaudio {
@@ -199,7 +160,7 @@ label:focus {
     color: alpha(@purple_1, 0.6);
 }
 
-#pulseaudio.microphone {
+#pulseaudio.microphone, #network {
     color: @blue_1;
 }
 
@@ -301,4 +262,23 @@ label:focus {
 
 #scratchpad.empty {
     color: transparent;
+}
+
+label:focus {
+    color: #000000;
+}
+
+@keyframes blink {
+    to {
+    color: #ffffff;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: @red_1;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
