@@ -10,6 +10,10 @@ local status_ok_rustTools, rustTools = pcall(require, "rust-tools")
 if not status_ok_rustTools then
   return
 end
+local status_ok_typescriptTools, typescriptTools = pcall(require, "typescript-tools")
+if not status_ok_typescriptTools then
+  return
+end
 local VSCODE_CODELLDB = os.getenv("VSCODE_CODELLDB")
 if VSCODE_CODELLDB == nil then
   return
@@ -19,7 +23,7 @@ local extension_path = VSCODE_CODELLDB .. "/share/vscode/extensions/vadimcn.vsco
 local codelldb_path  = extension_path .. 'adapter/codelldb'
 local liblldb_path   = extension_path .. 'lldb/lib/liblldb.so'
 local capabilities   = cmp_nvim_lsp.default_capabilities()
-local servers        = { 'html', 'cssls', 'eslint', 'tsserver', 'lua_ls', 'omnisharp', 'astro' };
+local servers        = { 'html', 'cssls', 'eslint', 'lua_ls', 'omnisharp', 'astro' };
 
 local signs          = {
   Error = "",
@@ -49,7 +53,7 @@ local function on_attach_global(_, bufnr)
     { buffer = bufnr, remap = false, silent = true, desc = "Go diagnostic float (LSP)" })
   vim.keymap.set("n", "<leader>lw", vim.lsp.buf.workspace_symbol,
     { buffer = bufnr, remap = false, silent = true, desc = "Workspace symbol (LSP)" })
-  vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
+  vim.keymap.set({ "n", "v"}, "<leader>la", vim.lsp.buf.code_action,
     { buffer = bufnr, remap = false, silent = true, desc = "Code action" })
   vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
     { buffer = bufnr, remap = false, silent = true, desc = "Rename (LSP)" })
@@ -142,47 +146,6 @@ function PopulateQuickfixWithTypescriptErrors()
   vim.cmd('copen')
 end
 
--- Extra typescript support
-lspConfig.tsserver.setup({
-  on_attach = function(client, bufnr)
-    vim.api.nvim_buf_create_user_command(bufnr, "TypescriptRemoveUnused", function(opts)
-      local typescript_status_ok, typescript = pcall(require, "typescript")
-      if typescript_status_ok then
-        typescript.actions.removeUnused({ sync = opts.bang, bufnr = bufnr })
-      end
-    end, { bang = true })
-    vim.api.nvim_buf_create_user_command(bufnr, "TypescriptAddMissingImports", function(opts)
-      local typescript_status_ok, typescript = pcall(require, "typescript")
-      if typescript_status_ok then
-        typescript.actions.addMissingImports({ sync = opts.bang, bufnr = bufnr })
-      end
-    end, { bang = true })
-    vim.api.nvim_buf_create_user_command(bufnr, "TypescriptRenameFile", function(opts)
-      local source = vim.api.nvim_buf_get_name(bufnr)
-      vim.ui.input({ prompt = "New path: ", default = source }, function(input)
-        if input == "" or input == source or input == nil then
-          return
-        end
-
-        local typescript_status_ok, typescript = pcall(require, "typescript")
-        if typescript_status_ok then
-          typescript.renameFile(source, input, { force = opts.bang })
-        end
-      end)
-    end, { bang = true })
-
-    vim.keymap.set("n", "<leader>l1", ":TypescriptAddMissingImports<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports (LSP)" })
-    vim.keymap.set("n", "<leader>l2", ":TypescriptRemoveUnused<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports (LSP)" })
-    vim.keymap.set("n", "<leader>l3", ":TypescriptRenameFile<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "File rename (LSP)" })
-    vim.keymap.set("n", "<Leader>l4", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
-      { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors (LSP)" })
-    on_attach_global(client, bufnr)
-  end,
-})
-
 rustTools.setup({
   server = {
     on_attach = function(client, bufnr)
@@ -198,6 +161,27 @@ rustTools.setup({
     adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
   },
 })
+
+typescriptTools.setup {
+  on_attach = function(client, bufnr)
+    vim.keymap.set("n", "<leader>l1", ":TSToolsAddMissingImports<CR>",
+      { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports (LSP)" })
+    vim.keymap.set("n", "<leader>l2", ":TSToolsRemoveUnusedImports<CR>",
+      { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports (LSP)" })
+    vim.keymap.set("n", "<leader>l3", ":TSToolsRenameFile<CR>",
+      { buffer = bufnr, remap = false, silent = true, desc = "File rename (LSP)" })
+    vim.keymap.set("n", "<Leader>l4", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
+      { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors (LSP)" })
+    on_attach_global(client, bufnr)
+  end,
+  capabilities = capabilities,
+  settings = {
+    jsx_close_tag = {
+      enable = true,
+      filetypes = { "javascriptreact", "typescriptreact" },
+    },
+  },
+}
 
 -- show diagnostic messages inline
 vim.diagnostic.config({

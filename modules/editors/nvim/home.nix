@@ -2,7 +2,7 @@
 # Neovim
 #
 
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, unstable, ... }:
 
 let
 colorUtils = import ../../../utils/colors.nix { lib = lib; };
@@ -91,15 +91,14 @@ in
           cmp_luasnip
           cmp-nvim-lua
           luasnip
-          typescript-nvim
+          typescript-tools-nvim
           rust-tools-nvim
           omnisharp-extended-lsp-nvim
           vim-illuminate
           nvim-dap
           nvim-dap-ui
           nvim-dap-virtual-text  
-          (fromGithub "65e47be935080f112f219b5f0bc1bf411c783f27" "master" "rstacruz/vim-xtract")
-          (fromGithub "248c2001d0b24e58049eeb6884a79860923cfe13" "main" "Bryley/neoai.nvim")
+          unstable.vimPlugins.ChatGPT-nvim
           ];
       extraConfig = ''
         :luafile ~/.config/nvim/lua/user/keymaps.lua

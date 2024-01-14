@@ -37,6 +37,8 @@
         nodePackages.svgo
         zoxide
         docker-compose
+        (import ../scripts/work-commit-message.nix { inherit pkgs; })
+        (import ../scripts/personal-commit-message.nix { inherit pkgs; })
 
         # work
         powershell

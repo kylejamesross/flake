@@ -112,9 +112,9 @@ keymap("n", "<leader>vl", "<cmd>diffget //3<CR>",
   { noremap = true, silent = true, desc = "Accept code changes right side" })
 
 -- refactoring  
-keymap("v", "<leader>rx", ":Xtract<Space>", { noremap = true, desc = "Extract code to file" })
 keymap("n", "<Leader>s", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>",
   { noremap = true, silent = true, desc = "Replace all occurances of word under cursor in buffer" })
+
 function AutoIndent()
   local save_cursor = vim.fn.winsaveview()
   vim.cmd("%normal! =G")
@@ -125,10 +125,3 @@ keymap("n", "<Leader>r=", ":lua AutoIndent()<CR>", { noremap = true, silent = tr
 
 -- undo
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Open undo tree" })
-
--- AI
-keymap("n", "<leader>aa", "<cmd>:NeoAI<CR>", { noremap = true, silent = true, desc = "Open editor" })
-keymap("n", "<leader>ac", "<cmd>:NeoAIContext<CR>", { noremap = true, silent = true, desc = "Open editor with context" })
-keymap("v", "<leader>ac", "<cmd>:'<,'>NeoAIContext<CR>", { noremap = true, silent = true, desc = "Open editor with context" })
-keymap("n", "<leader>ai", ":NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })
-keymap("v", "<leader>ai", ":'<,'>NeoAIInjectContext ", { noremap = true, desc = "AI Command with context" })
