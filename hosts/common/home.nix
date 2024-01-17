@@ -34,6 +34,7 @@
         pdfarranger
         pamixer
         playerctl
+        alsa-utils
         gnome.file-roller
         (
          xfce.thunar.override {

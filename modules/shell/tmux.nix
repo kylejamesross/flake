@@ -22,8 +22,7 @@ with config.colorScheme.colors;
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
         set -s set-clipboard on
 
-        bind-key -r f run-shell "tmux neww ~/flake/bin/tmux-sessionizer"
-        bind-key -r h run-shell "tmux neww ~/flake/bin/cht"
+        bind-key -r f run-shell "tmux neww tmux-sessionizer"
         bind-key -r v run-shell "tmux neww -S -n '󰊢' lazygit"
         bind-key -r . run-shell "tmux neww -S -n '' btop"
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
@@ -41,6 +40,7 @@ with config.colorScheme.colors;
         set -g visual-silence off
         setw -g monitor-activity off
         set -g bell-action none
+        run-shell "tmux set-environment -g OPENAI_API_KEY \"\$(cat $HOME/.openai-api-key)\""
 
         set-option -g status-style "fg=#${base05},bg=#${base00}"
         # set-window-option -g window-status-style "bg=#${base02},fg=#${base03}"

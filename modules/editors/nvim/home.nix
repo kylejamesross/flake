@@ -98,7 +98,7 @@ in
           nvim-dap
           nvim-dap-ui
           nvim-dap-virtual-text  
-          unstable.vimPlugins.ChatGPT-nvim
+          ChatGPT-nvim
           ];
       extraConfig = ''
         :luafile ~/.config/nvim/lua/user/keymaps.lua

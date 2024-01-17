@@ -17,6 +17,7 @@
         cat = "bat";
         pb = "git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches";
         n = "nvim";
+        d7 = "nix shell nixpkgs#dotnet-sdk_7";
         fonts = "fc-list";
         wlogin = "az acr login -n nsolutionsacregistry";
         access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";

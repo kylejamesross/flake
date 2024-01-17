@@ -2,9 +2,9 @@
 
 pkgs.writeShellScriptBin "work-commit-message" ''
 
-issue_number=$(git rev-parse --abbrev-ref HEAD | grep -oE '[0-9]+' | head -n 1)
+issue_number=$(${pkgs.git}/bin/git rev-parse --abbrev-ref HEAD | ${pkgs.gnugrep}/bin/grep -oE '[0-9]+' | head -n 1)
 commit_prefix="AB#$issue_number: "
-code_changes=$(git diff --minimal --cached | head -c 4100)
+code_changes=$(${pkgs.git}/bin/git diff --minimal --cached | head -c 4100)
 
 base_commit_message=$(${pkgs.shell_gpt}/bin/sgpt "Write a commit message in this format, do not show diffs of code:
 Short summary (50 chars or less) of code changes

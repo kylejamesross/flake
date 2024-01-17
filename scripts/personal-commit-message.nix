@@ -3,7 +3,7 @@
 
 pkgs.writeShellScriptBin "personal-commit-message" ''
 
-code_changes=$(git diff --minimal --cached | head -c 4100)
+code_changes=$(${pkgs.git}/bin/git diff --minimal --cached | head -c 4100)
 
 commit_message=$(${pkgs.shell_gpt}/bin/sgpt "Write a commit message in this format, do not show diffs of code:
 Short summary (50 chars or less) of code changes
