@@ -15,6 +15,6 @@ pr_url=$(${pkgs.hub}/bin/hub pull-request -m "$commit_message" -b origin/main -h
 echo "$pr_url" | wl-copy
 
 echo "Pull request created: $pr_url"
-echo "PR title and link copied to clipboard."
+echo "PR title and link copied to clipboard"
 ''
 
