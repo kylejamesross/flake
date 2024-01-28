@@ -21,6 +21,7 @@
         zip
         lazygit
         tig
+        gh
         ripgrep
         jaq
         fd
@@ -43,6 +44,7 @@
         (import ../scripts/swww-randomizer.nix { inherit pkgs; })
         (import ../scripts/git-pull-all.nix { inherit pkgs; })
         (import ../scripts/git-add-commit-push-pr.nix { inherit pkgs; })
+        (import ../scripts/git-push-pr.nix { inherit pkgs; })
 
         # work
         powershell

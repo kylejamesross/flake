@@ -1,18 +1,15 @@
 
+
 { pkgs }:
 
-pkgs.writeShellScriptBin "gacp" ''
+pkgs.writeShellScriptBin "gp" ''
 
-git add -A
-
-commit_message=$(work-commit-message)
-
-git commit -e -m "$commit_message"
-
-git push origin HEAD
+commit_message=$(git log -1 --pretty=%B)
 
 title=$(echo "$commit_message" | head -n 1)
 body=$(echo "$commit_message" | tail -n +2)
+
+git push origin HEAD
 
 pr_url=$(${pkgs.gh}/bin/gh pr create --title "$title" --body "$body" | tail -n 1)
 
