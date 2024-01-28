@@ -14,6 +14,7 @@ git commit -m "$commit_message"
 git push origin HEAD
 
 pr_url=$(${pkgs.gh}/bin/gh pr create --title "$title" --body "$body" | tail -n 1)
+echo "PR: $pr_url"
 echo "$title: $pr_url" | wl-copy
 git web--browse "$pr_url"
 
