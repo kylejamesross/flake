@@ -1,4 +1,4 @@
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+:[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 if [ -f "$HOME/.feed-access-token" ]; then
   export FEED_ACCESSTOKEN=$(cat $HOME/.feed-access-token)
