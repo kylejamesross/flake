@@ -30,6 +30,7 @@
         joplin-desktop
         nextcloud-client
         anki-bin
+        calibre
         libreoffice-still
         pdfarranger
         pamixer
