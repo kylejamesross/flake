@@ -21,6 +21,7 @@
         zip
         lazygit
         tig
+        gh
         ripgrep
         jaq
         fd

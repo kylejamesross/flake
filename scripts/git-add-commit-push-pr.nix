@@ -5,16 +5,18 @@ pkgs.writeShellScriptBin "gcp" ''
 
 commit_message=$(work-commit-message)
 
+title=$(echo "$commit_message" | head -n 1)
+body=$(echo "$commit_message" | tail -n +2)
+
 git add .
 git commit -m "$commit_message"
 
 git push origin HEAD
 
-pr_url=$(${pkgs.hub}/bin/hub pull-request -m "$commit_message" -b origin/main -h HEAD)
+pr_url=$(${pkgs.gh}/bin/gh pr create --title "$title" --body "$body" | tail -n 1)
+echo "PR: $pr_url"
+echo "$title - $pr_url" | wl-copy
+git web--browse "$pr_url"
 
-echo "$pr_url" | wl-copy
-
-echo "Pull request created: $pr_url"
-echo "PR title and link copied to clipboard."
 ''
 

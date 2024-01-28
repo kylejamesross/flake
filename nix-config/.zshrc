@@ -1,4 +1,4 @@
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+:[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 if [ -f "$HOME/.feed-access-token" ]; then
   export FEED_ACCESSTOKEN=$(cat $HOME/.feed-access-token)
@@ -13,8 +13,6 @@ fi
 PATH="$PATH:$HOME/.local/bin"
 PATH="$PATH:/usr/share/dotnet"
 PATH="$PATH:$HOME/.dotnet/tools"
-
-alias gp="git push origin HEAD 2>&1 | grep -o 'http[s]\?://[^\"]\+' | xargs git web--browse"
 
 # advanced completions
 autoload -Uz compinit && compinit
