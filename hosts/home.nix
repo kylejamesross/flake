@@ -21,6 +21,7 @@
         zip
         lazygit
         tig
+        shell_gpt
         gh
         ripgrep
         jaq
@@ -49,7 +50,7 @@
 
         # work
         powershell
-        dotnet-sdk_8
+        dotnet-sdk_7
         sqlcmd
 
         # lsp
