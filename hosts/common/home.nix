@@ -72,7 +72,7 @@
     stateVersion = "22.05";
   };
 
-  colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
+  colorScheme = nix-colors.colorSchemes.tokyo-city-dark;
   gtk = {
     enable = true;
     theme = {

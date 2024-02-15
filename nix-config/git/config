@@ -8,6 +8,7 @@
     autocrlf = input
     eol = lf
 [alias]
+    a = "add -A"
     c = commit
     co = checkout
     b = branch

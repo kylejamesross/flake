@@ -19,6 +19,7 @@
         unzip
         unrar
         zip
+        yazi
         lazygit
         tig
         shell_gpt
@@ -50,7 +51,7 @@
 
         # work
         powershell
-        dotnet-sdk_7
+        dotnet-sdk_8
         sqlcmd
 
         # lsp
