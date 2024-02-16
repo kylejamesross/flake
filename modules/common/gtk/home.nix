@@ -29,6 +29,12 @@ let finalCss = ''
 @define-color headerbar_border_color #${config.colorScheme.colors.base01};
 @define-color headerbar_backdrop_color @window_bg_color;
 @define-color headerbar_shade_color rgba(0, 0, 0, 0.07);
+@define-color sidebar_bg_color #${config.colorScheme.colors.base01};
+@define-color sidebar_backdrop_color @window_bg_color;
+@define-color sidebar_fg_color #${config.colorScheme.colors.base05};
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.07);
+@define-color panel_bg_color #${config.colorScheme.colors.base01};
+@define-color panel_fg_color #${config.colorScheme.colors.base05};
 @define-color card_bg_color #${config.colorScheme.colors.base01};
 @define-color card_fg_color #${config.colorScheme.colors.base05};
 @define-color card_shade_color rgba(0, 0, 0, 0.07);
