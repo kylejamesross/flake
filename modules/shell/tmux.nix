@@ -28,7 +28,7 @@ with config.colorScheme.colors;
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
         bind-key -r / run-shell "tmux neww -S -n ''"
         bind-key -r t run-shell "tmux neww -S -n ''"
-        bind-key -r e run-shell "tmux neww -S -n '' nvim"
+        bind-key -r e run-shell "tmux neww -S -n '' nvim"
         bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
         bind-key -r l run-shell "tmux neww -S -n '󱋣' lf"
 
@@ -42,13 +42,11 @@ with config.colorScheme.colors;
         set -g bell-action none
         run-shell "tmux set-environment -g OPENAI_API_KEY \"\$(cat $HOME/.openai-api-key)\""
 
-        set-option -g status-style "fg=#${base05},bg=#${base00}"
-        # set-window-option -g window-status-style "bg=#${base02},fg=#${base03}"
-        # set-window-option -g window-status-current-style "bg=#${base02},fg=#${base05},bold"
-        set-window-option -g window-status-format "#[bg=#${base00},fg=#${base02}]#[bg=#${base02},fg=#${base05}]#W #[bg=#${base09},fg=#${base02}] #I#[bg=#${base00},fg=#${base09}]#[bg=#${base00}] "
-        set-window-option -g window-status-current-format "#[bg=#${base00},fg=#${base02}]#[bg=#${base02},fg=#${base05},bold]#W #[bg=#${base0D},fg=#${base02}] #I#[bg=#${base00},fg=#${base0D}]#[bg=#${base00}] "
+        set-option -g status-style "bg=#${base00}"
+        set-window-option -g window-status-format "#[bg=#${base00},fg=#${base0F}]#[bg=#${base0F},fg=#${base00}] #W  #I #[bg=#${base00},fg=#${base0F}]#[bg=#${base00}] "
+        set-window-option -g window-status-current-format "#[bg=#${base00},fg=#${base0B}]#[bg=#${base0B},fg=#${base00}] #W  #I #[bg=#${base00},fg=#${base0B}]#[bg=#${base00}] "
 
-        set -g status-left "#[bg=#${base00}] #[fg=#${base0D}]#{?client_prefix,#[fg=#${base0B}],}#[bg=#${base0D},fg=#${base00}]#{?client_prefix,#[bg=#${base0B}],} #[bg=#${base02},fg=#${base05}] #S#[bg=#${base00},fg=#${base02}]#[bg=#${base00}] "
+        set -g status-left "#[bg=#${base00}]#[fg=#${base0D}]  #{?client_prefix,#[fg=#${base0B}],}#[bg=#${base0D},fg=#${base00}]#{?client_prefix,#[bg=#${base0B}],}   #S   #[bg=#${base00}]#[fg=#${base0D}]#{?client_prefix,#[fg=#${base0B}],}#[bg=#${base00}]  "
 
         set-option -g pane-border-style "fg=#${base01}"
         set-option -g pane-active-border-style "fg=#${base03}"

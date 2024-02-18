@@ -72,7 +72,7 @@
     stateVersion = "22.05";
   };
 
-  colorScheme = nix-colors.colorSchemes.tokyo-city-dark;
+  colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
   gtk = {
     enable = true;
     theme = {
@@ -81,7 +81,10 @@
     };
     iconTheme = {
       name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      package = pkgs.catppuccin-papirus-folders.override {
+        accent = "blue";
+        flavor = "mocha";
+      };
     };
     font = {
       name = "JetBrains Mono";
