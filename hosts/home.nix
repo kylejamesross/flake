@@ -64,7 +64,7 @@
         rustc
         rustfmt
         omnisharp-roslyn
-        stylua
+        nil
 
         # debug adapters
         netcoredbg

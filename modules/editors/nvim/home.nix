@@ -100,7 +100,6 @@ in
           nvim-dap-virtual-text  
           ChatGPT-nvim
           neodev-nvim
-          conform-nvim
           ];
       extraConfig = ''
         :luafile ~/.config/nvim/lua/user/keymaps.lua
