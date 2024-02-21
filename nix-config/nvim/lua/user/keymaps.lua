@@ -1,10 +1,10 @@
 local keymap = vim.api.nvim_set_keymap
 
 -- leader key
-keymap("", "<Space>", "<Nop>", { noremap = true, silent = true, desc = "[LEADER]" })
 vim.g.mapleader = " "
 vim.g.maplocallheader = " "
 vim.g.maplocalleader = ","
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- vscode mapping for file navigation
 keymap("n", "<Tab>", "<C-6>", { noremap = true, silent = true, desc = "Switch to previous buffer" })

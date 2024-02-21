@@ -18,12 +18,16 @@ local VSCODE_CODELLDB = os.getenv("VSCODE_CODELLDB")
 if VSCODE_CODELLDB == nil then
   return
 end
+local status_ok_neoDev, neoDev = pcall(require, "neodev")
+if not status_ok_neoDev then
+  return
+end
 
 local extension_path = VSCODE_CODELLDB .. "/share/vscode/extensions/vadimcn.vscode-lldb/"
 local codelldb_path  = extension_path .. 'adapter/codelldb'
 local liblldb_path   = extension_path .. 'lldb/lib/liblldb.so'
 local capabilities   = cmp_nvim_lsp.default_capabilities()
-local servers        = { 'html', 'cssls', 'eslint', 'lua_ls', 'omnisharp', 'astro' };
+local servers        = { 'html', 'cssls', 'eslint', 'lua_ls', 'omnisharp', 'astro', 'stylua' };
 
 local signs          = {
   Error = "",
@@ -38,37 +42,37 @@ for type, icon in pairs(signs) do
 end
 
 local function on_attach_global(_, bufnr)
-  vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "Hover (LSP)" })
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "Hover" })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition,
-    { buffer = bufnr, remap = false, silent = true, desc = "Go to definition (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Go to definition" })
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
-    { buffer = bufnr, remap = false, silent = true, desc = "Go to declaration (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Go to declaration" })
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
-    { buffer = bufnr, remap = false, silent = true, desc = "Go to implementations (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Go to implementations" })
   vim.keymap.set("n", "go", vim.lsp.buf.type_definition,
-    { buffer = bufnr, remap = false, silent = true, desc = "Go to type definition (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Go to type definition" })
   vim.keymap.set("n", "gr", vim.lsp.buf.references,
-    { buffer = bufnr, remap = false, silent = true, desc = "Go to references (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Go to references" })
   vim.keymap.set("n", "gl", vim.diagnostic.open_float,
-    { buffer = bufnr, remap = false, silent = true, desc = "Go diagnostic float (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Go diagnostic float" })
   vim.keymap.set("n", "<leader>lw", vim.lsp.buf.workspace_symbol,
-    { buffer = bufnr, remap = false, silent = true, desc = "Workspace symbol (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Workspace symbol" })
   vim.keymap.set({ "n", "v"}, "<leader>la", vim.lsp.buf.code_action,
     { buffer = bufnr, remap = false, silent = true, desc = "Code action" })
   vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
-    { buffer = bufnr, remap = false, silent = true, desc = "Rename (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Rename" })
   vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help,
-    { buffer = bufnr, remap = false, silent = true, desc = "Signature help (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Signature help" })
   vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist,
-    { buffer = bufnr, remap = false, silent = true, desc = "Set location list (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Set location list" })
   vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist,
-    { buffer = bufnr, remap = false, silent = true, desc = "Set quickfix list (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Set quickfix list" })
   vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>",
-    { buffer = bufnr, remap = false, silent = true, desc = "Next diagnostic (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Next diagnostic" })
   vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>",
-    { buffer = bufnr, remap = false, silent = true, desc = "Previous diagnostic (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Previous diagnostic" })
   vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ bufnr, async = true }) end,
-    { buffer = bufnr, remap = false, silent = true, desc = "Format file (LSP)" })
+    { buffer = bufnr, remap = false, silent = true, desc = "Format file" })
 end
 
 for _, lsp in ipairs(servers) do
@@ -78,12 +82,16 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+neoDev.setup();
+
 lspConfig.lua_ls.setup({
   on_attach = function(client, bufnr)
     on_attach_global(client, bufnr)
   end,
   settings = {
     Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
       diagnostics = {
         globals = { "vim" },
       },
@@ -150,9 +158,9 @@ rustTools.setup({
   server = {
     on_attach = function(client, bufnr)
       vim.keymap.set("n", "<leader>l1", rustTools.hover_actions.hover_actions,
-        { buffer = bufnr, desc = "Hover actions (LSP)" })
+        { buffer = bufnr, desc = "Hover actions" })
       vim.keymap.set("n", "<leader>l2", rustTools.code_action_group.code_action_group,
-        { buffer = bufnr, desc = "Code Action Group (LSP)" })
+        { buffer = bufnr, desc = "Code Action Group" })
       on_attach_global(client, bufnr)
     end,
     capabilities = capabilities,
@@ -165,13 +173,13 @@ rustTools.setup({
 typescriptTools.setup {
   on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>l1", ":TSToolsAddMissingImports<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports (LSP)" })
+      { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports" })
     vim.keymap.set("n", "<leader>l2", ":TSToolsRemoveUnusedImports<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports (LSP)" })
+      { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports" })
     vim.keymap.set("n", "<leader>l3", ":TSToolsRenameFile<CR>",
-      { buffer = bufnr, remap = false, silent = true, desc = "File rename (LSP)" })
+      { buffer = bufnr, remap = false, silent = true, desc = "File rename" })
     vim.keymap.set("n", "<Leader>l4", ':lua PopulateQuickfixWithTypescriptErrors()<CR>',
-      { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors (LSP)" })
+      { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors" })
     on_attach_global(client, bufnr)
   end,
   capabilities = capabilities,

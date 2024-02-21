@@ -1,9 +1,10 @@
 local options = {
 	number = true,
 	relativenumber = true,
-	signcolumn = "auto",
+	signcolumn = "yes",
 	swapfile = false,
 	backup = false,
+	breakindent = true,
 	hlsearch = false,
 	ignorecase = true,
 	history = 1000,
@@ -31,7 +32,7 @@ local options = {
 	splitbelow = true,
 	splitright = true,
 	completeopt = { "menuone", "noselect" },
-	timeoutlen = 1000,
+	timeoutlen = 300,
 	undofile = true,
 	numberwidth = 2,
 	guifont = "monospace:h17",
@@ -48,3 +49,11 @@ end
 vim.api.nvim_exec([[
 	let g:fugitive_summary_format = "%cs || %<(20,trunc)%an || %s"
 ]], true)
+
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = highlight_group,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
