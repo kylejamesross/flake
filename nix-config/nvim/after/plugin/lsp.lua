@@ -10,10 +10,6 @@ local status_ok_rustTools, rustTools = pcall(require, "rust-tools")
 if not status_ok_rustTools then
 	return
 end
-local status_ok_typescriptTools, typescriptTools = pcall(require, "typescript-tools")
-if not status_ok_typescriptTools then
-	return
-end
 local VSCODE_CODELLDB = os.getenv("VSCODE_CODELLDB")
 if VSCODE_CODELLDB == nil then
 	return
@@ -27,7 +23,7 @@ local extension_path = VSCODE_CODELLDB .. "/share/vscode/extensions/vadimcn.vsco
 local codelldb_path = extension_path .. "adapter/codelldb"
 local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 local capabilities = cmp_nvim_lsp.default_capabilities()
-local servers = { "html", "cssls", "eslint", "lua_ls", "omnisharp", "astro", "nil_ls" }
+local servers = { "html", "cssls", "eslint", "lua_ls", "omnisharp", "astro", "nil_ls", "tsserver" }
 
 local signs = {
 	Error = "",
@@ -43,9 +39,9 @@ end
 
 local function on_attach_global(_, bufnr)
 	vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "Hover" })
-	vim.keymap.set("n", "gd", function() require("trouble").toggle("lsp_definitions") end, { desc = "Go to definition" })
-	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition,
-	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to definition" })
+	-- vim.keymap.set("n", "gd", function() require("trouble").toggle("lsp_definitions") end, { desc = "Go to definition" })
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+		{ buffer = bufnr, remap = false, silent = true, desc = "Go to definition" })
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
 		{ buffer = bufnr, remap = false, silent = true, desc = "Go to declaration" })
 	vim.keymap.set("n", "gi", function() require("trouble").toggle("lsp_implementations") end, { desc = "Go to implementation" })
@@ -186,7 +182,7 @@ rustTools.setup({
 	},
 })
 
-typescriptTools.setup({
+lspConfig.tsserver.setup({
 	on_attach = function(client, bufnr)
 		vim.keymap.set(
 			"n",

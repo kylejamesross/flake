@@ -91,7 +91,6 @@ in
           cmp_luasnip
           cmp-nvim-lua
           luasnip
-          typescript-tools-nvim
           rust-tools-nvim
           omnisharp-extended-lsp-nvim
           vim-illuminate
