@@ -51,9 +51,9 @@ local function on_attach_global(_, bufnr)
 	vim.keymap.set("n", "gi", function() require("trouble").toggle("lsp_implementations") end, { desc = "Go to implementation" })
 	-- vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
 	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to implementations" })
-	vim.keymap.set("n", "gd", function() require("trouble").toggle("lsp_type_definitions") end, { desc = "Go to type definition" })
-	vim.keymap.set("n", "go", vim.lsp.buf.type_definition,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Go to type definition" })
+	vim.keymap.set("n", "go", function() require("trouble").toggle("lsp_type_definitions") end, { desc = "Go to type definition" })
+	-- vim.keymap.set("n", "go", vim.lsp.buf.type_definition,
+	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to type definition" })
 	-- vim.keymap.set("n", "gr", vim.lsp.buf.references,
 	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to references" })
 	vim.keymap.set("n", "gr", function() require("trouble").toggle("lsp_references") end, { desc = "Go to references" })
