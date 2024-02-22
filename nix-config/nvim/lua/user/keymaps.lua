@@ -32,7 +32,7 @@ keymap("n", "<M-l>", ":bnext<CR>", { noremap = true, silent = true, desc = "Go t
 keymap("n", "<M-h>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Go to previous buffer" })
 
 keymap("n", "<Leader>b", ":w | %bd | e# | bd#<CR>", { noremap = true, silent = true, desc = "Delete all buffers except the active one" })
-keymap("n", "<Leader>qq", ":cclose<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
+keymap("n", "<Leader>qq", ":cclose<CR>:TroubleClose<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
 keymap("n", "<Leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Close quickfix list" })
 keymap("n", "<Leader>qf", ":cfirst<CR>", { noremap = true, silent = true, desc = "Go to first item in quickfix list" })
 keymap("n", "<Leader>ql", ":clast<CR>", { noremap = true, silent = true, desc = "Go to last item in quickfix list" })
@@ -45,8 +45,6 @@ keymap("n", "[q", ":cprev<CR>", { noremap = true, silent = true, desc = "Previou
 keymap("n", "]l", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location list item" })
 keymap("n", "[l", ":lprev<CR>", { noremap = true, silent = true, desc = "Previous location list item" })
 
--- easy executeable file
-keymap("n", "<Leader>x", ":!chmod +x %<CR>", { noremap = true, silent = true, desc = "Make file executeable" })
 
 -- paste enhancements
 keymap("x", "<Leader>p", '"_dP', { noremap = false, silent = true, desc = "Paste without replacing register" })
@@ -122,6 +120,8 @@ function AutoIndent()
 end
 
 keymap("n", "<Leader>r=", ":lua AutoIndent()<CR>", { noremap = true, silent = true, desc = "Indent all lines in buffer" })
+-- easy executeable file
+keymap("n", "<Leader>rx", ":!chmod +x %<CR>", { noremap = true, silent = true, desc = "Make file executeable" })
 
 -- undo
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Open undo tree" })
