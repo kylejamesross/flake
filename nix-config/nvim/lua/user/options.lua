@@ -39,7 +39,9 @@ local options = {
 	termguicolors = true,
 	autoread = true,
 	virtualedit = 'block',
-	jumpoptions = 'stack'
+	jumpoptions = 'stack',
+	list = true,
+	listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 }
 -- set all options
 for k, v in pairs(options) do

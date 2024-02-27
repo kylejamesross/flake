@@ -45,7 +45,7 @@ which_key.register({
 
 which_key.register({
   x = {
-    name = "[Trouble]"
+    name = "[TROUBLE]"
   }
 }, { prefix = "<leader>" })
 

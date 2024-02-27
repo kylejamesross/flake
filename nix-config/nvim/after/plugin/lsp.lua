@@ -18,6 +18,10 @@ local status_ok_neoDev, neoDev = pcall(require, "neodev")
 if not status_ok_neoDev then
 	return
 end
+local status_ok_typescript, typescript = pcall(require, "typescript")
+if not status_ok_typescript then
+	return
+end
 
 local extension_path = VSCODE_CODELLDB .. "/share/vscode/extensions/vadimcn.vscode-lldb/"
 local codelldb_path = extension_path .. "adapter/codelldb"
@@ -44,10 +48,12 @@ local function on_attach_global(_, bufnr)
 		{ buffer = bufnr, remap = false, silent = true, desc = "Go to definition" })
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
 		{ buffer = bufnr, remap = false, silent = true, desc = "Go to declaration" })
-	vim.keymap.set("n", "gi", function() require("trouble").toggle("lsp_implementations") end, { desc = "Go to implementation" })
+	vim.keymap.set("n", "gi", function() require("trouble").toggle("lsp_implementations") end,
+		{ desc = "Go to implementation" })
 	-- vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
 	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to implementations" })
-	vim.keymap.set("n", "go", function() require("trouble").toggle("lsp_type_definitions") end, { desc = "Go to type definition" })
+	vim.keymap.set("n", "go", function() require("trouble").toggle("lsp_type_definitions") end,
+		{ desc = "Go to type definition" })
 	-- vim.keymap.set("n", "go", vim.lsp.buf.type_definition,
 	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to type definition" })
 	-- vim.keymap.set("n", "gr", vim.lsp.buf.references,
@@ -187,19 +193,30 @@ lspConfig.tsserver.setup({
 		vim.keymap.set(
 			"n",
 			"<leader>l1",
-			":TSToolsAddMissingImports<CR>",
+			typescript.actions.addMissingImports,
 			{ buffer = bufnr, remap = false, silent = true, desc = "Add missing imports" }
 		)
 		vim.keymap.set(
 			"n",
 			"<leader>l2",
-			":TSToolsRemoveUnusedImports<CR>",
+			typescript.actions.removeUnused,
 			{ buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports" }
 		)
 		vim.keymap.set(
 			"n",
 			"<leader>l3",
-			":TSToolsRenameFile<CR>",
+			function()
+				local source = vim.api.nvim_buf_get_name(bufnr)
+				vim.ui.input(
+					{prompt = "New path: ", default = source},
+					function(input)
+						if input == "" or input == source or input == nil then
+							return
+						end
+						typescript.renameFile(source, input)
+					end
+				)
+			end,
 			{ buffer = bufnr, remap = false, silent = true, desc = "File rename" }
 		)
 		vim.keymap.set(

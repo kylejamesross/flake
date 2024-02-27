@@ -31,22 +31,22 @@ dap.configurations.cs = {
 }
 
 vim.keymap.set("n", "<F5>", "<CMD>lua require('dap').continue()<CR>",
-  { noremap = true, silent = true, desc = "Continue (DAP)" })
+  { noremap = true, silent = true, desc = "Continue" })
 vim.keymap.set("n", "<F10>", "<CMD>lua require('dap').step_over()<CR>",
-  { noremap = true, silent = true, desc = "Step over (DAP)" })
+  { noremap = true, silent = true, desc = "Step over" })
 vim.keymap.set("n", "<F11>", "<CMD>lua require('dap').step_into()<CR>",
-  { noremap = true, silent = true, desc = "Step into (DAP)" })
+  { noremap = true, silent = true, desc = "Step into" })
 vim.keymap.set("n", "<F12>", "<CMD>lua require('dap').step_out()<CR>",
-  { noremap = true, silent = true, desc = "Step out (DAP)" })
+  { noremap = true, silent = true, desc = "Step out" })
 vim.keymap.set("n", "<Leader>db", "<CMD>lua require('dap').toggle_breakpoint()<CR>",
-  { noremap = true, silent = true, desc = "Toggle breakpoint (DAP)" })
+  { noremap = true, silent = true, desc = "Toggle breakpoint" })
 vim.keymap.set("n", "<Leader>dB",
   "<CMD>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-  { noremap = true, silent = true, desc = "Set breakpoint (DAP)" })
+  { noremap = true, silent = true, desc = "Set breakpoint" })
 vim.keymap.set("n", "<Leader>dr", "<CMD>lua require('dap').repl_open()<CR>",
-  { noremap = true, silent = true, desc = "REPL open (DAP)" })
+  { noremap = true, silent = true, desc = "REPL open" })
 vim.keymap.set("n", "<Leader>dl", "<CMD>lua require('dap').run_last()<CR>",
-  { noremap = true, silent = true, desc = "Run last (DAP)" })
+  { noremap = true, silent = true, desc = "Run last" })
 vim.fn.sign_define('DapBreakpoint',
   { text = '🟥', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointRejected',
