@@ -17,7 +17,7 @@ fromGithub = rev: ref: repo: pkgs.vimUtils.buildVimPlugin {
 };
 in
 with colorUtils;
-with config.colorScheme.colors;
+with config.colorScheme.palette;
   let
     percent = -70;
     darkRed = shadeColor { color = base08; percent = percent; };

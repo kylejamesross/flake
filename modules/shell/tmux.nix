@@ -4,7 +4,7 @@
 
 { pkgs, config, ... }:
 
-with config.colorScheme.colors;
+with config.colorScheme.palette;
 
 {
   programs = {
