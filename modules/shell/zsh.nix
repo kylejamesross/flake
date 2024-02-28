@@ -20,6 +20,8 @@
         d7 = "nix shell nixpkgs#dotnet-sdk_7";
         fonts = "fc-list";
         wlogin = "az acr login -n nsolutionsacregistry";
+        tsu = "sudo tailscale up --accept-routes";
+        tsd = "sudo tailscale down";
         access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";
         g = "if [[ \"${host.hostName}\" == \"laptop\" ]]; then sudo nixos-rebuild switch --flake .#laptop; else sudo nixos-rebuild switch --flake .#desktop; fi";
       };

@@ -20,15 +20,6 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
   };
-  environment.etc = {
-    "openfortivpn/config" = {
-      text = ''
-        host = vpn.nudesolutions.com
-        port = 8443
-        username = kyler
-      '';
-    };
-  };
 
   environment = {
     variables = {

@@ -97,13 +97,13 @@
     flatpak.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
+    tailscale.enable = true;
   };
 
   networking = {
     firewall.enable = false;
     networkmanager = {
       enable = true;
-      plugins = [ pkgs.networkmanager-openconnect ];
     };
   };
 
