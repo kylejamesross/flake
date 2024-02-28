@@ -46,7 +46,7 @@ with config.colorScheme.palette;
         set-window-option -g window-status-format "#[bg=#${base00},fg=#${base0F}]#[bg=#${base0F},fg=#${base00}] #W  #I #[bg=#${base00},fg=#${base0F}]#[bg=#${base00}] "
         set-window-option -g window-status-current-format "#[bg=#${base00},fg=#${base0B}]#[bg=#${base0B},fg=#${base00}] #W  #I #[bg=#${base00},fg=#${base0B}]#[bg=#${base00}] "
 
-        set -g status-left "#[bg=#${base00}]#[fg=#${base0D}]  #{?client_prefix,#[fg=#${base0B}],}#[bg=#${base0D},fg=#${base00}]#{?client_prefix,#[bg=#${base0B}],}   #S   #[bg=#${base00}]#[fg=#${base0D}]#{?client_prefix,#[fg=#${base0B}],}#[bg=#${base00}]  "
+        set -g status-left "#[bg=#${base00}]#[fg=#${base0D}]#{?client_prefix,#[fg=#${base0B}],}#[bg=#${base0D},fg=#${base00}]#{?client_prefix,#[bg=#${base0B}],}   #S   #[bg=#${base00}]#[fg=#${base0D}]#{?client_prefix,#[fg=#${base0B}],}#[bg=#${base00}]  "
 
         set-option -g pane-border-style "fg=#${base01}"
         set-option -g pane-active-border-style "fg=#${base03}"
