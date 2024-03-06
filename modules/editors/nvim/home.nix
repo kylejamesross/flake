@@ -99,7 +99,6 @@ in
           nvim-dap-virtual-text  
           ChatGPT-nvim
           neodev-nvim
-          trouble-nvim
           typescript-nvim
           noice-nvim
           ];

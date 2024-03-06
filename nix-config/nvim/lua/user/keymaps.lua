@@ -32,7 +32,7 @@ keymap("n", "<M-l>", ":bnext<CR>", { noremap = true, silent = true, desc = "Go t
 keymap("n", "<M-h>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Go to previous buffer" })
 
 keymap("n", "<Leader>b", ":w | %bd | e# | bd#<CR>", { noremap = true, silent = true, desc = "Delete all buffers except the active one" })
-keymap("n", "<Leader>qq", ":cclose<CR>:TroubleClose<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
+keymap("n", "<Leader>qq", ":cclose<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
 keymap("n", "<Leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Close quickfix list" })
 keymap("n", "<Leader>qf", ":cfirst<CR>", { noremap = true, silent = true, desc = "Go to first item in quickfix list" })
 keymap("n", "<Leader>ql", ":clast<CR>", { noremap = true, silent = true, desc = "Go to last item in quickfix list" })

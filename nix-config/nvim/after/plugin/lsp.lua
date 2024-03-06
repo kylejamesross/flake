@@ -43,42 +43,38 @@ end
 
 local function on_attach_global(_, bufnr)
 	vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "Hover" })
-	-- vim.keymap.set("n", "gd", function() require("trouble").toggle("lsp_definitions") end, { desc = "Go to definition" })
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Go to definition" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "[G]o to [D]efinition" })
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Go to declaration" })
-	vim.keymap.set("n", "gi", function() require("trouble").toggle("lsp_implementations") end,
-		{ desc = "Go to implementation" })
-	-- vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
-	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to implementations" })
-	vim.keymap.set("n", "go", function() require("trouble").toggle("lsp_type_definitions") end,
-		{ desc = "Go to type definition" })
-	-- vim.keymap.set("n", "go", vim.lsp.buf.type_definition,
-	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to type definition" })
-	-- vim.keymap.set("n", "gr", vim.lsp.buf.references,
-	-- 	{ buffer = bufnr, remap = false, silent = true, desc = "Go to references" })
-	vim.keymap.set("n", "gr", function() require("trouble").toggle("lsp_references") end, { desc = "Go to references" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "[G]o to [D]eclaration" })
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
+		{ buffer = bufnr, remap = false, silent = true, desc = "[G]o to [I]mplementations" })
+	vim.keymap.set("n", "ld", vim.lsp.buf.type_definition,
+		{ buffer = bufnr, remap = false, silent = true, desc = "Type [D]efinition" })
+	vim.keymap.set("n", "gr", vim.lsp.buf.references,
+		{ buffer = bufnr, remap = false, silent = true, desc = "[G]o to [R]eferences" })
 	vim.keymap.set("n", "gl", vim.diagnostic.open_float,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Go diagnostic float" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "Hover documentation" })
+	vim.keymap.set("n", "K", vim.diagnostic.open_float,
+		{ buffer = bufnr, remap = false, silent = true, desc = "Hover documentation" })
 	vim.keymap.set("n", "<leader>lw", vim.lsp.buf.workspace_symbol,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Workspace symbol" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "[W]orkspace symbol" })
 	vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Code action" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "Code [A]ction" })
 	vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Rename" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "[R]ename" })
 	vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Signature help" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "[S]ignature help" })
 	vim.keymap.set("n", "<leader>ll", vim.diagnostic.setloclist,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Set location list" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "Set [L]ocation list" })
 	vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Set quickfix list" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "Set [Q]uickfix list" })
 	vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>",
-		{ buffer = bufnr, remap = false, silent = true, desc = "Next diagnostic" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "Go to next [D]iagnostic message" })
 	vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>",
-		{ buffer = bufnr, remap = false, silent = true, desc = "Previous diagnostic" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "Go to previous [D]iagnostic message" })
 	vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ bufnr, async = true }) end,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Format file" })
+		{ buffer = bufnr, remap = false, silent = true, desc = "[F]ormat file" })
 end
 
 for _, lsp in ipairs(servers) do
@@ -160,8 +156,7 @@ function PopulateQuickfixWithTypescriptErrors()
 			vim.fn.setqflist({ entry }, "a")
 		end
 	end
-
-	require("trouble").toggle("quickfix")
+	vim.cmd("copen")
 end
 
 rustTools.setup({
