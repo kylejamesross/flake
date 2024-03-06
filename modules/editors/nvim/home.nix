@@ -70,7 +70,7 @@ in
           nvim-ts-context-commentstring
           nvim-ts-autotag
           nui-nvim
-          vim-surround
+          nvim-surround
           fidget-nvim
           nvim-colorizer-lua
           which-key-nvim
