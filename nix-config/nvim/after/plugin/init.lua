@@ -6,4 +6,5 @@ require("noice").setup({})
 require("scrollbar").setup({})
 require("scrollbar.handlers.gitsigns").setup()
 require("nvim-surround").setup({})
+require("nvim-autopairs").setup({ check_ts = true })
 
