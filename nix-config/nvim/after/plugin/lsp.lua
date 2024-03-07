@@ -42,7 +42,8 @@ for type, icon in pairs(signs) do
 end
 
 local function on_attach_global(_, bufnr)
-	vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "Hover" })
+	vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "[H]over documentation" })
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, silent = true, desc = "[H]over documentation" })
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition,
 		{ buffer = bufnr, remap = false, silent = true, desc = "[G]o to [D]efinition" })
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
@@ -53,8 +54,8 @@ local function on_attach_global(_, bufnr)
 		{ buffer = bufnr, remap = false, silent = true, desc = "Type [D]efinition" })
 	vim.keymap.set("n", "gr", vim.lsp.buf.references,
 		{ buffer = bufnr, remap = false, silent = true, desc = "[G]o to [R]eferences" })
-	vim.keymap.set("n", "gl", vim.diagnostic.open_float,
-		{ buffer = bufnr, remap = false, silent = true, desc = "Hover documentation" })
+	vim.keymap.set("n", "le", vim.diagnostic.open_float,
+		{ buffer = bufnr, remap = false, silent = true, desc = "Show diagnostic [E]rror messages" })
 	vim.keymap.set("n", "K", vim.diagnostic.open_float,
 		{ buffer = bufnr, remap = false, silent = true, desc = "Hover documentation" })
 	vim.keymap.set("n", "<leader>lw", vim.lsp.buf.workspace_symbol,

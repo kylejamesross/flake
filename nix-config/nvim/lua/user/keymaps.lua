@@ -32,14 +32,10 @@ keymap("n", "<M-l>", ":bnext<CR>", { noremap = true, silent = true, desc = "Go t
 keymap("n", "<M-h>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Go to previous buffer" })
 
 keymap("n", "<Leader>b", ":w | %bd | e# | bd#<CR>", { noremap = true, silent = true, desc = "Delete all buffers except the active one" })
-keymap("n", "<Leader>qq", ":cclose<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
-keymap("n", "<Leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Close quickfix list" })
-keymap("n", "<Leader>qf", ":cfirst<CR>", { noremap = true, silent = true, desc = "Go to first item in quickfix list" })
-keymap("n", "<Leader>ql", ":clast<CR>", { noremap = true, silent = true, desc = "Go to last item in quickfix list" })
+keymap("n", "<Leader>qq", ":cclose<CR>", { noremap = true, silent = true, desc = "Close quickfix list" })
+keymap("n", "<Leader>qo", ":copen<CR>", { noremap = true, silent = true, desc = "Open quickfix list" })
 keymap("n", "<Leader>ll", ":lclose<CR>", { noremap = true, silent = true, desc = "Close location list" })
 keymap("n", "<Leader>lo", ":lopen<CR>", { noremap = true, silent = true, desc = "Open location list" })
-keymap("n", "<Leader>lf", ":lfirst<CR>", { noremap = true, silent = true, desc = "Go to first item in location list" })
-keymap("n", "<Leader>le", ":llast<CR>", { noremap = true, silent = true, desc = "Go to last item in location list" })
 keymap("n", "]q", ":cnext<CR>", { noremap = true, silent = true, desc = "Next quickfix list item" })
 keymap("n", "[q", ":cprev<CR>", { noremap = true, silent = true, desc = "Previous quickfix list item" })
 keymap("n", "]l", ":lnext<CR>", { noremap = true, silent = true, desc = "Next location list item" })
@@ -87,19 +83,9 @@ function ProjectFiles()
   end
 end
 
-function MRUBuffers()
-  require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })
-end
-
 keymap("n", "<c-p>", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = true, desc = "Search for file (Telescope)" })
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>",
   { noremap = true, silent = true, desc = "Search for string in all files (Telescope)" })
-keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>",
-  { noremap = true, silent = true, desc = "Search for string in all files (Telescope)" })
-keymap("n", "<leader>tp", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = true, desc = "Search for file (Telescope)" })
-keymap("n", "<leader>tb", "<CMD>lua MRUBuffers()<CR>", { noremap = true, silent = true, desc = "Most recently used buffers (Telescope)" })
-keymap("n", "<leader>tt", "<CMD>Telescope help_tags<CR>", { desc = "Help Tags (Telescope)"})
-
 -- git
 keymap("n", "<leader>vf", ":0GcLog<CR>", { noremap = true, silent = true, desc = "Display commits for current file" })
 keymap("n", "<leader>vm", ":Gvdiffsplit!<CR>",
@@ -110,7 +96,7 @@ keymap("n", "<leader>vl", "<cmd>diffget //3<CR>",
   { noremap = true, silent = true, desc = "Accept code changes right side" })
 
 -- refactoring  
-keymap("n", "<Leader>s", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>",
+keymap("n", "<Leader>rs", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>",
   { noremap = true, silent = true, desc = "Replace all occurances of word under cursor in buffer" })
 
 function AutoIndent()
@@ -123,5 +109,5 @@ keymap("n", "<Leader>r=", ":lua AutoIndent()<CR>", { noremap = true, silent = tr
 -- easy executeable file
 keymap("n", "<Leader>rx", ":!chmod +x %<CR>", { noremap = true, silent = true, desc = "Make file executeable" })
 
--- undo
-keymap("n", "<leader>u", ":UndotreeToggle<CR>", { noremap = true, silent = true, desc = "Open undo tree" })
+vim.keymap.set("n", "<leader>ma", require("harpoon.mark").add_file, { desc = "Add file"})
+vim.keymap.set("n", "<leader>mt", require("harpoon.ui").toggle_quick_menu, { desc = "Toggle quick menu"})

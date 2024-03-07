@@ -3,80 +3,83 @@ if not status_ok then
 	return
 end
 
-telescope.load_extension("media_files")
-telescope.load_extension("fzy_native")
-
-local actions = require("telescope.actions")
+pcall(require('telescope').load_extension, 'ui-select')
+pcall(require('telescope').load_extension, 'media_files')
+pcall(require('telescope').load_extension, 'fzy_native')
+pcall(require('telescope').load_extension, 'undo')
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "absolute" },
-
 		mappings = {
 			i = {
-				["<C-n>"] = actions.cycle_history_next,
-				["<C-p>"] = actions.cycle_history_prev,
+				["<C-n>"] = require("telescope.actions").cycle_history_next,
+				["<C-p>"] = require("telescope.actions").cycle_history_prev,
 
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
+				["<C-j>"] = require("telescope.actions").move_selection_next,
+				["<C-k>"] = require("telescope.actions").move_selection_previous,
 
-				["<C-c>"] = actions.close,
+				["<C-c>"] = require("telescope.actions").close,
 
-				["<Down>"] = actions.move_selection_next,
-				["<Up>"] = actions.move_selection_previous,
+				["<Down>"] = require("telescope.actions").move_selection_next,
+				["<Up>"] = require("telescope.actions").move_selection_previous,
 
-				["<CR>"] = actions.select_default,
-				["<C-x>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+				["<CR>"] = require("telescope.actions").select_default,
+				["<C-x>"] = require("telescope.actions").select_horizontal,
+				["<C-v>"] = require("telescope.actions").select_vertical,
+				["<C-t>"] = require("telescope.actions").select_tab,
 
-				["<C-u>"] = actions.preview_scrolling_up,
-				["<C-d>"] = actions.preview_scrolling_down,
+				["<C-u>"] = require("telescope.actions").preview_scrolling_up,
+				["<C-d>"] = require("telescope.actions").preview_scrolling_down,
 
-				["<PageUp>"] = actions.results_scrolling_up,
-				["<PageDown>"] = actions.results_scrolling_down,
+				["<PageUp>"] = require("telescope.actions").results_scrolling_up,
+				["<PageDown>"] = require("telescope.actions").results_scrolling_down,
 
-				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				["<C-l>"] = actions.complete_tag,
-				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+				["<Tab>"] = require("telescope.actions").toggle_selection +
+					require("telescope.actions").move_selection_worse,
+				["<S-Tab>"] = require("telescope.actions").toggle_selection +
+					require("telescope.actions").move_selection_better,
+				["<C-q>"] = require("telescope.actions").send_to_qflist + require("telescope.actions").open_qflist,
+				["<M-q>"] = require("telescope.actions").send_selected_to_qflist +
+					require("telescope.actions").open_qflist,
+				["<C-l>"] = require("telescope.actions").complete_tag,
+				["<C-_>"] = require("telescope.actions").which_key, -- keys from pressing <C-/>
 			},
-
 			n = {
-				["<esc>"] = actions.close,
-				["<CR>"] = actions.select_default,
-				["<C-x>"] = actions.select_horizontal,
-				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+				["<esc>"] = require("telescope.actions").close,
+				["<CR>"] = require("telescope.actions").select_default,
+				["<C-x>"] = require("telescope.actions").select_horizontal,
+				["<C-v>"] = require("telescope.actions").select_vertical,
+				["<C-t>"] = require("telescope.actions").select_tab,
 
-				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				["<Tab>"] = require("telescope.actions").toggle_selection +
+					require("telescope.actions").move_selection_worse,
+				["<S-Tab>"] = require("telescope.actions").toggle_selection +
+					require("telescope.actions").move_selection_better,
+				["<C-q>"] = require("telescope.actions").send_to_qflist + require("telescope.actions").open_qflist,
+				["<M-q>"] = require("telescope.actions").send_selected_to_qflist +
+					require("telescope.actions").open_qflist,
 
-				["j"] = actions.move_selection_next,
-				["k"] = actions.move_selection_previous,
-				["H"] = actions.move_to_top,
-				["M"] = actions.move_to_middle,
-				["L"] = actions.move_to_bottom,
+				["j"] = require("telescope.actions").move_selection_next,
+				["k"] = require("telescope.actions").move_selection_previous,
+				["H"] = require("telescope.actions").move_to_top,
+				["M"] = require("telescope.actions").move_to_middle,
+				["L"] = require("telescope.actions").move_to_bottom,
 
-				["<Down>"] = actions.move_selection_next,
-				["<Up>"] = actions.move_selection_previous,
-				["gg"] = actions.move_to_top,
-				["G"] = actions.move_to_bottom,
+				["<Down>"] = require("telescope.actions").move_selection_next,
+				["<Up>"] = require("telescope.actions").move_selection_previous,
+				["gg"] = require("telescope.actions").move_to_top,
+				["G"] = require("telescope.actions").move_to_bottom,
 
-				["<C-u>"] = actions.preview_scrolling_up,
-				["<C-d>"] = actions.preview_scrolling_down,
+				["<C-u>"] = require("telescope.actions").preview_scrolling_up,
+				["<C-d>"] = require("telescope.actions").preview_scrolling_down,
 
-				["<PageUp>"] = actions.results_scrolling_up,
-				["<PageDown>"] = actions.results_scrolling_down,
+				["<PageUp>"] = require("telescope.actions").results_scrolling_up,
+				["<PageDown>"] = require("telescope.actions").results_scrolling_down,
 
-				["?"] = actions.which_key,
+				["?"] = require("telescope.actions").which_key,
 			},
 		},
 	},
@@ -89,5 +92,53 @@ telescope.setup({
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
+		['ui-select'] = {
+			require('telescope.themes').get_dropdown(),
+		},
+		undo = {
+			side_by_side = true,
+			layout_strategy = "vertical",
+			layout_config = {
+				preview_height = 0.8,
+			},
+		},
 	},
 })
+
+local builtin = require 'telescope.builtin'
+vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+vim.keymap.set('n', '<leader>su', function() telescope.extensions.undo.undo({ side_by_side = true }) end,
+	{ desc = '[S]earch [U]ndo Tree' })
+vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+-- Slightly advanced example of overriding default behavior and theme
+vim.keymap.set('n', '<leader>/', function()
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+		winblend = 10,
+		previewer = false,
+	})
+end, { desc = '[/] Fuzzily search in current buffer' })
+
+-- Also possible to pass additional configuration options.
+--  See `:help telescope.builtin.live_grep()` for information about particular keys
+vim.keymap.set('n', '<leader>s/', function()
+	builtin.live_grep {
+		grep_open_files = true,
+		prompt_title = 'Live Grep in Open Files',
+	}
+end, { desc = '[S]earch [/] in Open Files' })
+
+-- Shortcut for searching your neovim configuration files
+vim.keymap.set('n', '<leader>sn', function()
+	builtin.find_files { cwd = vim.fn.stdpath 'config' }
+end, { desc = '[S]earch [N]eovim files' })

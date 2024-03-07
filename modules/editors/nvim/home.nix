@@ -77,12 +77,13 @@ in
           telescope-nvim
           telescope-fzy-native-nvim
           telescope-media-files-nvim
+          telescope-ui-select-nvim
+          telescope-undo-nvim
           nvim-base16
           gitsigns-nvim
           lualine-nvim
           nvim-scrollbar
           nvim-notify
-          undotree
           nvim-lspconfig
           nvim-cmp
           cmp-nvim-lsp

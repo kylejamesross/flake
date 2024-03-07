@@ -39,14 +39,14 @@ vim.keymap.set("n", "<F11>", "<CMD>lua require('dap').step_into()<CR>",
 vim.keymap.set("n", "<F12>", "<CMD>lua require('dap').step_out()<CR>",
   { noremap = true, silent = true, desc = "Step out" })
 vim.keymap.set("n", "<Leader>db", "<CMD>lua require('dap').toggle_breakpoint()<CR>",
-  { noremap = true, silent = true, desc = "Toggle breakpoint" })
-vim.keymap.set("n", "<Leader>dB",
-  "<CMD>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-  { noremap = true, silent = true, desc = "Set breakpoint" })
+  { noremap = true, silent = true, desc = "Toggle [B]reakpoint" })
+-- vim.keymap.set("n", "<Leader>dB",
+  -- "<CMD>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+  -- { noremap = true, silent = true, desc = "Set breakpoint" })
 vim.keymap.set("n", "<Leader>dr", "<CMD>lua require('dap').repl_open()<CR>",
-  { noremap = true, silent = true, desc = "REPL open" })
+  { noremap = true, silent = true, desc = "Open [R]EPL" })
 vim.keymap.set("n", "<Leader>dl", "<CMD>lua require('dap').run_last()<CR>",
-  { noremap = true, silent = true, desc = "Run last" })
+  { noremap = true, silent = true, desc = "Run [L]ast" })
 vim.fn.sign_define('DapBreakpoint',
   { text = '🟥', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointRejected',
