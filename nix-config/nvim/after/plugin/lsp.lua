@@ -117,9 +117,6 @@ lspConfig.eslint.setup({
 })
 
 lspConfig.omnisharp.setup({
-	on_init = function(client)
-		client.server_capabilities.semanticTokensProvider = nil
-	end,
 	on_attach = function(client, bufnr)
 		on_attach_global(client, bufnr)
 	end,
@@ -129,11 +126,11 @@ lspConfig.omnisharp.setup({
 	cmd = { "/etc/profiles/per-user/kyle/bin/OmniSharp" },
 	enable_editorconfig_support = true,
 	enable_ms_build_load_projects_on_demand = false,
-	enable_roslyn_analyzers = true,
+	enable_roslyn_analyzers = false,
 	organize_imports_on_format = false,
 	enable_import_completion = false,
 	sdk_include_prereleases = true,
-	analyze_open_documents_only = true,
+	analyze_open_documents_only = false,
 	capabilities = capabilities,
 })
 
