@@ -1,11 +1,9 @@
-local status_ok_cmp, cmp = pcall(require, "cmp")
-if not status_ok_cmp then
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
   return
 end
-local status_ok_luasnip, luasnip = pcall(require, "luasnip")
-if not status_ok_luasnip then
-  return
-end
+
+local luasnip = require("luasnip")
 
 luasnip.config.setup {}
 
@@ -17,6 +15,17 @@ cmp.setup {
   },
   completion = {
     completeopt = 'menu,menuone,noinsert,noselect',
+  },
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+      local strings = vim.split(kind.kind, "%s", { trimempty = true })
+      kind.kind = " " .. (strings[1] or "") .. " "
+      kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+      return kind
+    end,
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),

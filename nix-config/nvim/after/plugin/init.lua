@@ -5,5 +5,6 @@ require("fidget").setup({})
 require("noice").setup({})
 require("scrollbar").setup({})
 require("scrollbar.handlers.gitsigns").setup()
-require("nvim-surround").setup({})
 require("nvim-autopairs").setup({ check_ts = true })
+require('mini.ai').setup { n_lines = 500 }
+require('mini.surround').setup()

@@ -71,6 +71,7 @@ in
           nvim-ts-autotag
           nui-nvim
           nvim-surround
+          mini-nvim
           fidget-nvim
           nvim-colorizer-lua
           which-key-nvim
@@ -91,6 +92,7 @@ in
           cmp-path
           cmp_luasnip
           cmp-nvim-lua
+          lspkind-nvim
           luasnip
           rust-tools-nvim
           omnisharp-extended-lsp-nvim
