@@ -87,14 +87,8 @@ keymap("n", "<c-p>", "<CMD>lua ProjectFiles()<CR>", { noremap = true, silent = t
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>",
   { noremap = true, silent = true, desc = "Search for string in all files (Telescope)" })
 -- git
-keymap("n", "<leader>vf", ":0GcLog<CR>", { noremap = true, silent = true, desc = "Display commits for current file" })
-keymap("n", "<leader>vm", ":Gvdiffsplit!<CR>",
-  { noremap = true, silent = true, desc = "Display side-by-side merge tool" })
-keymap("n", "<leader>vh", "<cmd>diffget //2<CR>",
-  { noremap = true, silent = true, desc = "Accept code changes left side" })
-keymap("n", "<leader>vl", "<cmd>diffget //3<CR>",
-  { noremap = true, silent = true, desc = "Accept code changes right side" })
-
+keymap("n", "<leader>vf", ":DiffviewFileHistory %<CR>", { noremap = true, silent = true, desc = "Display file history for current buffer" })
+keymap("n", "<leader>vv", ":tabclose<CR>", { noremap = true, silent = true, desc = "Display file history for current buffer" })
 -- refactoring  
 keymap("n", "<Leader>rs", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>",
   { noremap = true, silent = true, desc = "Replace all occurances of word under cursor in buffer" })
