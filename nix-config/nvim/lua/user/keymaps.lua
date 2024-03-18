@@ -44,10 +44,6 @@ keymap("n", "[l", ":lprev<CR>", { noremap = true, silent = true, desc = "Previou
 
 -- paste enhancements
 keymap("x", "<Leader>p", '"_dP', { noremap = false, silent = true, desc = "Paste without replacing register" })
-keymap("v", "<Leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
-keymap("n", "<Leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
-keymap("v", "<Leader>w", '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard" })
-keymap("n", "<Leader>w", '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard" })
 
 -- move select lines up down
 keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
