@@ -89,6 +89,7 @@ in
           nvim-notify
           nvim-lspconfig
           nvim-cmp
+          diffview-nvim
           cmp-nvim-lsp
           cmp-buffer
           cmp-path
