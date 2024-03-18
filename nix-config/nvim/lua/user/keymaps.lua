@@ -46,7 +46,6 @@ keymap("n", "[l", ":lprev<CR>", { noremap = true, silent = true, desc = "Previou
 keymap("x", "<Leader>p", '"_dP', { noremap = false, silent = true, desc = "Paste without replacing register" })
 keymap("v", "<Leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
 keymap("n", "<Leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
-keymap("n", "<Leader>Y", 'gg"+yG', { noremap = true, silent = true, desc = "Yank entire buffer to system clipboard" })
 keymap("v", "<Leader>w", '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard" })
 keymap("n", "<Leader>w", '"+p', { noremap = true, silent = true, desc = "Paste from system clipboard" })
 
@@ -92,15 +91,6 @@ keymap("n", "<leader>vv", ":tabclose<CR>", { noremap = true, silent = true, desc
 -- refactoring  
 keymap("n", "<Leader>rs", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>",
   { noremap = true, silent = true, desc = "Replace all occurances of word under cursor in buffer" })
-
-function AutoIndent()
-  local save_cursor = vim.fn.winsaveview()
-  vim.cmd("%normal! =G")
-  vim.fn.winrestview(save_cursor)
-end
-
-keymap("n", "<Leader>r=", ":lua AutoIndent()<CR>", { noremap = true, silent = true, desc = "Indent all lines in buffer" })
--- easy executeable file
 keymap("n", "<Leader>rx", ":!chmod +x %<CR>", { noremap = true, silent = true, desc = "Make file executeable" })
 
 vim.keymap.set("n", "<leader>ma", require("harpoon.mark").add_file, { desc = "Add file"})
