@@ -48,6 +48,7 @@ in
           vim-fugitive
           harpoon
           nvim-tree-lua
+          vim-textobj-entire
           nvim-treesitter
           nvim-treesitter-textobjects
           nvim-treesitter-parsers.typescript
@@ -64,6 +65,7 @@ in
           nvim-treesitter-parsers.vim
           nvim-treesitter-parsers.regex
           nvim-treesitter-parsers.markdown
+          nvim-treesitter-parsers.markdown_inline
           nvim-treesitter-parsers.nix
           nvim-treesitter-parsers.norg
           nvim-treesitter-parsers.astro

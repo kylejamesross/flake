@@ -58,6 +58,7 @@
         wl-clipboard
         wlr-randr
         dbus
+        brightnessctl
 
         azure-cli
         insomnia
