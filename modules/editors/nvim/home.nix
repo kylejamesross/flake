@@ -106,7 +106,6 @@ in
           ChatGPT-nvim
           neodev-nvim
           typescript-nvim
-          noice-nvim
           ];
       extraConfig = ''
         :luafile ~/.config/nvim/lua/user/keymaps.lua

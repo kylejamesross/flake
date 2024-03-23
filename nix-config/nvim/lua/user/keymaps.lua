@@ -64,9 +64,6 @@ keymap("i", "<M-h>", "<Left>", { noremap = true, silent = true, desc = "Move lef
 keymap("v", "<Tab>", ">><Esc>gv", { noremap = true, silent = true, desc = "Increase Indent" })
 keymap("v", "<S-Tab>", "<<<Esc>gv", { noremap = true, silent = true, desc = "Descrease Indent" })
 
--- fix Y
-keymap("n", "Y", "y$", { noremap = true, silent = true, desc = "Yank Line" })
-
 -- editor
 keymap("n", "<Leader>e", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true, desc = "Explorer" })
 
