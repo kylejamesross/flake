@@ -24,8 +24,10 @@ bind = $mainMod, F8, exec, firefox --new-window https://teams.microsoft.com/
   '';
   customF9Bindings = if isDesktop then ''
 bind = $mainMod, F9, exec, brave --app=https://music.youtube.com/
+bind = $mainMod SHIFT, F9, exec, brave --app=https://app.plex.tv/desktop/#!/
   '' else ''
 bind = $mainMod, F9, exec, firefox --new-window https://music.youtube.com/
+bind = $mainMod SHIFT, F9, exec, firefox --new-window https://app.plex.tv/desktop/#!/
   '';
 
   workspaceBindings = if isDesktop then ''

@@ -51,7 +51,7 @@
 
         # work
         powershell
-        dotnet-sdk_8
+        unstable.dotnet-sdk_8
         sqlcmd
 
         # lsp
