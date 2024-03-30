@@ -127,6 +127,7 @@
         echo "$(cat ${config.sops.secrets.work_npmrc.path})" > /home/${user}/.npmrc
         mkdir -p /home/${user}/.ssh/
         echo "$(cat ${config.sops.secrets.id_ed25519.path})" > /home/${user}/.ssh/id_ed25519
+        chmod 600 /home/${user}/.ssh/id_ed25519
         echo "$(cat ${config.sops.secrets.feed_access_token.path})" > /home/${user}/.feed-access-token
         echo "$(cat ${config.sops.secrets.openai_api_key.path})" > /home/${user}/.openai-api-key
       '';
