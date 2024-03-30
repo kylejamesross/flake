@@ -2,12 +2,25 @@
 #  Main system configuration. More information available in configuration.nix(5) man page.
 #
 
-{ config, lib, pkgs, inputs, user, unstable, ... }:
+{ config, pkgs, inputs, user, ... }:
 
 {
   imports = [
     ../modules/shell/zsh.nix
+    inputs.sops-nix.nixosModules.sops
   ];
+
+  sops = {
+    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
+  };
+  sops.secrets = {
+    work_npmrc = { owner = user; };
+    id_ed25519 = { owner = user; };
+    feed_access_token = { owner = user; };
+    openai_api_key = { owner = user; };
+  };
 
   users.users.${user} = {
     isNormalUser = true;
@@ -109,4 +122,18 @@
   systemd.user.extraConfig = ''
     DefaultLimitNOFILE=65536
   '';
+  systemd.services."secret-service" = {
+    script = ''
+        echo "$(cat ${config.sops.secrets.work_npmrc.path})" > /home/${user}/.npmrc
+        mkdir -p /home/${user}/.ssh/
+        echo "$(cat ${config.sops.secrets.id_ed25519.path})" > /home/${user}/.ssh/id_ed25519
+        echo "$(cat ${config.sops.secrets.feed_access_token.path})" > /home/${user}/.feed-access-token
+        echo "$(cat ${config.sops.secrets.openai_api_key.path})" > /home/${user}/.openai-api-key
+      '';
+    serviceConfig = {
+      User = user;
+      WorkingDirectory = "/home/${user}/";
+    };
+    wantedBy = ["default.target"];
+  };
 }

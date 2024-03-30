@@ -1,9 +1,10 @@
 {
-  description = "My Personal NixOS and Darwin System Flake Configuration";
+  description = "NixOS Flake Configuration";
 
   inputs =
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
       home-manager = {
@@ -14,17 +15,20 @@
       nur.url = "github:nix-community/NUR";
 
       nix-colors.url = "github:misterio77/nix-colors";
+
+      sops-nix.url = "github:Mic92/sops-nix";
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, nix-colors, ... }:
+outputs =  { self, nixpkgs, ... }@inputs:
     let
       user = "kyle";
     in
     {
       nixosConfigurations = (
         import ./hosts {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager nur user nix-colors;
+          inherit nixpkgs;
+          inherit inputs;
+          inherit user;
         }
       );
     };

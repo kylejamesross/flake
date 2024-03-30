@@ -2,22 +2,24 @@
 #  These are the different profiles that can be used when building NixOS.
 #
 
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, nix-colors, ... }:
+{ inputs, nixpkgs, user, ... }:
 
 let
   system = "x86_64-linux";
 
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
-  unstable = import nixpkgs-unstable {
+  unstable = import inputs.nixpkgs-unstable {
     inherit system;
     config.allowUnfree = true;
   };
 
   lib = nixpkgs.lib;
+
+  nix-colors = inputs.nix-colors;
+
+  nur = inputs.nur;
+
+  home-manager = inputs.home-manager;
+
 in
 {
   desktop = lib.nixosSystem {
@@ -37,7 +39,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs unstable user nix-colors;
+        inherit inputs unstable user nix-colors system;
           host = {
             hostName = "desktop";
           };

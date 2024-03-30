@@ -13,6 +13,7 @@
 
     packages = with pkgs; [
         ansible
+        sops
         btop
         tealdeer
         gnutar
@@ -88,6 +89,8 @@
   xdg.configFile."waybar/nix-snowflake.svg".source = ../nix-config/waybar/nix-snowflake.svg;
   home.file.".face".source = ../nix-config/.face;
   home.file.".p10k.zsh".source = ../nix-config/.p10k.zsh;
+  home.file.".ssh/id_ed25519.pub".source = ../secrets/id_ed25519.pub;
+  home.file.".ssh/authorized_keys".source = ../secrets/id_ed25519.pub;
   home.file.".zshrc".source = ../nix-config/.zshrc;
   xdg.configFile."nvim" = {
     source = ../nix-config/nvim;
