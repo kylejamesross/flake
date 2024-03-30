@@ -57,7 +57,6 @@ monitor=,preferred,auto,auto
 exec-once = ${pkgs.swww}/bin/swww init
 exec-once = ${pkgs.waybar}/bin/waybar 
 exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet
-exec-once = ${pkgs.nextcloud-client}/bin/nextcloud
 exec-once = swayidle -w timeout 1200 'swaylock -f' timeout 2400 'systemctl suspend' before-sleep 'swaylock -f' &
 
 input {
