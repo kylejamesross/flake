@@ -2,34 +2,42 @@
   description = "NixOS Flake Configuration";
 
   inputs =
-    {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+  {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nur.url = "github:nix-community/NUR";
+    nix-colors.url = "github:misterio77/nix-colors";
+    sops-nix.url = "github:Mic92/sops-nix";
+  };
 
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-      home-manager = {
-        url = "github:nix-community/home-manager/release-23.11";
-        inputs.nixpkgs.follows = "nixpkgs";
+  outputs = { nixpkgs, self, ... }@inputs:
+  let
+    user = "kyle";
+    system = "x86_64-linux";
+    specialArgs = { inherit nixpkgs inputs user system; };
+  in 
+  {
+    nixosConfigurations = {
+      desktop = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        modules = [
+          ./hosts2/desktop/configuration.nix
+          ./home-manager-modules
+          ./nixos-modules
+        ];
       };
-
-      nur.url = "github:nix-community/NUR";
-
-      nix-colors.url = "github:misterio77/nix-colors";
-
-      sops-nix.url = "github:Mic92/sops-nix";
+      laptop = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        modules = [
+          ./hosts2/laptop/configuration.nix
+          ./home-manager-modules
+          ./nixos-modules
+        ];
+      };
     };
-
-outputs =  { self, nixpkgs, ... }@inputs:
-    let
-      user = "kyle";
-    in
-    {
-      nixosConfigurations = (
-        import ./hosts {
-          inherit nixpkgs;
-          inherit inputs;
-          inherit user;
-        }
-      );
-    };
+  };
 }
