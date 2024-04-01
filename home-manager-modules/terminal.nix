@@ -9,6 +9,7 @@
         ./programs/git
         ./programs/lazygit
         ./programs/swappy
+        ./programs/tealdeer
         ./services/nextcloud-autosync
         ./scripts
     ];
@@ -16,7 +17,6 @@
     home = {
         packages = with pkgs; [
             sops
-            tealdeer
             gnutar
             unzip
             unrar
