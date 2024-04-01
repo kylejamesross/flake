@@ -7,6 +7,7 @@
         ./programs/nvim
         ./programs/btop
         ./programs/git
+        ./programs/lf
         ./programs/lazygit
         ./programs/tealdeer
         ./scripts
