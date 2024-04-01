@@ -67,8 +67,6 @@
             vscode-extensions.vadimcn.vscode-lldb
         ];
 
-        file.".face".source = ./files/.face;
-        file.".p10k.zsh".source = ./files/.p10k.zsh;
         file.".ssh/id_ed25519.pub".source = ./files/id_ed25519.pub;
         file.".ssh/authorized_keys".source = ./files/id_ed25519.pub;
     };

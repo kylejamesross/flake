@@ -21,6 +21,7 @@
             inherit system;
             config.allowUnfree = true;
         };
+        home-manager = inputs.home-manager.nixosModules.home-manager;
     in 
     {
         nixosConfigurations = {
@@ -31,10 +32,10 @@
                     hostName = "desktop";
                 };
                 modules = [
-                    ./hosts/desktop/configuration.nix
-                    ./hosts/configuration.nix
+                    ./hosts/x86_64-linux
+                    ./hosts/desktop
                     ./nixos-modules
-                    inputs.home-manager.nixosModules.home-manager
+                    home-manager 
                     ./home-manager-modules
                 ];
             };
@@ -45,10 +46,10 @@
                     hostName = "laptop";
                 };
                 modules = [
-                    ./hosts/laptop/configuration.nix
-                    ./hosts/configuration.nix
+                    ./hosts/x86_64-linux
+                    ./hosts/laptop
                     ./nixos-modules
-                    inputs.home-manager.nixosModules.home-manager
+                    home-manager 
                     ./home-manager-modules
                 ];
             };
