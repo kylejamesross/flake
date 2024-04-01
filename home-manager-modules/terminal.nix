@@ -16,7 +16,6 @@
     home = {
         packages = with pkgs; [
             git
-            ansible
             sops
             tealdeer
             gnutar
