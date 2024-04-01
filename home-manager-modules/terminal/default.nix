@@ -8,9 +8,7 @@
         ./programs/btop
         ./programs/git
         ./programs/lazygit
-        ./programs/swappy
         ./programs/tealdeer
-        ./services/nextcloud-autosync
         ./scripts
     ];
 

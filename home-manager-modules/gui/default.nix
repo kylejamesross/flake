@@ -2,7 +2,7 @@
 
 {
     imports = [
-        ./mime.nix
+        ./programs/mime
         ./programs/thunar
         ./programs/hyprland
         ./programs/firefox
@@ -44,6 +44,7 @@
             piper
             xow_dongle-firmware
 
+            # work
             azure-cli
             insomnia
             jetbrains.rider

@@ -9,9 +9,9 @@
         };
         users.${user} = {
             imports = [
-                ./home.nix
-                ./gui.nix
-                ./terminal.nix
+                ./home
+                ./gui
+                ./terminal
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nur.hmModules.nur
             ];
