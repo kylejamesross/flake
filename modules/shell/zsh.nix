@@ -8,7 +8,7 @@
   programs = {
     zsh = {
       enable = true;
-      autosuggestions.enable = true;
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;
       histSize = 100000;
