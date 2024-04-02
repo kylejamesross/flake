@@ -26,7 +26,7 @@ with config.colorScheme.palette;
                 bind-key -r t run-shell "tmux neww -S -n ''"
                 bind-key -r e run-shell "tmux neww -S -n '' nvim"
                 bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
-                bind-key -r l run-shell "tmux neww -S -n '󱋣' lf"
+                bind-key -r l run-shell "tmux neww -S -n '󱋣' lf -single"
 
                 set -g default-terminal "screen-256color"
                 set -ga terminal-overrides ",xterm-256color:Tc"
