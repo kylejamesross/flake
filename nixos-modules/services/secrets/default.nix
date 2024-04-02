@@ -12,8 +12,6 @@
             chmod 644 /home/${user}/.ssh/authorized_keys
             echo "$(cat ${config.sops.secrets.feed_access_token.path})" > /home/${user}/.feed-access-token
             echo "$(cat ${config.sops.secrets.openai_api_key.path})" > /home/${user}/.openai-api-key
-            echo "$(cat ${config.sops.secrets.nextcloud_netrc.path})" > /home/${user}/.netrc
-            mkdir -p /home/${user}/nextcloud
         '';
         serviceConfig = {
             User = user;

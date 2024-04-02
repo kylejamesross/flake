@@ -107,6 +107,7 @@
             gt = "tar";
             gz = "zip";
             gv = "optimize_svg";
+            "g~" = "cd ~";
             gD = "cd ~/Downloads";
             gs = "cd ~/source";
             gbc = "cd ~/source/base-components";

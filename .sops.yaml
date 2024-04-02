@@ -1,7 +1,7 @@
 keys:
   - &primary age1p5ffzejv94jhd7y2tvsymg04ne2vurt6n3j29rqusksjswjmd5ssjs48c6
 creation_rules:
-  - path_regex: ./nixos-modules/programs/sops/secrets/secrets.yaml$
+  - path_regex: nixos-modules/programs/sops/secrets.yaml$
     key_groups:
     - age:
       - *primary
