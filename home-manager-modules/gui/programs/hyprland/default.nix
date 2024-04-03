@@ -18,12 +18,12 @@ with config.colorScheme.palette;
                 "HDMI-A-1,8, persistence:true"
                 "DP-2,9, persistence:true"
             ];
-            exec-once = ''
-                ${pkgs.swww}/bin/swww init
-                ${pkgs.waybar}/bin/waybar 
-                ${pkgs.networkmanagerapplet}/bin/nm-applet
-                ${pkgs.swayidle}/bin/swayidle -w timeout 1200 '${pkgs.swaylock-effects}/bin/swaylock -f' timeout 2400 'systemctl suspend' before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f' &
-            '';
+            exec-once = [
+                ''${pkgs.swww}/bin/swww init''
+                ''${pkgs.waybar}/bin/waybar ''
+                ''${pkgs.networkmanagerapplet}/bin/nm-applet''
+                ''${pkgs.swayidle}/bin/swayidle -w timeout 1200 '${pkgs.swaylock-effects}/bin/swaylock -f' timeout 2400 'systemctl suspend' before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f' &''
+            ];
             monitor = map
               (m:
                 let
