@@ -27,6 +27,7 @@
         inetutils
         zsh
         dconf
+        cifs-utils
     ];
 
     services = {

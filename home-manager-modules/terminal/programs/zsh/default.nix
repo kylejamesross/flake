@@ -20,6 +20,7 @@
             tsd = "sudo tailscale down";
             access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";
             g = "${osConfig.nixos-rebuild-command}";
+            musb = '' mkdir -p ~/usb && sudo mount "/dev/$(lsblk --list | fzf | awk '{print $1}')" ~/usb '';
         };
         plugins = [
             {

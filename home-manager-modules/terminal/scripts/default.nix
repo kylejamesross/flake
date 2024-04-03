@@ -1,16 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 {
     home = {
         packages = [
-            (import ../scripts/work-commit-message.nix { inherit pkgs; })
-            (import ../scripts/personal-commit-message.nix { inherit pkgs; })
-            (import ../scripts/tmux-sessionizer.nix { inherit pkgs; })
-            (import ../scripts/swww-randomizer.nix { inherit pkgs; })
-            (import ../scripts/git-pull-all.nix { inherit pkgs; })
-            (import ../scripts/git-add-commit-push-pr.nix { inherit pkgs; })
-            (import ../scripts/git-commit-push-pr.nix { inherit pkgs; })
-            (import ../scripts/git-push-pr.nix { inherit pkgs; })
+            (import ./work-commit-message.nix { inherit pkgs; })
+            (import ./personal-commit-message.nix { inherit pkgs; })
+            (import ./tmux-sessionizer.nix { inherit pkgs; })
+            (import ./swww-randomizer.nix { inherit pkgs; })
+            (import ./git-pull-all.nix { inherit pkgs; })
+            (import ./git-add-commit-push-pr.nix { inherit pkgs; })
+            (import ./git-commit-push-pr.nix { inherit pkgs; })
+            (import ./git-push-pr.nix { inherit pkgs; })
+            (import ./unraid-mount-unmount.nix { inherit pkgs user; })
         ];
     };
 }

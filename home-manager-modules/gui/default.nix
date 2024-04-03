@@ -3,7 +3,6 @@
 {
     imports = [
         ./programs/mime
-        ./programs/thunar
         ./programs/hyprland
         ./programs/firefox
         ./programs/kitty
