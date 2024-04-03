@@ -5,7 +5,6 @@
         ./programs/sops
         ./programs/steam
         ./programs/zsh
-        ./programs/hyprland
         ./services/printing
         ./services/secrets
         ./services/keyd
@@ -26,6 +25,7 @@
         bash
         inetutils
         zsh
+        dconf
     ];
 
     services = {

@@ -1,6 +1,10 @@
 { pkgs, inputs, user, ... }:
 
 {
+    imports = [
+        ./options
+    ];
+
     users.users.${user} = {
         isNormalUser = true;
         extraGroups = [ "wheel" "networkmanager" "docker" ];
