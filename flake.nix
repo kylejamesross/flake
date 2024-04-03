@@ -21,16 +21,14 @@
             inherit system;
             config.allowUnfree = true;
         };
+        specialArgs = { inherit nixpkgs inputs user unstable; };
         home-manager = inputs.home-manager.nixosModules.home-manager;
     in 
     {
         nixosConfigurations = {
+            inherit specialArgs;
             desktop = nixpkgs.lib.nixosSystem {
-                inherit system;
-                specialArgs = { 
-                    inherit nixpkgs inputs user unstable; 
-                    hostName = "desktop";
-                };
+                inherit system specialArgs;
                 modules = [
                     ./hosts/x86_64-linux
                     ./hosts/desktop
@@ -40,11 +38,7 @@
                 ];
             };
             laptop = nixpkgs.lib.nixosSystem {
-                inherit system;
-                specialArgs = { 
-                    inherit nixpkgs inputs user unstable; 
-                    hostName = "laptop";
-                };
+                inherit system specialArgs;
                 modules = [
                     ./hosts/x86_64-linux
                     ./hosts/laptop

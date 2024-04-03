@@ -1,4 +1,4 @@
-{ pkgs, hostName, ... }:
+{ pkgs, config, ... }:
 
 {
     users.defaultUserShell = pkgs.zsh;
@@ -21,7 +21,7 @@
                 tsu = "sudo tailscale up --accept-routes";
                 tsd = "sudo tailscale down";
                 access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";
-                g = "if [[ \"${hostName}\" == \"laptop\" ]]; then sudo nixos-rebuild switch --flake .#laptop; else sudo nixos-rebuild switch --flake .#desktop; fi";
+                g = "${config.nixos-rebuild-command}";
             };
             promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
             setOptions = [

@@ -1,4 +1,4 @@
-{ pkgs, config, osConfig, hostName, ... }:
+{ pkgs, config, osConfig, ... }:
 
 with config.colorScheme.palette;
 

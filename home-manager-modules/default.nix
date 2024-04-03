@@ -1,11 +1,11 @@
-{ nixpkgs, inputs, user, hostName, unstable, ...}: 
+{ nixpkgs, inputs, user, unstable, ...}: 
 
 {
     home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {
-            inherit nixpkgs inputs user hostName unstable;
+            inherit nixpkgs inputs user unstable;
         };
         users.${user} = {
             imports = [
