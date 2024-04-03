@@ -4,12 +4,12 @@
     imports = [
         ./programs/sops
         ./programs/steam
-        ./programs/zsh
         ./services/printing
         ./services/secrets
         ./services/keyd
         ./services/pipewire
         ./services/greetd
+        ./programs/zsh
     ];
 
     environment.systemPackages = with pkgs; [
