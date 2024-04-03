@@ -95,13 +95,17 @@ with config.colorScheme.palette;
                 " opacity 0.80 0.80,class:^(kitty)$"
                 " opacity 0.95 0.95,class:^(thunar)$"
             ];
+            "$mainMod" = "SUPER";
             binde = [
                 " CTRL, HOME, exec, pamixer -i 10"
                 " CTRL, END, exec, pamixer -d 10"
                 " CTRL, Next, exec, playerctl previous"
                 " CTRL, Prior, exec, playerctl next"
             ];
-            "$mainMod" = "SUPER";
+            bindm = [
+                "$mainMod, mouse:272, movewindow"
+                "$mainMod, mouse:273, resizewindow"
+            ];
             bind = [
                 " $mainMod, Return, exec,kitty --title Kitty tmux"
                 " $mainMod, C, killactive, "

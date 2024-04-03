@@ -10,6 +10,7 @@
         ./services/pipewire
         ./services/greetd
         ./programs/zsh
+        ./programs/hyprland
     ];
 
     environment.systemPackages = with pkgs; [
