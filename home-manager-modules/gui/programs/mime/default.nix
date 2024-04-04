@@ -12,7 +12,7 @@
             vectorViewers = ["org.inkspace.Inkscape.desktop"];
             videoViewers = ["mpv.desktop"];
             in {
-                "inode/directory" = ["thundar.desktop"];
+                "inode/directory" = ["lf.desktop"];
                 "text/plain" = textEditors;
                 "text/markdown" = textEditors;
                 "text/xml" = textEditors;
