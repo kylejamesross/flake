@@ -1,4 +1,6 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, config, osConfig, ... }:
+
+with config.colorScheme.palette;
 
 {
     programs.zsh = {
@@ -6,7 +8,45 @@
         enableCompletion = true;
         dotDir = ".config/zsh";
         enableAutosuggestions = true;
-        syntaxHighlighting.enable = true;
+        syntaxHighlighting = {
+            enable = true;
+            styles = {
+                default = "none";
+                unknown-token = "fg=#${base08},bold";
+                reserved-word = "fg=#${base0A}";
+                suffix-alias = "fg=#${base0B},underline";
+                global-alias = "fg=#${base0C}";
+                precommand = "fg=#${base0B},underline";
+                commandseparator = "none";
+                autodirectory = "fg=#${base0B},underline";
+                path = "underline";
+                path_pathseparator = "";
+                path_prefix_pathseparator = "";
+                globbing = "fg=#${base0D}";
+                history-expansion = "fg=#${base0D}";
+                command-substitution = "none";
+                command-substitution-delimiter = "fg=#${base0E}";
+                process-substitution = "none";
+                process-substitution-delimiter = "fg=#${base0E}";
+                single-hyphen-option = "none";
+                double-hyphen-option = "none";
+                back-quoted-argument = "none";
+                back-quoted-argument-delimiter = "fg=#${base0E}";
+                single-quoted-argument = "fg=#${base0A}";
+                double-quoted-argument = "fg=#${base0A}";
+                dollar-quoted-argument = "fg=#${base0A}";
+                rc-quote = "fg=#${base0C}";
+                dollar-double-quoted-argument = "fg=#${base0C}";
+                back-double-quoted-argument = "fg=#${base0C}";
+                back-dollar-quoted-argument = "fg=#${base0C}";
+                assign = "none";
+                redirection = "fg=#${base0A}";
+                comment = "fg=#${base01},bold";
+                named-fd = "none";
+                numeric-fd = "none";
+                arg0 = "fg=#${base0B}";
+            };
+        };
         history.size = 100000;
         shellAliases = {
             ls = "eza -bhal --icons --hyperlink --git --color auto";
