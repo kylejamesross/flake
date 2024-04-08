@@ -85,4 +85,9 @@
             package = pkgs.adwaita-qt;
         };
     };
+
+    xdg.configFile."wallpapers" = {
+        source = inputs.wallpapers;
+        recursive = true;
+    };
 }

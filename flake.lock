@@ -157,7 +157,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "wallpapers": "wallpapers"
       }
     },
     "sops-nix": {
@@ -176,6 +177,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712539937,
+        "narHash": "sha256-6XEBrKRFkmIVRGvw9esJlP8+mxuZ5nDWQbAJSYy/d2E=",
+        "owner": "kylejamesross",
+        "repo": "wallpapers",
+        "rev": "dd63b9092195e8996c5c171537b413e3743526ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kylejamesross",
+        "repo": "wallpapers",
         "type": "github"
       }
     }

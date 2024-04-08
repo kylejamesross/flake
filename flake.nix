@@ -12,6 +12,10 @@
         nur.url = "github:nix-community/NUR";
         nix-colors.url = "github:misterio77/nix-colors";
         sops-nix.url = "github:Mic92/sops-nix";
+        wallpapers = {
+            url = "github:kylejamesross/wallpapers";
+            flake = false;
+        };
     };
 
     outputs = { nixpkgs, nixpkgs-unstable, self, ... }@inputs:
