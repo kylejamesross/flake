@@ -94,6 +94,10 @@ with config.colorScheme.palette;
               export OPENAI_API_KEY=$(cat $HOME/.openai-api-key)
             fi
 
+            if [ -f "$HOME/.github-token" ]; then
+              export GH_TOKEN=$(cat $HOME/.github-token)
+            fi
+
             PATH="$PATH:$HOME/.local/bin"
             PATH="$PATH:/usr/share/dotnet"
             PATH="$PATH:$HOME/.dotnet/tools"

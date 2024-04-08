@@ -14,6 +14,7 @@
             id_ed25519 = { owner = user; };
             feed_access_token = { owner = user; };
             openai_api_key = { owner = user; };
+            github_token = { owner = user; };
         };
     };
 }

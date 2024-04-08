@@ -10,6 +10,7 @@
             [ -d /home/${user}/.ssh/ ] && chmod 700 /home/${user}/.ssh/
             echo "$(cat ${config.sops.secrets.feed_access_token.path})" > /home/${user}/.feed-access-token
             echo "$(cat ${config.sops.secrets.openai_api_key.path})" > /home/${user}/.openai-api-key
+            echo "$(cat ${config.sops.secrets.github_token.path})" > /home/${user}/.github-token
         '';
         serviceConfig = {
             User = user;
