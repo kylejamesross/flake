@@ -18,9 +18,6 @@ This repository houses my Nix configuration files for setting up my operating sy
 4. sudo rm /mnt/etc/nixos/configuration.nix
 5. sudo nixos-install --flake .#laptop
 
-## Setup secrets key
+### Setup secrets key
 mkdir -p ~/.config/sops/age/
 wl-paste >> ~/.config/sops/age/keys.txt
-
-### Post-installation
-1. ansible-playbook --ask-become-pass install-workplace.yml
