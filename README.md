@@ -19,5 +19,5 @@ This repository houses my Nix configuration files for setting up my operating sy
 5. sudo nixos-install --flake .#laptop
 
 ### Setup secrets key
-mkdir -p ~/.config/sops/age/
-wl-paste >> ~/.config/sops/age/keys.txt
+1. mkdir -p ~/.config/sops/age/
+2. wl-paste >> ~/.config/sops/age/keys.txt
