@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, user, ... }:
 
 {
     programs = {
@@ -216,6 +216,7 @@
                     "alerts.useSystemBackend" = true;
                     "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
                     "browser.preferences.search" = false;
+                    "browser.download.lastDir" = "/home/${user}/downloads";
                 };
             };
         };
