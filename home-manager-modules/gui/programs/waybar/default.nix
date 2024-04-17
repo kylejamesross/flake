@@ -8,5 +8,5 @@
 
   xdg.configFile."waybar/config.jsonc".source = ./config.jsonc;
   xdg.configFile."waybar/style.css".source = ./style.css;
-  xdg.configFile."waybar/nix-snowflake.svg".source = ./nix-snowflake.svg;
+  xdg.configFile."waybar/snowflake.svg".source = ./snowflake.svg;
 }

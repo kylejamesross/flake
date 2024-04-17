@@ -1,4 +1,4 @@
-{ pkgs, config, osConfig, ... }:
+{ pkgs, config, unstable, ... }:
 
 with config.colorScheme.palette;
 
@@ -59,7 +59,7 @@ with config.colorScheme.palette;
             tsu = "sudo tailscale up --accept-routes";
             tsd = "sudo tailscale down";
             access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";
-            g = "${osConfig.nixos-rebuild-command}";
+            g = "${unstable.nh}/bin/nh os switch";
             musb = '' mkdir -p ~/usb && sudo mount "/dev/$(lsblk --list | fzf | awk '{print $1}')" ~/usb '';
         };
         plugins = [

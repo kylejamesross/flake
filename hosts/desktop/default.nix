@@ -7,4 +7,5 @@
     ];
 
     boot.initrd.kernelModules = [ "amdgpu" ];
+    networking.hostName = "desktop";
 }

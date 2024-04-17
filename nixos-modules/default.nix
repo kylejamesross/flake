@@ -11,6 +11,7 @@
         ./services/greetd
         ./programs/zsh
         ./programs/hyprland
+        ./programs/nh
     ];
 
     environment.systemPackages = with pkgs; [
