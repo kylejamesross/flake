@@ -98,6 +98,7 @@
             a = "push %mkdir<space>";
             A = "push %touch<space>";
             r = "push :rename<space>";
+            R = "reload";
             "<enter>" = "open";
             "." = "set hidden!";
             D = "delete";
@@ -108,7 +109,7 @@
             gz = "zip";
             gv = "optimize_svg";
             "g~" = "cd ~";
-            gD = "cd ~/Downloads";
+            gd = "cd ~/downloads";
             gs = "cd ~/source";
             gbc = "cd ~/source/base-components";
             gbf = "cd ~/source/base-functionality";

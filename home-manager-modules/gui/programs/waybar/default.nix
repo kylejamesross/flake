@@ -1,4 +1,6 @@
-{ ... }:
+{ config, ... }:
+
+with config.colorScheme.palette;
 
 {
     xdg.configFile."waybar/snowflake.svg".source = ./snowflake.svg;
@@ -168,13 +170,13 @@
 }
 
 window#waybar {
-    background-color: @base01; /* header_bg_color */
-    color: @base05;
+    background-color: #${base01}; /* header_bg_color */
+    color: #${base05};
     transition-property: background-color;
     transition-duration: .5s;
     border-radius: 0;
-    border-top: 1px solid @base04; /* ligthened header_bg_color */
-    border-bottom: 1px solid @base04; /* ligthened header_bg_color */
+    border-top: 1px solid #${base04}; /* ligthened header_bg_color */
+    border-bottom: 1px solid #${base04}; /* ligthened header_bg_color */
 }
 
 .modules-left, .modules-center, .modules-right {
@@ -193,62 +195,62 @@ button:hover {
 
 #workspaces, .modules-right {
     border-radius: 10px;
-    background-color: @base02;
-    border: 1px solid @base04;
+    background-color: #${base02};
+    border: 1px solid #${base04};
 }
 
 #workspaces button {
     padding: 0 10px;
-    color: @base05;
+    color: #${base05};
 }
 
 #workspaces button.empty {
-    color: alpha(@base05, 0.5);
+    color: alpha(#${base05}, 0.5);
 }
 
 #workspaces button:hover {
-    color: @base07;
+    color: #${base07};
 }
 
 #workspaces button.focused {
-    color: @base07;
+    color: #${base07};
 }
 
 #workspaces button:nth-child(1).active {
-    color: @base09;
+    color: #${base09};
 }
 
 #workspaces button:nth-child(2).active {
-    color: @base0B;
+    color: #${base0B};
 }
 
 #workspaces button:nth-child(3).active {
-    color: @base0A;
+    color: #${base0A};
 }
 
 #workspaces button:nth-child(4).active {
-    color: @base09;
+    color: #${base09};
 }
 
 #workspaces button:nth-child(5).active {
-    color: @base0D;
+    color: #${base0D};
 }
 
 #workspaces button:nth-child(6).active {
-    color: @base0F;
+    color: #${base0F};
 }
 #workspaces button:nth-child(7).active {
-    color: @base0C;
+    color: #${base0C};
 }
 #workspaces button:nth-child(8).active {
-    color: @base0E;
+    color: #${base0E};
 }
 #workspaces button:nth-child(9).active {
-    color: @base0F;
+    color: #${base0F};
 }
 
 #workspaces button.urgent {
-    color: @red_1;
+    color: #${base08};
 }
 
 
@@ -297,135 +299,35 @@ button:hover {
 }
 
 #battery, #battery.charging, #battery.plugged, #cpu {
-    color: @green_1;
+    color: #${base0B};
 }
 
 #clock.date, #battery.warning:not(.charging), #disk {
-    color: @yellow_1;
+    color: #${base0A};
 }
 
 #clock, #battery.critical:not(.charging), #network.disconnected {
-    color: @red_1;
+    color: #${base08};
 }
 
 #memory {
-    color: @orange_1;
-}
-
-#backlight {
-    color: #90b1b1;
+    color: #${base09};
 }
 
 #pulseaudio {
-    color: @purple_1;
+    color: #${base0E};
 }
 
 #pulseaudio.muted {
-    color: alpha(@purple_1, 0.6);
+    color: alpha(#${base0E}, 0.6);
 }
 
 #pulseaudio.microphone, #network {
-    color: @blue_1;
+    color: #${base0D};
 }
 
 #custom-weather {
-    color: @base05;
-}
-
-#wireplumber {
-    color: #fff0f5;
-}
-
-#wireplumber.muted {
-    color: #f53c3c;
-}
-
-#custom-media {
-    color: #66cc99;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    color: #ffa000;
-}
-
-#temperature {
-    color: #f0932b;
-}
-
-#temperature.critical {
-    color: #eb4d4b;
-}
-
-#tray {
-    color: #2980b9;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    color: #ecf0f1;
-}
-
-#mpd {
-    color: #66cc99;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language {
-    color: #00b093;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    color: #97e1ad;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    color: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    color: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-    color: transparent;
+    color: #${base05};
 }
 
 label:focus {
@@ -439,7 +341,7 @@ label:focus {
 }
 
 #battery.critical:not(.charging) {
-    color: @red_1;
+    color: #${base08};
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
