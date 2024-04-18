@@ -12,6 +12,7 @@
             (import ./git-commit-push-pr { inherit pkgs; })
             (import ./git-push-pr { inherit pkgs; })
             (import ./unraid-mount-unmount { inherit pkgs user; })
+            (import ./gnome-terminal { inherit pkgs; })
         ];
     };
 }

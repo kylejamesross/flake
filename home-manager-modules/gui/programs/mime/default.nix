@@ -30,7 +30,7 @@
                 "image/x-portable-bitmap" = imageViewers;
                 "image/x-portable-graymap" = imageViewers;
                 "image/x-portable-anymap" = imageViewers;
-                "x-terminal-emulator" = ["kitty"];
+                "x-terminal-emulator" = ["kitty.desktop"];
                 "x-www-browser" = browsers;
                 "x-scheme-handler/http" = browsers;
                 "x-scheme-handler/https" = browsers;
