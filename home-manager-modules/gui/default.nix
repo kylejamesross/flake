@@ -57,7 +57,7 @@
         };
     };
 
-    colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+    colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
     gtk = {
         enable = true;
@@ -67,10 +67,7 @@
         };
         iconTheme = {
             name = "Papirus-Dark";
-            package = pkgs.catppuccin-papirus-folders.override {
-                accent = "blue";
-                flavor = "mocha";
-            };
+            package = pkgs.papirus-icon-theme;
         };
         font = {
             name = "JetBrains Mono";
