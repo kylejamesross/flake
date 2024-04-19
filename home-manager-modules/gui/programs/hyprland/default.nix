@@ -10,7 +10,6 @@ with config.colorScheme.palette;
             workspace = osConfig.workspaces;
             exec-once = [
                 ''${pkgs.swww}/bin/swww init''
-                ''${pkgs.waybar}/bin/waybar ''
                 ''${pkgs.networkmanagerapplet}/bin/nm-applet''
                 ''${pkgs.swayidle}/bin/swayidle -w timeout 1200 '${pkgs.swaylock-effects}/bin/swaylock -f' timeout 2400 'systemctl suspend' before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f' &''
             ];
