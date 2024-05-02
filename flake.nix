@@ -16,9 +16,10 @@
             url = "github:kylejamesross/wallpapers";
             flake = false;
         };
+        nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     };
 
-    outputs = { nixpkgs, nixpkgs-unstable, self, ... }@inputs:
+    outputs = { nixpkgs, nixpkgs-unstable, self, nixos-hardware, ... }@inputs:
         let user = "kyle";
         system = "x86_64-linux";
         unstable = import nixpkgs-unstable {
@@ -45,6 +46,7 @@
                 inherit system specialArgs;
                 modules = [
                     ./hosts/x86_64-linux
+                    nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen2
                     ./hosts/laptop
                     ./nixos-modules
                     home-manager 
