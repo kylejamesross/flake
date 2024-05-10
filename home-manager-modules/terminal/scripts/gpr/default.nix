@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.writeShellScriptBin "pr" ''
+pkgs.writeShellScriptBin "gpr" ''
 
 ${pkgs.git}/bin/git add -A
 
