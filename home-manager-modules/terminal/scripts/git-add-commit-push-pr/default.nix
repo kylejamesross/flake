@@ -17,7 +17,9 @@ body=$(echo "$commit_message" | tail -n +2)
 
 ${pkgs.git}/bin/git push origin HEAD
 
-pr_url=$(${pkgs.gh}/bin/gh pr create --title "$title" --body "$body" | tail -n 1)
+base_branch=$(${pkgs.git}/bin/git branch -r | ${pkgs.fzf}/bin/fzf)
+
+pr_url=$(${pkgs.gh}/bin/gh pr create --title $title --body $body --base $base_branch | tail -n 1)
 
 echo "$title - $pr_url" | wl-copy
 
