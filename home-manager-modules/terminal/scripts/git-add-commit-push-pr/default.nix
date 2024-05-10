@@ -6,6 +6,10 @@ ${pkgs.git}/bin/git add -A
 
 ${pkgs.git}/bin/git commit -e -m "$(work-commit-message)"
 
+if [ $? -eq 1 ]; then
+    exit 1
+fi
+
 commit_message=$(${pkgs.git}/bin/git log -1 --pretty=%B)
 
 title=$(echo "$commit_message" | head -n 1)
