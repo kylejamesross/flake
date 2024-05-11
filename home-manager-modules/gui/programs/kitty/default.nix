@@ -51,6 +51,7 @@ with config.colorScheme.palette;
                 color19  = "#${base02}";
                 color20  = "#${base04}";
                 color21  = "#${base06}";
+                clipboard_control = "write-primary write-clipboard no-append";
             };
         };
     };
