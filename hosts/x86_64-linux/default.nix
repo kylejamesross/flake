@@ -97,7 +97,6 @@
     ];
 
     systemd = {
-        watchdog.rebootTime = "5s";
         extraConfig = "DefaultLimitNOFILE=65536";
         user.extraConfig = "DefaultLimitNOFILE=65536";
     };
@@ -109,7 +108,10 @@
         };
     };
 
-    virtualisation.docker.enable = true;
+    virtualisation.docker = {
+        enable = true;
+        liveRestore = false;
+    };
 
     hardware.opengl = {
         enable = true;

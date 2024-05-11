@@ -109,7 +109,7 @@ with config.colorScheme.palette;
                 " $mainMod, T, togglesplit, # dwindle"
                 '' SHIFT, Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f - ''
                 '' , Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | wl-copy ''
-                " SUPER_SHIFT, F12, exec, shutdown now"
+                " SUPER_SHIFT, F12, exec, systemctl poweroff"
                 " SUPER_SHIFT, F11, exec, systemctl reboot"
                 " $mainMod, F12, exec, swww-randomizer"
                 " $mainMod, left, movefocus, l"
