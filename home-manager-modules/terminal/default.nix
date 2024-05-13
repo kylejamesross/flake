@@ -50,6 +50,7 @@
             nodePackages.typescript-language-server
             nodePackages.vscode-langservers-extracted
             nodePackages."@astrojs/language-server"
+            nodePackages."bash-language-server"
             rust-analyzer
             lua-language-server
             cargo
@@ -57,6 +58,7 @@
             rustfmt
             omnisharp-roslyn
             nil
+            shellcheck
 
             # debug adapters
             netcoredbg

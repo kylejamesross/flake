@@ -27,7 +27,7 @@ local extension_path = VSCODE_CODELLDB .. "/share/vscode/extensions/vadimcn.vsco
 local codelldb_path = extension_path .. "adapter/codelldb"
 local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 local capabilities = cmp_nvim_lsp.default_capabilities()
-local servers = { "html", "cssls", "eslint", "lua_ls", "omnisharp", "astro", "nil_ls", "tsserver" }
+local servers = { "bashls", "html", "cssls", "eslint", "lua_ls", "omnisharp", "astro", "nil_ls", "tsserver" }
 
 local signs = {
 	Error = "",
@@ -102,6 +102,13 @@ lspConfig.lua_ls.setup({
 	},
 	capabilities = capabilities,
 })
+
+lspConfig.bashls.setup({
+	on_attach = function(client, bufnr)
+		on_attach_global(client, bufnr)
+	end,
+	capabilities = capabilities,
+});
 
 lspConfig.eslint.setup({
 	on_attach = function(client, bufnr)
