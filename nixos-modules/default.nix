@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 {
     imports = [
@@ -35,6 +35,9 @@
         gnome.gnome-keyring.enable = true;
         gvfs.enable = true;
         tumbler.enable = true;
-        tailscale.enable = true;
+        tailscale = {
+            enable = true;
+            package = unstable.tailscale;
+        };
     };
 }
