@@ -22,7 +22,7 @@
                     engines = {
                         "searxng" = {
                             urls = [{
-                                template = "https://searxng.online/search";
+                                template = "https://searxng.kylejamesross.com/search";
                                 params = [
                                 { name = "q"; value = "{searchTerms}"; }
                                 ];

@@ -107,11 +107,6 @@ with config.colorScheme.palette;
                 " $mainMod, P, exec, ${pkgs.wofi}/bin/wofi --allow-images --show drun"
                 " $mainMod, D, pseudo, # dwindle"
                 " $mainMod, T, togglesplit, # dwindle"
-                '' SHIFT, Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f - ''
-                '' , Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | wl-copy ''
-                " SUPER_SHIFT, F12, exec, systemctl poweroff"
-                " SUPER_SHIFT, F11, exec, systemctl reboot"
-                " $mainMod, F12, exec, swww-randomizer"
                 " $mainMod, left, movefocus, l"
                 " $mainMod, right, movefocus, r"
                 " $mainMod, up, movefocus, u"
@@ -133,12 +128,18 @@ with config.colorScheme.palette;
                 " $mainMod, F6, workspace, 6"
                 " $mainMod, F6, exec, ${pkgs.joplin-desktop}/bin/joplin-desktop"
                 " $mainMod, F7, workspace, 7"
-                " $mainMod, F7, exec, ${pkgs.thunderbird}/bin/thunderbird"
+                " $mainMod, F7, exec, ${pkgs.brave}/bin/brave --app=https://mail.proton.me/u/8/inbox"
+                " $mainMod SHIFT, F7, exec, ${pkgs.brave}/bin/brave --app=https://outlook.office.com/"
                 " $mainMod, F8, workspace, 8"
                 " $mainMod, F8, exec, ${pkgs.brave}/bin/brave --app=https://teams.microsoft.com/"
                 " $mainMod, F9, workspace, 9"
                 " $mainMod, F9, exec, ${pkgs.brave}/bin/brave --app=https://music.youtube.com/"
                 " $mainMod SHIFT, F9, exec, ${pkgs.brave}/bin/brave --app=https://app.plex.tv/desktop/#!/"
+                " SUPER_SHIFT, F11, exec, systemctl reboot"
+                " SUPER_SHIFT, F12, exec, systemctl poweroff"
+                " $mainMod, F12, exec, swww-randomizer"
+                '' , Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | wl-copy ''
+                '' SHIFT, Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f - ''
                 " $mainMod, 1, workspace, 1"
                 " $mainMod, 2, workspace, 2"
                 " $mainMod, 3, workspace, 3"

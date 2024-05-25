@@ -7,7 +7,6 @@
                 let
                 textEditors = ["writer.desktop"];
             browsers = ["firefox.desktop"];
-            mailClients = ["userapp-Thunderbird-WKLTC2.desktop"];
             imageViewers = ["swappy.desktop" "gimp.desktop"];
             vectorViewers = ["org.inkspace.Inkscape.desktop"];
             videoViewers = ["mpv.desktop"];
@@ -35,8 +34,6 @@
                 "x-scheme-handler/http" = browsers;
                 "x-scheme-handler/https" = browsers;
                 "x-scheme-handler/chrome" = browsers;
-                "x-scheme-handler/mailto" = mailClients;
-                "x-scheme-handler/mid" = mailClients;
                 "application/x-extension-htm" = browsers;
                 "application/x-extension-html" = browsers;
                 "application/x-extension-shtml" = browsers;
@@ -44,7 +41,6 @@
                 "application/x-extension-xhtml" = browsers;
                 "application/xhtml+xml" = browsers;
                 "application/xml" = browsers;
-                "message/rfc822" = mailClients;
                 "audio/flac" = videoViewers;
                 "audio/mp4" = videoViewers;
                 "audio/mpeg" = videoViewers;

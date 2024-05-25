@@ -16,7 +16,6 @@
 
     home = {
         packages = with pkgs; [
-            thunderbird
             brave
             dbeaver
             mpv
