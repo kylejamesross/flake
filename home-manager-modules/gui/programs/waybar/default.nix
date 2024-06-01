@@ -1,9 +1,8 @@
 { config, ... }:
 
-with config.lib.stylix.colors;
+with config.lib.stylix.colors.withHashtag;
 
 {
-    xdg.configFile."waybar/snowflake.svg".source = ./snowflake.svg;
     programs.waybar = {
         enable = true;
         systemd.enable = true;
@@ -13,20 +12,19 @@ with config.lib.stylix.colors;
                 passthrough = false;
                 "gtk-layer-shell" = true;
                 "modules-left" = [
-                    "custom/logo"
-                        "hyprland/workspaces"
+                    "hyprland/workspaces"
                 ];
                 "modules-right" = [
                     "tray"
-                        "cpu"
-                        "disk"
-                        "memory"
-                        "pulseaudio"
-                        "pulseaudio#microphone"
-                        "battery"
-                        "custom/weather"
-                        "clock#date"
-                        "clock#time"
+                    "custom/weather"
+                    "battery"
+                    "cpu"
+                    "disk"
+                    "memory"
+                    "pulseaudio"
+                    "pulseaudio#microphone"
+                    "clock#date"
+                    "clock#time"
                 ];
                 "custom/logo" = {
                     format = "  ";
@@ -52,7 +50,7 @@ with config.lib.stylix.colors;
                         "9" = "";
                         "10" = "";
                     };
-                    "persistent_workspaces" = {
+                    "persistent-workspaces" = {
                         "*" = [1 2 3 4 5 6 7 8 9 10];
                     };
                 };
@@ -82,8 +80,8 @@ with config.lib.stylix.colors;
                     "format-icons" = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
                 };
                 tray = {
-                    "icon-size" = 21;
-                    spacing = 5;
+                    "icon-size" = 23;
+                    spacing = 10;
                 };
                 cpu = {
                     interval = 10;
@@ -98,7 +96,7 @@ with config.lib.stylix.colors;
                     format = " {used:0.1f}/{total:0.1f}GB";
                 };
                 pulseaudio = {
-                    format = "{icon}  {volume}%";
+                    format = "{icon} {volume}%";
                     tooltip = false;
                     "format-muted" = " Muted";
                     "on-click" = "pamixer -t";
@@ -114,8 +112,8 @@ with config.lib.stylix.colors;
                         car = "";
                         default = [
                             ""
-                                ""
-                                ""
+                            ""
+                            ""
                         ];
                     };
                 };
@@ -165,189 +163,160 @@ with config.lib.stylix.colors;
         };
         style = ''
 * {
-    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+	border: none;
+	border-radius: 10px;
+	font-family: "JetbrainsMono Nerd Font";
+	font-size: 15px;
+	min-height: 10px;
 }
 
 window#waybar {
-    background-color: #${base01}; /* header_bg_color */
-    color: #${base05};
-    transition-property: background-color;
-    transition-duration: .5s;
-    border-radius: 0;
-    border-top: 1px solid #${base04}; /* ligthened header_bg_color */
-    border-bottom: 1px solid #${base04}; /* ligthened header_bg_color */
+	background: transparent;
 }
 
-.modules-left, .modules-center, .modules-right {
-    margin: 7px;
+window#waybar.hidden {
+	opacity: 0.2;
 }
 
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
-}
-
-button:hover {
-    background: inherit;
-}
-
-#workspaces, .modules-right {
-    border-radius: 10px;
-    background-color: #${base02};
-    border: 1px solid #${base04};
-}
-
-#workspaces button {
-    padding: 0 10px;
-    color: #${base05};
+#workspaces  {
+    background-color: ${base00};
 }
 
 #workspaces button.empty {
-    color: alpha(#${base05}, 0.5);
+    color: alpha(${base05}, 0.5);
 }
 
 #workspaces button:hover {
-    color: #${base07};
+    color: ${base07};
+    background: transparent;
 }
 
 #workspaces button.focused {
-    color: #${base07};
+    color: ${base07};
 }
 
 #workspaces button:nth-child(1).active {
-    color: #${base09};
+    color: ${base09};
 }
 
 #workspaces button:nth-child(2).active {
-    color: #${base0B};
+    color: ${base0B};
 }
 
 #workspaces button:nth-child(3).active {
-    color: #${base0A};
+    color: ${base0A};
 }
 
 #workspaces button:nth-child(4).active {
-    color: #${base09};
+    color: ${base09};
 }
 
 #workspaces button:nth-child(5).active {
-    color: #${base0D};
+    color: ${base0D};
 }
 
 #workspaces button:nth-child(6).active {
-    color: #${base0F};
+    color: ${base0F};
 }
 #workspaces button:nth-child(7).active {
-    color: #${base0C};
+    color: ${base0C};
 }
 #workspaces button:nth-child(8).active {
-    color: #${base0E};
+    color: ${base0E};
 }
+
 #workspaces button:nth-child(9).active {
-    color: #${base0F};
+    color: ${base0F};
 }
 
 #workspaces button.urgent {
-    color: #${base08};
-}
-
-
-#custom-logo {
-    font-size: 1.5rem;
-    background: url('/home/kyle/.config/waybar/snowflake.svg');
-    background-size: 24px 24px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0 6px;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
+    color: ${base08};
 }
 
 #window,
-#workspaces {
-    margin: 0 4px;
+#workspaces,
+#battery.charging,
+#battery.plugged,
+#battery.critical:not(.charging),
+#pulseaudio,
+#battery,
+#clock,
+#memory,
+#disk,
+#cpu,
+#tray,
+#custom-weather {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+#window {
+	color: transparent;
+	background: transparent;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#battery, #battery.charging, #battery.plugged, #cpu {
-    color: #${base0B};
-}
-
-#clock.date, #battery.warning:not(.charging), #disk {
-    color: #${base0A};
-}
-
-#clock, #battery.critical:not(.charging), #network.disconnected {
-    color: #${base08};
-}
-
-#memory {
-    color: #${base09};
+#battery.charging,
+#battery.plugged,
+#battery.critical:not(.charging),
+#network,
+#pulseaudio,
+#battery,
+#backlight,
+#clock,
+#memory,
+#disk,
+#cpu,
+#custom-weather {
+	color: ${base00}; /* base */
 }
 
 #pulseaudio {
-    color: #${base0E};
+	background: ${base0A}; /* yellow */;
 }
 
-#pulseaudio.muted {
-    color: alpha(#${base0E}, 0.6);
-}
-
-#pulseaudio.microphone, #network {
-    color: #${base0D};
+#clock, #battery, #battery.charging, #battery.plugged, #custom-weather {
+	background: ${base0B}; /* green */
 }
 
 #custom-weather {
-    color: #${base05};
+	background-color: ${base00}; /* base */
+	color: ${base05}; /* text */
 }
 
-label:focus {
-    color: #000000;
+#memory, #disk {
+	background: ${base0E}; /* purple */
+}
+
+#cpu {
+	background: ${base0D}; /* blue */
+}
+
+#tray {
+	color: ${base0C};
+	background: ${base00}; /* base */
 }
 
 @keyframes blink {
-    to {
-    color: #ffffff;
-    }
+	to {
+	    background-color: ${base00}; /* base */
+		color: ${base08}; /* red */
+	}
 }
 
 #battery.critical:not(.charging) {
-    color: #${base08};
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+	background-color: ${base08}; /* red */
+	color: ${base00}; /* base */
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
-        '';
+'';
     };
 }

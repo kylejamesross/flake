@@ -12,6 +12,7 @@
                 ./home
                 ./gui
                 ./terminal
+                ./stylix
                 inputs.nur.hmModules.nur
                 inputs.nixvim.homeManagerModules.nixvim
             ];

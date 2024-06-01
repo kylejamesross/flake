@@ -8,4 +8,5 @@
     };
 
     programs.home-manager.enable = true;
+    stylix.targets.waybar.enable = false;
 }
