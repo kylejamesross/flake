@@ -1,4 +1,4 @@
-{ pkgs, config, unstable, ... }:
+{ pkgs, config, ... }:
 
 with config.lib.stylix.colors;
 
@@ -59,7 +59,7 @@ with config.lib.stylix.colors;
             tsu = "sudo tailscale up --accept-routes";
             tsd = "sudo tailscale down";
             access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";
-            g = "${unstable.nh}/bin/nh os switch";
+            g = "${pkgs.nh}/bin/nh os switch";
             musb = '' mkdir -p ~/usb && sudo mount "/dev/$(lsblk --list | fzf | awk '{print $1}')" ~/usb '';
         };
         plugins = [

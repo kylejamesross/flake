@@ -1,12 +1,12 @@
-{ unstable, user, ... }: 
+{ user, ... }: 
 
 {
-  environment.sessionVariables = {
-    FLAKE = "/home/${user}/flake";
+  programs.nh = {
+      enable = true;
+      clean = {
+          enable = true;
+          extraArgs = "--keep-since 4d --keep 3";
+      };
+      flake = "/home/${user}/flake";
   };
-
-  environment.systemPackages = [
-    unstable.nh
-  ];
-
 }
