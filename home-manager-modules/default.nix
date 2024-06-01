@@ -13,6 +13,7 @@
                 ./gui
                 ./terminal
                 inputs.nur.hmModules.nur
+                inputs.nixvim.homeManagerModules.nixvim
             ];
         };
     };

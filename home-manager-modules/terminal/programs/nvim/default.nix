@@ -1,12 +1,12 @@
 { pkgs, nixpkgs, config, ... }:
 
 {
-    programs.neovim = {
+    programs.nixvim = {
         enable = true;
         viAlias = true;
         vimAlias = true;
 
-        plugins = with pkgs.vimPlugins; [
+        extraPlugins = with pkgs.vimPlugins; [
             popup-nvim
             plenary-nvim
             vim-sleuth
@@ -53,7 +53,6 @@
             telescope-media-files-nvim
             telescope-ui-select-nvim
             telescope-undo-nvim
-            base16-nvim
             gitsigns-nvim
             lualine-nvim
             nvim-scrollbar
@@ -78,11 +77,11 @@
             neodev-nvim
             typescript-nvim
         ];
-        extraConfig = ''
+        extraConfigVim = ''
             :luafile ~/.config/nvim/lua/user/keymaps.lua
             :luafile ~/.config/nvim/lua/user/options.lua
         '';
-        extraLuaConfig = import ./extra-lua-config.nix { inherit nixpkgs config; };
+        extraConfigLua = import ./extra-lua-config.nix { inherit nixpkgs config; };
     };
 
     xdg.configFile."nvim" = {
