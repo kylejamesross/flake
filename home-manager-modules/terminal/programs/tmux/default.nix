@@ -20,11 +20,11 @@ with config.colorScheme.palette;
 
                 bind-key -r f run-shell "tmux neww tmux-sessionizer"
                 bind-key -r v run-shell "tmux neww -S -n '󰊢' lazygit"
-                bind-key -r . run-shell "tmux neww -S -n '' btop"
+                bind-key -r . run-shell "tmux neww -S -n '󰊚' btop"
                 bind-key -r R run-shell "tmux source ~/.tmux.conf"
                 bind-key -r / run-shell "tmux neww -S -n ''"
                 bind-key -r t run-shell "tmux neww -S -n ''"
-                bind-key -r e run-shell "tmux neww -S -n '' nvim"
+                bind-key -r e run-shell "tmux neww -S -n '' nvim"
                 bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
                 bind-key -r \' run-shell "tmux neww -S -n '󱋣' lf -single"
 

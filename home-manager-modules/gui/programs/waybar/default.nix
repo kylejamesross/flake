@@ -98,7 +98,7 @@ with config.colorScheme.palette;
                     format = " {used:0.1f}/{total:0.1f}GB";
                 };
                 pulseaudio = {
-                    format = "{icon} {volume}%";
+                    format = "{icon}  {volume}%";
                     tooltip = false;
                     "format-muted" = " Muted";
                     "on-click" = "pamixer -t";
@@ -127,7 +127,7 @@ with config.colorScheme.palette;
                     "scroll-step" = 5;
                 };
                 "clock#date" = {
-                    format = "{: %a, %b %e}";
+                    format = " {:%a, %b %e}";
                     "tooltip-format" = "<tt><small>{calendar}</small></tt>";
                     calendar = {
                         mode = "month";
@@ -152,7 +152,7 @@ with config.colorScheme.palette;
                     };
                 };
                 "clock#time" = {
-                    format = "{: %I:%M %p}";
+                    format = "󰅐 {:%I:%M %p}";
                 };
                 "custom/weather" = {
                     format = "{}°";

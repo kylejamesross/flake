@@ -22,7 +22,7 @@
             zip
             yazi
             tig
-            shell_gpt
+            shell-gpt
             gh
             ripgrep
             jaq

@@ -53,7 +53,7 @@
             telescope-media-files-nvim
             telescope-ui-select-nvim
             telescope-undo-nvim
-            nvim-base16
+            base16-nvim
             gitsigns-nvim
             lualine-nvim
             nvim-scrollbar

@@ -17,7 +17,7 @@
     home = {
         packages = with pkgs; [
             brave
-            dbeaver
+            dbeaver-bin
             mpv
             gimp
             inkscape

@@ -33,7 +33,7 @@ with config.colorScheme.palette;
             general = {
                 gaps_in = 5;
                 gaps_out = 10;
-                border_size = 2.5;
+                border_size = 2;
                 "col.active_border" = "rgba(${base0E}ff) rgba(${base0D}ff) 45deg";
                 "col.inactive_border" = "rgba(${base03}ff)";
                 layout = "dwindle";
@@ -77,7 +77,8 @@ with config.colorScheme.palette;
             gestures = {
                 workspace_swipe = "off";
             };
-            "device:epic-mouse-v1" = {
+            device = {
+                name = "epic-mouse-v1";
                 sensitivity = -0.5;
             };
             windowrulev2 = [
@@ -122,7 +123,7 @@ with config.colorScheme.palette;
                 " $mainMod, F3, workspace, 3"
                 " $mainMod, F3, exec, ${pkgs.firefox}/bin/firefox --new-window"
                 " $mainMod, F4, workspace, 4"
-                " $mainMod, F4, exec, ${pkgs.dbeaver}/bin/dbeaver"
+                " $mainMod, F4, exec, ${pkgs.dbeaver-bin}/bin/dbeaver"
                 " $mainMod, F5, workspace, 5"
                 " $mainMod, F5, exec, ${pkgs.jetbrains.rider}/bin/rider"
                 " $mainMod, F6, workspace, 6"
