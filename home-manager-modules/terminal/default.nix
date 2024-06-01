@@ -10,6 +10,7 @@
         ./programs/lf
         ./programs/lazygit
         ./programs/tealdeer
+        ./programs/bat
         ./scripts
     ];
 
@@ -28,7 +29,6 @@
             jaq
             fd
             eza
-            bat
             du-dust
             nodejs_20
             bun
