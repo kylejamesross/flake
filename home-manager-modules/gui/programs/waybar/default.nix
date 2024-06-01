@@ -12,6 +12,7 @@ with config.lib.stylix.colors.withHashtag;
                 passthrough = false;
                 "gtk-layer-shell" = true;
                 "modules-left" = [
+                    "custom/logo"
                     "hyprland/workspaces"
                 ];
                 "modules-right" = [
@@ -27,8 +28,7 @@ with config.lib.stylix.colors.withHashtag;
                     "clock#time"
                 ];
                 "custom/logo" = {
-                    format = "  ";
-                    "on-click" = "";
+                    format = "󱄅";
                     tooltip = false;
                 };
                 "hyprland/workspaces" = {
@@ -46,7 +46,7 @@ with config.lib.stylix.colors.withHashtag;
                         "5" = "󰌛";
                         "6" = "";
                         "7" = "󰇮";
-                        "8" = "";
+                        "8" = "󰊻";
                         "9" = "";
                         "10" = "";
                     };
@@ -89,7 +89,7 @@ with config.lib.stylix.colors.withHashtag;
                 };
                 disk = {
                     interval = 60;
-                    format = " {percentage_used}%";
+                    format = "󰋊 {percentage_used}%";
                 };
                 memory = {
                     interval = 30;
@@ -245,7 +245,8 @@ window#waybar.hidden {
 #disk,
 #cpu,
 #tray,
-#custom-weather {
+#custom-weather,
+#custom-logo {
 	margin-top: 6px;
 	margin-left: 8px;
 	padding-left: 10px;
@@ -271,16 +272,17 @@ window#waybar.hidden {
 #memory,
 #disk,
 #cpu,
-#custom-weather {
+#custom-logo {
 	color: ${base00}; /* base */
 }
 
-#pulseaudio {
-	background: ${base0A}; /* yellow */;
+#custom-logo {
+    padding-right: 15px;
 }
 
-#clock, #battery, #battery.charging, #battery.plugged, #custom-weather {
-	background: ${base0B}; /* green */
+#tray {
+	color: ${base05}; /* text */
+	background: ${base00}; /* base */
 }
 
 #custom-weather {
@@ -288,17 +290,39 @@ window#waybar.hidden {
 	color: ${base05}; /* text */
 }
 
-#memory, #disk {
-	background: ${base0E}; /* purple */
+#custom-logo {
+    background: ${base0F}; /* pink */
 }
 
 #cpu {
-	background: ${base0D}; /* blue */
+    background: ${base08}; /* red */
 }
 
-#tray {
-	color: ${base0C};
-	background: ${base00}; /* base */
+#disk {
+	background: ${base09}; /* orange */
+}
+
+#memory {
+	background: ${base0A}; /* yellow */;
+}
+
+#pulseaudio {
+	background: ${base0B}; /* green */;
+}
+
+#pulseaudio.microphone {
+	background: ${base0C}; /* teal */;
+}
+
+#clock {
+    background: ${base0E}; /* purple */
+}
+#clock.date {
+    background: ${base0D}; /* blue */
+}
+
+#battery, #battery.charging, #battery.plugged {
+	background: ${base0B}; /* green */
 }
 
 @keyframes blink {
