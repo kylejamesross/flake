@@ -6,7 +6,6 @@
         ./programs/hyprland
         ./programs/firefox
         ./programs/kitty
-        ./programs/gtk
         ./programs/swaylock
         ./programs/swappy
         ./programs/waybar
@@ -49,27 +48,15 @@
         ];
 
         pointerCursor = {
-            gtk.enable = true;
-            name = "Bibata-Modern-Ice";
-            package = pkgs.bibata-cursors;
             size = 32;
         };
     };
 
-    colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
-
     gtk = {
         enable = true;
-        theme = {
-            package = pkgs.adw-gtk3;
-            name = "adw-gtk3";
-        };
         iconTheme = {
             name = "Papirus-Dark";
             package = pkgs.papirus-icon-theme;
-        };
-        font = {
-            name = "JetBrains Mono";
         };
     };
 

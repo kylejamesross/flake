@@ -2,6 +2,7 @@
 
 {
     imports = [
+        ./programs/stylix
         ./programs/sops
         ./programs/steam
         ./services/printing

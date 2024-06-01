@@ -1,14 +1,7 @@
-{ pkgs, config, inputs, lib, ... }:
+{ pkgs, config, ... }:
 
-with config.colorScheme.palette;
-with inputs.nix-colors.lib-core.conversions;
-with lib;
+with config.lib.stylix.colors;
 
-let 
-    base08RGB = hexToRGB base08;
-    base0BRGB = hexToRGB base0B;
-    base0DRGB = hexToRGB base0D;
-in
 {
     home = {
         packages = with pkgs; [
@@ -22,16 +15,16 @@ in
     use_pager = false
 
     [style.command_name]
-    foreground = { rgb = { r = ${toString ( elemAt base08RGB 0 )}, g = ${toString ( elemAt base08RGB 1 )}, b = ${toString ( elemAt base08RGB 2 ) } } }
+    foreground = { rgb = { r = ${base08-rgb-r}, g = ${base08-rgb-g}, b = ${base08-rgb-b } } }
 
     [style.example_text]
-    foreground = { rgb = { r = ${toString ( elemAt base0BRGB 0 )}, g = ${toString ( elemAt base0BRGB 1 )}, b = ${toString ( elemAt base0BRGB 2 ) } } }
+    foreground = { rgb = { r = ${base0B-rgb-r}, g = ${base0B-rgb-g}, b = ${base0B-rgb-b } } }
 
     [style.example_code]
-    foreground = { rgb = { r = ${toString ( elemAt base0DRGB 0 )}, g = ${toString ( elemAt base0DRGB 1 )}, b = ${toString ( elemAt base0DRGB 2 ) } } }
+    foreground = { rgb = { r = ${base0D-rgb-r}, g = ${base0D-rgb-g}, b = ${base0D-rgb-b } } }
 
     [style.example_variable]
-    foreground = { rgb = { r = ${toString ( elemAt base0DRGB 0 )}, g = ${toString ( elemAt base0DRGB 1 )}, b = ${toString ( elemAt base0DRGB 2 ) } } }
+    foreground = { rgb = { r = ${base0D-rgb-r}, g = ${base0D-rgb-g}, b = ${base0D-rgb-b } } }
     underline = true
 
     [updates]

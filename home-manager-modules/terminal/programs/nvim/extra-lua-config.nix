@@ -4,7 +4,7 @@ let
     colorUtils = import ./colors.nix { lib = nixpkgs.lib; };
 in
     with colorUtils;
-    with config.colorScheme.palette;
+    with config.lib.stylix.colors;
 let
     percent = -70;
     darkRed = shadeColor { color = base08; percent = percent; };

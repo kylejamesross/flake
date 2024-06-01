@@ -1,6 +1,6 @@
 { config, ... }:
 
-with config.colorScheme.palette;
+with config.lib.stylix.colors;
 
 {
     programs = {

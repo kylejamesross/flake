@@ -1,6 +1,4 @@
-{ pkgs, config, osConfig, ... }:
-
-with config.colorScheme.palette;
+{ pkgs, osConfig, ... }:
 
 {
     wayland.windowManager.hyprland = {
@@ -34,8 +32,6 @@ with config.colorScheme.palette;
                 gaps_in = 5;
                 gaps_out = 10;
                 border_size = 2;
-                "col.active_border" = "rgba(${base0E}ff) rgba(${base0D}ff) 45deg";
-                "col.inactive_border" = "rgba(${base03}ff)";
                 layout = "dwindle";
                 allow_tearing = false;
             };
@@ -53,7 +49,6 @@ with config.colorScheme.palette;
                 drop_shadow = true;
                 shadow_range = 4;
                 shadow_render_power = 3;
-                "col.shadow" = "rgba(1a1a1aee)";
             };
             animations = {
                 enabled = "yes";
