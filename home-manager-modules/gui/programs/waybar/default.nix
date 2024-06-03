@@ -16,6 +16,7 @@ with config.lib.stylix.colors.withHashtag;
                     "custom/logo"
                     "hyprland/workspaces"
                     "cava"
+                    "mpris"
                 ];
                 "modules-right" = [
                     "tray"
@@ -73,6 +74,18 @@ with config.lib.stylix.colors.withHashtag;
                     actions = {
                         "on-click-right" = "mode";
                     };
+                };
+                "mpris" = {
+                    format = " {dynamic} | {status_icon}";
+                    interval = 1;
+                    dynamic-len = 40;
+                    status-icons = {
+                        playing = "▶";
+                        paused = "⏸";
+                        stopped = "";
+                    };
+                    dynamic-order = ["title" "artist"];
+                    ignored-players = ["firefox"];
                 };
                 "wlr/taskbar" = {
                     format = "{icon} {title:.25}";
@@ -198,8 +211,8 @@ window#waybar.hidden {
 	opacity: 0.2;
 }
 
-#workspaces, #cava  {
-    background-color: ${base00};
+#workspaces, #cava, #mpris, #tray, #custom-weather {
+	background-color: ${base00}; /* base */
 }
 
 #workspaces button.empty {
@@ -267,6 +280,7 @@ window#waybar.hidden {
 #tray,
 #custom-weather,
 #cava,
+#mpris,
 #custom-logo {
 	margin-top: 6px;
 	margin-left: 8px;
@@ -302,13 +316,7 @@ window#waybar.hidden {
 	font-size: 20px;
 }
 
-#tray {
-	color: ${base05}; /* text */
-	background: ${base00}; /* base */
-}
-
-#custom-weather {
-	background-color: ${base00}; /* base */
+#custom-weather, #tray {
 	color: ${base05}; /* text */
 }
 

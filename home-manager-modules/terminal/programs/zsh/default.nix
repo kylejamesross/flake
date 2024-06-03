@@ -98,8 +98,6 @@ with config.lib.stylix.colors;
               export GH_TOKEN=$(cat $HOME/.github-token)
             fi
 
-            PATH="$PATH:$HOME/.local/bin"
-            PATH="$PATH:/usr/share/dotnet"
             PATH="$PATH:$HOME/.dotnet/tools"
         '';
     };
