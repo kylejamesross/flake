@@ -34,7 +34,7 @@
             bun
             yarn
             optipng
-            neofetch
+            fastfetch
             fzf
             nodePackages.typescript
             nodePackages.svgo
