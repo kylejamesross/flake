@@ -3,6 +3,7 @@
 with config.lib.stylix.colors.withHashtag;
 
 {
+    programs.cava.enable = true;
     programs.waybar = {
         enable = true;
         systemd.enable = true;
@@ -14,6 +15,7 @@ with config.lib.stylix.colors.withHashtag;
                 "modules-left" = [
                     "custom/logo"
                     "hyprland/workspaces"
+                    "cava"
                 ];
                 "modules-right" = [
                     "tray"
@@ -52,6 +54,24 @@ with config.lib.stylix.colors.withHashtag;
                     };
                     "persistent-workspaces" = {
                         "*" = [1 2 3 4 5 6 7 8 9 10];
+                    };
+                };
+                "cava" = {
+                    framerate = 30;
+                    autosens = 1;
+                    bars = 14;
+                    lower_cutoff_freq = 50;
+                    higher_cutoff_freq = 10000;
+                    method = "pipewire";
+                    source = "auto";
+                    stereo = true;
+                    bar_delimiter = 0;
+                    noise_reduction = 0.77;
+                    input_delay = 2;
+                    hide_on_silence = true;
+                    format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+                    actions = {
+                        "on-click-right" = "mode";
                     };
                 };
                 "wlr/taskbar" = {
@@ -178,7 +198,7 @@ window#waybar.hidden {
 	opacity: 0.2;
 }
 
-#workspaces  {
+#workspaces, #cava  {
     background-color: ${base00};
 }
 
@@ -246,6 +266,7 @@ window#waybar.hidden {
 #cpu,
 #tray,
 #custom-weather,
+#cava,
 #custom-logo {
 	margin-top: 6px;
 	margin-left: 8px;
@@ -278,6 +299,7 @@ window#waybar.hidden {
 
 #custom-logo {
     padding-right: 15px;
+	font-size: 20px;
 }
 
 #tray {

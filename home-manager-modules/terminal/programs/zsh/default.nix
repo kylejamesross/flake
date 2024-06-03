@@ -56,7 +56,7 @@ with config.lib.stylix.colors;
             d7 = "nix shell nixpkgs#dotnet-sdk_7";
             fonts = "fc-list";
             wlogin = "az acr login -n nsolutionsacregistry";
-            tsu = "sudo tailscale up --accept-routes";
+            tsu = "sudo tailscale up --accept-routes --reset";
             tsd = "sudo tailscale down";
             access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";
             g = "${pkgs.nh}/bin/nh os switch";
