@@ -49,7 +49,7 @@ with config.lib.stylix.colors.withHashtag;
                         "5" = "󰌛";
                         "6" = "";
                         "7" = "󰇮";
-                        "8" = "󰊻";
+                        "8" = "";
                         "9" = "";
                         "10" = "";
                     };
@@ -76,7 +76,7 @@ with config.lib.stylix.colors.withHashtag;
                     };
                 };
                 "mpris" = {
-                    format = " {dynamic} | {status_icon}";
+                    format = "  {dynamic} | {status_icon}";
                     interval = 1;
                     dynamic-len = 40;
                     status-icons = {
@@ -260,6 +260,10 @@ window#waybar.hidden {
 
 #workspaces button:nth-child(9).active {
     color: ${base0F};
+}
+
+#workspaces button:nth-child(10).active {
+    color: ${base08};
 }
 
 #workspaces button.urgent {
