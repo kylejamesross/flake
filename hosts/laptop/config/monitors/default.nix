@@ -9,7 +9,7 @@
             refreshRate = 60;
             x = 0;
             y = 0;
-            scale = 0.95;
+            scale = 1;
         }
         {
             name = "eDP-2";
@@ -18,7 +18,7 @@
             refreshRate = 60;
             x = 0;
             y = 0;
-            scale = 0.95;
+            scale = 1;
         }
     ];
 }
