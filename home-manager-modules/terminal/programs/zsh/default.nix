@@ -7,7 +7,7 @@ with config.lib.stylix.colors;
         enable = true;
         enableCompletion = true;
         dotDir = ".config/zsh";
-        enableAutosuggestions = true;
+        autosuggestion.enable = true;
         syntaxHighlighting = {
             enable = true;
             styles = {
