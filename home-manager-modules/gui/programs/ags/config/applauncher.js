@@ -11,11 +11,12 @@ const AppItem = app => Widget.Button({
     child: Widget.Box({
         children: [
             Widget.Icon({
+                class_name: "launcher-item-icon",
                 icon: app.icon_name || "",
-                size: 42,
+                size: 25,
             }),
             Widget.Label({
-                class_name: "title",
+                class_name: "launcher-item-label",
                 label: app.name,
                 xalign: 0,
                 vpack: "center",
