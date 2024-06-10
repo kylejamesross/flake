@@ -87,9 +87,6 @@
             "tooltip-format" = "{title}";
             "on-click" = "";
             "on-click-middle" = "close";
-            "ignore-list" = [
-                "wofi"
-            ];
         };
         battery = {
             states = {

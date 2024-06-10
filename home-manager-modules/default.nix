@@ -15,6 +15,7 @@
                 ./stylix
                 inputs.nur.hmModules.nur
                 inputs.nixvim.homeManagerModules.nixvim
+                inputs.ags.homeManagerModules.default
             ];
         };
     };

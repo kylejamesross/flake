@@ -2,10 +2,10 @@
 
 
 {
-    programs.cava.enable = true;
+    programs.cava.enable = false;
     programs.waybar = {
-        enable = true;
-        systemd.enable = true;
+        enable = false;
+        systemd.enable = false;
         settings = import ./settings.nix {};
         style = import ./style.nix { inherit config; };
     };

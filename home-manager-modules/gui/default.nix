@@ -4,12 +4,12 @@
     imports = [
         ./programs/mime
         ./programs/hyprland
+        ./programs/ags
         ./programs/firefox
         ./programs/kitty
         ./programs/swaylock
         ./programs/swappy
         ./programs/waybar
-        ./services/mako
         ./services/home-manager-system-tray
     ];
 
@@ -29,7 +29,6 @@
             playerctl
             alsa-utils
             wttrbar
-            wofi
             grim
             swww
             slurp
