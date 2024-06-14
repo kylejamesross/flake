@@ -16,10 +16,6 @@ button:active {
     background-color: @theme_selected_bg_color;
 }
 
-button:hover {
-    border-bottom: 3px solid @theme_fg_color;
-}
-
 label {
     font-weight: bold;
 }
@@ -32,13 +28,17 @@ label {
     color: @theme_selected_bg_color;
 }
 
-.notification {
-    color: yellow;
+.workspaces button.empty {
+    opacity: 0.4;
 }
 
 levelbar block,
 highlight {
     min-height: 10px;
+}
+
+.time, .date {
+    padding-right: 0.5rem;
 }
 
 
@@ -68,7 +68,7 @@ window.notification-popups box.notifications {
 }
 
 .notification {
-    min-width: 350px;
+    min-width: 500px;
     border-radius: 11px;
     padding: 1em;
     margin: .5em;

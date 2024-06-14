@@ -6,29 +6,7 @@ const systemtray = await Service.import("systemtray")
 import { NotificationPopups } from "./notificationPopups.js"
 import { applauncher } from "./applauncher.js"
 
-const date = Variable("", {
-    poll: [1000, 'date "+  %b %e, %Y"'],
-})
-
-const time = Variable("", {
-    poll: [1000, 'date "+󰅐  %H:%M:%S"'],
-})
-
-const workspaceIndexToIconMap = {
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    5: "󰌛",
-    6: "",
-    7: "󰇮",
-    8: "",
-    9: "󰝚",
-    10: ""
-};
-
 const dispatch = ws => hyprland.messageAsync(`dispatch workspace ${ws}`);
-const activeId = hyprland.active.workspace.bind("id")
 
 const Workspaces = () => Widget.EventBox({
     onScrollUp: () => dispatch('+1'),
@@ -37,28 +15,44 @@ const Workspaces = () => Widget.EventBox({
         class_name: "workspaces",
         children: Array.from({ length: 10 }, (_, i) => i + 1).map(i => Widget.Button({
             attribute: i,
-            label: `${workspaceIndexToIconMap[i] || i}`,
+            label: i.toString(),
             onClicked: () => dispatch(i),
-            class_name: activeId.as(id => `${id === i ? "workspace focused" : "workspace"}`),
+        })),
+        setup: self => self.hook(hyprland, () => self.children.forEach(btn => {
+            const isFocused = hyprland.active.workspace.id === btn.attribute;
+            const isEmpty = !hyprland.workspaces.some(ws => ws.id === btn.attribute);
+
+            btn.class_name = `${isFocused ? "focused" : ""} ${isEmpty ? "empty" : ""}`;
+            btn.label = isFocused ? "" : "";
         })),
     }),
 })
 
+function truncateLabel(label) {
+    return label.slice(0, 70) + `${label.length > 70 ? "..." : ""}`
+}
 
 function ClientTitle() {
     return Widget.Label({
         class_name: "client-title",
-        label: hyprland.active.client.bind("title"),
+        label: hyprland.active.client.bind("title").as(label => truncateLabel(label)),
     })
 }
 
+const date = Variable("", {
+    poll: [1000, 'date "+  %b %e, %Y"'],
+})
 
 function Date() {
     return Widget.Label({
-        class_name: "clock",
+        class_name: "date",
         label: date.bind(),
     })
 }
+
+const time = Variable("", {
+    poll: [1000, 'date "+󰅐  %H:%M:%S"'],
+})
 
 function Time() {
     return Widget.Label({
@@ -68,30 +62,12 @@ function Time() {
 }
 
 
-// we don't need dunst or any other notification daemon
-// because the Notifications module is a notification daemon itself
-function Notification() {
-    const popups = notifications.bind("popups")
-    return Widget.Box({
-        class_name: "notification",
-        visible: popups.as(p => p.length > 0),
-        children: [
-            Widget.Icon({
-                icon: "preferences-system-notifications-symbolic",
-            }),
-            Widget.Label({
-                label: popups.as(p => p[0]?.summary || ""),
-            }),
-        ],
-    })
-}
-
 
 function Media() {
     const label = Utils.watch("", mpris, "player-changed", () => {
         if (mpris.players[0]) {
             const { track_artists, track_title } = mpris.players[0]
-            return `${track_artists.join(", ")} - ${track_title}`
+            return truncateLabel(`${track_artists.join(", ")} - ${track_title}`)
         } else {
             return "Nothing is playing"
         }
@@ -178,8 +154,6 @@ function SysTray() {
     })
 }
 
-
-// layout of the bar
 function Left() {
     return Widget.Box({
         spacing: 8,
@@ -190,12 +164,12 @@ function Left() {
     })
 }
 
-function Center() {
+function Center(monitor) {
     return Widget.Box({
         spacing: 8,
-        children: [
+        children: monitor === 0 ? [
             Media(),
-        ],
+        ] : [],
     })
 }
 
@@ -222,7 +196,7 @@ function Bar(monitor = 0) {
         exclusivity: "exclusive",
         child: Widget.CenterBox({
             start_widget: Left(),
-            center_widget: Center(),
+            center_widget: Center(monitor),
             end_widget: Right(),
         }),
     })
