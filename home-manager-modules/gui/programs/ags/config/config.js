@@ -5,6 +5,7 @@ const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 import { NotificationPopups } from "./notificationPopups.js"
 import { applauncher } from "./applauncher.js"
+import { MediaPlayer } from "./media-player.js"
 
 const dispatch = ws => hyprland.messageAsync(`dispatch workspace ${ws}`);
 
@@ -210,7 +211,6 @@ App.config({
         Bar(2),
         NotificationPopups(),
         applauncher,
+        MediaPlayer,
     ],
 })
-
-export { }

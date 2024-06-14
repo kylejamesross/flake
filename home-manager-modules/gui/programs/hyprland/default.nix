@@ -102,6 +102,7 @@
                 " $mainMod, V, togglefloating, "
                 " $mainMod, F, fullscreen, # fullscreen"
                 " $mainMod, P, exec, ${config.programs.ags.package}/bin/ags -b hypr -t applauncher"
+                " $mainMod, O, exec, ${config.programs.ags.package}/bin/ags -b hypr -t media-player"
                 " $mainMod, D, pseudo, # dwindle"
                 " $mainMod, T, togglesplit, # dwindle"
                 " $mainMod, left, movefocus, l"
