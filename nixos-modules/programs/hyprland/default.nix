@@ -1,8 +1,26 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: 
+
+with config.lib.stylix.colors.withHashtag;
+
+{
     programs.hyprland.enable = true;
 
     environment.etc = {
         "greetd/greeter.js".source = ./greeter.js;
+        "greetd/style.css".text = ''
+            .window {
+                background-image: linear-gradient(to top, ${base0B} 0%, ${base0F} 100%);
+            }
+            .login {
+                padding: 30px;
+                min-width: 400px;
+                background-image: linear-gradient(-225deg, ${base0B} 50%, ${base0F} 50%);
+                border-radius: 10px;
+            }
+            .login-label {
+                font-size: 1.5rem;
+            }
+        '';
         "greetd/hyprland.conf".text = ''
 exec-once = ${pkgs.ags}/bin/ags --config /etc/greetd/greeter.js; hyprctl dispatch exit
 
