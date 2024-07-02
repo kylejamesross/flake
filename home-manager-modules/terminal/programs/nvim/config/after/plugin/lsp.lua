@@ -175,7 +175,7 @@ end
 
 function PopulateQuickfixWithEslintErrors()
     -- Run ESLint and get the output
-    local command_output = vim.fn.systemlist("npx eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives --max-warnings 0 .")
+    local command_output = vim.fn.systemlist("eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives --max-warnings 0 .")
 
     -- Clear the quickfix list
     vim.fn.setqflist({}, "r")
