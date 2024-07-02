@@ -2,8 +2,10 @@ local keymap = vim.api.nvim_set_keymap
 
 -- leader key
 vim.g.mapleader = " "
-vim.g.maplocallheader = " "
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = " "
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- vscode mapping for file navigation

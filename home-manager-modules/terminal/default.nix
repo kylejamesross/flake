@@ -48,6 +48,7 @@
 
             # lsp
             nodePackages.typescript-language-server
+            nodePackages.eslint
             nodePackages.vscode-langservers-extracted
             nodePackages."@astrojs/language-server"
             nodePackages."bash-language-server"

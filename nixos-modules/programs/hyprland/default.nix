@@ -7,7 +7,7 @@ with config.lib.stylix.colors.withHashtag;
 
     environment.etc = {
         "greetd/greeter.js".source = ./greeter.js;
-        "greetd/style.css".text = ''
+        "greetd/style.css".text = /*css*/ ''
             .window {
                 background-image: linear-gradient(to top, ${base0B} 0%, ${base0F} 100%);
             }

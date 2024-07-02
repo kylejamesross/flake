@@ -5,7 +5,7 @@ local options = {
 	swapfile = false,
 	backup = false,
 	breakindent = true,
-	hlsearch = false,
+	hlsearch = true,
 	ignorecase = true,
 	history = 1000,
 	ruler = true,
@@ -14,6 +14,7 @@ local options = {
 	scrolloff = 8,
 	incsearch = true,
 	expandtab = true,
+    spell = true,
 	wrap = true,
 	shiftwidth = 4,
 	tabstop = 4,
@@ -25,7 +26,7 @@ local options = {
 	fileencoding = "UTF-8",
 	undodir = os.getenv("HOME") .. "/.vim/undodir",
 	clipboard = "unnamedplus",
-	cmdheight = 0,
+	cmdheight = 1,
 	conceallevel = 0,
 	cursorline = true,
 	showtabline = 1,
@@ -41,7 +42,8 @@ local options = {
 	virtualedit = 'block',
 	jumpoptions = 'stack',
 	list = true,
-	listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+	listchars = { tab = '» ', trail = '·', nbsp = '␣' },
+    inccommand = 'split',
 }
 -- set all options
 for k, v in pairs(options) do
@@ -55,5 +57,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-vim.cmd [[ autocmd RecordingEnter * set cmdheight=1 ]]
-vim.cmd [[ autocmd RecordingLeave * set cmdheight=0 ]]

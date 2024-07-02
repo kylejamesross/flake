@@ -173,6 +173,45 @@ function PopulateQuickfixWithTypescriptErrors()
     vim.cmd("copen")
 end
 
+function PopulateQuickfixWithEslintErrors()
+    -- Run ESLint and get the output
+    local command_output = vim.fn.systemlist("npx eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives --max-warnings 0 .")
+
+    -- Clear the quickfix list
+    vim.fn.setqflist({}, "r")
+
+    -- Variables to hold the current file and its errors
+    local current_file = nil
+    local quickfix_list = {}
+
+    for _, line in ipairs(command_output) do
+        -- Check if the line is a file path
+        if string.match(line, "^/[^ ]+") then
+            current_file = line
+        else
+            -- Ensure we have a current file and the line matches the error format
+            if current_file and string.match(line, "^%s*%d+:%d+") then
+                -- Parse the line number, column, and error message
+                local lnum, col, _, text = string.match(line, "^%s*(%d+):(%d+)%s+(%w+)%s+(.+)$")
+                if lnum and col and text then
+                    table.insert(quickfix_list, {
+                        filename = current_file,
+                        lnum = tonumber(lnum),
+                        col = tonumber(col),
+                        text = text
+                    })
+                end
+            end
+        end
+    end
+
+    -- Set the quickfix list
+    vim.fn.setqflist(quickfix_list, "r")
+
+    -- Open the quickfix window
+    vim.cmd("copen")
+end
+
 rustTools.setup({
     server = {
         on_attach = function(client, bufnr)
@@ -233,6 +272,12 @@ lspConfig.tsserver.setup({
             "<Leader>l4",
             ":lua PopulateQuickfixWithTypescriptErrors()<CR>",
             { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors" }
+        )
+        vim.keymap.set(
+            "n",
+            "<Leader>l5",
+            ":lua PopulateQuickfixWithEslintErrors()<CR>",
+            { noremap = true, silent = true, desc = "Populate quickfix list with eslint errors" }
         )
         on_attach_global(client, bufnr)
     end,

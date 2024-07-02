@@ -9,7 +9,6 @@
         ./programs/kitty
         ./programs/swaylock
         ./programs/swappy
-        ./programs/waybar
         ./services/home-manager-system-tray
     ];
 
