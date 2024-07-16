@@ -37,6 +37,7 @@
             fastfetch
             fzf
             nodePackages.typescript
+            nodePackages.eslint
             nodePackages.svgo
             zoxide
             docker-compose
@@ -48,7 +49,6 @@
 
             # lsp
             nodePackages.typescript-language-server
-            nodePackages.eslint
             nodePackages.vscode-langservers-extracted
             nodePackages."@astrojs/language-server"
             nodePackages."bash-language-server"
