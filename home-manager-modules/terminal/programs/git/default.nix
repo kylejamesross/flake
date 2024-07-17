@@ -10,6 +10,7 @@
             c = "commit";
             co = "checkout";
             b = "branch";
+            mc = "merge --continue";
             lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
             ac = "!git add -A && git commit -m";
             po = "push origin";
