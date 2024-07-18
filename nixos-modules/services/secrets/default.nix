@@ -4,8 +4,6 @@
     systemd.services."secret-service" = {
         script = ''
             echo "$(cat ${config.sops.secrets.work_npmrc.path})" > /home/${user}/.npmrc
-            mkdir -p /home/${user}/.ssh/
-            mkdir -p /home/${user}/downloads/
             echo "$(cat ${config.sops.secrets.id_ed25519.path})" > /home/${user}/.ssh/id_ed25519
             [ -f /home/${user}/.ssh/id_ed25519 ] && chmod 600 /home/${user}/.ssh/id_ed25519
             [ -d /home/${user}/.ssh/ ] && chmod 700 /home/${user}/.ssh/
