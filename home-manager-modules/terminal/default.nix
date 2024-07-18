@@ -69,5 +69,9 @@
 
         file.".ssh/id_ed25519.pub".source = ./files/id_ed25519.pub;
         file.".ssh/authorized_keys".source = ./files/id_ed25519.pub;
+        file.".nuget/plugins/netcore/CredentialProvider.Microsoft" = {
+            source = ./files/CredentialProvider.Microsoft;
+            recursive = true;
+        };
     };
 }
