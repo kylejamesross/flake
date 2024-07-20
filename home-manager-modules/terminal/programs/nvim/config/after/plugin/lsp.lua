@@ -123,9 +123,48 @@ lspConfig.eslint.setup({
     capabilities = capabilities,
 })
 
+
+function PopulateQuickfixWithDotNetErrors()
+    local command_output = vim.fn.systemlist("dotnet build || dotnet build server")
+
+    vim.fn.setqflist({}, "r")
+
+    local quickfix_list = {}
+    local seen_errors = {}
+
+    for _, line in ipairs(command_output) do
+        local filename, lnum, col, text = string.match(line, "([^:]+)%((%d+),(%d+)%)%s*:%s*error%s*%w+%s*:%s*(.+)")
+        if filename and lnum and col and text then
+            local error_key = filename .. ":" .. lnum .. ":" .. col .. ":" .. text
+            if not seen_errors[error_key] then
+                seen_errors[error_key] = true
+                table.insert(quickfix_list, {
+                    filename = filename,
+                    lnum = tonumber(lnum),
+                    col = tonumber(col),
+                    text = text
+                })
+            end
+        end
+    end
+
+    -- Set the quickfix list
+    vim.fn.setqflist(quickfix_list, "r")
+
+    -- Open the quickfix window
+    vim.cmd("copen")
+end
+
+
 lspConfig.omnisharp.setup({
     on_attach = function(client, bufnr)
         on_attach_global(client, bufnr)
+        vim.keymap.set(
+            "n",
+            "<Leader>l1",
+            ":lua PopulateQuickfixWithDotNetErrors()<CR>",
+            { noremap = true, silent = true, desc = "Populate quickfix list with dotnet errors" }
+        )
     end,
     handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").handler,
@@ -137,11 +176,11 @@ lspConfig.omnisharp.setup({
             OrganizeImports = nil,
         },
         MsBuild = {
-            LoadProjectsOnDemand = true,
+            LoadProjectsOnDemand = nil,
         },
         RoslynExtensionsOptions = {
             EnableAnalyzersSupport = nil,
-            EnableImportCompletion = true,
+            EnableImportCompletion = nil,
             AnalyzeOpenDocumentsOnly = nil,
         },
         Sdk = {
