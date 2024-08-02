@@ -49,18 +49,18 @@ with config.lib.stylix.colors;
         };
         history.size = 100000;
         shellAliases = {
-            ls = "eza -bhal --icons --hyperlink --git --color auto";
-            cat = "bat";
-            pb = "git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches";
-            n = "nvim";
+            ls = "${pkgs.eza}/bin/eza -bhal --icons --hyperlink --git --color auto";
+            cat = "${pkgs.bat}/bin/bat";
+            pb = "${pkgs.git}/bin/git branch | ${pkgs.fzf}/bin/fzf --multi | xargs -I {} ${pkgs.git}/bin/git branch -D {}";
+            pbe = "${pkgs.git}/bin/git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && ${pkgs.neovim}/bin/nvim /tmp/merged-branches && xargs ${pkgs.git}/bin/git branch -d </tmp/merged-branches";
+            n = "${pkgs.neovim}/bin/nvim";
             d7 = "nix shell nixpkgs#dotnet-sdk_7";
-            fonts = "fc-list";
-            wlogin = "az acr login -n nsolutionsacregistry";
-            tsu = "sudo tailscale up --accept-routes --reset";
-            tsd = "sudo tailscale down";
-            access-token = "az account get-access-token | jaq .accessToken | sed 's/\"//g' | wl-copy";
+            wlogin = "${pkgs.azure-cli}/bin/az acr login -n nsolutionsacregistry";
+            tsu = "sudo ${pkgs.tailscale}/bin/tailscale up --accept-routes --reset";
+            tsd = "sudo ${pkgs.tailscale}/bin/tailscale down";
+            access-token = "${pkgs.azure-cli}/bin/az account get-access-token | ${pkgs.jq}/bin/jq .accessToken | ${pkgs.gnused}/bin/sed 's/\"//g' | ${pkgs.xclip}/bin/wl-copy";
             g = "${pkgs.nh}/bin/nh os switch";
-            musb = '' mkdir -p ~/usb && sudo mount "/dev/$(lsblk --list | fzf | awk '{print $1}')" ~/usb '';
+            musb = "mkdir -p ~/usb && sudo mount \"/dev/$(lsblk --list | ${pkgs.fzf}/bin/fzf | ${pkgs.gawk}/bin/awk '{print $1}')\" ~/usb";
         };
         plugins = [
             {

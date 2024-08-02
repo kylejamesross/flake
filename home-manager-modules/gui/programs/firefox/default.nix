@@ -1,9 +1,15 @@
-{ config, user, ... }:
+{ config, user, pkgs, ... }:
 
 {
+    home = {
+        packages = with pkgs; [
+            firefoxpwa
+        ];
+    };
     programs = {
         firefox = {
             enable = true;
+            nativeMessagingHosts = [ pkgs.firefoxpwa ];
             profiles.kyle = {
                 name = "Kyle Ross";
                 isDefault = true;
