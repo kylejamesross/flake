@@ -38,11 +38,12 @@
             brightnessctl
             piper
             xow_dongle-firmware
+            anki-bin
 
             # work
             azure-cli
             insomnia
-            jetbrains.rider
+            #jetbrains.rider
         ];
 
         pointerCursor = {

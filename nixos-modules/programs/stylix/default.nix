@@ -2,6 +2,7 @@
 
 {
     stylix = {
+        enable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
         image = ./acoolrocket-dalle2-hokusai-non-prompt-landscape.png;
         cursor = {

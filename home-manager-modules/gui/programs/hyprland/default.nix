@@ -68,7 +68,7 @@
                 preserve_split = "yes";
             };
             master = {
-                new_is_master = true;
+                new_status = "master";
             };
             gestures = {
                 workspace_swipe = "off";
@@ -121,8 +121,8 @@
                 " $mainMod, F3, exec, ${pkgs.firefox}/bin/firefox --new-window"
                 " $mainMod, F4, workspace, 4"
                 " $mainMod, F4, exec, ${pkgs.dbeaver-bin}/bin/dbeaver"
-                " $mainMod, F5, workspace, 5"
-                " $mainMod, F5, exec, ${pkgs.jetbrains.rider}/bin/rider"
+                # " $mainMod, F5, workspace, 5"
+                # " $mainMod, F5, exec, ${pkgs.jetbrains.rider}/bin/rider"
                 " $mainMod, F6, workspace, 6"
                 " $mainMod, F6, exec, ${pkgs.joplin-desktop}/bin/joplin-desktop"
                 " $mainMod, F7, workspace, 7"
