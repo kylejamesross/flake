@@ -10,6 +10,7 @@
         ./programs/swaylock
         ./programs/swappy
         ./services/home-manager-system-tray
+        ./programs/mangohud
     ];
 
     home = {

@@ -30,10 +30,12 @@
         zsh
         dconf
         cifs-utils
+        flatpak
     ];
 
     services = {
         gnome.gnome-keyring.enable = true;
         tailscale.enable = true;
+        flatpak.enable = true;
     };
 }
