@@ -51,6 +51,7 @@ with config.lib.stylix.colors;
         shellAliases = {
             ls = "${pkgs.eza}/bin/eza -bhal --icons --hyperlink --git --color auto";
             cat = "${pkgs.bat}/bin/bat";
+            sb = "${pkgs.git}/bin/git branch | ${pkgs.fzf}/bin/fzf | xargs -I {} ${pkgs.git}/bin/git switch {}";
             pb = "${pkgs.git}/bin/git branch | ${pkgs.fzf}/bin/fzf --multi | xargs -I {} ${pkgs.git}/bin/git branch -D {}";
             pbe = "${pkgs.git}/bin/git branch --merged | grep -v -E \"main|master|staging|dev|$(git rev-parse --abbrev-ref HEAD)\" > /tmp/merged-branches && ${pkgs.neovim}/bin/nvim /tmp/merged-branches && xargs ${pkgs.git}/bin/git branch -d </tmp/merged-branches";
             n = "${pkgs.neovim}/bin/nvim";
