@@ -111,6 +111,7 @@
             "g~" = "cd ~";
             gd = "cd ~/downloads";
             gs = "cd ~/source";
+            gp = "cd ~/personal";
             gbc = "cd ~/source/base-components";
             gbf = "cd ~/source/base-functionality";
             go = "dragon-out";

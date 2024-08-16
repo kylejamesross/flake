@@ -107,9 +107,12 @@
         };
     };
 
-    virtualisation.docker = {
-        enable = true;
-        liveRestore = false;
+    virtualisation = {
+        docker = {
+            enable = true;
+            liveRestore = false;
+        };
+        waydroid.enable = true;
     };
 
     hardware.opengl = {
