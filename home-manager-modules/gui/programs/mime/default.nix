@@ -11,7 +11,7 @@
             vectorViewers = ["org.inkspace.Inkscape.desktop"];
             videoViewers = ["mpv.desktop"];
             in {
-                "inode/directory" = "lf.desktop";
+                "inode/directory" = "yazi.desktop";
                 "text/plain" = textEditors;
                 "text/markdown" = textEditors;
                 "text/xml" = textEditors;

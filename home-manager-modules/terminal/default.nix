@@ -7,7 +7,7 @@
         ./programs/nvim
         ./programs/btop
         ./programs/git
-        ./programs/lf
+        ./programs/yazi
         ./programs/lazygit
         ./programs/tealdeer
         ./programs/bat
@@ -21,7 +21,6 @@
             unzip
             unrar
             zip
-            yazi
             tig
             shell-gpt
             gh
