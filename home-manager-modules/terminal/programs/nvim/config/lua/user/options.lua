@@ -44,6 +44,7 @@ local options = {
 	list = true,
 	listchars = { tab = '» ', trail = '·', nbsp = '␣' },
     inccommand = 'split',
+    laststatus = 0,
 }
 -- set all options
 for k, v in pairs(options) do

@@ -34,6 +34,7 @@
             nvim-treesitter-parsers.c_sharp
             nvim-treesitter-parsers.bash
             nvim-treesitter-parsers.vim
+            nvim-treesitter-parsers.vimdoc
             nvim-treesitter-parsers.regex
             nvim-treesitter-parsers.markdown
             nvim-treesitter-parsers.markdown_inline
@@ -54,7 +55,6 @@
             telescope-ui-select-nvim
             telescope-undo-nvim
             gitsigns-nvim
-            lualine-nvim
             nvim-scrollbar
             nvim-notify
             nvim-lspconfig

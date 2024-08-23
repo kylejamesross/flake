@@ -15,6 +15,9 @@
                     reduxdevtools
                     vimium
                     torrent-control
+                    enhancer-for-youtube
+                    untrap-for-youtube
+                    return-youtube-dislikes
                 ];
                 search = {
                     default = "searxng";
