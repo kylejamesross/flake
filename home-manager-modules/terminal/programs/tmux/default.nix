@@ -24,7 +24,7 @@ with config.lib.stylix.colors;
                 bind-key -r R run-shell "tmux source ~/.tmux.conf"
                 bind-key -r / run-shell "tmux neww -S -n ''"
                 bind-key -r t run-shell "tmux neww -S -n ''"
-                bind-key -r e run-shell "tmux neww -S -n '' nvim"
+                bind-key -r e run-shell "tmux neww -S -n '' nvim --listen $(pwd)"
                 bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
                 bind-key -r \' run-shell "tmux neww -S -n '󱋣' yazi"
 

@@ -150,6 +150,7 @@
                 " $mainMod, 0, workspace, 10"
                 " $mainMod, mouse_down, workspace, e+1"
                 " $mainMod, mouse_up, workspace, e-1"
+                " $mainMod SHIFT, 1, movetoworkspace, 1"
                 " $mainMod SHIFT, 2, movetoworkspace, 2"
                 " $mainMod SHIFT, 3, movetoworkspace, 3"
                 " $mainMod SHIFT, 4, movetoworkspace, 4"
