@@ -18,6 +18,7 @@
                     enhancer-for-youtube
                     untrap-for-youtube
                     return-youtube-dislikes
+                    sponsorblock
                 ];
                 search = {
                     default = "searxng";

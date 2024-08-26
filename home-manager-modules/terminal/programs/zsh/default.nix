@@ -62,6 +62,7 @@ with config.lib.stylix.colors;
             access-token = "${pkgs.azure-cli}/bin/az account get-access-token | ${pkgs.jq}/bin/jq .accessToken | ${pkgs.gnused}/bin/sed 's/\"//g' | ${pkgs.xclip}/bin/wl-copy";
             g = "${pkgs.nh}/bin/nh os switch";
             musb = "mkdir -p ~/usb && sudo mount \"/dev/$(lsblk --list | ${pkgs.fzf}/bin/fzf | ${pkgs.gawk}/bin/awk '{print $1}')\" ~/usb";
+            neofetch = "fastfetch";
         };
         plugins = [
             {
