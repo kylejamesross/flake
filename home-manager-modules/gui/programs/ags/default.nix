@@ -1,11 +1,11 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, ... }:
 
 
 {
   programs.ags = {
     enable = true;
 
-    configDir = osConfig.agsConfigDirectory;
+    configDir = ./config;
 
     extraPackages = with pkgs; [
       gtksourceview

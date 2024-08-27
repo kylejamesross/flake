@@ -3,9 +3,6 @@ const mpris = await Service.import("mpris")
 const audio = await Service.import("audio")
 const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
-import { NotificationPopups } from "./notificationPopups.js"
-import { applauncher } from "./applauncher.js"
-import { MediaPlayer } from "./media-player.js"
 
 const dispatch = ws => hyprland.messageAsync(`dispatch workspace ${ws}`);
 
@@ -183,7 +180,7 @@ function Right() {
     })
 }
 
-function Bar(monitor = 0) {
+export function Bar(monitor = 0) {
     return Widget.Window({
         name: `bar-${monitor}`, // name has to be unique
         class_name: "bar",
@@ -197,13 +194,3 @@ function Bar(monitor = 0) {
         }),
     })
 }
-
-App.config({
-    style: "./style.css",
-    windows: [
-        Bar(0),
-        NotificationPopups(),
-        applauncher,
-        MediaPlayer,
-    ],
-})
