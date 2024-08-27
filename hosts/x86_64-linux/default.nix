@@ -1,5 +1,25 @@
 { pkgs, inputs, user, ... }:
 
+let editor = pkgs.writeShellScriptBin "editor" ''
+    FILENAME="/home/${user}/.cache/nvim/$(pwd | md5sum | awk '{ print $1 }').pipe"
+    args=()
+    for arg in "$@"; do
+        if [ "$arg" != "--" ]; then
+            args+=("$arg")
+        fi
+    done
+
+    if [ -n "$TMUX" ]; then
+        if tmux list-windows | grep -q ''; then
+            tmux neww -S -n '' && nvim --server $FILENAME --remote "$args"
+        else
+            tmux neww -n '' nvim --listen $FILENAME "$args"
+        fi
+    else
+        nvim --server $FILENAME --remote-silent "$args"
+    fi
+'';
+in
 {
     imports = [
         ./options
@@ -16,7 +36,7 @@
 
     environment.variables = {
         TERMINAL = "kitty";
-        EDITOR = "nvim";
+        EDITOR = '' ${editor}/bin/editor '';
         VISUAL = "nvim";
         USERNAME = user;
         VSCODE_CODELLDB = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}";

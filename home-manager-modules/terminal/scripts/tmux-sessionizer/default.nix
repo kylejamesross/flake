@@ -9,7 +9,7 @@ session_name=$(echo "$session" | tr . _)
 echo "$session_name"
 
 if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2> /dev/null; then
-  ${pkgs.tmux}/bin/tmux new-session -e "EDITOR=$EDITOR" -s "$session_name" -c "$session" -n '' -d
+  ${pkgs.tmux}/bin/tmux new-session -s "$session_name" -c "$session" -n '' -d
 fi
 
 ${pkgs.tmux}/bin/tmux switch-client -t "$session_name"

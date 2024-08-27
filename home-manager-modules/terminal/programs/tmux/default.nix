@@ -7,6 +7,7 @@ with config.lib.stylix.colors;
         tmux = {
             enable = true;
             keyMode = "vi";
+            mouse = true;
             historyLimit = 100000;
             extraConfig = ''
                 set -s escape-time 100
