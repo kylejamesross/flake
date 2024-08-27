@@ -93,7 +93,7 @@
                 "$mainMod, mouse:273, resizewindow"
             ];
             bind = [
-                " $mainMod, Return, exec,${pkgs.kitty}/bin/kitty --title Kitty ${pkgs.tmux}/bin/tmux"
+                " $mainMod, Return, exec,${pkgs.kitty}/bin/kitty --title Kitty ${pkgs.tmux}/bin/tmux && tmux set-environment EDITOR $EDITOR"
                 " $mainMod, C, killactive, "
                 " $mainMod, B, exec, ${pkgs.firefox}/bin/firefox "
                 " $mainMod, Q, exit, "

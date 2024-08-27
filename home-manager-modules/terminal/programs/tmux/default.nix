@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, user, ... }:
 
 with config.lib.stylix.colors;
 
@@ -24,7 +24,7 @@ with config.lib.stylix.colors;
                 bind-key -r R run-shell "tmux source ~/.tmux.conf"
                 bind-key -r / run-shell "tmux neww -S -n ''"
                 bind-key -r t run-shell "tmux neww -S -n ''"
-                bind-key -r e run-shell "tmux neww -S -n '' nvim --listen $(pwd)"
+                bind-key -r e run-shell "tmux neww -S -n '' nvim --listen \"/home/${user}/.cache/nvim/$(pwd | md5sum | awk '{ print $1 }').pipe\""
                 bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
                 bind-key -r \' run-shell "tmux neww -S -n '󱋣' yazi"
 
@@ -58,6 +58,9 @@ with config.lib.stylix.colors;
                 set -g status-left-length 100
                 set -g status-right ""
                 '';
+            plugins = with pkgs; [
+                tmuxPlugins.open
+            ];
         };
     };
 }
