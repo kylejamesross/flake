@@ -41,6 +41,10 @@ highlight {
     padding-right: 0.5rem;
 }
 
+.battery-percentage-label {
+    padding-left: 0.5rem;
+}
+
 
 /* Notifcations */
 

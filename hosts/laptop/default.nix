@@ -6,5 +6,7 @@
         ./config
     ];
 
+    services.upower.enable = true;
+
     networking.hostName = "laptop";
 }
