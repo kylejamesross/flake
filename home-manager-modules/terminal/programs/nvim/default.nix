@@ -13,7 +13,6 @@
             comment-nvim
             impatient-nvim
             indent-blankline-nvim
-            alpha-nvim
             nvim-web-devicons
             nvim-autopairs
             vim-fugitive
