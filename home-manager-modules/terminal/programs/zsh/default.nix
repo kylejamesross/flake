@@ -57,12 +57,11 @@ with config.lib.stylix.colors;
             n = "${pkgs.neovim}/bin/nvim";
             d7 = "nix shell nixpkgs#dotnet-sdk_7";
             wlogin = "${pkgs.azure-cli}/bin/az acr login -n nsolutionsacregistry";
-            tsu = "sudo ${pkgs.tailscale}/bin/tailscale up --accept-routes --reset";
-            tsd = "sudo ${pkgs.tailscale}/bin/tailscale down";
-            access-token = "${pkgs.azure-cli}/bin/az account get-access-token | ${pkgs.jq}/bin/jq .accessToken | ${pkgs.gnused}/bin/sed 's/\"//g' | ${pkgs.xclip}/bin/wl-copy";
             g = "${pkgs.nh}/bin/nh os switch";
             musb = "mkdir -p ~/usb && sudo mount \"/dev/$(lsblk --list | ${pkgs.fzf}/bin/fzf | ${pkgs.gawk}/bin/awk '{print $1}')\" ~/usb";
             neofetch = "fastfetch";
+            generate-resume = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_20}/bin/npx hackmyresume build /dev/stdin TO out/resume.all";
+            generate-resume-into-clipboard = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_20}/bin/npx hackmyresume build /dev/stdin TO genResume.txt && cat genResume.txt | wl-copy && rm genResume.txt";
         };
         plugins = [
             {
@@ -86,12 +85,6 @@ with config.lib.stylix.colors;
                 eval "$(zoxide init zsh)"
         '';
         initExtra = ''
-            if [ -f "$HOME/.feed-access-token" ]; then
-              export FEED_ACCESSTOKEN=$(cat $HOME/.feed-access-token)
-              export ENV DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
-              export VSS_NUGET_EXTERNAL_FEED_ENDPOINTS="{\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/nueradev/NuAgile/_packaging/NudeSolutions/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"$(cat $HOME/.feed-access-token)\"},{\"endpoint\":\"https://pkgs.dev.azure.com/nueradev/ProjectVicious/_packaging/NudeGet/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"$(cat $HOME/.feed-access-token)\"}]}"
-            fi
-
             if [ -f "$HOME/.openai-api-key" ]; then
               export OPENAI_API_KEY=$(cat $HOME/.openai-api-key)
             fi

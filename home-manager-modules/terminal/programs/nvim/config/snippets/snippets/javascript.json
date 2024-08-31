@@ -25,7 +25,7 @@
     },
     "exportClass": {
         "prefix": "ecl",
-        "body": "export default class ${1:className} {\n\t$0\n};\n",
+        "body": "export class ${TM_FILENAME_BASE} {\n\t$0\n};\n",
         "description": "Export default class in ES6 syntax"
     },
     "constructor": {

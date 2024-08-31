@@ -21,6 +21,7 @@
             gimp
             inkscape
             joplin-desktop
+            lorien
             anki-bin
             calibre
             libreoffice-still
@@ -40,11 +41,6 @@
             piper
             xow_dongle-firmware
             anki-bin
-
-            # work
-            azure-cli
-            insomnia
-            #jetbrains.rider
         ];
 
         pointerCursor = {
