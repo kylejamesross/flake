@@ -129,10 +129,10 @@ in
 
     virtualisation = {
         docker = {
-            enable = true;
+            enable = false;
             liveRestore = false;
         };
-        waydroid.enable = true;
+        waydroid.enable = false;
     };
 
     hardware.opengl = {

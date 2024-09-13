@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, user, ... }:
+{ pkgs, lib, user, ... }:
 
 {
     imports = [
@@ -29,7 +29,7 @@
             fd
             eza
             du-dust
-            nodejs_20
+            nodejs
             bun
             yarn
             optipng
@@ -43,7 +43,7 @@
             docker-compose
 
             # work
-            unstable.dotnet-sdk_8
+            dotnet-sdk_8
             sqlcmd
 
             # lsp

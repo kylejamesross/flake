@@ -2,15 +2,16 @@
 
 
 {
-  programs.ags = {
-    enable = true;
+    programs.ags = {
+        enable = true;
 
-    configDir = ./config;
+        configDir = ./config;
 
-    extraPackages = with pkgs; [
-      gtksourceview
-      webkitgtk
-      accountsservice
-    ];
-  };
+        extraPackages = with pkgs; [
+            gtksourceview
+                webkitgtk
+                accountsservice
+                gnome.gnome-bluetooth
+        ];
+    };
 }

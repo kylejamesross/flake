@@ -83,7 +83,6 @@ which_key.register({
     x = { "<cmd>ChatGPTRun explain_code<CR>", "E[x]plain Code", mode = { "n", "v" } },
     r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "[R]oxygen Edit", mode = { "n", "v" } },
     l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
-    n = { "<cmd>read !work-commit-message<CR>", "Generate [N]ude Commit Message", mode = { "n", "v" } },
     m = { "<cmd>read !personal-commit-message<CR>", "Generate Commit [M]essage", mode = { "n", "v" } },
   },
 }, { prefix = "<leader>" })
