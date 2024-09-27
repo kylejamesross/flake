@@ -37,7 +37,6 @@
             fzf
             nodePackages.ts-node
             nodePackages.typescript
-            nodePackages.eslint
             nodePackages.svgo
             zoxide
             docker-compose
@@ -46,24 +45,7 @@
             dotnet-sdk_8
             sqlcmd
 
-            # lsp
-            nodePackages.typescript-language-server
-            nodePackages.vscode-langservers-extracted
-            nodePackages."@astrojs/language-server"
-            nodePackages."bash-language-server"
-            rust-analyzer
-            lua-language-server
-            cargo
-            rustc
-            rustfmt
-            omnisharp-roslyn
-            nil
             shellcheck
-
-            # debug adapters
-            netcoredbg
-            lldb
-            vscode-extensions.vadimcn.vscode-lldb
         ];
 
         activation.createHomeDirectories = lib.mkAfter ''
