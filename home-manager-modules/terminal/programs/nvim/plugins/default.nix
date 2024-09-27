@@ -8,7 +8,6 @@
     ./treesitter
     ./autopairs
     ./chatgpt
-    ./none-ls
     ./gitsigns
     ./conform
   ];
