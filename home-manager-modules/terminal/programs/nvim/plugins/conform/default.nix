@@ -132,6 +132,15 @@
         '';
         options = {desc = "LSP: [F]ormat";};
       }
+      {
+        mode = "n";
+        key = "<leader>tf";
+        action = ":FormatToggle<CR>";
+        options = {
+          desc = "[T]oggle [F]ormat";
+          silent = true;
+        };
+      }
     ];
   };
 }
