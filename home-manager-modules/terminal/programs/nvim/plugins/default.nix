@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./telescope
     ./mini
@@ -26,8 +26,11 @@
       vim-textobj-entire
       omnisharp-extended-lsp-nvim
       typescript-nvim
+      nvim-web-devicons
     ];
 
-    extraConfigLua = "";
+    extraConfigLua = ''
+      require'nvim-web-devicons'.setup {}
+    '';
   };
 }
