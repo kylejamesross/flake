@@ -20,6 +20,7 @@
       lspkind.enable = true;
       illuminate.enable = true;
       rainbow-delimiters.enable = true;
+      ts-autotag.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [

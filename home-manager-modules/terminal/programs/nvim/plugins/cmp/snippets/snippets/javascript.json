@@ -1,51 +1,96 @@
 {
-    "consoleLogObject": {
-        "prefix": "clo",
-        "body": "console.log('${1:object} :>> ', ${1:object});",
-        "description": "Displays an object in the console with its name"
-    },
-    "consoleLog": {
-        "prefix": "clg",
-        "body": "console.log(${1:object});",
-        "description": "Displays a message in the console"
-    },
-    "consoleTrace": {
-        "prefix": "ctr",
-        "body": "console.trace(${1:object});",
-        "description": "Prints a stack trace from the point where the method was called"
-    },
-    "export const": {
-        "prefix": "ce",
-        "body": "export const ${TM_FILENAME_BASE} =",
-        "description": "Create export const based on file name"
-    },
-    "styled component": {
-        "prefix": "sc",
-        "body": "export const ${1:ComponentName} = styled.${2:Component}`\n\t\n`;"
-    },
-    "exportClass": {
-        "prefix": "ecl",
-        "body": "export class ${TM_FILENAME_BASE} {\n\t$0\n};\n",
-        "description": "Export default class in ES6 syntax"
-    },
-    "constructor": {
-        "prefix": "con",
-        "body": "constructor(${1:params}) {\n\t${0}\n}",
-        "description": "Add default constructor in a class in ES6 syntax"
-    },
-    "propertyGet": {
-        "prefix": "pge",
-        "body": "get ${1:propertyName}() {\n\treturn this.${0};\n}",
-        "description": "Creates a getter property inside a class in ES6 syntax"
-    },
-    "propertyset": {
-        "prefix": "pse",
-        "body": "set ${1:propertyName}(${2:value}) {\n\t${0};\n}",
-        "description": "Creates a setter property inside a class in ES6 syntax"
-    },
-    "Use props.theme inside styled-component": {
-        "prefix": "scpt",
-        "body": "${({ theme }) => theme.$1};",
-        "description": "Use props.theme inside styled-component"
-    }
+  "consoleLogObject": {
+    "prefix": "clo",
+    "body": "console.log('${1:object} :>> ', ${1:object});",
+    "description": "Displays an object in the console with its name"
+  },
+  "consoleLog": {
+    "prefix": "clg",
+    "body": "console.log(${1:object});",
+    "description": "Displays a message in the console"
+  },
+  "consoleTrace": {
+    "prefix": "ctr",
+    "body": "console.trace(${1:object});",
+    "description": "Prints a stack trace from the point where the method was called"
+  },
+  "export const": {
+    "prefix": "ec",
+    "body": "export const ${TM_FILENAME_BASE} =",
+    "description": "Create export const based on file name"
+  },
+  "export default const": {
+    "prefix": "edc",
+    "body": "export default const ${TM_FILENAME_BASE} =",
+    "description": "Create export default const based on file name"
+  },
+  "styled component": {
+    "prefix": "sc",
+    "body": "export const ${1:ComponentName} = styled.${2:Component}`\n\t\n`;"
+  },
+  "exportClass": {
+    "prefix": "ecl",
+    "body": "export class ${TM_FILENAME_BASE} {\n\t$0\n};\n",
+    "description": "Export default class in ES6 syntax"
+  },
+  "constructor": {
+    "prefix": "con",
+    "body": "constructor(${1:params}) {\n\t${0}\n}",
+    "description": "Add default constructor in a class in ES6 syntax"
+  },
+  "propertyGet": {
+    "prefix": "pge",
+    "body": "get ${1:propertyName}() {\n\treturn this.${0};\n}",
+    "description": "Creates a getter property inside a class in ES6 syntax"
+  },
+  "propertyset": {
+    "prefix": "pse",
+    "body": "set ${1:propertyName}(${2:value}) {\n\t${0};\n}",
+    "description": "Creates a setter property inside a class in ES6 syntax"
+  },
+  "Use props.theme inside styled-component": {
+    "prefix": "scpt",
+    "body": "${({ theme }) => theme.$1};",
+    "description": "Use props.theme inside styled-component"
+  },
+  "react functional component": {
+    "prefix": "rfc",
+    "body": [
+      "export const ${TM_FILENAME_BASE} = (${1}) => {",
+      "  return (",
+      "    ${2}",
+      "  );",
+      "};",
+      ""
+    ],
+    "description": "React functional component",
+    "scope": "javascript,javascriptreact"
+  },
+  "useCallback": {
+    "prefix": "useCallback",
+    "body": [
+      "const ${1:callbackName} = useCallback(",
+      "  () => {",
+      "    ${2:innerFunction}",
+      "  },",
+      "  [${2:dependencies}]",
+      ");",
+      ""
+    ],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useMemo": {
+    "prefix": "useMemo",
+    "body": [
+      "const ${1:memoizedValue} = useMemo(() => ${2:innerFunction}, [${3:dependencies}]);"
+    ],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useState": {
+    "prefix": "useStateSnippet",
+    "body": [
+      "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:second})"
+    ],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  }
 }

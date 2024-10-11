@@ -1,104 +1,57 @@
 {
-  "react typescript funcional component": {
-    "prefix": "rtfc",
+  "react typescript functional component": {
+    "prefix": "rfc",
     "body": [
-      "import React from 'react';",
+      "import { FC } from 'react';",
       "",
-      "export interface I${TM_FILENAME_BASE} {",
+      "export type ${TM_FILENAME_BASE}Props = {",
       "  ${1}",
-      "}",
+      "};",
       "",
-      "export const ${TM_FILENAME_BASE} = ({${2}}: I${TM_FILENAME_BASE} ) => {",
+      "export const ${TM_FILENAME_BASE}: FC<${TM_FILENAME_BASE}Props> = ({${2}}) => {",
       "  return (",
       "    ${3}",
       "  );",
       "};",
       ""
     ],
-    "description": "React Typescript funcional component"
-  },
-  "react typescript functional component observer": {
-    "prefix": "rtfco",
-    "body": [
-      "import React from 'react';",
-      "import { observer } from 'mobx-react-lite';",
-      "",
-      "export interface I${TM_FILENAME_BASE} {",
-      "  ${1}",
-      "}",
-      "",
-      "const ${TM_FILENAME_BASE} = observer(({${2}}: I${TM_FILENAME_BASE} ) => {",
-      "  return (",
-      "    ${3}",
-      "  );",
-      "});",
-      "",
-      "export { ${TM_FILENAME_BASE} };",
-      ""
-    ],
-    "description": "React typescript functional component observer"
-  },
-  "react typescript stateful component": {
-    "prefix": "rtsc",
-    "body": [
-      "import React, { Component } from 'react';",
-      "",
-      "export interface I${TM_FILENAME_BASE} {",
-      "  ${1}",
-      "}",
-      "",
-      "class ${TM_FILENAME_BASE} extends Component<I${TM_FILENAME_BASE}> {",
-      "  public static defaultProps = {",
-      "    ${4}",
-      "  };",
-      "  public render() {",
-      "    const {${2}} = this.props;",
-      "    return (",
-      "      ${3}",
-      "    );",
-      "  }",
-      "}",
-      "",
-      "export { ${TM_FILENAME_BASE}; }",
-      ""
-    ],
-    "description": "React Typescript stateful component"
+    "description": "React Typescript functional component",
+    "scope": "typescript,typescriptreact"
   },
   "react functional component": {
     "prefix": "rfc",
     "body": [
-      "import React from 'react';",
-      "",
-      "const ${TM_FILENAME_BASE} = () => (",
-      "  ${1}",
-      ");",
-      "",
-      "export { ${TM_FILENAME_BASE} };",
+      "export const ${TM_FILENAME_BASE} = (${1}) => {",
+      "  return (",
+      "    ${2}",
+      "  );",
+      "};",
       ""
     ],
-    "description": "React functional component"
+    "description": "React functional component",
+    "scope": "javascript,javascriptreact"
   },
   "useCallback": {
-    "key": "useCallback",
-    "prefix": "useCallbackSnippet",
+    "prefix": "useCallback",
     "body": [
-      "useCallback(",
+      "const ${1:callbackName} = useCallback(",
       "  () => {",
-      "    ${1:first}",
+      "    ${2:innerFunction}",
       "  },",
-      "  [${2:second}],",
-      ")",
+      "  [${2:dependencies}]",
+      ");",
       ""
-    ]
+    ],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
   },
   "useMemo": {
-    "key": "useMemo",
-    "prefix": "useMemoSnippet",
-    "body": ["useMemo(() => ${1:first}, [${2:second}])"],
+    "prefix": "useMemo",
+    "body": [
+      "const ${1:memoizedValue} = useMemo(() => ${2:innerFunction}, [${3:dependencies}]);"
+    ],
     "scope": "typescript,typescriptreact,javascript,javascriptreact"
   },
   "useState": {
-    "key": "useState",
     "prefix": "useStateSnippet",
     "body": [
       "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:second})"

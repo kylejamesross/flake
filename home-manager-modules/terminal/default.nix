@@ -5,7 +5,8 @@
   ...
 }: {
   imports = [
-    ./programs/zsh
+    ./programs/fish
+    ./programs/zoxide
     ./programs/tmux
     ./programs/nvim
     ./programs/btop
@@ -14,6 +15,7 @@
     ./programs/lazygit
     ./programs/tealdeer
     ./programs/bat
+    ./programs/eza
     ./scripts
   ];
 
@@ -26,11 +28,9 @@
       zip
       tig
       shell-gpt
-      gh
       ripgrep
       jaq
       fd
-      eza
       du-dust
       nodejs
       bun
@@ -42,7 +42,6 @@
       nodePackages.typescript
       nodePackages.eslint
       nodePackages.svgo
-      zoxide
       docker-compose
 
       # work
