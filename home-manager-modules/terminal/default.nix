@@ -16,6 +16,7 @@
     ./programs/tealdeer
     ./programs/bat
     ./programs/eza
+    ./programs/direnv
     ./scripts
   ];
 
