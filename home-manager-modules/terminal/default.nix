@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./programs/fish
+    ./programs/starship
     ./programs/zoxide
     ./programs/tmux
     ./programs/nvim

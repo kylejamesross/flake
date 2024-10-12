@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
     image = ./acoolrocket-dalle2-hokusai-non-prompt-landscape.png;
     cursor = {
       package = pkgs.bibata-cursors;

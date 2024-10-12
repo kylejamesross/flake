@@ -16,7 +16,6 @@
   environment.systemPackages = with pkgs; [
     git
     vim
-    nano
     killall
     pciutils
     usbutils
@@ -25,10 +24,8 @@
     xdg-utils
     bash
     inetutils
-    zsh
     dconf
     cifs-utils
-    flatpak
   ];
 
   services = {};

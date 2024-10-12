@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs.fish = {
     enable = true;
-
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza -bhal --icons --hyperlink --git --color auto";
       cat = "${pkgs.bat}/bin/bat";
@@ -17,13 +16,11 @@
       generate-resume-into-clipboard = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_20}/bin/npx hackmyresume build /dev/stdin TO genResume.txt && cat genResume.txt | wl-copy && rm genResume.txt";
       nd = "nix develop -c $SHELL";
     };
-    plugins = [
-      {
-        name = "tide";
-        src = pkgs.fishPlugins.tide.src;
-      }
-    ];
-    shellInit = ''
+    interactiveShellInit = ''
+      fish_vi_key_bindings
+
+      set fish_greeting ""
+
       if test -f $HOME/.openai-api-key
           set -x OPENAI_API_KEY (cat $HOME/.openai-api-key)
       end
@@ -33,12 +30,6 @@
       end
 
       set -x PATH $PATH $HOME/.dotnet/tools
-
-    '';
-    interactiveShellInit = ''
-      fish_vi_key_bindings
-
-      set fish_greeting ""
 
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     '';
