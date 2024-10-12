@@ -16,15 +16,12 @@
   environment.systemPackages = with pkgs; [
     git
     vim
-    killall
+    bash
+    dconf
     pciutils
     usbutils
-    wget
-    curl
     xdg-utils
-    bash
     inetutils
-    dconf
     cifs-utils
   ];
 
