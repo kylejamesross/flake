@@ -1,23 +1,4 @@
 {
-  "react typescript functional component": {
-    "prefix": "rfc",
-    "body": [
-      "import { FC } from 'react';",
-      "",
-      "export type ${TM_FILENAME_BASE}Props = {",
-      "  ${1}",
-      "};",
-      "",
-      "export const ${TM_FILENAME_BASE}: FC<${TM_FILENAME_BASE}Props> = ({${2}}) => {",
-      "  return (",
-      "    ${3}",
-      "  );",
-      "};",
-      ""
-    ],
-    "description": "React Typescript functional component",
-    "scope": "typescript,typescriptreact"
-  },
   "react functional component": {
     "prefix": "rfc",
     "body": [
@@ -28,8 +9,7 @@
       "};",
       ""
     ],
-    "description": "React functional component",
-    "scope": "javascript,javascriptreact"
+    "description": "React functional component"
   },
   "useCallback": {
     "prefix": "useCallback",
@@ -41,21 +21,18 @@
       "  [${2:dependencies}]",
       ");",
       ""
-    ],
-    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    ]
   },
   "useMemo": {
     "prefix": "useMemo",
     "body": [
       "const ${1:memoizedValue} = useMemo(() => ${2:innerFunction}, [${3:dependencies}]);"
-    ],
-    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    ]
   },
   "useState": {
-    "prefix": "useStateSnippet",
+    "prefix": "useState",
     "body": [
       "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:second})"
-    ],
-    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    ]
   }
 }
