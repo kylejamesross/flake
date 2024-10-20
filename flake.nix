@@ -67,11 +67,16 @@
       work = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          ./hosts/x86_64-linux
           ./nixos-modules/programs/stylix
           ./nixos-modules/programs/shell
           ./nixos-modules/programs/nh
           inputs.stylix.nixosModules.stylix
           home-manager
+          ./home-manager-modules/terminal
+          ./home-manager-modules/stylix
+          inputs.nixvim.homeManagerModules.nixvim
+          inputs.ags.homeManagerModules.default
           inputs.nixos-wsl.nixosModules.default
           {
             system.stateVersion = "24.05";
