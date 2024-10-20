@@ -72,7 +72,6 @@
           ./nixos-modules/programs/nh
           inputs.stylix.nixosModules.stylix
           home-manager
-          ./home-manager-modules
           inputs.nixos-wsl.nixosModules.default
           {
             system.stateVersion = "24.05";
