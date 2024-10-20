@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.fish = {
-    enable = true;
+    enable = false;
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza -bhal --icons --hyperlink --git --color auto";
       cat = "${pkgs.bat}/bin/bat";

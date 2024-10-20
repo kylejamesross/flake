@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./programs/fish
+    ./programs/zsh
     ./programs/starship
     ./programs/zoxide
     ./programs/tmux
