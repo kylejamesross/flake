@@ -11,6 +11,7 @@
     ./programs/shell
     ./programs/hyprland
     ./programs/nh
+    ./programs/vm
   ];
 
   environment.systemPackages = with pkgs; [

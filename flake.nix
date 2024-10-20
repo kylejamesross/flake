@@ -22,6 +22,7 @@
     ags = {
       url = "github:Aylur/ags";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs = {
@@ -50,6 +51,11 @@
           inputs.stylix.nixosModules.stylix
           home-manager
           ./home-manager-modules
+          inputs.nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+          }
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {
