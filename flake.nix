@@ -78,6 +78,12 @@
             system.stateVersion = "24.05";
             wsl.enable = true;
             networking.hostName = "work";
+            users.users.${user} = {
+              isNormalUser = true;
+              extraGroups = [
+                "wheel"
+              ];
+            };
           }
         ];
       };
