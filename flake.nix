@@ -67,6 +67,9 @@
       work = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          ./nixos-modules/programs/stylix
+          ./nixos-modules/programs/shell
+          ./nixos-modules/programs/nh
           inputs.stylix.nixosModules.stylix
           home-manager
           ./home-manager-modules
