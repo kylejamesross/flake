@@ -70,7 +70,6 @@ in {
       dates = "Sat *-*-* 00:00:00";
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "22.05";
   };
 
   boot = {
