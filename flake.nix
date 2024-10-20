@@ -22,7 +22,6 @@
     ags = {
       url = "github:Aylur/ags";
     };
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs = {
