@@ -51,10 +51,6 @@
           inputs.stylix.nixosModules.stylix
           home-manager
           ./home-manager-modules
-          inputs.nixos-wsl.nixosModules.default
-          {
-            wsl.enable = true;
-          }
         ];
       };
       laptop = nixpkgs.lib.nixosSystem {
@@ -66,6 +62,22 @@
           inputs.stylix.nixosModules.stylix
           home-manager
           ./home-manager-modules
+        ];
+      };
+      work = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ./hosts/x86_64-linux
+          ./nixos-modules
+          inputs.stylix.nixosModules.stylix
+          home-manager
+          ./home-manager-modules
+          inputs.nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+            networking.hostName = "work";
+          }
         ];
       };
     };
