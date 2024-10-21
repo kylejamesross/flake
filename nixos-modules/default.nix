@@ -11,13 +11,15 @@
     ./programs/shell
     ./programs/hyprland
     ./programs/nh
+    ./programs/vm
   ];
+
+  programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
     vim
     bash
-    dconf
     pciutils
     usbutils
     xdg-utils
