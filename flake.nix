@@ -22,6 +22,7 @@
     ags = {
       url = "github:Aylur/ags";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
   };
 
   outputs = {
@@ -44,8 +45,8 @@
       desktop = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./hosts/x86_64-linux
           ./hosts/desktop
+          ./hosts/x86_64-linux
           ./nixos-modules
           inputs.stylix.nixosModules.stylix
           home-manager
@@ -55,10 +56,22 @@
       laptop = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./hosts/x86_64-linux
           ./hosts/laptop
+          ./hosts/x86_64-linux
           ./nixos-modules
           inputs.stylix.nixosModules.stylix
+          home-manager
+          ./home-manager-modules
+        ];
+      };
+      wsl = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ./hosts/wsl
+          ./hosts/x86_64-linux
+          inputs.stylix.nixosModules.stylix
+          inputs.nixos-wsl.nixosModules.wsl
+          ./nixos-modules
           home-manager
           ./home-manager-modules
         ];

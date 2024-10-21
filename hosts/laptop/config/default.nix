@@ -1,7 +1,6 @@
-{ ... }: 
-
-{
-    imports = [
-        ./monitors
-    ];
+{...}: {
+  imports = [
+    ./monitors
+  ];
+  config.bootloader.enable = true;
 }

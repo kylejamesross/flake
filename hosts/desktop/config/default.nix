@@ -1,8 +1,8 @@
-{ ... }: 
+{...}: {
+  imports = [
+    ./monitors
+    ./workspaces
+  ];
 
-{
-    imports = [
-        ./monitors
-        ./workspaces
-    ];
+  config.bootloader.enable = true;
 }

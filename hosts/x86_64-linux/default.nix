@@ -2,6 +2,8 @@
   pkgs,
   inputs,
   user,
+  lib,
+  config,
   ...
 }: let
   editor = pkgs.writeShellScriptBin "editor" ''
@@ -26,6 +28,7 @@
 in {
   imports = [
     ./options
+    ./bootloader
   ];
 
   users.users.${user} = {
@@ -71,18 +74,6 @@ in {
       channel = "https://nixos.org/channels/nixos-unstable";
     };
     stateVersion = "22.05";
-  };
-
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 20;
-      };
-      efi.canTouchEfiVariables = true;
-      timeout = 1;
-    };
   };
 
   console = {
