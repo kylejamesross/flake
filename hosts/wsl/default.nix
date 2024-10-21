@@ -4,6 +4,6 @@
     enable = true;
     defaultUser = user;
     docker-desktop.enable = false;
-    startMenuLaunchers = true;
+    startMenuLaunchers = false;
   };
 }
