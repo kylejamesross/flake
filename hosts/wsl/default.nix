@@ -6,4 +6,5 @@
     docker-desktop.enable = false;
     startMenuLaunchers = false;
   };
+  config.steam.enable = false;
 }

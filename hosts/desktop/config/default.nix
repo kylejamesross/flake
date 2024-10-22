@@ -5,4 +5,5 @@
   ];
 
   config.bootloader.enable = true;
+  config.steam.enable = true;
 }
