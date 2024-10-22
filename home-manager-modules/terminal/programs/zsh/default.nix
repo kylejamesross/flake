@@ -5,7 +5,7 @@
 }:
 with config.lib.stylix.colors; {
   programs.zsh = {
-    enable = true;
+    enable = false;
     enableCompletion = true;
     dotDir = ".config/zsh";
     autosuggestion.enable = true;

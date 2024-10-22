@@ -4,7 +4,7 @@
   ...
 }: {
   users.users.${user} = {
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     ignoreShellProgramCheck = true; # Defined in home manager modules
   };
 }
