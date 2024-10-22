@@ -3,7 +3,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      ls = "${pkgs.eza}/bin/eza -bhal --icons --hyperlink --git --color auto";
+      ls = "${pkgs.eza}/bin/eza -bal --icons --hyperlink --git --color auto";
       cat = "${pkgs.bat}/bin/bat";
       sb = "${pkgs.git}/bin/git branch | ${pkgs.fzf}/bin/fzf | xargs -I {} ${pkgs.git}/bin/git switch {}";
       pb = "${pkgs.git}/bin/git branch | ${pkgs.fzf}/bin/fzf --multi | xargs -I {} ${pkgs.git}/bin/git branch -D {}";
