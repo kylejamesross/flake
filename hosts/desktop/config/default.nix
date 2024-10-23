@@ -6,4 +6,6 @@
 
   config.bootloader.enable = true;
   config.steam.enable = true;
+  config.hyprland.enable = true;
+  config.ags.enable = true;
 }

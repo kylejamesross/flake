@@ -2,8 +2,6 @@
   pkgs,
   inputs,
   user,
-  lib,
-  config,
   ...
 }: let
   editor = pkgs.writeShellScriptBin "editor" ''

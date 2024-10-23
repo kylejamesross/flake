@@ -1,17 +1,21 @@
-{ pkgs, ... }:
-
-
 {
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}: {
+  config = lib.mkIf osConfig.ags.enable {
     programs.ags = {
-        enable = true;
+      enable = true;
 
-        configDir = ./config;
+      configDir = ./config;
 
-        extraPackages = with pkgs; [
-            gtksourceview
-                webkitgtk
-                accountsservice
-                gnome.gnome-bluetooth
-        ];
+      extraPackages = with pkgs; [
+        gtksourceview
+        webkitgtk
+        accountsservice
+        gnome.gnome-bluetooth
+      ];
     };
+  };
 }
