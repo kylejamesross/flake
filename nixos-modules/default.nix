@@ -8,6 +8,7 @@
     ./services/keyd
     ./services/pipewire
     ./services/greetd
+    ./services/nextcloud-autosync
     ./programs/shell
     ./programs/hyprland
     ./programs/nh
@@ -26,6 +27,4 @@
     inetutils
     cifs-utils
   ];
-
-  services = {};
 }
