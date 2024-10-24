@@ -4,8 +4,8 @@
       number = true;
       relativenumber = true;
       mouse = "a";
-      shiftwidth = 4;
-      tabstop = 4;
+      shiftwidth = 2;
+      tabstop = 2;
       hlsearch = true;
       ignorecase = true;
       smartcase = true;

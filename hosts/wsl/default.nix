@@ -9,4 +9,5 @@
   config.steam.enable = false;
   config.hyprland.enable = false;
   config.ags.enable = false;
+  config.defaultNote = "WORK-TODO.md";
 }

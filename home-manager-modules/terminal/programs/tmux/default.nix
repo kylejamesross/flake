@@ -1,4 +1,5 @@
 {
+  osConfig,
   config,
   pkgs,
   user,
@@ -26,7 +27,7 @@ with config.lib.stylix.colors; {
         bind-key -r . run-shell "tmux neww -S -n '󰊚' btop"
         bind-key -r R run-shell "tmux source ~/.tmux.conf"
         bind-key -r / run-shell "tmux neww -S -n ''"
-        bind-key -r n run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/TODO.md"
+        bind-key -r n run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/${osConfig.defaultNote}"
         bind-key -r t run-shell "tmux neww -S -n ''"
         bind-key -r e run-shell "tmux neww -S -n '' nvim --listen \"/home/${user}/.cache/nvim/$(pwd | md5sum | awk '{ print $1 }').pipe\""
         bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
