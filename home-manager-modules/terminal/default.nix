@@ -25,6 +25,7 @@
     fzf.enable = true;
     ripgrep.enable = true;
     fd.enable = true;
+    fastfetch.enable = true;
   };
 
   home = {
@@ -39,7 +40,6 @@
       jaq
       du-dust
       optipng
-      fastfetch
       nodePackages.svgo
       docker-compose
     ];
