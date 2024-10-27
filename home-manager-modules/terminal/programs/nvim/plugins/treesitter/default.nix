@@ -27,6 +27,7 @@
           nix
           astro
           html
+          vue
         ];
       };
     };

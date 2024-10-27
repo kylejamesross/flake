@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nixvim = {
     plugins = {
       cmp-nvim-lsp.enable = true;
@@ -17,6 +17,16 @@
           eslint.enable = true;
           omnisharp.enable = true;
           astro.enable = true;
+          volar = {
+            enable = true;
+            extraOptions = {
+              init_options = {
+                typescript = {
+                  tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+                };
+              };
+            };
+          };
         };
 
         keymaps = {
