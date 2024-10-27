@@ -9,7 +9,6 @@ in {
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
-    enableZshIntegration = true;
     settings = {
       manager = {
         show_hidden = true;

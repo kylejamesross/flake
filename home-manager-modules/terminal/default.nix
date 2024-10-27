@@ -5,22 +5,27 @@
   ...
 }: {
   imports = [
-    ./programs/zsh
     ./programs/fish
-    ./programs/starship
-    ./programs/zoxide
     ./programs/tmux
     ./programs/nvim
-    ./programs/btop
     ./programs/git
     ./programs/yazi
     ./programs/lazygit
     ./programs/tealdeer
-    ./programs/bat
-    ./programs/eza
     ./programs/direnv
     ./scripts
   ];
+
+  programs = {
+    starship.enable = true;
+    zoxide.enable = true;
+    bat.enable = true;
+    eza.enable = true;
+    btop.enable = true;
+    fzf.enable = true;
+    ripgrep.enable = true;
+    fd.enable = true;
+  };
 
   home = {
     packages = with pkgs; [
@@ -31,13 +36,10 @@
       zip
       tig
       shell-gpt
-      ripgrep
       jaq
-      fd
       du-dust
       optipng
       fastfetch
-      fzf
       nodePackages.svgo
       docker-compose
     ];
