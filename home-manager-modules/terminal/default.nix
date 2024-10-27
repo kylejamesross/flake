@@ -35,21 +35,11 @@
       jaq
       fd
       du-dust
-      nodejs
-      bun
-      yarn
       optipng
       fastfetch
       fzf
-      nodePackages.ts-node
-      nodePackages.typescript
-      nodePackages.eslint
       nodePackages.svgo
       docker-compose
-
-      # work
-      dotnet-sdk_8
-      sqlcmd
     ];
 
     activation.createHomeDirectories = lib.mkAfter ''
