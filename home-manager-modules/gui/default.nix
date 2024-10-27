@@ -12,14 +12,17 @@
     ./programs/swaylock
     ./programs/swappy
     ./services/home-manager-system-tray
-    ./programs/mangohud
   ];
+
+  programs = {
+    mpv.enable = true;
+    mangohud.enable = true;
+  };
 
   home = {
     packages = with pkgs; [
       brave
       dbeaver-bin
-      mpv
       gimp
       inkscape
       lorien
