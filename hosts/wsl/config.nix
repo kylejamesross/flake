@@ -3,4 +3,5 @@
   config.hyprland.enable = false;
   config.ags.enable = false;
   config.defaultNote = "WORK-TODO.md";
+  config.keyd.enable = false;
 }
