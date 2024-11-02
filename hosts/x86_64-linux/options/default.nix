@@ -11,4 +11,9 @@
     default = "TODO.md";
     description = "Default note file to open";
   };
+  options.alternativeNote = lib.mkOption {
+    type = lib.types.string;
+    default = "WORK-TODO.md";
+    description = "Alternative note file to open";
+  };
 }
