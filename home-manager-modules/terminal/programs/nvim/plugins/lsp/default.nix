@@ -43,7 +43,15 @@
               key = "K";
               action.__raw = "vim.lsp.buf.hover";
               options = {
-                desc = "LSP: [G]oto [D]efinition";
+                desc = "LSP: [G]o to [D]efinition";
+              };
+            }
+            {
+              mode = "n";
+              key = "gf";
+              action.__raw = "vim.diagnostic.open_float";
+              options = {
+                desc = "[G]o to diagnostic float";
               };
             }
             {
@@ -59,7 +67,7 @@
               key = "gr";
               action.__raw = "require('telescope.builtin').lsp_references";
               options = {
-                desc = "LSP: [G]oto [R]eferences";
+                desc = "LSP: [G]o to [R]eferences";
               };
             }
             {
@@ -67,7 +75,7 @@
               key = "gI";
               action.__raw = "require('telescope.builtin').lsp_implementations";
               options = {
-                desc = "LSP: [G]oto [I]mplementation";
+                desc = "LSP: [G]o to [I]mplementation";
               };
             }
             {

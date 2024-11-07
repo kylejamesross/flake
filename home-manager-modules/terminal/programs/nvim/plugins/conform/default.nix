@@ -69,7 +69,19 @@
             "prettier"
           ]
         ];
+        javascriptreact = [
+          [
+            "prettierd"
+            "prettier"
+          ]
+        ];
         typescript = [
+          [
+            "prettierd"
+            "prettier"
+          ]
+        ];
+        typescriptreact = [
           [
             "prettierd"
             "prettier"

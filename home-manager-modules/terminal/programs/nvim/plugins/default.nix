@@ -21,6 +21,7 @@
       illuminate.enable = true;
       rainbow-delimiters.enable = true;
       ts-autotag.enable = true;
+      markdown-preview.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
