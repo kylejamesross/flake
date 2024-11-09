@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   programs.nixvim = {
     plugins = {
       cmp-nvim-lsp.enable = true;
@@ -265,12 +269,13 @@
       })
 
       function PopulateQuickfixWithTypescriptErrors()
-          local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc --noEmit --pretty false 2>&1 | grep '([^,]*,[^)]*)'")
+          local command_output = vim.fn.systemlist("${unstable.typescript}/bin/tsc -b --pretty false || ${unstable.typescript}/bin/tsc")
 
           vim.fn.setqflist({}, "r")
 
           for _, line in ipairs(command_output) do
-              local filename, lnum, col, text = line:match("(%S+)%((%d+),(%d+)%): error%s(.+)")
+              print(line)
+              local filename, lnum, col, text = line:match("^([^%(]+)%((%d+),(%d+)%)%: error (TS%d+%: (.+))$")
               if filename and lnum and col and text then
                   local entry = {
                       filename = filename,
