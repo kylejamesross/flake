@@ -274,7 +274,6 @@
           vim.fn.setqflist({}, "r")
 
           for _, line in ipairs(command_output) do
-              print(line)
               local filename, lnum, col, text = line:match("^([^%(]+)%((%d+),(%d+)%)%: error (TS%d+%: (.+))$")
               if filename and lnum and col and text then
                   local entry = {
