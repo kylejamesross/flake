@@ -144,6 +144,16 @@
       }
       {
         mode = "n";
+        key = "<leader>tq";
+        action = ":if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif<CR>";
+        options = {
+          noremap = true;
+          silent = true;
+          desc = "[T]oggle quickfix list";
+        };
+      }
+      {
+        mode = "n";
         key = "]l";
         action = ":lnext<CR>";
         options = {
