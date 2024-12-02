@@ -22,7 +22,6 @@
       ts-autotag.enable = true;
       markdown-preview.enable = true;
       web-devicons.enable = true;
-      nvim-surround.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [

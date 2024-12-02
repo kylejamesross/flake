@@ -7,6 +7,7 @@
           ai = {
             n_lines = 500;
           };
+          surround = {};
           files = {};
         };
       };
