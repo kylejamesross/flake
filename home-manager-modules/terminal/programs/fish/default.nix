@@ -34,7 +34,7 @@
         end
 
         if test -f $HOME/.work_azure_devops_pull_request_token
-          set -x GH_TOKEN (cat $HOME/.work_azure_devops_pull_request_token)
+          set -x AZURE_DEVOPS_EXT_PAT (cat $HOME/.work_azure_devops_pull_request_token)
         end
 
         ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
