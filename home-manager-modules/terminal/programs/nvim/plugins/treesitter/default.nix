@@ -46,9 +46,6 @@
                       additional_vim_regex_highlighting = false,
                       },
                       indent = { enable = true, disable = { "yaml" } },
-                      autotag = {
-                      enable = true,
-                      },
                       incremental_selection = {
                       enable = true,
                       keymaps = {

@@ -44,7 +44,6 @@ in {
     VISUAL = "nvim";
     USERNAME = user;
     VSCODE_CODELLDB = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}";
-    DOTNET_ROOT = "${pkgs.dotnet-sdk}";
   };
 
   nix = {
@@ -126,9 +125,8 @@ in {
     waydroid.enable = false;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 }

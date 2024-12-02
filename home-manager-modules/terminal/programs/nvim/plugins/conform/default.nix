@@ -37,102 +37,98 @@
     '';
     plugins.conform-nvim = {
       enable = true;
-      notifyOnError = true;
-      formatOnSave = ''
-        function(bufnr)
-            local disable_filetypes = { c = true, cpp = true }
-            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-              return
-            end
-            return {
-                timeout_ms = 500,
-                lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype]
-            }
-        end
-      '';
-      formattersByFt = {
-        html = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        css = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        javascript = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        javascriptreact = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        typescript = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        typescriptreact = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        lua = ["stylua"];
-        nix = ["alejandra"];
-        markdown = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        yaml = [
-          [
-            "prettierd"
-            "prettier"
-          ]
-        ];
-        bash = [
-          "shellcheck"
-          "shellharden"
-          "shfmt"
-        ];
-        json = ["jq"];
-      };
+      settings = {
+        notify_on_error = false;
+        format_on_save = ''
+          function(bufnr)
+              local disable_filetypes = { c = true, cpp = true }
+              if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                return
+              end
+              return {
+                  timeout_ms = 500,
+                  lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype]
+              }
+          end
+        '';
+        formatters_by_ft = {
+          html = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          css = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          javascript = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          javascriptreact = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          typescript = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          typescriptreact = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          lua = ["stylua"];
+          nix = ["alejandra"];
+          markdown = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          yaml = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          bash = {
+            __unkeyed-1 = "shellcheck";
+            __unkeyed-2 = "shellharden";
+            __unkeyed-3 = "shfmt";
+            stop_after_first = true;
+          };
+          json = ["jq"];
+        };
 
-      formatters = {
-        alejandra = {
-          command = "${lib.getExe pkgs.alejandra}";
-        };
-        jq = {
-          command = "${lib.getExe pkgs.jq}";
-        };
-        prettierd = {
-          command = "${lib.getExe pkgs.prettierd}";
-        };
-        stylua = {
-          command = "${lib.getExe pkgs.stylua}";
-        };
-        shellcheck = {
-          command = "${lib.getExe pkgs.shellcheck}";
-        };
-        shfmt = {
-          command = "${lib.getExe pkgs.shfmt}";
-        };
-        shellharden = {
-          command = "${lib.getExe pkgs.shellharden}";
+        formatters = {
+          alejandra = {
+            command = "${lib.getExe pkgs.alejandra}";
+          };
+          jq = {
+            command = "${lib.getExe pkgs.jq}";
+          };
+          prettierd = {
+            command = "${lib.getExe pkgs.prettierd}";
+          };
+          stylua = {
+            command = "${lib.getExe pkgs.stylua}";
+          };
+          shellcheck = {
+            command = "${lib.getExe pkgs.shellcheck}";
+          };
+          shfmt = {
+            command = "${lib.getExe pkgs.shfmt}";
+          };
+          shellharden = {
+            command = "${lib.getExe pkgs.shellharden}";
+          };
         };
       };
     };
+
     keymaps = [
       {
         mode = "";

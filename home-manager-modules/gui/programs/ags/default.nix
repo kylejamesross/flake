@@ -14,7 +14,7 @@
         gtksourceview
         webkitgtk
         accountsservice
-        gnome.gnome-bluetooth
+        gnome-bluetooth
       ];
     };
   };
