@@ -16,7 +16,7 @@
       incsearch = true;
       smartindent = true;
       updatetime = 250;
-      timeoutlen = 100;
+      timeoutlen = 500;
       splitright = true;
       splitbelow = true;
       clipboard = "unnamedplus";
