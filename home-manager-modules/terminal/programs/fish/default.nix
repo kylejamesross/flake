@@ -16,20 +16,28 @@
       generate-resume-into-clipboard = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_20}/bin/npx hackmyresume build /dev/stdin TO genResume.txt && cat genResume.txt | wl-copy && rm genResume.txt";
       nd = "nix develop -c $SHELL";
     };
-    interactiveShellInit = ''
-      fish_vi_key_bindings
+    interactiveShellInit =
+      /*
+      bash
+      */
+      ''
+        fish_vi_key_bindings
 
-      set fish_greeting ""
+        set fish_greeting ""
 
-      if test -f $HOME/.openai-api-key
-          set -x OPENAI_API_KEY (cat $HOME/.openai-api-key)
-      end
+        if test -f $HOME/.openai-api-key
+            set -x OPENAI_API_KEY (cat $HOME/.openai-api-key)
+        end
 
-      if test -f $HOME/.github-token
+        if test -f $HOME/.github-token
           set -x GH_TOKEN (cat $HOME/.github-token)
-      end
+        end
 
-      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-    '';
+        if test -f $HOME/.work_azure_devops_pull_request_token
+          set -x GH_TOKEN (cat $HOME/.work_azure_devops_pull_request_token)
+        end
+
+        ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+      '';
   };
 }
