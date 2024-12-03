@@ -13,7 +13,6 @@
   ];
   programs.nixvim = {
     plugins = {
-      sleuth.enable = true;
       indent-blankline.enable = true;
       nvim-colorizer.enable = true;
       lspkind.enable = true;
