@@ -30,7 +30,7 @@ with config.lib.stylix.colors; {
         bind-key -r n run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/TODO.md"
         bind-key -r N run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/WORK-TODO.md"
         bind-key -r t run-shell "tmux neww -S -n ''"
-        bind-key -r e run-shell "tmux neww -S -n '' nvim --listen \"/home/${user}/.cache/nvim/$(pwd | md5sum | awk '{ print $1 }').pipe\""
+        bind-key -r e run-shell "tmux neww -S -n '' nvim"
         bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
         bind-key -r \' run-shell "tmux neww -S -n '󱋣' yazi"
 
