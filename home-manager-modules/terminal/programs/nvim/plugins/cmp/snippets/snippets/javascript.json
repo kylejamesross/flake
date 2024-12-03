@@ -47,5 +47,25 @@
     "prefix": "pse",
     "body": "set ${1:propertyName}(${2:value}) {\n\t${0};\n}",
     "description": "Creates a setter property inside a class in ES6 syntax"
+  },
+  "exportNamedFunction": {
+    "prefix": "ef",
+    "body": [
+      "export function ${TM_FILENAME_BASE}(${1}) {",
+      "  ${2}",
+      "};",
+      ""
+    ],
+    "description": "Export named function"
+  },
+  "exportAnonymousFunction": {
+    "prefix": "eaf",
+    "body": [
+      "export const ${TM_FILENAME_BASE} = (${1}) => {",
+      "  ${2}",
+      "};",
+      ""
+    ],
+    "description": "Export Anonymous function"
   }
 }

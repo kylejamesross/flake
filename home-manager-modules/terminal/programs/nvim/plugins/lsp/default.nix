@@ -18,6 +18,7 @@
           cssls.enable = true;
           bashls.enable = true;
           eslint.enable = true;
+          jsonls.enable = true;
           astro.enable = true;
           volar = {
             enable = true;
@@ -210,7 +211,7 @@
         end
 
         function PopulateQuickfixWithTypescriptErrors()
-          local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
+          local output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
           vim.fn.setqflist({}, "r")
 
           for _, line in ipairs(command_output) do
@@ -261,7 +262,7 @@
           end
 
           require("lspconfig").ts_ls.setup({
-            on_attach = function(client, bufnr)
+            on_attach = function(_, bufnr)
               vim.keymap.set(
                 "n",
                 "<leader>l1",

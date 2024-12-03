@@ -11,6 +11,16 @@
     ],
     "description": "React functional component"
   },
+  "reactHook": {
+    "prefix": "rh",
+    "body": [
+      "export const ${TM_FILENAME_BASE} = (${1}) => {",
+      "  ${2}",
+      "};",
+      ""
+    ],
+    "description": "React hook"
+  },
   "useCallback": {
     "prefix": "useCallback",
     "body": [
