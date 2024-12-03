@@ -83,10 +83,10 @@
         mode = "n";
         key = "<c-p>";
         action.__raw = ''
-              function()
-              require('telescope.builtin').find_files {
-                  hidden = true
-              }
+          function()
+            require('telescope.builtin').find_files {
+              hidden = true
+            }
           end
         '';
         options = {
@@ -133,11 +133,11 @@
         mode = "n";
         key = "<leader>s/";
         action.__raw = ''
-              function()
-              require('telescope.builtin').live_grep {
-                  grep_open_files = true,
-                  prompt_title = 'Live Grep in Open Files'
-              }
+          function()
+            require('telescope.builtin').live_grep {
+              grep_open_files = true,
+              prompt_title = 'Live Grep in Open Files'
+            }
           end
         '';
         options = {
@@ -148,10 +148,10 @@
         mode = "n";
         key = "<leader>sn";
         action.__raw = ''
-              function()
-              require('telescope.builtin').find_files {
-                  cwd = vim.fn.stdpath 'config'
-              }
+          function()
+            require('telescope.builtin').find_files {
+              cwd = vim.fn.stdpath 'config'
+            }
           end
         '';
         options = {

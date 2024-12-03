@@ -1,8 +1,4 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nixvim = {
     plugins = {
       cmp-nvim-lsp.enable = true;
@@ -14,7 +10,10 @@
           nil_ls.enable = true;
           lua_ls = {
             enable = true;
-            settings.telemetry.enable = false;
+            settings = {
+              telemetry.enable = false;
+              diagnostics.globals = ["vim" "require" "client" "bufnr" "event"];
+            };
           };
           cssls.enable = true;
           bashls.enable = true;
@@ -147,40 +146,44 @@
           };
         };
 
-        onAttach = ''
-          local map = function(keys, func, desc)
-              vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
-          end
+        onAttach =
+          /*
+          lua
+          */
+          ''
+            local map = function(keys, func, desc)
+              vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+            end
 
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-              local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-                  vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                          buffer = bufnr,
-                          group = highlight_augroup,
-                          callback = vim.lsp.buf.document_highlight,
-                  })
-
-          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = bufnr,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
-          })
-
-          vim.api.nvim_create_autocmd('LspDetach', {
-                  group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-                  callback = function(event2)
-                  vim.lsp.buf.clear_references()
-                  vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-                  end,
+            if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+              local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+              vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                buffer = bufnr,
+                group = highlight_augroup,
+                callback = vim.lsp.buf.document_highlight,
               })
-          end
 
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-              map('<leader>th', function()
-                      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                  end, '[T]oggle Inlay [H]ints')
-              end
-        '';
+              vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                buffer = bufnr,
+                group = highlight_augroup,
+                callback = vim.lsp.buf.clear_references,
+              })
+
+              vim.api.nvim_create_autocmd("LspDetach", {
+                group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+                callback = function(event2)
+                  vim.lsp.buf.clear_references()
+                  vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+                end,
+              })
+            end
+
+            if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+              map("<leader>th", function()
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+              end, "[T]oggle Inlay [H]ints")
+            end
+          '';
       };
     };
     autoGroups = {
@@ -188,8 +191,12 @@
         clear = true;
       };
     };
-    extraConfigLua = ''
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    extraConfigLua =
+      /*
+      lua
+      */
+      ''
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
         local signs = {
           Error = "",
           Warn = "",
@@ -203,42 +210,36 @@
         end
 
         function PopulateQuickfixWithTypescriptErrors()
-        local command_output = vim.fn.systemlist("${unstable.typescript}/bin/tsc -b --pretty false || ${unstable.typescript}/bin/tsc")
-
+          local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
           vim.fn.setqflist({}, "r")
 
           for _, line in ipairs(command_output) do
-              local filename, lnum, col, text = line:match("^([^%(]+)%((%d+),(%d+)%)%: error (TS%d+%: (.+))$")
+            local filename, lnum, col, text = line:match("^([^%(]+)%((%d+),(%d+)%)%: error (TS%d+%: (.+))$")
               if filename and lnum and col and text then
-                  local entry = {
-                      filename = filename,
-                      lnum = tonumber(lnum),
-                      col = tonumber(col),
-                      text = text,
-                  }
-                  vim.fn.setqflist({ entry }, "a")
+                local entry = {
+                  filename = filename,
+                  lnum = tonumber(lnum),
+                  col = tonumber(col),
+                  text = text,
+                }
+                vim.fn.setqflist({ entry }, "a")
               end
           end
           vim.cmd("copen")
-      end
+        end
 
-      function PopulateQuickfixWithEslintErrors()
-          -- Run ESLint and get the output
+        function PopulateQuickfixWithEslintErrors()
           local command_output = vim.fn.systemlist("${pkgs.nodePackages.eslint}/bin/eslint --report-unused-disable-directives --max-warnings 0 .")
 
-          -- Clear the quickfix list
           vim.fn.setqflist({}, "r")
 
-          -- Variables to hold the current file and its errors
           local current_file = nil
           local quickfix_list = {}
 
           for _, line in ipairs(command_output) do
-            -- Check if the line is a file path
             if string.match(line, "^/[^ ]+") then
               current_file = line
             else
-              -- Ensure we have a current file and the line matches the error format
               if current_file and string.match(line, "^%s*%d+:%d+") then
                 -- Parse the line number, column, and error message
                 local lnum, col, _, text = string.match(line, "^%s*(%d+):(%d+)%s+(%w+)%s+(.+)$")
@@ -254,10 +255,8 @@
             end
           end
 
-          -- Set the quickfix list
           vim.fn.setqflist(quickfix_list, "r")
 
-          -- Open the quickfix window
           vim.cmd("copen")
           end
 
@@ -352,6 +351,6 @@
               },
             },
           })
-    '';
+      '';
   };
 }
