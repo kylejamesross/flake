@@ -1,7 +1,5 @@
-{ ... }:
-
-{
-    stylix.targets = {
-        tmux.enable = false;
-    };
+{...}: {
+  stylix.targets = {
+    tmux.enable = false;
+  };
 }

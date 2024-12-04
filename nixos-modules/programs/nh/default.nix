@@ -1,12 +1,10 @@
-{ user, ... }: 
-
-{
+{user, ...}: {
   programs.nh = {
+    enable = true;
+    clean = {
       enable = true;
-      clean = {
-          enable = true;
-          extraArgs = "--keep-since 4d --keep 3";
-      };
-      flake = "/home/${user}/flake";
+      extraArgs = "--keep-since 4d --keep 3";
+    };
+    flake = "/home/${user}/flake";
   };
 }

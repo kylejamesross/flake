@@ -1,12 +1,8 @@
-
-{ lib, ... }:
-
-let
+{lib, ...}: let
   inherit (lib) mkOption types;
-in
-{
+in {
   options.workspaces = mkOption {
     type = types.listOf (types.str);
-    default = [ ];
+    default = [];
   };
 }
