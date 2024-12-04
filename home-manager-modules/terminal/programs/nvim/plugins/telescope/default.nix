@@ -1,7 +1,26 @@
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.nixvim = {
+    /*
+    git_file_history dep
+    */
+    plugins.fugitive.enable = true;
+
+    extraPlugins = [
+      pkgs.vimPlugins.telescope-undo-nvim
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "telescope-git-file-history.nvim";
+        src = inputs.telescope-git-file-history-nvim;
+      })
+    ];
+
     plugins.telescope = {
       enable = true;
+
+      enabledExtensions = ["git_file_history"];
 
       extensions = {
         fzf-native.enable = true;
@@ -63,6 +82,13 @@
           action = "oldfiles";
           options = {
             desc = "[S]earch Old Files";
+          };
+        };
+        "<leader>sc" = {
+          mode = "n";
+          action = "git_file_history";
+          options = {
+            desc = "[S]earch Buffer [C]ommit History";
           };
         };
         "<leader><leader>" = {

@@ -211,7 +211,7 @@
         end
 
         function PopulateQuickfixWithTypescriptErrors()
-          local output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
+          local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
           vim.fn.setqflist({}, "r")
 
           for _, line in ipairs(command_output) do

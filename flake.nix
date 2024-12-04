@@ -23,6 +23,10 @@
       url = "github:Aylur/ags";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    telescope-git-file-history-nvim = {
+      url = "github:isak102/telescope-git-file-history.nvim";
+      flake = false;
+    };
   };
 
   outputs = {
