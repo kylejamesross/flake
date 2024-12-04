@@ -18,7 +18,7 @@
     };
     interactiveShellInit =
       /*
-      bash
+      fish
       */
       ''
         fish_vi_key_bindings

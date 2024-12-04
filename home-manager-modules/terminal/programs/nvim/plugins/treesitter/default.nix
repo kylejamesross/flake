@@ -10,24 +10,25 @@
         settings.highlight.enable = true;
 
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          typescript
-          tsx
-          scss
-          rust
-          lua
-          json
-          javascript
-          css
-          c_sharp
+          astro
           bash
-          vim
-          vimdoc
-          regex
+          c_sharp
+          css
+          fish
+          html
+          javascript
+          json
+          lua
           markdown
           markdown_inline
           nix
-          astro
-          html
+          regex
+          rust
+          scss
+          typescript
+          tsx
+          vim
+          vimdoc
           vue
         ];
       };

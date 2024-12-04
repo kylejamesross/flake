@@ -39,18 +39,22 @@
       enable = true;
       settings = {
         notify_on_error = false;
-        format_on_save = ''
-          function(bufnr)
+        format_on_save =
+          /*
+          lua
+          */
+          ''
+            function (bufnr)
               local disable_filetypes = { c = true, cpp = true }
               if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
                 return
               end
               return {
-                  timeout_ms = 500,
-                  lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype]
+                timeout_ms = 500,
+                lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype]
               }
-          end
-        '';
+            end
+          '';
         formatters_by_ft = {
           html = {
             __unkeyed-1 = "prettierd";
@@ -133,11 +137,15 @@
       {
         mode = "";
         key = "<leader>rf";
-        action.__raw = ''
-              function()
-              require('conform').format { async = true, lsp_fallback = true }
-          end
-        '';
+        action.__raw =
+          /*
+          lua
+          */
+          ''
+            function()
+                require('conform').format { async = true, lsp_fallback = true }
+            end
+          '';
         options = {desc = "LSP: [F]ormat";};
       }
       {
