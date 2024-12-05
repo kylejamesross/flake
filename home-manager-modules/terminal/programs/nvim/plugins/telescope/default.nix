@@ -91,11 +91,11 @@
             desc = "[S]earch Buffer [C]ommit History";
           };
         };
-        "<leader><leader>" = {
+        "<leader>sb" = {
           mode = "n";
           action = "buffers";
           options = {
-            desc = "[ ] Find existing buffers";
+            desc = "[S]earch Existing [B]uffers";
           };
         };
       };
@@ -140,7 +140,7 @@
       }
       {
         mode = "n";
-        key = "<leader>/";
+        key = "<leader>sy";
         action.__raw = ''
           function()
             require('telescope.builtin').current_buffer_fuzzy_find(
@@ -152,22 +152,7 @@
           end
         '';
         options = {
-          desc = "[/] Fuzzily search in current buffer";
-        };
-      }
-      {
-        mode = "n";
-        key = "<leader>s/";
-        action.__raw = ''
-          function()
-            require('telescope.builtin').live_grep {
-              grep_open_files = true,
-              prompt_title = 'Live Grep in Open Files'
-            }
-          end
-        '';
-        options = {
-          desc = "[S]earch [/] in Open Files";
+          desc = "[S]earch Fuzzil[y] in current buffer";
         };
       }
       {
