@@ -1,12 +1,10 @@
-{ ... }:
+{...}: {
+  imports = [
+    ./hardware-configuration.nix
+    ./config
+  ];
 
-{
-    imports = [
-        ./hardware-configuration.nix
-        ./config
-    ];
+  services.upower.enable = true;
 
-    services.upower.enable = true;
-
-    networking.hostName = "laptop";
+  networking.hostName = "laptop";
 }
