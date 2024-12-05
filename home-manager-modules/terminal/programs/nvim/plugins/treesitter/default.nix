@@ -38,6 +38,7 @@
           regex
           rust
           scss
+          toml
           typescript
           tsx
           vim
