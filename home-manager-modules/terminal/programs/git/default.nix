@@ -31,5 +31,16 @@
       browser.firefox.cmd = "firefox";
       init.defaultBranch = "main";
     };
+    includes = [
+      {
+        condition = "gitdir:~/source/phoenix-digitization-widgets/**";
+        contents = {
+          user = {
+            name = "Kyle Ross";
+            email = "KRoss@phxtech.com";
+          };
+        };
+      }
+    ];
   };
 }
