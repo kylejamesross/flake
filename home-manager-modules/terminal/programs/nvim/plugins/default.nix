@@ -10,10 +10,10 @@
     ./chatgpt
     ./gitsigns
     ./conform
+    ./indent-blankline
   ];
   programs.nixvim = {
     plugins = {
-      indent-blankline.enable = true;
       nvim-colorizer.enable = true;
       lspkind.enable = true;
       illuminate.enable = true;

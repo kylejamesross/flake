@@ -137,15 +137,11 @@
       {
         mode = "";
         key = "<leader>rf";
-        action.__raw =
-          /*
-          lua
-          */
-          ''
-            function()
-                require('conform').format { async = true, lsp_fallback = true }
-            end
-          '';
+        action.__raw = ''
+          function()
+              require('conform').format { async = true, lsp_fallback = true }
+          end
+        '';
         options = {desc = "LSP: [F]ormat";};
       }
       {
