@@ -20,7 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Aylur/ags/v1";
+    };
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     telescope-git-file-history-nvim = {
@@ -53,6 +57,7 @@
           ./hosts/x86_64-linux
           ./nixos-modules
           inputs.stylix.nixosModules.stylix
+          inputs.nur.modules.nixos.default
           home-manager
           ./home-manager-modules
         ];
@@ -64,6 +69,7 @@
           ./hosts/x86_64-linux
           ./nixos-modules
           inputs.stylix.nixosModules.stylix
+          inputs.nur.modules.nixos.default
           home-manager
           ./home-manager-modules
         ];
@@ -75,6 +81,7 @@
           ./hosts/x86_64-linux
           inputs.stylix.nixosModules.stylix
           inputs.nixos-wsl.nixosModules.wsl
+          inputs.nur.modules.nixos.default
           ./nixos-modules
           home-manager
           ./home-manager-modules

@@ -1,5 +1,5 @@
 {
-  config,
+  pkgs,
   user,
   ...
 }: {
@@ -9,7 +9,7 @@
       profiles.kyle = {
         name = "Kyle Ross";
         isDefault = true;
-        extensions = with config.nur.repos.rycee.firefox-addons; [
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           raindropio
           bitwarden
