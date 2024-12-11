@@ -142,7 +142,7 @@
               require('conform').format { async = true, lsp_fallback = true }
           end
         '';
-        options = {desc = "LSP: [F]ormat";};
+        options = {desc = "Refactor: [F]ormat";};
       }
       {
         mode = "n";

@@ -1,0 +1,66 @@
+set clipboard=unnamed
+set incsearch
+set hlsearch
+set ignorecase
+set cursorline
+set vsvim_useeditorindent
+set vsvim_useeditordefaults
+set scrolloff=5
+set number
+set relativenumber
+
+let mapleader=" "
+
+" Movement
+nmap <C-o> :vsc View.NavigateBackward<CR>
+nmap <C-i> :vsc View.NavigateForward<CR>
+
+nnoremap [d :vsc View.PreviousError<CR>
+nnoremap ]d :vsc View.NextError<CR>
+
+noremap ]m <Esc>:vsc Edit.NextMethod<CR>
+noremap [m <Esc>:vsc Edit.PreviousMethod<CR>
+
+nnoremap <silent> ]h :vsc Diff.NextDifference<CR>
+nnoremap <silent> [h :vsc Diff.PreviousDifference<CR>
+
+nnoremap n nzz
+nnoremap N Nzz
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+
+nnoremap <C-t> :vsc Edit.FindInFiles<CR>
+nnoremap <C-`> :vsc View.Terminal<CR>
+
+nmap <Tab> :vsc Window.NextTab<CR>
+nmap <S-Tab> :vsc Window.PreviousTab<CR>
+
+" LSP
+nnoremap gd :vsc Edit.GoToDefinition<CR>
+nnoremap gD :vsc Edit.GoToDeclaration<CR>
+nnoremap gi :vsc Edit.GoToImplementation<CR>
+nnoremap gr :vsc Edit.FindAllReferences<CR>
+nnoremap K :vsc Edit.QuickInfo<CR>
+
+" Document
+nnoremap == :vsc Edit.FormatDocument <CR>
+vnoremap == :vsc Edit.FormatSelection <CR>
+nnoremap <Leader>rf :vsc Edit.FormatDocument<CR>
+vnoremap <Leader>rf :vsc Edit.FormatSelection<CR
+nnoremap <Leader>rn :vsc Refactor.Rename<CR>
+
+nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+vnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+vnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+
+noremap <A-k> :vsc Edit.ExpandSelection<CR>
+noremap <A-j> :vsc Edit.ContractSelection<CR>
+
+vnoremap <Tab> :vsc Edit.IncreaseLineIndent<CR>
+vnoremap <S-Tab> :vsc Edit.DecreaseLineIndent<CR>
+
+nnoremap gcc :vsc Edit.ToggleLineComment<CR>
+vnoremap gc :vsc Edit.ToggleLineComment<CR>
+
+nnoremap <silent> <ESC><ESC> :nohl<CR>
