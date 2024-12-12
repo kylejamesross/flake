@@ -21,8 +21,8 @@ nnoremap ]d :vsc View.NextError<CR>
 noremap ]m <Esc>:vsc Edit.NextMethod<CR>
 noremap [m <Esc>:vsc Edit.PreviousMethod<CR>
 
-nnoremap <silent> ]h :vsc Diff.NextDifference<CR>
-nnoremap <silent> [h :vsc Diff.PreviousDifference<CR>
+nnoremap ]h :vsc Diff.NextDifference<CR>
+nnoremap [h :vsc Diff.PreviousDifference<CR>
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -31,6 +31,9 @@ noremap <C-u> <C-u>zz
 
 nnoremap <C-t> :vsc Edit.FindInFiles<CR>
 nnoremap <C-`> :vsc View.Terminal<CR>
+
+nnoremap <C-p> :vsc Action.MoveUp<CR>
+nnoremap <C-n> :vsc Action.MoveDown<CR>
 
 nmap <Tab> :vsc Window.NextTab<CR>
 nmap <S-Tab> :vsc Window.PreviousTab<CR>
@@ -49,8 +52,6 @@ nnoremap <Leader>rf :vsc Edit.FormatDocument<CR>
 vnoremap <Leader>rf :vsc Edit.FormatSelection<CR
 nnoremap <Leader>rn :vsc Refactor.Rename<CR>
 
-nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
-nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
 vnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
 vnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
 
@@ -63,4 +64,6 @@ vnoremap <S-Tab> :vsc Edit.DecreaseLineIndent<CR>
 nnoremap gcc :vsc Edit.ToggleLineComment<CR>
 vnoremap gc :vsc Edit.ToggleLineComment<CR>
 
-nnoremap <silent> <ESC><ESC> :nohl<CR>
+nnoremap <ESC><ESC> :nohl<CR>
+
+vnoremap S :vsc Edit.SurroundWith<CR>
