@@ -198,6 +198,7 @@
       */
       ''
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
         local signs = {
           Error = "",
           Warn = "",
@@ -210,148 +211,129 @@
           vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
 
-        function PopulateQuickfixWithTypescriptErrors()
-          local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
-          vim.fn.setqflist({}, "r")
+        require("lspconfig").ts_ls.setup({
+          on_attach = function(_, bufnr)
+            vim.api.nvim_create_user_command("LspAddMissingImports", function()
+              vim.lsp.buf.code_action({
+                apply = true,
+                context = {
+                  only = { "source.addMissingImports" },
+                  diagnostics = {},
+                },
+              })
+            end, { desc = "Add missing imports" })
 
-          for _, line in ipairs(command_output) do
-            local filename, lnum, col, text = line:match("^([^%(]+)%((%d+),(%d+)%)%: error (TS%d+%: (.+))$")
-              if filename and lnum and col and text then
-                local entry = {
-                  filename = filename,
-                  lnum = tonumber(lnum),
-                  col = tonumber(col),
-                  text = text,
-                }
-                vim.fn.setqflist({ entry }, "a")
+            vim.api.nvim_create_user_command("LspRemoveUnusedImports", function()
+              vim.lsp.buf.code_action({
+                apply = true,
+                context = {
+                  only = { "source.removeUnused.ts" },
+                  diagnostics = {},
+                },
+              })
+            end, { desc = "Remove unused imports" })
+
+            vim.api.nvim_create_user_command("LspRenameFile", function()
+              local source_file = vim.api.nvim_buf_get_name(0)
+              local target_file
+
+              vim.ui.input({
+                prompt = "Target: ",
+                completion = "file",
+                default = source_file,
+              }, function(input)
+                target_file = input
+              end)
+
+              if not target_file or target_file == "" then
+                vim.print("Rename canceled!")
+                return
               end
-          end
-          vim.cmd("copen")
-        end
 
-        function PopulateQuickfixWithEslintErrors()
-          local command_output = vim.fn.systemlist("${pkgs.nodePackages.eslint}/bin/eslint --report-unused-disable-directives --max-warnings 0 .")
+              local dir = target_file:match(".*/")
+              if vim.fn.isdirectory(dir) == 0 then
+                vim.fn.mkdir(dir, "p")
+              end
 
-          vim.fn.setqflist({}, "r")
+              vim.lsp.util.rename(source_file, target_file)
 
-          local current_file = nil
-          local quickfix_list = {}
+              vim.lsp.buf.execute_command({
+                command = "_typescript.applyRenameFile",
+                arguments = {
+                  {
+                    sourceUri = source_file,
+                    targetUri = target_file,
+                  },
+                },
+                title = "",
+              })
+            end, { desc = "Rename file with TypeScript LSP" })
 
-          for _, line in ipairs(command_output) do
-            if string.match(line, "^/[^ ]+") then
-              current_file = line
-            else
-              if current_file and string.match(line, "^%s*%d+:%d+") then
-                -- Parse the line number, column, and error message
-                local lnum, col, _, text = string.match(line, "^%s*(%d+):(%d+)%s+(%w+)%s+(.+)$")
-                if lnum and col and text then
-                  table.insert(quickfix_list, {
-                    filename = current_file,
+            vim.api.nvim_create_user_command("PopulateQuickfixTS", function()
+              local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
+              vim.fn.setqflist({}, "r")
+
+              for _, line in ipairs(command_output) do
+                local filename, lnum, col, text = line:match("^([^%(]+)%((%d+),(%d+)%)%: error (TS%d+%: (.+))$")
+                if filename and lnum and col and text then
+                  local entry = {
+                    filename = filename,
                     lnum = tonumber(lnum),
                     col = tonumber(col),
-                    text = text
-                  })
+                    text = text,
+                  }
+                  vim.fn.setqflist({ entry }, "a")
                 end
               end
-            end
-          end
 
-          vim.fn.setqflist(quickfix_list, "r")
+              vim.cmd("copen")
+            end, { desc = "Populate quickfix list with TypeScript errors" })
 
-          vim.cmd("copen")
-          end
+            -- Populate quickfix with ESLint errors
+            vim.api.nvim_create_user_command("PopulateQuickfixESLint", function()
+              local command_output = vim.fn.systemlist("${pkgs.nodePackages.eslint}/bin/eslint --report-unused-disable-directives --max-warnings 0 .")
+              vim.fn.setqflist({}, "r")
 
-          require("lspconfig").ts_ls.setup({
-            on_attach = function(_, bufnr)
-              vim.keymap.set(
-                "n",
-                "<leader>l1",
-                function()
-                  vim.lsp.buf.code_action({
-                    apply = true,
-                    context = {
-                      only = { "source.addMissingImports" },
-                      diagnostics = {},
-                    },
-                  })
-                end,
-                { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports" }
-              )
-              vim.keymap.set(
-                "n",
-                "<leader>l2",
-                function()
-                  vim.lsp.buf.code_action({
-                    apply = true,
-                    context = {
-                      only = { "source.removeUnused.ts" },
-                      diagnostics = {},
-                    },
-                  })
-                end,
-                { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports" }
-              )
-              vim.keymap.set(
-                "n",
-                "<leader>l3",
-                function()
-                  local source_file = vim.api.nvim_buf_get_name(0)
+              local current_file = nil
+              local quickfix_list = {}
 
-                  local target_file
-                  vim.ui.input({
-                    prompt = "Target: ",
-                    completion = "file",
-                    default = source_file,
-                  }, function(input)
-                      target_file = input
-                    end)
-
-                  if not target_file or target_file == "" then
-                    vim.print "Rename canceled!"
-                    return
+              for _, line in ipairs(command_output) do
+                if string.match(line, "^/[^ ]+") then
+                  current_file = line
+                else
+                  if current_file and string.match(line, "^%s*%d+:%d+") then
+                    local lnum, col, _, text = string.match(line, "^%s*(%d+):(%d+)%s+(%w+)%s+(.+)$")
+                    if lnum and col and text then
+                      table.insert(quickfix_list, {
+                        filename = current_file,
+                        lnum = tonumber(lnum),
+                        col = tonumber(col),
+                        text = text,
+                      })
+                    end
                   end
+                end
+              end
 
-                  local dir = target_file:match ".*/"
-                  if vim.fn.isdirectory(dir) == 0 then
-                    vim.fn.mkdir(dir, "p")
-                  end
+              vim.fn.setqflist(quickfix_list, "r")
+              vim.cmd("copen")
+            end, { desc = "Populate quickfix list with ESLint errors" })
 
-                  vim.lsp.util.rename(source_file, target_file)
-
-                  vim.lsp.buf.execute_command {
-                    command = "_typescript.applyRenameFile",
-                    arguments = {
-                      {
-                        sourceUri = source_file,
-                        targetUri = target_file,
-                      },
-                    },
-                    title = "",
-                  }
-                end,
-                { buffer = bufnr, remap = false, silent = true, desc = "File rename" }
-              )
-              vim.keymap.set(
-                "n",
-                "<Leader>l4",
-                ":lua PopulateQuickfixWithTypescriptErrors()<CR>",
-                { noremap = true, silent = true, desc = "Populate quickfix list with typescript errors" }
-              )
-              vim.keymap.set(
-                "n",
-                "<Leader>l5",
-                ":lua PopulateQuickfixWithEslintErrors()<CR>",
-                { noremap = true, silent = true, desc = "Populate quickfix list with eslint errors" }
-              )
-            end,
-            capabilities = capabilities,
-            settings = {
-              jsx_close_tag = {
-                enable = true,
-                filetypes = { "javascriptreact", "typescriptreact" },
-              },
+            -- Keymaps
+            vim.keymap.set("n", "<leader>l1", ":LspAddMissingImports<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports" })
+            vim.keymap.set("n", "<leader>l2", ":LspRemoveUnusedImports<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports" })
+            vim.keymap.set("n", "<leader>l3", ":LspRenameFile<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Rename file" })
+            vim.keymap.set("n", "<Leader>l4", ":lua PopulateQuickfixTS()<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with TypeScript errors" })
+            vim.keymap.set("n", "<Leader>l5", ":lua PopulateQuickfixESLint()<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with ESLint errors" })
+          end,
+          capabilities = capabilities,
+          settings = {
+            jsx_close_tag = {
+              enable = true,
+              filetypes = { "javascriptreact", "typescriptreact" },
             },
-          })
+          },
+        })
       '';
   };
 }

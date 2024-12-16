@@ -87,7 +87,7 @@
             stop_after_first = true;
           };
           lua = ["stylua"];
-          nix = ["alejandra"];
+          nix = ["alejandra" "injected"];
           markdown = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
@@ -108,6 +108,18 @@
         };
 
         formatters = {
+          injected.options = {
+            lang_to_ext = {
+              bash = "bash";
+              lua = "lua";
+              fish = "fish";
+              css = "css";
+              javascript = "js";
+              markdown = "md";
+              typescript = "ts";
+              html = "html";
+            };
+          };
           alejandra = {
             command = "${lib.getExe pkgs.alejandra}";
           };
