@@ -34,6 +34,23 @@
         desc = "Toggle autoformat-on-save",
         bang = true,
       })
+      require("conform").formatters.injected = {
+        -- Set the options field
+        options = {
+          -- Set individual option values
+          ignore_errors = true,
+          lang_to_formatters = {},
+          lang_to_ext = {
+            bash = "bash",
+            lua = "lua",
+            fish = "fish",
+            css = "css",
+            javascript = "js",
+            markdown = "md",
+            typescript = "ts",
+          },
+        },
+      }
     '';
     plugins.conform-nvim = {
       enable = true;
@@ -108,18 +125,6 @@
         };
 
         formatters = {
-          injected.options = {
-            lang_to_ext = {
-              bash = "bash";
-              lua = "lua";
-              fish = "fish";
-              css = "css";
-              javascript = "js";
-              markdown = "md";
-              typescript = "ts";
-              html = "html";
-            };
-          };
           alejandra = {
             command = "${lib.getExe pkgs.alejandra}";
           };
