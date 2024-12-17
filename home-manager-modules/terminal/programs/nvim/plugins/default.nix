@@ -11,6 +11,7 @@
     ./gitsigns
     ./conform
     ./indent-blankline
+    ./neotest
   ];
   programs.nixvim = {
     plugins = {
