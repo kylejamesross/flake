@@ -272,6 +272,7 @@
             vim.api.nvim_create_user_command("PopulateQuickfixTS", function()
               local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
               vim.fn.setqflist({}, "r")
+              local quickfix_list = {}
 
               for _, line in ipairs(command_output) do
                 local filename, lnum, col, text = line:match("^([^%(]+)%((%d+),(%d+)%)%: error (TS%d+%: (.+))$")
@@ -282,11 +283,17 @@
                     col = tonumber(col),
                     text = text,
                   }
-                  vim.fn.setqflist({ entry }, "a")
+                  table.insert(quickfix_list, entry)
                 end
               end
 
-              vim.cmd("copen")
+              if #quickfix_list > 0 then
+                vim.fn.setqflist(quickfix_list, "r")
+                vim.cmd("copen")
+              else
+                vim.notify("No typescript issues found", vim.log.levels.INFO)
+                vim.cmd("cclose")
+              end
             end, { desc = "Populate quickfix list with TypeScript errors" })
 
             -- Populate quickfix with ESLint errors
@@ -304,27 +311,33 @@
                   if current_file and string.match(line, "^%s*%d+:%d+") then
                     local lnum, col, _, text = string.match(line, "^%s*(%d+):(%d+)%s+(%w+)%s+(.+)$")
                     if lnum and col and text then
-                      table.insert(quickfix_list, {
+                      local entry = {
                         filename = current_file,
                         lnum = tonumber(lnum),
                         col = tonumber(col),
                         text = text,
-                      })
+                      }
+                      table.insert(quickfix_list, entry)
                     end
                   end
                 end
               end
 
-              vim.fn.setqflist(quickfix_list, "r")
-              vim.cmd("copen")
+              if #quickfix_list > 0 then
+                vim.fn.setqflist(quickfix_list, "r")
+                vim.cmd("copen")
+              else
+                vim.notify("No eslint issues found", vim.log.levels.INFO)
+                vim.cmd("cclose")
+              end
             end, { desc = "Populate quickfix list with ESLint errors" })
 
             -- Keymaps
             vim.keymap.set("n", "<leader>l1", ":LspAddMissingImports<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports" })
             vim.keymap.set("n", "<leader>l2", ":LspRemoveUnusedImports<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports" })
             vim.keymap.set("n", "<leader>l3", ":LspRenameFile<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Rename file" })
-            vim.keymap.set("n", "<Leader>l4", ":lua PopulateQuickfixTS()<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with TypeScript errors" })
-            vim.keymap.set("n", "<Leader>l5", ":lua PopulateQuickfixESLint()<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with ESLint errors" })
+            vim.keymap.set("n", "<Leader>l4", ":PopulateQuickfixTS<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with TypeScript errors" })
+            vim.keymap.set("n", "<Leader>l5", ":PopulateQuickfixESLint<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with ESLint errors" })
           end,
           capabilities = capabilities,
           settings = {
