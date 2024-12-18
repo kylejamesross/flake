@@ -46,7 +46,6 @@
             fish = "fish",
             css = "css",
             javascript = "js",
-            markdown = "md",
             typescript = "ts",
           },
         },

@@ -20,16 +20,6 @@
           eslint.enable = true;
           jsonls.enable = true;
           astro.enable = true;
-          volar = {
-            enable = true;
-            extraOptions = {
-              init_options = {
-                typescript = {
-                  tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
-                };
-              };
-            };
-          };
         };
 
         keymaps = {
@@ -270,7 +260,7 @@
             end, { desc = "Rename file with TypeScript LSP" })
 
             vim.api.nvim_create_user_command("PopulateQuickfixTS", function()
-              local command_output = vim.fn.systemlist("${pkgs.typescript}/bin/tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
+              local command_output = vim.fn.systemlist("${pkgs.nodejs_22}/bin/npx tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
               vim.fn.setqflist({}, "r")
               local quickfix_list = {}
 
@@ -298,7 +288,7 @@
 
             -- Populate quickfix with ESLint errors
             vim.api.nvim_create_user_command("PopulateQuickfixESLint", function()
-              local command_output = vim.fn.systemlist("${pkgs.nodePackages.eslint}/bin/eslint --report-unused-disable-directives --max-warnings 0 .")
+              local command_output = vim.fn.systemlist("${pkgs.nodejs_22}/bin/npx eslint --report-unused-disable-directives --max-warnings 0 .")
               vim.fn.setqflist({}, "r")
 
               local current_file = nil

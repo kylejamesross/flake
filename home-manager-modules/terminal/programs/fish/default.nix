@@ -12,8 +12,8 @@
       g = "${pkgs.nh}/bin/nh os switch";
       musb = "mkdir -p ~/usb && sudo mount \"/dev/$(lsblk --list | ${pkgs.fzf}/bin/fzf | ${pkgs.gawk}/bin/awk '{print $1}')\" ~/usb";
       neofetch = "fastfetch";
-      generate-resume = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_20}/bin/npx hackmyresume build /dev/stdin TO out/resume.all";
-      generate-resume-into-clipboard = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_20}/bin/npx hackmyresume build /dev/stdin TO genResume.txt && cat genResume.txt | wl-copy && rm genResume.txt";
+      generate-resume = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_22}/bin/npx hackmyresume build /dev/stdin TO out/resume.all";
+      generate-resume-into-clipboard = "${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_22}/bin/npx hackmyresume build /dev/stdin TO genResume.txt && cat genResume.txt | wl-copy && rm genResume.txt";
       nd = "nix develop -c $SHELL";
     };
     interactiveShellInit =

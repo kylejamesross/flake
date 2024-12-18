@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nixvim = {
     opts = {
       number = true;
@@ -43,5 +43,12 @@
         '';
       }
     ];
+    extraConfigLua =
+      /*
+      lua
+      */
+      ''
+        vim.env.PATH = "${pkgs.nodejs_22}/bin:" .. vim.env.PATH
+      '';
   };
 }
