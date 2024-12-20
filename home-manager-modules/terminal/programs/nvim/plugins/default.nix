@@ -1,17 +1,18 @@
 {pkgs, ...}: {
   imports = [
-    ./telescope
-    ./mini
-    ./lsp
-    ./cmp
-    ./which-key
-    ./treesitter
     ./autopairs
     ./chatgpt
-    ./gitsigns
+    ./cmp
     ./conform
+    ./dap
+    ./gitsigns
     ./indent-blankline
+    ./lsp
+    ./mini
     ./neotest
+    ./telescope
+    ./treesitter
+    ./which-key
   ];
   programs.nixvim = {
     plugins = {
