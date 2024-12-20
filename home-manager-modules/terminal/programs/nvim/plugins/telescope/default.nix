@@ -10,7 +10,6 @@
     plugins.fugitive.enable = true;
 
     extraPlugins = [
-      pkgs.vimPlugins.telescope-undo-nvim
       (pkgs.vimUtils.buildVimPlugin {
         name = "telescope-git-file-history.nvim";
         src = inputs.telescope-git-file-history-nvim;
@@ -25,6 +24,7 @@
       extensions = {
         fzf-native.enable = true;
         ui-select.enable = true;
+        undo.enable = true;
       };
 
       keymaps = {
@@ -32,70 +32,77 @@
           mode = "n";
           action = "help_tags";
           options = {
-            desc = "[S]earch [H]elp";
+            desc = "Search [H]elp";
           };
         };
         "<leader>sk" = {
           mode = "n";
           action = "keymaps";
           options = {
-            desc = "[S]earch [K]eymaps";
+            desc = "Search [K]eymaps";
           };
         };
         "<leader>ss" = {
           mode = "n";
           action = "builtin";
           options = {
-            desc = "[S]earch [S]elect Telescope";
+            desc = "Search Builtins";
           };
         };
         "<leader>sw" = {
           mode = "n";
           action = "grep_string";
           options = {
-            desc = "[S]earch current [W]ord";
+            desc = "Search [W]ord";
           };
         };
         "<leader>sg" = {
           mode = "n";
           action = "live_grep";
           options = {
-            desc = "[S]earch by [G]rep";
+            desc = "Search by [G]rep";
           };
         };
         "<leader>sd" = {
           mode = "n";
           action = "diagnostics";
           options = {
-            desc = "[S]earch [D]iagnostics";
+            desc = "Search [D]iagnostics";
           };
         };
         "<leader>sr" = {
           mode = "n";
           action = "resume";
           options = {
-            desc = "[S]earch [R]esume";
+            desc = "Search [R]esume";
           };
         };
         "<leader>so" = {
           mode = "n";
           action = "oldfiles";
           options = {
-            desc = "[S]earch Old Files";
+            desc = "Search Old Files";
           };
         };
         "<leader>sc" = {
           mode = "n";
           action = "git_file_history";
           options = {
-            desc = "[S]earch Buffer [C]ommit History";
+            desc = "Search Buffer [C]ommit History";
           };
         };
         "<leader>sb" = {
           mode = "n";
           action = "buffers";
           options = {
-            desc = "[S]earch Existing [B]uffers";
+            desc = "Search Existing [B]uffers";
+          };
+        };
+        "<leader>su" = {
+          mode = "n";
+          action = "undo";
+          options = {
+            desc = "Search [U]ndo Tree";
           };
         };
       };
@@ -116,7 +123,7 @@
           end
         '';
         options = {
-          desc = "[S]earch [F]iles";
+          desc = "Search [F]iles";
         };
       }
       {
@@ -130,7 +137,7 @@
           end
         '';
         options = {
-          desc = "[S]earch [F]iles";
+          desc = "Search [F]iles";
         };
       }
       {
@@ -152,7 +159,7 @@
           end
         '';
         options = {
-          desc = "[S]earch Fuzzil[y] in current buffer";
+          desc = "Search Fuzzil[y] in current buffer";
         };
       }
       {
@@ -166,7 +173,7 @@
           end
         '';
         options = {
-          desc = "[S]earch [N]eovim files";
+          desc = "Search [N]eovim files";
         };
       }
     ];
