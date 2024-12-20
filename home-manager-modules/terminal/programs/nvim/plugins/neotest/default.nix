@@ -11,42 +11,54 @@
     keymaps = [
       {
         mode = "n";
-        key = "<leader>de";
+        key = "<leader>cf";
         action.__raw = ''
           function () require("neotest").run.run(vim.fn.expand("%")) end
         '';
         options = {
-          desc = "Run [E]xpanding Test(s)";
+          desc = "Run Tests in [F]ile";
         };
       }
       {
         mode = "n";
-        key = "<leader>dl";
+        key = "<leader>cl";
         action.__raw = ''
           function() require("neotest").run.run_last() end
         '';
         options = {
-          desc = "Run [L]ast Test(s)";
+          desc = "Run [L]ast Test";
         };
       }
       {
         mode = "n";
-        key = "<leader>dt";
+        key = "<leader>ct";
         action.__raw = ''
           function() require("neotest").run.run() end
         '';
         options = {
-          desc = "Run [T]est";
+          desc = "Run Nearest [T]est";
         };
       }
       {
         mode = "n";
-        key = "<leader>dd";
+        key = "<leader>tw";
+        action.__raw =
+          #lua
+          ''
+            function()
+              require("neotest").watch.toggle()
+            end
+          '';
+        options = {desc = "[T]oggle Test [W]atch";};
+      }
+      {
+        mode = "n";
+        key = "<leader>cd";
         action.__raw = ''
           function() require("neotest").run.run({ strategy='dap' }) end
         '';
         options = {
-          desc = "Run [T]est";
+          desc = "Run Nearest Test with [D]ebugger";
         };
       }
       {
@@ -57,6 +69,16 @@
         '';
         options = {
           desc = "[T]oggle [T]est Panel";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>ts";
+        action.__raw = ''
+          function() require("neotest").summary.toggle() end
+        '';
+        options = {
+          desc = "[T]oggle Test [S]ummary";
         };
       }
     ];

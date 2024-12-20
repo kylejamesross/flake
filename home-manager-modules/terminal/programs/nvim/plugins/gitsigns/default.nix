@@ -17,7 +17,7 @@
                   end
         '';
         options = {
-          desc = "Jump to next git [C]hange";
+          desc = "Git Hunk: Jump to Next Change";
         };
       }
       {
@@ -33,7 +33,7 @@
                   end
         '';
         options = {
-          desc = "Jump to previous git [C]hange";
+          desc = "Git Hunk: Jump to Previous Change";
         };
       }
       {
@@ -45,7 +45,7 @@
           end
         '';
         options = {
-          desc = "stage git hunk";
+          desc = "[S]tage";
         };
       }
       {
@@ -57,7 +57,7 @@
           end
         '';
         options = {
-          desc = "reset git hunk";
+          desc = "[R]eset";
         };
       }
       # normal mode
@@ -70,7 +70,7 @@
           end
         '';
         options = {
-          desc = "git [s]tage hunk";
+          desc = "[S]tage";
         };
       }
       {
@@ -82,7 +82,7 @@
           end
         '';
         options = {
-          desc = "git [r]eset hunk";
+          desc = "[R]eset";
         };
       }
       {
@@ -94,7 +94,7 @@
           end
         '';
         options = {
-          desc = "git [S]tage buffer";
+          desc = "[S]tage Buffer";
         };
       }
       {
@@ -106,7 +106,7 @@
           end
         '';
         options = {
-          desc = "git [u]ndo stage hunk";
+          desc = "[U]ndo Stage";
         };
       }
       {
@@ -118,7 +118,7 @@
           end
         '';
         options = {
-          desc = "git [R]eset buffer";
+          desc = "[R]eset Buffer";
         };
       }
       {
@@ -130,7 +130,7 @@
           end
         '';
         options = {
-          desc = "git [p]review hunk";
+          desc = "[P]review";
         };
       }
       {
@@ -142,7 +142,7 @@
           end
         '';
         options = {
-          desc = "git [b]lame line";
+          desc = "[B]lame";
         };
       }
       {
@@ -154,7 +154,7 @@
           end
         '';
         options = {
-          desc = "git [d]iff against index";
+          desc = "[D]iff";
         };
       }
       {
@@ -166,7 +166,7 @@
           end
         '';
         options = {
-          desc = "git [D]iff against last commit";
+          desc = "[D]iff Against Last Commit";
         };
       }
       # Toggles
@@ -179,7 +179,7 @@
           end
         '';
         options = {
-          desc = "[T]oggle git show [b]lame line";
+          desc = "[T]oggle Git [B]lame";
         };
       }
       {
@@ -191,7 +191,7 @@
           end
         '';
         options = {
-          desc = "[T]oggle git show [D]eleted";
+          desc = "[T]oggle Git [D]eleted";
         };
       }
     ];

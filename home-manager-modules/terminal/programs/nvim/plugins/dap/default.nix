@@ -1,4 +1,26 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  configVitest = {
+    name = "Launch (Vitest)";
+    request = "launch";
+    type = "pwa-node";
+    cwd = ''''${workspaceFolder}'';
+    program = ''''${workspaceFolder}/node_modules/vitest/vitest.mjs'';
+    args = ["--threads" "false"];
+    autoAttachChildProcesses = false;
+    trace = true;
+    console = "integratedTerminal";
+    sourceMaps = true;
+    smartStep = true;
+  };
+  configChrome = {
+    name = "Launch Chrome";
+    type = "pwa-chrome";
+    request = "launch";
+    runtimeExecutable = "${pkgs.brave}/bin/brave";
+    url = "http://localhost:5173";
+    webRoot = ''''${workspaceFolder}'';
+  };
+in {
   programs.nixvim = {
     plugins = {
       dap = {
@@ -19,23 +41,30 @@
                 ];
               };
             };
+            pwa-chrome = {
+              host = "localhost";
+              port = ''''${port}'';
+              executable = {
+                command = "${pkgs.vscode-js-debug}/bin/js-debug";
+                args = [
+                  ''''${port}''
+                ];
+              };
+            };
           };
         };
         configurations = {
           typescript = [
-            {
-              name = "Launch Test Program (pwa-node with vitest)";
-              request = "launch";
-              type = "pwa-node";
-              cwd = ''''${workspaceFolder}'';
-              program = ''''${workspaceFolder}/node_modules/vitest/vitest.mjs'';
-              args = ["--threads" "false"];
-              autoAttachChildProcesses = false;
-              trace = true;
-              console = "integratedTerminal";
-              sourceMaps = true;
-              smartStep = true;
-            }
+            configVitest
+          ];
+          javascript = [
+            configVitest
+          ];
+          typescriptreact = [
+            configVitest
+          ];
+          javascriptreact = [
+            configVitest
           ];
         };
         signs = {
@@ -85,7 +114,21 @@
           '';
         key = "<leader>dc";
         options = {
-          desc = "Continue";
+          desc = "[C]ontinue";
+        };
+        mode = ["n"];
+      }
+      {
+        action.__raw =
+          # lua
+          ''
+            function()
+              require('dap').continue()
+            end
+          '';
+        key = "<F5>";
+        options = {
+          desc = "Debug: Continue";
         };
         mode = ["n"];
       }
@@ -99,9 +142,9 @@
               require("dapui").update_render(render)
             end
           '';
-        key = "<leader>dut";
+        key = "<leader>dy";
         options = {
-          desc = " toggle types";
+          desc = " Toggle T[y]pes";
         };
         mode = ["n"];
       }
@@ -115,7 +158,21 @@
           '';
         key = "<leader>dO";
         options = {
-          desc = "Step over";
+          desc = "Step [O]ver";
+        };
+        mode = ["n"];
+      }
+      {
+        action =
+          # lua
+          ''
+            function()
+              require('dap').step_over()
+            end
+          '';
+        key = "<F10>";
+        options = {
+          desc = "Debug: Step Over";
         };
         mode = ["n"];
       }
@@ -129,7 +186,21 @@
           '';
         key = "<leader>di";
         options = {
-          desc = "Step Into";
+          desc = "Step [I]nto";
+        };
+        mode = ["n"];
+      }
+      {
+        action.__raw =
+          # lua
+          ''
+            function()
+              require('dap').step_into()
+            end
+          '';
+        key = "<F11>";
+        options = {
+          desc = "Debug: Step Into";
         };
         mode = ["n"];
       }
@@ -143,7 +214,21 @@
           '';
         key = "<leader>do";
         options = {
-          desc = "Step Out";
+          desc = "Step [O]ut";
+        };
+        mode = ["n"];
+      }
+      {
+        action.__raw =
+          # lua
+          ''
+            function()
+              require('dap').step_out()
+            end
+          '';
+        key = "<S-F12>";
+        options = {
+          desc = "Debug: Step Out";
         };
         mode = ["n"];
       }
@@ -157,7 +242,7 @@
           '';
         key = "<leader>dp";
         options = {
-          desc = "Pause";
+          desc = "[P]ause";
         };
         mode = ["n"];
       }
@@ -171,7 +256,21 @@
           '';
         key = "<leader>db";
         options = {
-          desc = "Toggle Breakpoint";
+          desc = "Toggle [B]reakpoint";
+        };
+        mode = ["n"];
+      }
+      {
+        action.__raw =
+          # lua
+          ''
+            function()
+              require('dap').toggle_breakpoint()
+            end
+          '';
+        key = "<F9>";
+        options = {
+          desc = "Debug: Toggle Breakpoint";
         };
         mode = ["n"];
       }
@@ -185,7 +284,7 @@
           '';
         key = "<leader>dB";
         options = {
-          desc = "Breakpoint (conditional)";
+          desc = "[B]reakpoint (conditional)";
         };
         mode = ["n"];
       }
@@ -199,7 +298,7 @@
           '';
         key = "<leader>dR";
         options = {
-          desc = "Toggle REPL";
+          desc = "Toggle [R]EPL";
         };
         mode = ["n"];
       }
@@ -216,7 +315,7 @@
           '';
         key = "<leader>dr";
         options = {
-          desc = "Restart Debugger";
+          desc = "[R]estart Debugger";
         };
         mode = ["n"];
       }
@@ -230,7 +329,7 @@
           '';
         key = "<leader>dl";
         options = {
-          desc = "Run Last";
+          desc = "Run [L]ast";
         };
         mode = ["n"];
       }
@@ -244,7 +343,7 @@
           '';
         key = "<leader>ds";
         options = {
-          desc = "Session";
+          desc = "[S]ession";
         };
         mode = ["n"];
       }
@@ -258,7 +357,7 @@
           '';
         key = "<leader>dt";
         options = {
-          desc = "Terminate";
+          desc = "[T]erminate";
         };
         mode = ["n"];
       }
@@ -272,7 +371,7 @@
           '';
         key = "<leader>dw";
         options = {
-          desc = "Hover Widget";
+          desc = "Hover [W]idget";
         };
         mode = ["n"];
       }
@@ -286,7 +385,7 @@
           '';
         key = "<leader>dC";
         options = {
-          desc = "Run all lines up to cursor";
+          desc = "Run all lines up to [c]ursor";
         };
         mode = ["n"];
       }
@@ -298,7 +397,7 @@
               require('dapui').eval(nil, { enter = true })
             end
           '';
-        key = "<leader>?";
+        key = "<leader>d?";
         options = {
           desc = "Evaluate value under cursor";
         };
@@ -314,7 +413,21 @@
           '';
         key = "<leader>du";
         options = {
-          desc = "Toggle UI";
+          desc = "Toggle [U]I";
+        };
+        mode = ["n"];
+      }
+      {
+        action.__raw =
+          # lua
+          ''
+            function()
+              require('dapui').toggle()
+            end
+          '';
+        key = "<leader>tu";
+        options = {
+          desc = "[T]oggle Debugger [U]I";
         };
         mode = ["n"];
       }
@@ -328,7 +441,7 @@
           '';
         key = "<leader>de";
         options = {
-          desc = "Eval";
+          desc = "[E]val";
         };
         mode = ["n"];
       }

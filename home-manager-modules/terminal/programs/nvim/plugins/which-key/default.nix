@@ -5,18 +5,23 @@
       settings = {
         spec = [
           {
+            __unkeyed-1 = "<leader>a";
+            group = "[A]rtificial Intelligence";
+            icon = "";
+          }
+          {
             __unkeyed-1 = "<leader>c";
             group = "[C]ode";
             icon = "";
           }
           {
             __unkeyed-1 = "<leader>d";
-            group = "[D]ocument";
-            icon = "󰈙";
+            group = "[D]ebug";
+            icon = "";
           }
           {
             __unkeyed-1 = "<leader>r";
-            group = "[R]ename";
+            group = "[R]efactor";
             icon = "󰷈";
           }
           {

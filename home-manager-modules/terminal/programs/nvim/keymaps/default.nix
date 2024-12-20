@@ -8,17 +8,17 @@
         options = {
           noremap = true;
           silent = true;
-          desc = "Replace all occurances of word under cursor in buffer";
+          desc = "Replace all occurances of Word under cursor in Buffer";
         };
       }
       {
         mode = "n";
-        key = "<Leader>dx";
+        key = "<leader>cx";
         action = ":!chmod +x %<CR>";
         options = {
           noremap = true;
           silent = true;
-          desc = "Make file executeable";
+          desc = "Set Current Buffer Permissions to e[x]ecutable";
         };
       }
 
@@ -179,7 +179,7 @@
         options = {
           noremap = false;
           silent = true;
-          desc = "Paste without replacing register";
+          desc = "[P]aste without replacing register";
         };
       }
       {
@@ -220,26 +220,6 @@
           noremap = true;
           silent = true;
           desc = "Decrease window size horizontally";
-        };
-      }
-      {
-        mode = "n";
-        key = "<M-l>";
-        action = ":bnext<CR>";
-        options = {
-          noremap = true;
-          silent = true;
-          desc = "Go to next buffer";
-        };
-      }
-      {
-        mode = "n";
-        key = "<M-h>";
-        action = ":bprevious<CR>";
-        options = {
-          noremap = true;
-          silent = true;
-          desc = "Go to previous buffer";
         };
       }
       {

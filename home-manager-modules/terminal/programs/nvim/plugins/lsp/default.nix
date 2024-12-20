@@ -24,7 +24,7 @@
 
         keymaps = {
           diagnostic = {
-            "<leader>q" = {
+            "<leader>lq" = {
               action = "setloclist";
               desc = "Open diagnostic [Q]uickfix list";
             };
@@ -73,26 +73,26 @@
             }
             {
               mode = "n";
-              key = "<leader>D";
+              key = "<leader>lD";
               action.__raw = "require('telescope.builtin').lsp_type_definitions";
               options = {
-                desc = "LSP: Type [D]efinition";
+                desc = "Type [D]efinition";
               };
             }
             {
               mode = "n";
-              key = "<leader>ds";
+              key = "<leader>ls";
               action.__raw = "require('telescope.builtin').lsp_document_symbols";
               options = {
-                desc = "LSP: [D]ocument [S]ymbols";
+                desc = "Document [S]ymbols";
               };
             }
             {
               mode = "n";
-              key = "<leader>ws";
+              key = "<leader>lw";
               action.__raw = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
               options = {
-                desc = "LSP: [W]orkspace [S]ymbols";
+                desc = "[W]orkspace Symbols";
               };
             }
             {

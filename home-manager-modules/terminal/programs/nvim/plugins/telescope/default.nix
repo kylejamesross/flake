@@ -4,9 +4,6 @@
   ...
 }: {
   programs.nixvim = {
-    /*
-    git_file_history dep
-    */
     plugins.fugitive.enable = true;
 
     extraPlugins = [
@@ -32,77 +29,84 @@
           mode = "n";
           action = "help_tags";
           options = {
-            desc = "Search [H]elp";
+            desc = "[H]elp";
           };
         };
         "<leader>sk" = {
           mode = "n";
           action = "keymaps";
           options = {
-            desc = "Search [K]eymaps";
+            desc = "[K]eymaps";
           };
         };
         "<leader>ss" = {
           mode = "n";
           action = "builtin";
           options = {
-            desc = "Search Builtins";
+            desc = "Builtin[s]";
           };
         };
         "<leader>sw" = {
           mode = "n";
           action = "grep_string";
           options = {
-            desc = "Search [W]ord";
+            desc = "[W]ord";
           };
         };
         "<leader>sg" = {
           mode = "n";
           action = "live_grep";
           options = {
-            desc = "Search by [G]rep";
+            desc = "[G]rep";
+          };
+        };
+        "<c-t>" = {
+          mode = "n";
+          action = "live_grep";
+          options = {
+            desc = "Telescope: Grep";
           };
         };
         "<leader>sd" = {
           mode = "n";
           action = "diagnostics";
           options = {
-            desc = "Search [D]iagnostics";
+            desc = "[D]iagnostics";
           };
         };
         "<leader>sr" = {
           mode = "n";
           action = "resume";
           options = {
-            desc = "Search [R]esume";
+            desc = "[R]esume";
           };
         };
-        "<leader>so" = {
+        "<leader>sp" = {
           mode = "n";
           action = "oldfiles";
           options = {
-            desc = "Search Old Files";
+            desc = "[P]revious Files";
           };
         };
         "<leader>sc" = {
           mode = "n";
           action = "git_file_history";
           options = {
-            desc = "Search Buffer [C]ommit History";
+            desc = "[C]ommit History (Current Buffer)";
           };
         };
         "<leader>sb" = {
           mode = "n";
           action = "buffers";
           options = {
-            desc = "Search Existing [B]uffers";
+            desc = "[B]uffers";
           };
         };
         "<leader>su" = {
           mode = "n";
           action = "undo";
           options = {
-            desc = "Search [U]ndo Tree";
+            desc = "[U]ndo Tree";
           };
         };
       };
@@ -123,7 +127,7 @@
           end
         '';
         options = {
-          desc = "Search [F]iles";
+          desc = "Telscope: Search Files";
         };
       }
       {
@@ -137,17 +141,12 @@
           end
         '';
         options = {
-          desc = "Search [F]iles";
+          desc = "[F]iles";
         };
       }
       {
         mode = "n";
-        key = "<c-t>";
-        action = "<cmd>Telescope live_grep<CR>";
-      }
-      {
-        mode = "n";
-        key = "<leader>sy";
+        key = "<leader>s/";
         action.__raw = ''
           function()
             require('telescope.builtin').current_buffer_fuzzy_find(
@@ -159,7 +158,7 @@
           end
         '';
         options = {
-          desc = "Search Fuzzil[y] in current buffer";
+          desc = "Current Buffer";
         };
       }
       {
@@ -173,7 +172,7 @@
           end
         '';
         options = {
-          desc = "Search [N]eovim files";
+          desc = "[F]iles";
         };
       }
     ];
