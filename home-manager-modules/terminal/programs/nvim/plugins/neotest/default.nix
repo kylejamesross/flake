@@ -41,6 +41,16 @@
       }
       {
         mode = "n";
+        key = "<leader>dd";
+        action.__raw = ''
+          function() require("neotest").run.run({ strategy='dap' }) end
+        '';
+        options = {
+          desc = "Run [T]est";
+        };
+      }
+      {
+        mode = "n";
         key = "<leader>tt";
         action.__raw = ''
           function() require("neotest").output_panel.toggle() end
