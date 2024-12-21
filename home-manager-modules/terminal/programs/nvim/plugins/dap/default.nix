@@ -52,19 +52,55 @@ in {
               };
             };
           };
+          executables = {
+            netcoredbg = {
+              command = "${pkgs.netcoredbg}/bin/netcoredbg";
+              args = ["--interpreter=vscode"];
+            };
+          };
         };
         configurations = {
           typescript = [
             configVitest
+            configChrome
           ];
           javascript = [
             configVitest
+            configChrome
           ];
           typescriptreact = [
             configVitest
+            configChrome
           ];
           javascriptreact = [
             configVitest
+            configChrome
+          ];
+          cs = [
+            {
+              type = "netcoredbg";
+              request = "launch";
+              name = "Launch DLL";
+              program.__raw =
+                #lua
+                ''
+                  function()
+                    return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                  end
+                '';
+            }
+            {
+              type = "netcoredbg";
+              request = "attach";
+              name = "Attach";
+              processId.__raw =
+                #lua
+                ''
+                  function()
+                    return require('dap.utils').pick_process()
+                  end
+                '';
+            }
           ];
         };
         signs = {
@@ -279,7 +315,7 @@ in {
           # lua
           ''
             function()
-            	require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+              require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
             end
           '';
         key = "<leader>dB";
@@ -307,10 +343,10 @@ in {
           # lua
           ''
             function()
-            	local dap = require('dap')
-            	dap.disconnect()
-            	dap.close()
-            	dap.run_last()
+              local dap = require('dap')
+              dap.disconnect()
+              dap.close()
+              dap.run_last()
             end
           '';
         key = "<leader>dr";

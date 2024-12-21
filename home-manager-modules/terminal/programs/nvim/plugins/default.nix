@@ -28,6 +28,7 @@
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-textobj-entire
+      omnisharp-extended-lsp-nvim
     ];
   };
 }
