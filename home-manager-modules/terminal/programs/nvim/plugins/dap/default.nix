@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   configVitest = {
-    name = "Launch (Vitest)";
+    name = "launch vitest";
     request = "launch";
     type = "pwa-node";
     cwd = ''''${workspaceFolder}'';
@@ -13,7 +13,7 @@
     smartStep = true;
   };
   configChrome = {
-    name = "Launch Chrome";
+    name = "launch vite";
     type = "pwa-chrome";
     request = "launch";
     runtimeExecutable = "${pkgs.brave}/bin/brave";
@@ -55,15 +55,19 @@ in {
         };
         configurations = {
           typescript = [
+            configChrome
             configVitest
           ];
           javascript = [
+            configChrome
             configVitest
           ];
           typescriptreact = [
+            configChrome
             configVitest
           ];
           javascriptreact = [
+            configChrome
             configVitest
           ];
         };
@@ -156,7 +160,7 @@ in {
               require('dap').step_over()
             end
           '';
-        key = "<leader>dO";
+        key = "<leader>do";
         options = {
           desc = "Step [O]ver";
         };
@@ -212,7 +216,7 @@ in {
               require('dap').step_out()
             end
           '';
-        key = "<leader>do";
+        key = "<leader>dO";
         options = {
           desc = "Step [O]ut";
         };
