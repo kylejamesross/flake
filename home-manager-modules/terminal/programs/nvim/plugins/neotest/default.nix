@@ -5,6 +5,7 @@
         enable = true;
         adapters = {
           vitest.enable = true;
+          dotnet.enable = true;
         };
       };
     };
