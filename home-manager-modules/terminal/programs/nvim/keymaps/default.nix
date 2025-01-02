@@ -154,6 +154,16 @@
       }
       {
         mode = "n";
+        key = "<leader>tc";
+        action = ":fclose";
+        options = {
+          noremap = true;
+          silent = true;
+          desc = "[T]oggle Floating Window";
+        };
+      }
+      {
+        mode = "n";
         key = "]l";
         action = ":lnext<CR>";
         options = {

@@ -130,11 +130,59 @@
                   end
                 end, { desc = "Populate quickfix list with ESLint errors" })
 
+                vim.api.nvim_create_user_command("PopulateQuickfixVitest", function()
+                  local command_output = vim.fn.systemlist("${pkgs.nodejs_22}/bin/npx vitest run --silent --reporter json")
+                  vim.fn.setqflist({}, "r")
+
+                  local quickfix_list = {}
+
+                  local testResults = vim.fn.json_decode(command_output)  -- Decode JSON output
+
+                  for _, suite in ipairs(testResults.testResults) do
+                    for _, assertion in ipairs(suite.assertionResults) do
+                      if assertion.status == "failed" then
+                        local full_name = assertion.fullName
+                        local failure_messages = assertion.failureMessages
+                        local test_file = suite.name
+                        local failure_message = table.concat(failure_messages, "\n")
+
+                        local line_number = nil
+                        for _, message in ipairs(failure_messages) do
+                          local _, _, file_path, line = string.find(message, "at (.+):(%d+):")
+                          if file_path and line then
+                            line_number = tonumber(line)
+                            break
+                          end
+                        end
+
+                        if test_file and line_number and failure_message then
+                          local entry = {
+                            filename = test_file,
+                            lnum = line_number,
+                            col = 1,
+                            text = failure_message,
+                          }
+                          table.insert(quickfix_list, entry)
+                        end
+                      end
+                    end
+                  end
+
+                  if #quickfix_list > 0 then
+                    vim.fn.setqflist(quickfix_list, "r")
+                    vim.cmd("copen")
+                  else
+                    vim.notify("No Vitest errors found", vim.log.levels.INFO)
+                    vim.cmd("cclose")
+                  end
+                end, { desc = "Populate quickfix list with Vitest errors" })
+
                 vim.keymap.set("n", "<leader>l1", ":LspAddMissingImports<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Add missing imports" })
                 vim.keymap.set("n", "<leader>l2", ":LspRemoveUnusedImports<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Remove unused imports" })
                 vim.keymap.set("n", "<leader>l3", ":LspRenameFile<CR>", { buffer = bufnr, remap = false, silent = true, desc = "Rename file" })
                 vim.keymap.set("n", "<Leader>l4", ":PopulateQuickfixTS<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with TypeScript errors" })
                 vim.keymap.set("n", "<Leader>l5", ":PopulateQuickfixESLint<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with ESLint errors" })
+                vim.keymap.set("n", "<Leader>l6", ":PopulateQuickfixVitest<CR>", { noremap = true, silent = true, desc = "Populate quickfix list with Vitest errors" })
               '';
             settings = {
               jsx_close_tag = {
