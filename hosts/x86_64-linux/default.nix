@@ -11,7 +11,7 @@
 
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "docker"];
+    extraGroups = ["wheel" "networkmanager"];
   };
 
   time.timeZone = "America/Edmonton";
@@ -23,17 +23,11 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     USERNAME = user;
-    VSCODE_CODELLDB = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}";
     AICHAT_PLATFORM = "claude";
   };
 
   nix = {
     settings.auto-optimise-store = true;
-    gc = {
-      automatic = false;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
     package = pkgs.nixVersions.latest;
     registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
@@ -46,11 +40,6 @@
   nixpkgs.config.allowUnfree = true;
 
   system = {
-    autoUpgrade = {
-      enable = true;
-      dates = "Sat *-*-* 00:00:00";
-      channel = "https://nixos.org/channels/nixos-unstable";
-    };
     stateVersion = "22.05";
   };
 
@@ -96,14 +85,6 @@
     networkmanager = {
       enable = true;
     };
-  };
-
-  virtualisation = {
-    docker = {
-      enable = false;
-      liveRestore = false;
-    };
-    waydroid.enable = false;
   };
 
   hardware.graphics = {

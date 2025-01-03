@@ -1,11 +1,8 @@
-{pkgs, ...}: let
-  compressPlugin = pkgs.fetchFromGitHub {
-    owner = "KKV9";
-    repo = "compress.yazi";
-    rev = "60b24af23d1050f1700953a367dd4a2990ee51aa";
-    hash = "sha256-Yf5R3H8t6cJBMan8FSpK3BDSG5UnGlypKSMOi0ZFqzE=";
-  };
-in {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
@@ -65,6 +62,8 @@ in {
         }
       ];
     };
+    plugins = {
+      compress = "${inputs.yazi-compress-plugin}";
+    };
   };
-  xdg.configFile."yazi/plugins/compress.yazi".source = compressPlugin;
 }

@@ -5,43 +5,40 @@
   ...
 }: {
   imports = [
-    ./programs/fish
-    ./programs/tmux
-    ./programs/nvim
-    ./programs/git
-    ./programs/yazi
-    ./programs/lazygit
-    ./programs/tealdeer
     ./programs/direnv
+    ./programs/fish
+    ./programs/git
+    ./programs/lazygit
+    ./programs/nvim
+    ./programs/tmux
+    ./programs/yazi
     ./scripts
   ];
 
   programs = {
-    starship.enable = true;
-    zoxide.enable = true;
     bat.enable = true;
-    eza.enable = true;
     btop.enable = true;
-    fzf.enable = true;
-    ripgrep.enable = true;
-    fd.enable = true;
+    eza.enable = true;
     fastfetch.enable = true;
+    fd.enable = true;
+    fzf.enable = true;
+    jq.enable = true;
+    ripgrep.enable = true;
+    starship.enable = true;
+    tealdeer.enable = true;
+    zoxide.enable = true;
   };
 
   home = {
     packages = with pkgs; [
-      sops
-      gnutar
-      unzip
-      unrar
-      zip
-      tig
       aichat
-      jaq
       du-dust
-      optipng
-      nodePackages.svgo
-      docker-compose
+      ffmpeg
+      imagemagick
+      p7zip
+      poppler
+      sops
+      tig
     ];
 
     activation.createHomeDirectories = lib.mkAfter ''

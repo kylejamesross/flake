@@ -20,6 +20,9 @@ with config.lib.stylix.colors; {
           setw -g mouse on
           set-option -g focus-events on
           set-option -sa terminal-overrides ",alacritty:RGB"
+          set -g allow-passthrough on
+          set -ga update-environment TERM
+          set -ga update-environment TERM_PROGRAM
 
           bind-key -T copy-mode-vi v send-keys -X begin-selection
           bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel

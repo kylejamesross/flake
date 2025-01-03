@@ -4,44 +4,44 @@
   ...
 }: {
   imports = [
-    ./programs/mime
-    ./programs/hyprland
     ./programs/ags
     ./programs/firefox
+    ./programs/hyprland
     ./programs/kitty
-    ./programs/swaylock
+    ./programs/mime
     ./programs/swappy
+    ./programs/swaylock
     ./services/home-manager-system-tray
   ];
 
   programs = {
-    mpv.enable = true;
     mangohud.enable = true;
+    mpv.enable = true;
   };
 
   home = {
     packages = with pkgs; [
-      brave
-      dbeaver-bin
-      gimp
-      inkscape
-      lorien
-      anki-bin
-      calibre
-      libreoffice-still
-      pdfarranger
-      pamixer
-      playerctl
       alsa-utils
+      anki-bin
+      brave
+      brightnessctl
+      calibre
+      dbeaver-bin
+      dbus
+      gimp
       grim
-      swww
+      inkscape
+      libreoffice-still
+      lorien
+      pamixer
+      pdfarranger
+      piper
+      playerctl
       slurp
       swayidle
+      swww
       wl-clipboard
       wlr-randr
-      dbus
-      brightnessctl
-      piper
       xow_dongle-firmware
     ];
 
