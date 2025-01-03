@@ -155,7 +155,7 @@
       {
         mode = "n";
         key = "<leader>tc";
-        action = ":fclose";
+        action = ":fclose<CR>";
         options = {
           noremap = true;
           silent = true;
