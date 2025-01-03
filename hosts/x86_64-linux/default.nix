@@ -24,6 +24,7 @@
     VISUAL = "nvim";
     USERNAME = user;
     VSCODE_CODELLDB = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}";
+    AICHAT_PLATFORM = "claude";
   };
 
   nix = {

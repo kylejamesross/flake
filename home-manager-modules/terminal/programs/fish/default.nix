@@ -27,6 +27,7 @@
 
         if test -f $HOME/.anthropic_api_key
             set -x ANTHROPIC_API_KEY (cat $HOME/.anthropic_api_key)
+            set -x CLAUDE_API_KEY (cat $HOME/.anthropic_api_key)
         end
 
         if test -f $HOME/.openai-api-key

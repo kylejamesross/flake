@@ -36,7 +36,7 @@
       unrar
       zip
       tig
-      shell-gpt
+      aichat
       jaq
       du-dust
       optipng

@@ -47,6 +47,7 @@ with config.lib.stylix.colors; {
           set -g bell-action none
           run-shell "tmux set-environment -g OPENAI_API_KEY \"\$(cat $HOME/.openai-api-key)\""
           run-shell "tmux set-environment -g ANTHROPIC_API_KEY \"\$(cat $HOME/.anthropic_api_key)\""
+          run-shell "tmux set-environment -g CLAUDE_API_KEY \"\$(cat $HOME/.anthropic_api_key)\""
 
           set-option -g status-style "bg=#${base00}"
           set-window-option -g window-status-format "#[bg=#${base00},fg=#${base0F}]#[bg=#${base0F},fg=#${base00}] #W  #I #[bg=#${base00},fg=#${base0F}]#[bg=#${base00}] "

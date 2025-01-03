@@ -4,11 +4,9 @@
   ...
 }:
 with config.lib.stylix.colors; {
-  home = {
-    packages = with pkgs; [
-      tealdeer
-    ];
-  };
+  home.packages = with pkgs; [
+    tealdeer
+  ];
 
   xdg.configFile."tealdeer/config.toml".text =
     /*
