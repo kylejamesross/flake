@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./autopairs
-    ./chatgpt
     ./cmp
     ./conform
     ./dap
@@ -24,6 +23,7 @@
       markdown-preview.enable = true;
       web-devicons.enable = true;
       otter.enable = true;
+      avante.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [

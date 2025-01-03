@@ -25,6 +25,10 @@
 
         set fish_greeting ""
 
+        if test -f $HOME/.anthropic_api_key
+            set -x ANTHROPIC_API_KEY (cat $HOME/.anthropic_api_key)
+        end
+
         if test -f $HOME/.openai-api-key
             set -x OPENAI_API_KEY (cat $HOME/.openai-api-key)
         end

@@ -14,6 +14,7 @@
     secrets = {
       id_ed25519 = {owner = user;};
       openai_api_key = {owner = user;};
+      anthropic_api_key = {owner = user;};
       github_token = {owner = user;};
       work_azure_devops_pull_request_token = {owner = user;};
       nextcloud_username = {owner = user;};
