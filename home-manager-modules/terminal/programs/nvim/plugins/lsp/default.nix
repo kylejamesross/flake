@@ -206,6 +206,15 @@
           astro.enable = true;
           omnisharp = {
             enable = true;
+            settings = {
+              formattingOptions = {
+                enableEditorConfigSupport = true;
+                organizeImports = true;
+              };
+              roslynExtensionsOptions = {
+                enableAnalyzersSupport = true;
+              };
+            };
             onAttach.function =
               #lua
               ''

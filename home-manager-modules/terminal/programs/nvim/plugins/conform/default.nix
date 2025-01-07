@@ -77,6 +77,9 @@
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
+          cs = {
+            __unkeyed-1 = "csharpier";
+          };
           css = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
@@ -144,6 +147,9 @@
           };
           shellharden = {
             command = "${lib.getExe pkgs.shellharden}";
+          };
+          csharpier = {
+            command = "${pkgs.csharpier}/bin/dotnet-csharpier";
           };
         };
       };
