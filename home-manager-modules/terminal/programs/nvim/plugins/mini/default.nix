@@ -9,6 +9,7 @@
           };
           surround = {};
           files = {};
+          icons = {};
         };
       };
     };
