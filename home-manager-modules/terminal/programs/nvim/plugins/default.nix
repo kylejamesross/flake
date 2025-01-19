@@ -24,11 +24,14 @@
       web-devicons.enable = true;
       otter.enable = true;
       avante.enable = true;
+      dressing.enable = true;
+      nui.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-textobj-entire
       omnisharp-extended-lsp-nvim
+      plenary-nvim
     ];
   };
 }
