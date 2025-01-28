@@ -16,6 +16,17 @@
     ./services/nextcloud-autosync
   ];
 
+  services = {
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+      loadModels = [
+        "deepseek-r1:1.5b"
+      ];
+    };
+    open-webui.enable = true;
+  };
+
   programs = {
     dconf.enable = true;
     git.enable = true;
