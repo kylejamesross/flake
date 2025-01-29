@@ -1,30 +1,28 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
-    ./programs/stylix
-    ./programs/sops
-    ./programs/steam
-    ./programs/shell
     ./programs/hyprland
     ./programs/nh
+    ./programs/shell
+    ./programs/sops
+    ./programs/steam
+    ./programs/stylix
     ./programs/vm
 
+    ./services/greetd
+    ./services/keyd
+    ./services/nextcloud-autosync
+    ./services/ollama
+    ./services/pipewire
     ./services/printing
     ./services/secrets
-    ./services/keyd
-    ./services/pipewire
-    ./services/greetd
-    ./services/nextcloud-autosync
   ];
 
   services = {
-    ollama = {
-      enable = true;
-      acceleration = "rocm";
-      loadModels = [
-        "deepseek-r1:1.5b"
-      ];
-    };
-    open-webui.enable = true;
+    open-webui.enable = config.ollama.enable;
   };
 
   programs = {

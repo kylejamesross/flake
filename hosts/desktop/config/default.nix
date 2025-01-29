@@ -9,4 +9,5 @@
   config.hyprland.enable = true;
   config.ags.enable = true;
   config.keyd.enable = true;
+  config.ollama.enable = true;
 }
