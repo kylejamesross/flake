@@ -19,13 +19,8 @@
       url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:Aylur/ags/v1";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     telescope-git-file-history-nvim = {
