@@ -15,7 +15,6 @@
         exec-once = [
           ''${config.programs.ags.package}/bin/ags --config /home/${user}/.config/ags/${osConfig.networking.hostName}-config.js -b hypr''
           ''${pkgs.swww}/bin/swww init''
-          ''${pkgs.networkmanagerapplet}/bin/nm-applet''
           ''${pkgs.swayidle}/bin/swayidle -w timeout 1200 '${pkgs.swaylock-effects}/bin/swaylock -f' timeout 2400 'systemctl suspend' before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f' &''
         ];
         monitor =

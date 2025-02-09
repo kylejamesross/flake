@@ -11,7 +11,7 @@
 
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel"];
   };
 
   time.timeZone = "America/Edmonton";
@@ -82,9 +82,6 @@
 
   networking = {
     firewall.enable = false;
-    networkmanager = {
-      enable = true;
-    };
   };
 
   hardware.graphics = {
