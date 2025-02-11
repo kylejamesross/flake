@@ -20,7 +20,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags = {
-      url = "github:Aylur/ags/v1";
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     telescope-git-file-history-nvim = {
@@ -45,7 +50,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    specialArgs = {inherit nixpkgs inputs user unstable;};
+    specialArgs = {inherit nixpkgs inputs user unstable system;};
     home-manager = inputs.home-manager.nixosModules.home-manager;
   in {
     nixosConfigurations = {
