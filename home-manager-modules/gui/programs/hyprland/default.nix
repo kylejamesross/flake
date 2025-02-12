@@ -112,7 +112,7 @@
           " $mainMod, E, exec, ${pkgs.kitty}/bin/kitty --title Kitty ${pkgs.tmux}/bin/tmux -c ${pkgs.lf}/bin/lf"
           " $mainMod, V, togglefloating, "
           " $mainMod, F, fullscreen, # fullscreen"
-          " $mainMod, P, exec, ${config.programs.ags.package}/bin/ags -b hypr -t applauncher"
+          " $mainMod, P, exec, astal -t launcher"
           " $mainMod, D, pseudo, # dwindle"
           " $mainMod, T, togglesplit, # dwindle"
           " $mainMod, left, movefocus, l"

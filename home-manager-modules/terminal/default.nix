@@ -2,6 +2,8 @@
   pkgs,
   lib,
   user,
+  inputs,
+  system,
   ...
 }: {
   imports = [
@@ -39,6 +41,7 @@
       poppler
       sops
       tig
+      inputs.astal.packages.${system}.default
     ];
 
     activation.createHomeDirectories = lib.mkAfter ''
