@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./programs/hyprland
     ./programs/nh
@@ -22,7 +18,7 @@
   ];
 
   services = {
-    open-webui.enable = config.ollama.enable;
+    open-webui.enable = true;
   };
 
   programs = {
