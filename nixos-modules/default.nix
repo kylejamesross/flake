@@ -35,5 +35,7 @@
     xdg-utils
     inetutils
     cifs-utils
+    gpclient
+    remmina
   ];
 }

@@ -138,7 +138,7 @@
           " $mainMod, F7, workspace, 7"
           " $mainMod, F7, exec, ${pkgs.brave}/bin/brave --app=https://mail.proton.me/u/8/inbox"
           " $mainMod, F8, workspace, 8"
-          # " $mainMod, F8, exec, ${pkgs.brave}/bin/brave --app=https://google.com"
+          " $mainMod, F8, exec, ${pkgs.brave}/bin/brave --app=https://teams.microsoft.com"
           " $mainMod, F9, workspace, 9"
           " $mainMod, F9, exec, ${pkgs.brave}/bin/brave --app=https://music.youtube.com/"
           " $mainMod SHIFT, F9, exec, ${pkgs.brave}/bin/brave --app=https://app.plex.tv/desktop/#!/"
