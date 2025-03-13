@@ -50,8 +50,6 @@
               vim.fn.mkdir(dir, "p")
             end
 
-            -- Log the paths before renaming
-            vim.notify(string.format("Attempting to rename:\nFrom: %s\nTo: %s", source_file, target_file), vim.log.levels.INFO)
 
             -- First move the file
             local ok = pcall(vim.lsp.util.rename, source_file, target_file)
@@ -72,7 +70,6 @@
               title = "Rename TypeScript file",
             })
 
-            vim.notify("File renamed successfully!", vim.log.levels.INFO)
           end)
         end, { desc = "Rename file with TypeScript LSP" })
 
