@@ -32,38 +32,48 @@
 
         vim.api.nvim_create_user_command("LspRenameFile", function()
           local source_file = vim.api.nvim_buf_get_name(0)
-          local target_file
 
           vim.ui.input({
             prompt = "Target: ",
             completion = "file",
             default = source_file,
           }, function(input)
-            target_file = input
-          end)
+            if not input or input == "" then
+              vim.notify("Rename canceled!", vim.log.levels.WARN)
+              return
+            end
 
-          if not target_file or target_file == "" then
-            vim.print("Rename canceled!")
-            return
-          end
+            local target_file = input
+            local dir = target_file:match(".*/")
 
-          local dir = target_file:match(".*/")
-          if vim.fn.isdirectory(dir) == 0 then
-            vim.fn.mkdir(dir, "p")
-          end
+            if dir and vim.fn.isdirectory(dir) == 0 then
+              vim.fn.mkdir(dir, "p")
+            end
 
-          vim.lsp.util.rename(source_file, target_file)
+            -- Log the paths before renaming
+            vim.notify(string.format("Attempting to rename:\nFrom: %s\nTo: %s", source_file, target_file), vim.log.levels.INFO)
 
-          vim.lsp.buf.execute_command({
-            command = "_typescript.applyRenameFile",
-            arguments = {
-              {
-                sourceUri = source_file,
-                targetUri = target_file,
+            -- First move the file
+            local ok = pcall(vim.lsp.util.rename, source_file, target_file)
+            if not ok then
+              vim.notify("Failed to move file!", vim.log.levels.ERROR)
+              return
+            end
+
+            -- Then update references
+            vim.lsp.buf.execute_command({
+              command = "_typescript.applyRenameFile",
+              arguments = {
+                {
+                  sourceUri = "file://" .. source_file,
+                  targetUri = "file://" .. target_file,
+                },
               },
-            },
-            title = "",
-          })
+              title = "Rename TypeScript file",
+            })
+
+            vim.notify("File renamed successfully!", vim.log.levels.INFO)
+          end)
         end, { desc = "Rename file with TypeScript LSP" })
 
         vim.api.nvim_create_user_command("PopulateQuickfixTS", function()
