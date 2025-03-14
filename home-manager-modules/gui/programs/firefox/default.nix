@@ -4,7 +4,7 @@
   ...
 }: {
   programs = {
-    librewolf = {
+    firefox = {
       enable = true;
       profiles.kyle = {
         name = "Kyle Ross";
