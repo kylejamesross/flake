@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   imports = [
     ./programs/hyprland
     ./programs/nh
@@ -19,6 +23,7 @@
 
   services = {
     open-webui.enable = true;
+    globalprotect.enable = true;
   };
 
   programs = {
@@ -31,7 +36,9 @@
     xdg-utils
     inetutils
     cifs-utils
-    gpclient
+    unstable.gpclient
+    globalprotect-openconnect
+    gp-saml-gui
     remmina
   ];
 }
