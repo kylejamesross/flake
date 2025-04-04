@@ -38,6 +38,7 @@
           regex
           rust
           scss
+          styled
           toml
           typescript
           tsx
