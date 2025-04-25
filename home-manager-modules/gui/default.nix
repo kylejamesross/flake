@@ -28,7 +28,7 @@
       calibre
       dbeaver-bin
       dbus
-      gimp
+      krita
       grim
       inkscape
       libreoffice-still
