@@ -1,7 +1,7 @@
 {...}: {
   config.monitors = [
     {
-      name = "DP-1";
+      name = "DP-2";
       width = 2560;
       height = 1440;
       refreshRate = 60;
@@ -10,7 +10,7 @@
       scale = 1;
     }
     {
-      name = "DP-2";
+      name = "DP-3";
       width = 1920;
       height = 1080;
       refreshRate = 75;
