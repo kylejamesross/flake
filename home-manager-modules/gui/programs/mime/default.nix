@@ -6,7 +6,7 @@
       defaultApplications = let
         textEditors = ["writer.desktop"];
         browsers = ["firefox.desktop"];
-        imageViewers = ["swappy.desktop" "gimp.desktop"];
+        imageViewers = ["swappy.desktop" "krita.desktop"];
         vectorViewers = ["org.inkspace.Inkscape.desktop"];
         videoViewers = ["mpv.desktop"];
       in {

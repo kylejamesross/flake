@@ -67,5 +67,16 @@
       ""
     ],
     "description": "Export Anonymous function"
+  },
+  "describe": {
+    "prefix": "desc",
+    "body": [
+      "describe('${TM_FILENAME_BASE/(.*?)\\..*/$1/}', () => {",
+      "\tit('$1', () => {",
+      "\t\t$2",
+      "\t});",
+      "});"
+    ],
+    "description": "creates a test block"
   }
 }
