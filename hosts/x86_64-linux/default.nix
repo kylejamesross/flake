@@ -23,7 +23,7 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     USERNAME = user;
-    AICHAT_PLATFORM = "claude";
+    AICHAT_PLATFORM = "openai";
   };
 
   nix = {
