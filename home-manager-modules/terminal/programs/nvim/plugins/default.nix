@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./avante
     ./autopairs
     ./cmp
     ./conform
@@ -23,7 +24,6 @@
       markdown-preview.enable = true;
       web-devicons.enable = true;
       otter.enable = true;
-      avante.enable = true;
       dressing.enable = true;
       nui.enable = true;
     };
