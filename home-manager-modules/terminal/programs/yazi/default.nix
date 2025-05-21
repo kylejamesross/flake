@@ -45,21 +45,6 @@
           run = "cd ~/personal";
           desc = "Change directory to personal";
         }
-        {
-          on = ["g" "b" "c"];
-          run = "cd ~/source/base-components";
-          desc = "Change directory to source/base-components";
-        }
-        {
-          on = ["g" "b" "f"];
-          run = "cd ~/source/base-functionality";
-          desc = "Change directory to source/base-functionality";
-        }
-        {
-          on = ["g" "g"];
-          run = "cd ~/source/gateway-plus-front-end";
-          desc = "Change directory to source/gateway-plus-front-end";
-        }
       ];
     };
     plugins = {

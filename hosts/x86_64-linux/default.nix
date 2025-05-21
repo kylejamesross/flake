@@ -24,6 +24,7 @@
     VISUAL = "nvim";
     USERNAME = user;
     AICHAT_PLATFORM = "openai";
+    TF_AUTO_SAVE_CREDENTIALS = "1";
   };
 
   nix = {
