@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     userName = "Kyle Ross";
@@ -23,6 +23,11 @@
       };
       pull.rebase = false;
       push.autoSetupRemote = true;
+      diff.guitool = "meld";
+      difftool.meld.path = "${pkgs.meld}/bin/meld";
+      difftool.prompt = "false";
+      merge.tool = "meld";
+      mergetool.meld.path = "${pkgs.meld}/bin/meld";
       pager = {
         branch = false;
         log = false;

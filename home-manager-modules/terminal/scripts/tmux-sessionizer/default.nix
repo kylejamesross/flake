@@ -1,6 +1,6 @@
 {pkgs}:
 pkgs.writeShellScriptBin "tmux-sessionizer" ''
-  session=$(${pkgs.fd}/bin/fd . "/home/$USER" --min-depth 1 --max-depth 3 --type d --exec sh -c 'test -e "$1/.git" && echo "$1"' sh {} \; | ${pkgs.fzf}/bin/fzf)
+  session=$(${pkgs.fd}/bin/fd . "/home/$USER" --min-depth 1 --max-depth 3 --type d --exec sh -c 'test -e "$1/.git" -o -e "$1/.tf" && echo "$1"' sh {} \; | ${pkgs.fzf}/bin/fzf)
 
   session_name=$(basename "$session" | tr ".,: " "____")
 

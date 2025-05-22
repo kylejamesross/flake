@@ -18,15 +18,6 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  environment.variables = {
-    TERMINAL = "kitty";
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    USERNAME = user;
-    AICHAT_PLATFORM = "openai";
-    TF_AUTO_SAVE_CREDENTIALS = "1";
-  };
-
   nix = {
     settings.auto-optimise-store = true;
     package = pkgs.nixVersions.latest;
