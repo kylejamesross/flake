@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   programs.git = {
     enable = true;
     userName = "Kyle Ross";
@@ -23,11 +23,17 @@
       };
       pull.rebase = false;
       push.autoSetupRemote = true;
-      diff.guitool = "meld";
-      difftool.meld.path = "${pkgs.meld}/bin/meld";
-      difftool.prompt = "false";
-      merge.tool = "meld";
-      mergetool.meld.path = "${pkgs.meld}/bin/meld";
+      diff.tool = "nvimdiff";
+      difftool = {
+        prompt = false;
+        nvimdiff.cmd = "nvim -d $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd L'";
+      };
+      merge.tool = "nvimdiff4";
+      mergetool = {
+        keepBackup = false;
+        prompt = false;
+        nvimdiff4.cmd = "nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
+      };
       pager = {
         branch = false;
         log = false;
