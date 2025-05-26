@@ -16,7 +16,7 @@
   ];
   programs.nixvim = {
     plugins = {
-      nvim-colorizer.enable = true;
+      colorizer.enable = true;
       lspkind.enable = true;
       illuminate.enable = true;
       rainbow-delimiters.enable = true;

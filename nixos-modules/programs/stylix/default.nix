@@ -6,10 +6,11 @@
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
+      size = 32;
     };
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        package = pkgs.nerd-fonts.jetbrains-mono;
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {

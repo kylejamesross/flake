@@ -3,13 +3,14 @@
   user,
   ...
 }: {
+  stylix.targets.firefox.profileNames = ["kyle"];
   programs = {
     firefox = {
       enable = true;
       profiles.kyle = {
         name = "Kyle Ross";
         isDefault = true;
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           raindropio
           bitwarden

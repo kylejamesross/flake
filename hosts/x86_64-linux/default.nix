@@ -55,16 +55,11 @@
     carlito
     vegur
     source-code-pro
-    jetbrains-mono
     font-awesome
     corefonts
     noto-fonts
     noto-fonts-emoji
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
+    pkgs.nerd-fonts.jetbrains-mono
   ];
 
   systemd = {
