@@ -9,4 +9,8 @@
     docker-desktop.enable = false;
     startMenuLaunchers = false;
   };
+  systemd.services."user-runtime-dir@" = {
+    overrideStrategy = "asDropin";
+    unitConfig.ConditionPathExists = "!/run/user/%i";
+  };
 }
