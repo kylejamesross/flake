@@ -1,9 +1,9 @@
-{...}: {
+{pkgs, ...}: {
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "Hyprland --config /etc/greetd/hyprland.conf";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
       };
     };
     vt = 7;

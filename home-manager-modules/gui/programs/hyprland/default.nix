@@ -46,7 +46,7 @@
           allow_tearing = false;
         };
         misc = {
-          disable_hyprland_logo = "yes";
+          # disable_hyprland_logo = "yes";
         };
         decoration = {
           rounding = 10;
