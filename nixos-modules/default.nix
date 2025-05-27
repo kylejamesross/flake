@@ -20,7 +20,6 @@
   ];
 
   services = {
-    open-webui.enable = true;
     globalprotect.enable = true;
   };
 
