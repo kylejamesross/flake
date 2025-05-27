@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./programs/hyprland
     ./programs/nh
     ./programs/shell
     ./programs/sops
@@ -15,7 +14,6 @@
     ./services/greetd
     ./services/keyd
     ./services/nextcloud-autosync
-    ./services/ollama
     ./services/pipewire
     ./services/printing
     ./services/secrets
