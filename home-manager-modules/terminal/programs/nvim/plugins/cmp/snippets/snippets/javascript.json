@@ -1,4 +1,9 @@
 {
+  "bufferName": {
+    "prefix": "bn",
+    "body": "${TM_FILENAME_BASE}",
+    "description": "Displays name of currently selected buffer"
+  },
   "consoleLogObject": {
     "prefix": "clo",
     "body": "console.log('${1:object} :>> ', ${1:object});",
@@ -78,5 +83,10 @@
       "});"
     ],
     "description": "creates a test block"
+  },
+  "it": {
+    "body": "it('${1:should }', () => {\n\t$0\n});",
+    "description": "creates an it block",
+    "prefix": "it"
   }
 }
