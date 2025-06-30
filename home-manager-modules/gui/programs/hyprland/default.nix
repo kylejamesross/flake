@@ -137,6 +137,8 @@
           " $mainMod, F6, exec, ${pkgs.joplin-desktop}/bin/joplin-desktop"
           " $mainMod, F7, workspace, 7"
           " $mainMod, F7, exec, ${pkgs.brave}/bin/brave --app=https://mail.proton.me/u/8/inbox"
+          " $mainMod, F7 SHIFT, workspace, 7"
+          " $mainMod SHIFT, F7, exec, ${pkgs.brave}/bin/brave --app=https://outlook.office.com/mail/"
           " $mainMod, F8, workspace, 8"
           " $mainMod, F8, exec, ${pkgs.brave}/bin/brave --app=https://teams.microsoft.com"
           " $mainMod, F9, workspace, 9"
