@@ -19,7 +19,6 @@
         ./terminal
         ./stylix
         inputs.nixvim.homeManagerModules.nixvim
-        inputs.ags.homeManagerModules.default
       ];
     };
   };
