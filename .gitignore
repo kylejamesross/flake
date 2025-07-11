@@ -1,3 +1,4 @@
 result/
 .config/.config/lazygit/state.yml
 **/node_modules
+**/@girs

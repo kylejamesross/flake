@@ -11,7 +11,7 @@
     enable = true;
     configDir = ./config;
     extraPackages = with inputs.astal.packages.${system}; [
-      astal3
+      astal4
       io
       apps
       battery

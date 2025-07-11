@@ -1,14 +1,19 @@
-import { App } from "astal/gtk3";
-import style from "./styles/index.scss";
-import Bar from "./widgets/bar/Bar";
-import Applauncher from "./widgets/applauncher/Applauncher";
-import NotificationPopups from "./widgets/notifications/NotificationPopups";
+import app from "ags/gtk4/app";
+import style from "./style.scss";
+import Bar from "./widget/Bar";
+import Applauncher from "./widget/Applauncher";
+import NotificationPopups from "./widget/NotificationPopups";
+import Gtk from "gi://Gtk?version=4.0";
 
-App.start({
+app.start({
   css: style,
-  main: () => {
-    App.get_monitors().map(Bar);
-    App.get_monitors().map(NotificationPopups);
-    Applauncher();
+  main() {
+    app.get_monitors().forEach((monitor) => {
+      Bar(monitor);
+
+      app.add_window(Applauncher() as Gtk.Window);
+
+      NotificationPopups();
+    });
   },
 });
