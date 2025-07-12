@@ -8,7 +8,7 @@ import AstalHyprland from "gi://AstalHyprland";
 import AstalTray from "gi://AstalTray";
 import AstalMpris from "gi://AstalMpris";
 import AstalApps from "gi://AstalApps";
-import { For, createBinding, createComputed } from "ags";
+import { For, With, createBinding, createComputed } from "ags";
 import { createPoll } from "ags/time";
 
 function Workspaces() {
@@ -22,16 +22,21 @@ function Workspaces() {
     ],
     (workspaces) => {
       const visible = [
-        { id: 1, glyph: "" },
-        { id: 2, glyph: "" },
-        { id: 3, glyph: "" },
-        { id: 4, glyph: "" },
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
+        { id: 7 },
+        { id: 8 },
+        { id: 9 },
       ];
 
       workspaces
         .sort((a, b) => a.get_id() - b.get_id())
         .filter((ws) => ws.get_id() > visible[visible.length - 1].id)
-        .forEach((ws) => visible.push({ id: ws.id, glyph: "" }));
+        .forEach((ws) => visible.push({ id: ws.id }));
 
       return visible;
     },
@@ -50,10 +55,31 @@ function Workspaces() {
               hyprland.dispatch("workspace", workspace.id.toString())
             }
           >
-            {workspace.glyph}
+            <label
+              label={focused((focused) =>
+                focused.id == workspace.id ? "" : "",
+              )}
+            />
           </button>
         )}
       </For>
+    </box>
+  );
+}
+
+function FocusedTitle() {
+  const hyprland = AstalHyprland.get_default();
+  const hyprlandClient = createBinding(hyprland, "focused_client");
+  return (
+    <box>
+      <With value={hyprlandClient}>
+        {(client) => (
+          <box class="window-title" visible={client?.title.length > 0}>
+            <label label={client?.title.slice(0, 70)}></label>
+          </box>
+        )}
+      </With>
+      <box />
     </box>
   );
 }
@@ -64,7 +90,7 @@ function Mpris() {
   const players = createBinding(mpris, "players");
 
   return (
-    <menubutton>
+    <menubutton class="mpris">
       <box>
         <For each={players}>
           {(player) => {
@@ -148,7 +174,7 @@ function Tray() {
   };
 
   return (
-    <box>
+    <box class="tray">
       <For each={items}>
         {(item) => (
           <menubutton $={(self) => init(self, item)}>
@@ -164,7 +190,7 @@ function AudioOutput() {
   const { defaultSpeaker: speaker } = AstalWp.get_default()!;
 
   return (
-    <menubutton>
+    <menubutton class="audio-output">
       <image iconName={createBinding(speaker, "volumeIcon")} />
       <popover>
         <box>
@@ -185,7 +211,7 @@ function Clock({ format = "%H:%M" }) {
   });
 
   return (
-    <menubutton>
+    <menubutton class="clock">
       <label label={time} />
       <popover>
         <Gtk.Calendar />
@@ -210,6 +236,9 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         <box $type="start">
           <Workspaces />
           <Mpris />
+        </box>
+        <box $type="center">
+          <FocusedTitle />
         </box>
         <box $type="end">
           <Tray />
