@@ -3,16 +3,60 @@ import GLib from "gi://GLib";
 import Astal from "gi://Astal?version=4.0";
 import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
-import AstalBattery from "gi://AstalBattery";
-import AstalPowerProfiles from "gi://AstalPowerProfiles";
 import AstalWp from "gi://AstalWp";
-import AstalNetwork from "gi://AstalNetwork";
+import AstalHyprland from "gi://AstalHyprland";
 import AstalTray from "gi://AstalTray";
 import AstalMpris from "gi://AstalMpris";
 import AstalApps from "gi://AstalApps";
-import { For, With, createBinding } from "ags";
+import { For, createBinding, createComputed } from "ags";
 import { createPoll } from "ags/time";
-import { execAsync } from "ags/process";
+
+function Workspaces() {
+  const hyprland = AstalHyprland.get_default();
+  const focused = createBinding(hyprland, "focused_workspace");
+
+  const workspaces = createComputed(
+    [
+      createBinding(hyprland, "workspaces"),
+      createBinding(hyprland, "focused_workspace"),
+    ],
+    (workspaces) => {
+      const visible = [
+        { id: 1, glyph: "" },
+        { id: 2, glyph: "" },
+        { id: 3, glyph: "" },
+        { id: 4, glyph: "" },
+      ];
+
+      workspaces
+        .sort((a, b) => a.get_id() - b.get_id())
+        .filter((ws) => ws.get_id() > visible[visible.length - 1].id)
+        .forEach((ws) => visible.push({ id: ws.id, glyph: "" }));
+
+      return visible;
+    },
+  );
+
+  return (
+    <box class="workspaces">
+      <For each={workspaces}>
+        {(workspace) => (
+          <button
+            widthRequest={44}
+            class={focused((focused) =>
+              focused.id == workspace.id ? "active" : "inactive",
+            )}
+            onClicked={() =>
+              hyprland.dispatch("workspace", workspace.id.toString())
+            }
+          >
+            {workspace.glyph}
+          </button>
+        )}
+      </For>
+    </box>
+  );
+}
 
 function Mpris() {
   const mpris = AstalMpris.get_default();
@@ -116,63 +160,6 @@ function Tray() {
   );
 }
 
-function Wireless() {
-  const network = AstalNetwork.get_default();
-  const wifi = createBinding(network, "wifi");
-
-  const sorted = (arr: Array<AstalNetwork.AccessPoint>) => {
-    return arr
-      .filter((ap) => !!ap.ssid)
-      .sort((a, b) => b.strength - a.strength);
-  };
-
-  async function connect(ap: AstalNetwork.AccessPoint) {
-    // connecting to ap is not yet supported
-    // https://github.com/Aylur/astal/pull/13
-    try {
-      await execAsync(`nmcli d wifi connect ${ap.bssid}`);
-    } catch (error) {
-      // you can implement a popup asking for password here
-      console.error(error);
-    }
-  }
-
-  return (
-    <box visible={wifi(Boolean)}>
-      <With value={wifi}>
-        {(wifi) =>
-          wifi && (
-            <menubutton>
-              <image iconName={createBinding(wifi, "iconName")} />
-              <popover>
-                <box orientation={Gtk.Orientation.VERTICAL}>
-                  <For each={createBinding(wifi, "accessPoints")(sorted)}>
-                    {(ap: AstalNetwork.AccessPoint) => (
-                      <button onClicked={() => connect(ap)}>
-                        <box spacing={4}>
-                          <image iconName={createBinding(ap, "iconName")} />
-                          <label label={createBinding(ap, "ssid")} />
-                          <image
-                            iconName="object-select-symbolic"
-                            visible={createBinding(
-                              wifi,
-                              "activeAccessPoint",
-                            )((active) => active === ap)}
-                          />
-                        </box>
-                      </button>
-                    )}
-                  </For>
-                </box>
-              </popover>
-            </menubutton>
-          )
-        }
-      </With>
-    </box>
-  );
-}
-
 function AudioOutput() {
   const { defaultSpeaker: speaker } = AstalWp.get_default()!;
 
@@ -186,38 +173,6 @@ function AudioOutput() {
             onChangeValue={({ value }) => speaker.set_volume(value)}
             value={createBinding(speaker, "volume")}
           />
-        </box>
-      </popover>
-    </menubutton>
-  );
-}
-
-function Battery() {
-  const battery = AstalBattery.get_default();
-  const powerprofiles = AstalPowerProfiles.get_default();
-
-  const percent = createBinding(
-    battery,
-    "percentage",
-  )((p) => `${Math.floor(p * 100)}%`);
-
-  const setProfile = (profile: string) => {
-    powerprofiles.set_active_profile(profile);
-  };
-
-  return (
-    <menubutton visible={createBinding(battery, "isPresent")}>
-      <box>
-        <image iconName={createBinding(battery, "iconName")} />
-        <label label={percent} />
-      </box>
-      <popover>
-        <box orientation={Gtk.Orientation.VERTICAL}>
-          {powerprofiles.get_profiles().map(({ profile }) => (
-            <button onClicked={() => setProfile(profile)}>
-              <label label={profile} xalign={0} />
-            </button>
-          ))}
         </box>
       </popover>
     </menubutton>
@@ -253,14 +208,13 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
     >
       <centerbox>
         <box $type="start">
-          <Clock />
+          <Workspaces />
           <Mpris />
         </box>
         <box $type="end">
           <Tray />
-          <Wireless />
           <AudioOutput />
-          <Battery />
+          <Clock />
         </box>
       </centerbox>
     </window>

@@ -9,6 +9,7 @@
 
   programs.ags = {
     enable = true;
+    systemd.enable = true;
     configDir = ./config;
     extraPackages = with inputs.astal.packages.${system}; [
       astal4
