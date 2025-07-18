@@ -1,5 +1,13 @@
 {pkgs, ...}: {
   programs.nixvim = {
+    globals = {
+      mapleader = " ";
+      have_nerd_font = true;
+    };
+    clipboard = {
+      providers.wl-copy.enable = true;
+      register = "unnamedplus";
+    };
     opts = {
       number = true;
       relativenumber = true;
@@ -19,7 +27,6 @@
       timeoutlen = 500;
       splitright = true;
       splitbelow = true;
-      clipboard = "unnamedplus";
       cursorline = true;
       termguicolors = true;
       list = true;
@@ -30,7 +37,6 @@
         clear = true;
       };
     };
-    globals.mapleader = " ";
     autoCmd = [
       {
         event = ["TextYankPost"];
@@ -38,7 +44,7 @@
         group = "kickstart-highlight-yank";
         callback.__raw = ''
           function()
-          vim.highlight.on_yank()
+          vim.hl.on_yank()
           end
         '';
       }

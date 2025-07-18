@@ -5,6 +5,7 @@
         enable = true;
         fromVscode = [{paths = ./snippets;}];
       };
+      lazydev.enable = true;
 
       cmp-nvim-lsp = {
         enable = true;
@@ -58,20 +59,24 @@
           };
           sources = [
             {
-              name = "luasnip";
+              name = "lazydev";
+              group_index = 0;
             }
             {
               name = "nvim_lsp";
             }
             {
+              name = "luasnip";
+            }
+            {
               name = "path";
+            }
+            {
+              name = "nvim_lsp_signature_help";
             }
           ];
         };
       };
     };
-    extraLuaPackages = ps: [
-      ps.jsregexp
-    ];
   };
 }

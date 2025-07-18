@@ -27,7 +27,7 @@
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-25.05";
     telescope-git-file-history-nvim = {
       url = "github:isak102/telescope-git-file-history.nvim";
       flake = false;
