@@ -7,5 +7,13 @@
       "}"
     ],
     "description": "Create Interface for file"
+  },
+  "zod schema type": {
+    "prefix": "stype",
+    "body": [
+      "import z from 'zod';",
+      "",
+      "export type ${TM_FILENAME_BASE} = z.infer<typeof $1>;"
+    ]
   }
 }
