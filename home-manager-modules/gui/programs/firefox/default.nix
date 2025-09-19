@@ -228,7 +228,7 @@
           "browser.startup.blankWindow" = true;
           "browser.sessionstore.restore_on_demand" = false;
           "browser.sessionstore.resume_from_crash" = false;
-          "browser.startup.homepage" = "https://homarr.kylejamesross.com:10004";
+          "browser.startup.homepage" = "https://homarr.kylejamesross.com:7575";
           "browser.startup.page" = 1;
           "startup.homepage_welcome_url" = "";
           "browser.bookmarks.addedImportButton" = false;
