@@ -21,6 +21,7 @@
 
   services = {
     globalprotect.enable = true;
+    tailscale.enable = true;
   };
 
   programs = {

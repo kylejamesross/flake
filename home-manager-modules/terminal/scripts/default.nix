@@ -18,6 +18,7 @@
       (import ./unraid-mount-unmount {inherit pkgs user;})
       (import ./gnome-terminal {inherit pkgs;})
       (import ./tf {inherit pkgs;})
+      (import ./garmin-schedule-transfer {inherit pkgs;})
     ];
   };
 }
