@@ -14,7 +14,7 @@
       po = "push origin";
       ph = "push origin HEAD";
       wl = "worktree list";
-      wa = "worktree add";
+      wa = "!f() { git worktree add ../$1 -b $1 $2;  }; f";
       wr = "worktree remove";
     };
     extraConfig = {

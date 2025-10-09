@@ -10,6 +10,7 @@
       (import ./swww-randomizer {inherit pkgs;})
       (import ./git-pull-all {inherit pkgs;})
       (import ./sb {inherit pkgs;})
+      (import ./wr {inherit pkgs;})
       (import ./pb {inherit pkgs;})
       (import ./g {inherit pkgs;})
       (import ./musb {inherit pkgs;})

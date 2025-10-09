@@ -1,5 +1,5 @@
 {
-  description = "NixOS Flake Configuration";
+  description = "NixOS Flake Configuration (flake-parts edition)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
@@ -36,62 +36,17 @@
       url = "github:KKV9/compress.yazi";
       flake = false;
     };
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = {
-    nixpkgs,
-    nixpkgs-unstable,
-    self,
-    ...
-  } @ inputs: let
-    user = "kyle";
-    system = "x86_64-linux";
-    unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+
+      imports = [
+        ./flake-parts/nixos-configs.nix
+        ./flake-parts/home-manager.nix
+        ./flake-parts/packages.nix
+      ];
     };
-    specialArgs = {inherit nixpkgs inputs user unstable system;};
-    home-manager = inputs.home-manager.nixosModules.home-manager;
-  in {
-    nixosConfigurations = {
-      inherit specialArgs;
-      desktop = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ./hosts/desktop
-          ./hosts/x86_64-linux
-          ./nixos-modules
-          inputs.stylix.nixosModules.stylix
-          inputs.nur.modules.nixos.default
-          home-manager
-          ./home-manager-modules
-        ];
-      };
-      laptop = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ./hosts/laptop
-          ./hosts/x86_64-linux
-          ./nixos-modules
-          inputs.stylix.nixosModules.stylix
-          inputs.nur.modules.nixos.default
-          home-manager
-          ./home-manager-modules
-        ];
-      };
-      wsl = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ./hosts/wsl
-          ./hosts/x86_64-linux
-          inputs.stylix.nixosModules.stylix
-          inputs.nixos-wsl.nixosModules.wsl
-          inputs.nur.modules.nixos.default
-          ./nixos-modules
-          home-manager
-          ./home-manager-modules
-        ];
-      };
-    };
-  };
 }
