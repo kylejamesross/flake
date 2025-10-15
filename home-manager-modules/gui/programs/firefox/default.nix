@@ -24,22 +24,17 @@
           sponsorblock
         ];
         search = {
-          default = "searxng";
+          default = "DuckDuckGo";
           force = true;
           engines = {
-            "searxng" = {
+            "DuckDuckGo" = {
               urls = [
                 {
-                  template = "https://searxng.kylejamesross.com/search";
-                  params = [
-                    {
-                      name = "q";
-                      value = "{searchTerms}";
-                    }
-                  ];
+                  template = "https://duckduckgo.com/?q={searchTerms}";
+                  params = [];
                 }
               ];
-              definedAliases = ["@s"];
+              definedAliases = ["@d"];
             };
             "Nix Packages" = {
               urls = [
@@ -228,7 +223,7 @@
           "browser.startup.blankWindow" = true;
           "browser.sessionstore.restore_on_demand" = false;
           "browser.sessionstore.resume_from_crash" = false;
-          "browser.startup.homepage" = "https://homarr.kylejamesross.com:7575";
+          "browser.startup.homepage" = "https://homarr.kylejamesross.com";
           "browser.startup.page" = 1;
           "startup.homepage_welcome_url" = "";
           "browser.bookmarks.addedImportButton" = false;

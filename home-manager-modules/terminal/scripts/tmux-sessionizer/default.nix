@@ -8,6 +8,10 @@ pkgs.writeShellScriptBin "tmux-sessionizer" ''
     tf_sessions=""
   fi
 
+  if [ -d "/home/$USER/work/workspace" ]; then
+    tf_sessions=$(${pkgs.fd}/bin/fd . "/home/$USER/work/workspace" --min-depth 1 --max-depth 1 --type d --exec sh -c 'test -e "$1/.tfignore" && echo "$1"' sh {} \;)
+  fi
+
   session=$(printf '%s\n%s\n' "$git_sessions" "$tf_sessions" | ${pkgs.fzf}/bin/fzf)
 
   session_name=$(basename "$session" | tr ".,: " "____")
