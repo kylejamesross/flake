@@ -24,10 +24,10 @@
           sponsorblock
         ];
         search = {
-          default = "DuckDuckGo";
+          default = "ddg";
           force = true;
           engines = {
-            "DuckDuckGo" = {
+            "ddg" = {
               urls = [
                 {
                   template = "https://duckduckgo.com/?q={searchTerms}";
