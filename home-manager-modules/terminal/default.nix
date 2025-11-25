@@ -33,6 +33,7 @@
 
   home = {
     packages = with pkgs; [
+      abcde
       aichat
       du-dust
       ffmpeg
