@@ -6,7 +6,6 @@
   ];
   programs.nixvim = {
     plugins = {
-      cmp-nvim-lsp.enable = true;
       fidget.enable = true;
       lsp = {
         enable = true;

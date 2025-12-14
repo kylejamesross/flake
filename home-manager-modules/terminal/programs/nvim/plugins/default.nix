@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./avante
-    ./autopairs
-    ./cmp
+    ./blink-cmp
     ./conform
     ./dap
     ./gitsigns
@@ -26,6 +25,7 @@
       otter.enable = true;
       dressing.enable = true;
       nui.enable = true;
+      nvim-autopairs = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
