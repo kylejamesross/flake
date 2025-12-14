@@ -4,8 +4,10 @@
       enable = true;
       settings = {
         provider = "openai";
-        openai = {
-          model = "gpt-4.1-mini";
+        providers = {
+          openai = {
+            model = "gpt-5-mini";
+          };
         };
       };
     };
