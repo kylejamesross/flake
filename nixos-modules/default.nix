@@ -1,8 +1,4 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./programs/nh
     ./programs/shell
@@ -19,7 +15,7 @@
   ];
 
   services = {
-    # globalprotect.enable = true;
+    globalprotect.enable = true;
     tailscale.enable = true;
   };
 
@@ -41,9 +37,16 @@
     xdg-utils
     inetutils
     cifs-utils
-    # unstable.gpclient
-    # globalprotect-openconnect
-    # gp-saml-gui
+    globalprotect-openconnect
+    gpclient
+    gpauth
+    openconnect
     remmina
   ];
+
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "qtwebengine-5.15.19"
+    ];
+  };
 }

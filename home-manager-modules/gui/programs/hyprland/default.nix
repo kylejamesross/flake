@@ -153,7 +153,7 @@
           " $mainMod SHIFT, F9, exec, ${pkgs.brave}/bin/brave --app=https://app.plex.tv/desktop/#!/"
           " SUPER_SHIFT, F11, exec, systemctl reboot"
           " SUPER_SHIFT, F12, exec, systemctl poweroff"
-          " $mainMod, F12, exec, swww-randomizer"
+          " $mainMod, F12, exec, wallpaper-randomizer"
           '', Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | wl-copy ''
           ''SHIFT, Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f - ''
           " $mainMod, 1, workspace, 1"
