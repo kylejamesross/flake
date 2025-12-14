@@ -25,7 +25,7 @@
       otter.enable = true;
       dressing.enable = true;
       nui.enable = true;
-      nvim-autopairs = true;
+      nvim-autopairs.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
