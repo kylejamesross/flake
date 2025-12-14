@@ -31,6 +31,7 @@
       krita
       grim
       inkscape
+      hyprpaper
       libreoffice-still
       lorien
       pamixer
@@ -39,7 +40,6 @@
       playerctl
       slurp
       swayidle
-      swww
       wl-clipboard
       wlr-randr
       xow_dongle-firmware

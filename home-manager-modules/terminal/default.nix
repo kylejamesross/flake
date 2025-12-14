@@ -35,7 +35,7 @@
     packages = with pkgs; [
       abcde
       aichat
-      du-dust
+      dust
       ffmpeg
       imagemagick
       p7zip

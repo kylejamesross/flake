@@ -58,14 +58,9 @@
     font-awesome
     corefonts
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     pkgs.nerd-fonts.jetbrains-mono
   ];
-
-  systemd = {
-    extraConfig = "DefaultLimitNOFILE=65536";
-    user.extraConfig = "DefaultLimitNOFILE=65536";
-  };
 
   networking = {
     firewall.enable = false;

@@ -7,7 +7,7 @@
     packages = [
       (import ./personal-commit-message {inherit pkgs;})
       (import ./tmux-sessionizer {inherit pkgs;})
-      (import ./swww-randomizer {inherit pkgs;})
+      (import ./wallpaper-randomizer {inherit pkgs;})
       (import ./git-pull-all {inherit pkgs;})
       (import ./sb {inherit pkgs;})
       (import ./wr {inherit pkgs;})

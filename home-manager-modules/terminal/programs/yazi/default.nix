@@ -16,7 +16,7 @@
     keymap = {
       manager.prepend_keymap = [
         {
-          run = "shell '${pkgs.xdragon}/bin/xdragon -x -i -T \"$@\"' --confirm";
+          run = "shell '${pkgs.dragon-drop}/bin/xdragon -x -i -T \"$@\"' --confirm";
           on = ["g" "o"];
           desc = "Drag select files with Dragon";
         }

@@ -9,7 +9,6 @@
     ./programs/sops
     ./programs/steam
     ./programs/stylix
-    ./programs/vm
 
     ./services/greetd
     ./services/keyd
@@ -20,7 +19,7 @@
   ];
 
   services = {
-    globalprotect.enable = true;
+    # globalprotect.enable = true;
     tailscale.enable = true;
   };
 
@@ -42,9 +41,9 @@
     xdg-utils
     inetutils
     cifs-utils
-    unstable.gpclient
-    globalprotect-openconnect
-    gp-saml-gui
+    # unstable.gpclient
+    # globalprotect-openconnect
+    # gp-saml-gui
     remmina
   ];
 }
