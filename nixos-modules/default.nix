@@ -14,11 +14,6 @@
     ./services/secrets
   ];
 
-  services = {
-    globalprotect.enable = true;
-    tailscale.enable = true;
-  };
-
   programs = {
     dconf.enable = true;
     git.enable = true;
@@ -37,16 +32,7 @@
     xdg-utils
     inetutils
     cifs-utils
-    globalprotect-openconnect
-    gpclient
-    gpauth
     openconnect
     remmina
   ];
-
-  nixpkgs.config = {
-    permittedInsecurePackages = [
-      "qtwebengine-5.15.19"
-    ];
-  };
 }
