@@ -13,7 +13,6 @@
           nil_ls.enable = true;
           cssls.enable = true;
           bashls.enable = true;
-          eslint.enable = true;
           jsonls.enable = true;
           astro.enable = true;
         };
