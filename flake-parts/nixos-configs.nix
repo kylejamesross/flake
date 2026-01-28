@@ -6,7 +6,11 @@
       inherit system;
       config.allowUnfree = true;
     };
-    specialArgs = {inherit inputs system user unstable;};
+    oldPkgs = import inputs.nixpkgs-old {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    specialArgs = {inherit inputs system user unstable oldPkgs;};
     home-manager = inputs.home-manager.nixosModules.home-manager;
 
     commonModules = [

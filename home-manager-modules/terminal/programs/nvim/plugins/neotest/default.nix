@@ -1,8 +1,13 @@
-{...}: {
+{
+  pkgs,
+  oldPkgs,
+  ...
+}: {
   programs.nixvim = {
     plugins = {
       neotest = {
         enable = true;
+        package = oldPkgs.vimPlugins.neotest;
         adapters = {
           vitest.enable = true;
           dotnet.enable = true;
@@ -13,9 +18,7 @@
       {
         mode = "n";
         key = "<leader>cf";
-        action.__raw = ''
-          function () require("neotest").run.run(vim.fn.expand("%")) end
-        '';
+        action = "<cmd>lua require(\"neotest\").run.run(vim.fn.expand(\"%\"))<cr>";
         options = {
           desc = "Run Tests in [F]ile";
         };
@@ -82,6 +85,12 @@
           desc = "[T]oggle Test [S]ummary";
         };
       }
+    ];
+
+    extraPackages = with pkgs; [
+      vimPlugins.neotest-plenary
+      vimPlugins.nvim-nio
+      vimPlugins.FixCursorHold-nvim
     ];
   };
 }

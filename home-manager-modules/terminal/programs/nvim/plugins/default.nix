@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./avante
     ./blink-cmp
+    ./code-companion
     ./conform
     ./dap
     ./gitsigns
@@ -24,15 +24,12 @@
       markdown-preview.enable = true;
       web-devicons.enable = true;
       otter.enable = true;
-      dressing.enable = true;
-      nui.enable = true;
       nvim-autopairs.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-textobj-entire
       omnisharp-extended-lsp-nvim
-      plenary-nvim
     ];
   };
 }

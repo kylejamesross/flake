@@ -45,6 +45,7 @@
           vim
           vimdoc
           vue
+          yaml
         ];
       };
       treesitter-textobjects = {
