@@ -6,6 +6,7 @@
     ./dap
     ./gitsigns
     ./indent-blankline
+    ./lint
     ./lsp
     ./mini
     ./neotest

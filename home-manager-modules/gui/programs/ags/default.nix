@@ -15,7 +15,6 @@
       astal4
       io
       apps
-      battery
       hyprland
       mpris
       notifd
