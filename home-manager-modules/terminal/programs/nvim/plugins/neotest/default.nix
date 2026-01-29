@@ -88,7 +88,7 @@
     ];
 
     extraPackages = with pkgs; [
-      vimPlugins.neotest-plenary
+      vimPlugins.plenary-nvim
       vimPlugins.nvim-nio
       vimPlugins.FixCursorHold-nvim
     ];

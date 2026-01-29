@@ -4,18 +4,8 @@
   ...
 }: {
   programs.nixvim = {
-    plugins.fugitive.enable = true;
-
-    extraPlugins = [
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "telescope-git-file-history.nvim";
-        src = inputs.telescope-git-file-history-nvim;
-      })
-    ];
-
     plugins.telescope = {
       enable = true;
-
       enabledExtensions = ["git_file_history"];
 
       extensions = {
@@ -114,6 +104,17 @@
         extensions.__raw = "{ ['ui-select'] = { require('telescope.themes').get_dropdown() } }";
       };
     };
+
+    plugins.fugitive.enable = true;
+
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "telescope-git-file-history.nvim";
+        src = inputs.telescope-git-file-history-nvim;
+      })
+      pkgs.ripgrep
+      pkgs.vimPlugins.plenary-nvim
+    ];
 
     keymaps = [
       {

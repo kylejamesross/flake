@@ -1,9 +1,6 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      nui.enable = true;
-      fidget.enable = true;
-
       codecompanion = {
         enable = true;
         settings = {
@@ -34,7 +31,15 @@
           inline.enable = true;
         };
       };
+      fidget.enable = true;
     };
+
+    extraPackages = with pkgs; [
+      file
+      curl
+      ripgrep
+      vimPlugins.plenary-nvim
+    ];
 
     keymaps = [
       {
@@ -57,11 +62,6 @@
           desc = "[T]oggle [C]odeCompanion Chat";
         };
       }
-    ];
-
-    extraPackages = with pkgs; [
-      file
-      vimPlugins.plenary-nvim
     ];
 
     autoGroups = {
