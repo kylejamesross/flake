@@ -42,6 +42,7 @@
       poppler
       sops
       tig
+      samba
       inputs.astal.packages.${system}.default
     ];
 
