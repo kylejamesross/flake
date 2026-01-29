@@ -4,18 +4,9 @@
       enable = true;
 
       lintersByFt = {
-        astro = ["eslint_d"];
-        css = ["eslint_d"];
-        javascript = ["eslint_d"];
-        javascriptreact = ["eslint_d"];
-        "javascript.jsx" = ["eslint_d"];
         lua = ["luacheck"];
         markdownlint = ["markdownlint"];
         sh = ["shellcheck"];
-        typescript = ["eslint_d"];
-        typescriptreact = ["eslint_d"];
-        "typescript.tsx" = ["eslint_d"];
-        vue = ["eslint_d"];
         yaml = ["yamllint"];
       };
 
@@ -39,7 +30,6 @@
     };
 
     extraPackages = with pkgs; [
-      eslint_d
       markdownlint-cli
       shellcheck
       yamllint

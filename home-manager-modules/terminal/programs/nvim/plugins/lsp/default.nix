@@ -11,6 +11,7 @@
         enable = true;
         servers = {
           nil_ls.enable = true;
+          eslint.enable = true;
           cssls.enable = true;
           bashls.enable = true;
           jsonls.enable = true;
