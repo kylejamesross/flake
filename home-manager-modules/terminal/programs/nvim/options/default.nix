@@ -49,5 +49,8 @@
         '';
       }
     ];
+    extraConfigLua = ''
+      vim.env.PATH = "${pkgs.nodejs_22}/bin:" .. vim.env.PATH
+    '';
   };
 }

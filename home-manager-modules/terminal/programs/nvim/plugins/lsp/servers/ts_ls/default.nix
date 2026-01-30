@@ -50,24 +50,49 @@
               vim.fn.mkdir(dir, "p")
             end
 
-            -- First move the file
-            local ok = pcall(vim.lsp.util.rename, source_file, target_file)
-            if not ok then
-              vim.notify("Failed to move file!", vim.log.levels.ERROR)
-              return
+            -- Move the file on disk. Prefer luv (vim.loop) and fallback to vim.fn.rename.
+            local moved = false
+            local ok, err = pcall(function()
+              local res, ren_err = vim.loop.fs_rename(source_file, target_file)
+              if not res then
+                error(tostring(ren_err))
+              end
+            end)
+            if ok then
+              moved = true
+            else
+              -- fallback
+              if vim.fn.rename(source_file, target_file) == 0 then
+                moved = true
+              else
+                vim.notify("Failed to move file: " .. tostring(err), vim.log.levels.ERROR)
+                return
+              end
             end
 
-            -- Then update references
-            vim.lsp.buf.execute_command({
+            -- Update the current buffer so Neovim/LSP use the new path
+            vim.api.nvim_buf_set_name(0, target_file)
+            -- Tell the TypeScript server to update references using proper file URIs
+            local params = {
               command = "_typescript.applyRenameFile",
               arguments = {
                 {
-                  sourceUri = "file://" .. source_file,
-                  targetUri = "file://" .. target_file,
+                  sourceUri = vim.uri_from_fname(source_file),
+                  targetUri = vim.uri_from_fname(target_file),
                 },
               },
               title = "Rename TypeScript file",
-            })
+            }
+            vim.lsp.buf.execute_command(params)
+
+            -- Restart LSP clients attached to this buffer to refresh server state after rename
+            local clients = vim.lsp.buf_get_clients(0)
+            for _, client in pairs(clients) do
+              vim.lsp.stop_client(client.id)
+            end
+
+            -- Reopen the file to trigger LSP autostart (if configured)
+            vim.cmd("edit " .. vim.fn.fnameescape(target_file))
           end)
         end, { desc = "Rename file with TypeScript LSP" })
 
