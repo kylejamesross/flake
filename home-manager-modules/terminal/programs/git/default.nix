@@ -6,7 +6,7 @@
         name = "Kyle Ross";
         email = "github@kylejamesross.com";
       };
-      aliases = {
+      alias = {
         a = "add -A";
         c = "commit";
         co = "checkout";
