@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    ./programs/aider
     ./programs/direnv
     ./programs/fish
     ./programs/git

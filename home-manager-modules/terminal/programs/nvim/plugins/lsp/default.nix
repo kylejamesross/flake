@@ -16,6 +16,18 @@
           bashls.enable = true;
           jsonls.enable = true;
           astro.enable = true;
+          emmet_ls = {
+            enable = true;
+            filetypes = [
+              "html"
+              "css"
+              "scss"
+              "javascriptreact"
+              "typescriptreact"
+              "javascript"
+              "typescript"
+            ];
+          };
         };
 
         keymaps = {

@@ -32,6 +32,7 @@ with config.lib.stylix.colors; {
           bind-key -r v run-shell "tmux neww -S -n '󰊢' lazygit"
           bind-key -r . run-shell "tmux neww -S -n '󰊚' btop"
           bind-key -r R run-shell "tmux source ~/.tmux.conf"
+          bind-key -r a run-shell "tmux neww -S -n '󱜙' aider --watch-files"
           bind-key -r / run-shell "tmux neww -S -n ''"
           bind-key -r n run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/TODO.md"
           bind-key -r N run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/WORK-TODO.md"
