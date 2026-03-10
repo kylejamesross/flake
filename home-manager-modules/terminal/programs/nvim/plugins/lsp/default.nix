@@ -32,7 +32,7 @@
 
         keymaps = {
           diagnostic = {
-            "<leader>lq" = {
+            "<leader>q" = {
               action = "setloclist";
               desc = "Open diagnostic [Q]uickfix list";
             };
@@ -41,18 +41,10 @@
           extra = [
             {
               mode = "n";
-              key = "K";
-              action.__raw = "vim.lsp.buf.hover";
-              options = {
-                desc = "LSP: Hover";
-              };
-            }
-            {
-              mode = "n";
-              key = "gf";
+              key = "gl";
               action.__raw = "vim.diagnostic.open_float";
               options = {
-                desc = "[G]o to diagnostic float";
+                desc = "[L]ine diagnostics";
               };
             }
             {
@@ -61,6 +53,46 @@
               action.__raw = "require('telescope.builtin').lsp_definitions";
               options = {
                 desc = "LSP: [G]oto [D]efinition";
+              };
+            }
+            {
+              mode = "n";
+              key = "grr";
+              action.__raw = "require('telescope.builtin').lsp_references";
+              options = {
+                desc = "LSP: [G]o to [R]eferences";
+              };
+            }
+            {
+              mode = "n";
+              key = "gri";
+              action.__raw = "require('telescope.builtin').lsp_implementations";
+              options = {
+                desc = "LSP: [G]o to [I]mplementation";
+              };
+            }
+            {
+              mode = "n";
+              key = "grt";
+              action.__raw = "require('telescope.builtin').lsp_type_definitions";
+              options = {
+                desc = "Type [D]efinition";
+              };
+            }
+            {
+              mode = "n";
+              key = "gO";
+              action.__raw = "require('telescope.builtin').lsp_document_symbols";
+              options = {
+                desc = "Document [S]ymbols";
+              };
+            }
+            {
+              mode = "n";
+              key = "gW";
+              action.__raw = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
+              options = {
+                desc = "[W]orkspace Symbols";
               };
             }
             {
@@ -82,7 +114,19 @@
           ];
 
           lspBuf = {
-            "gD" = {
+            "grn" = {
+              action = "rename";
+              desc = "LSP: [R]e[n]ame";
+            };
+            "gra" = {
+              mode = [
+                "n"
+                "x"
+              ];
+              action = "code_action";
+              desc = "LSP: [G]oto Code [A]ction";
+            };
+            "grD" = {
               action = "declaration";
               desc = "LSP: [G]oto [D]eclaration";
             };
