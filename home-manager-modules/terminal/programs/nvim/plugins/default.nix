@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./blink-cmp
-    ./code-companion
     ./conform
     ./dap
     ./gitsigns

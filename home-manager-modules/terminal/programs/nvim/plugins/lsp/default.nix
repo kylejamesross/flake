@@ -44,7 +44,7 @@
               key = "K";
               action.__raw = "vim.lsp.buf.hover";
               options = {
-                desc = "LSP: [G]o to [D]efinition";
+                desc = "LSP: Hover";
               };
             }
             {
@@ -65,46 +65,6 @@
             }
             {
               mode = "n";
-              key = "gr";
-              action.__raw = "require('telescope.builtin').lsp_references";
-              options = {
-                desc = "LSP: [G]o to [R]eferences";
-              };
-            }
-            {
-              mode = "n";
-              key = "gi";
-              action.__raw = "require('telescope.builtin').lsp_implementations";
-              options = {
-                desc = "LSP: [G]o to [I]mplementation";
-              };
-            }
-            {
-              mode = "n";
-              key = "<leader>ld";
-              action.__raw = "require('telescope.builtin').lsp_type_definitions";
-              options = {
-                desc = "Type [D]efinition";
-              };
-            }
-            {
-              mode = "n";
-              key = "<leader>ls";
-              action.__raw = "require('telescope.builtin').lsp_document_symbols";
-              options = {
-                desc = "Document [S]ymbols";
-              };
-            }
-            {
-              mode = "n";
-              key = "<leader>lw";
-              action.__raw = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
-              options = {
-                desc = "[W]orkspace Symbols";
-              };
-            }
-            {
-              mode = "n";
               key = "]d";
               action.__raw = "vim.diagnostic.goto_next";
               options = {
@@ -119,25 +79,9 @@
                 desc = "Go to previous [D]iagnostic message";
               };
             }
-            {
-              mode = ["n" "v"];
-              key = "<leader>ca";
-              action.__raw = "vim.lsp.buf.code_action";
-              options = {
-                desc = "LSP: [C]ode [A]ction";
-              };
-            }
           ];
 
           lspBuf = {
-            "<leader>rn" = {
-              action = "rename";
-              desc = "LSP: [R]e[n]ame";
-            };
-            "<F2>" = {
-              action = "rename";
-              desc = "LSP: [R]e[n]ame";
-            };
             "gD" = {
               action = "declaration";
               desc = "LSP: [G]oto [D]eclaration";
