@@ -13,6 +13,25 @@
         };
       };
     };
+
+    extraConfigLua = ''
+      local entire_buffer_textobject = function()
+        local last_line = vim.fn.line("$")
+        local last_col = math.max(vim.fn.getline(last_line):len(), 1)
+
+        return {
+          from = { line = 1, col = 1 },
+          to = { line = last_line, col = last_col },
+        }
+      end
+
+      MiniAi.setup({
+        custom_textobjects = {
+          e = entire_buffer_textobject,
+        },
+      })
+    '';
+
     keymaps = [
       {
         mode = "n";

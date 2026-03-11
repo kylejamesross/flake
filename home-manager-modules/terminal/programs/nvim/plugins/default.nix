@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     ./blink-cmp
     ./conform
@@ -25,9 +25,5 @@
       otter.enable = true;
       nvim-autopairs.enable = true;
     };
-
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-textobj-entire
-    ];
   };
 }
