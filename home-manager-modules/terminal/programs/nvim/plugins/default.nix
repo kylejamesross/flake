@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./blink-cmp
+    ./colorizer
     ./conform
     ./dap
     ./gitsigns
@@ -15,8 +16,7 @@
   ];
   programs.nixvim = {
     plugins = {
-      colorizer.enable = true;
-      lspkind.enable = true;
+      guess-indent.enable = true;
       illuminate.enable = true;
       rainbow-delimiters.enable = true;
       ts-autotag.enable = true;
