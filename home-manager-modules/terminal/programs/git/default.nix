@@ -32,18 +32,16 @@
         prompt = false;
         nvimdiff4.cmd = "nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
       };
-      extraConfig = {
-        core = {
-          editor = "nvim";
-        };
-        pull.rebase = false;
-        push.autoSetupRemote = true;
-        diff.tool = "nvimdiff";
-        merge.tool = "nvimdiff4";
-        pager = {
-          branch = false;
-          log = false;
-        };
+      core = {
+        editor = "nvim";
+      };
+      pull.rebase = false;
+      push.autoSetupRemote = true;
+      diff.tool = "nvimdiff";
+      merge.tool = "nvimdiff4";
+      pager = {
+        branch = false;
+        log = false;
       };
     };
 
