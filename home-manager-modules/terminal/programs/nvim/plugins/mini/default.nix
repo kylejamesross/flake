@@ -10,6 +10,9 @@
           surround = {};
           files = {};
           icons = {};
+          statusline = {
+            use_icons = true;
+          };
         };
       };
     };
