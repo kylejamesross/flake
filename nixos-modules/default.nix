@@ -8,7 +8,7 @@
 
     ./services/greetd
     ./services/keyd
-    ./services/nextcloud-autosync
+    # ./services/nextcloud-autosync
     ./services/pipewire
     ./services/printing
     ./services/secrets
@@ -34,5 +34,6 @@
     cifs-utils
     openconnect
     remmina
+    appimage-run
   ];
 }
