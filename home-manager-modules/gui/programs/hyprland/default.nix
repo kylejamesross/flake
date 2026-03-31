@@ -18,7 +18,7 @@
         workspace = osConfig.workspaces;
         exec-once = [
           ''wallpaper-randomizer''
-          ''${pkgs.swayidle}/bin/swayidle -w timeout 1200 '${pkgs.swaylock-effects}/bin/swaylock -f' timeout 2400 'systemctl suspend' before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f' &''
+          ''hyprdim''
         ];
         monitor =
           map
@@ -115,7 +115,7 @@
           " $mainMod, C, killactive, "
           " $mainMod, B, exec, ${pkgs.firefox}/bin/firefox "
           " $mainMod, Q, exit, "
-          " $mainMod, M, exec, ${pkgs.swaylock-effects}/bin/swaylock && systemctl suspend"
+          " $mainMod, M, exec, systemctl suspend"
           " $mainMod, E, exec, ${pkgs.kitty}/bin/kitty --title Kitty ${pkgs.tmux}/bin/tmux -c ${pkgs.lf}/bin/lf"
           " $mainMod, V, togglefloating, "
           " $mainMod, F, fullscreen, # fullscreen"
@@ -138,8 +138,6 @@
           " $mainMod, F3, exec, ${pkgs.firefox}/bin/firefox --new-window"
           " $mainMod, F4, workspace, 4"
           " $mainMod, F4, exec, ${pkgs.dbeaver-bin}/bin/dbeaver"
-          # " $mainMod, F5, workspace, 5"
-          # " $mainMod, F5, exec, ${pkgs.jetbrains.rider}/bin/rider"
           " $mainMod, F6, workspace, 6"
           " $mainMod, F6, exec, ${pkgs.joplin-desktop}/bin/joplin-desktop"
           " $mainMod, F7, workspace, 7"

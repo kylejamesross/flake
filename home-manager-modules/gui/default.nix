@@ -10,13 +10,14 @@
     ./programs/kitty
     ./programs/mime
     ./programs/swappy
-    ./programs/swaylock
     ./services/home-manager-system-tray
+    ./services/hypridle
   ];
 
   programs = {
     mangohud.enable = true;
     mpv.enable = true;
+    hyprlock.enable = true;
   };
 
   home = {
@@ -39,7 +40,6 @@
       piper
       playerctl
       slurp
-      swayidle
       wl-clipboard
       wlr-randr
       xow_dongle-firmware

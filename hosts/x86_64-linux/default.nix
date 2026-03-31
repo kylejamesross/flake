@@ -49,11 +49,6 @@
     sudo.wheelNeedsPassword = false;
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock = {
-      text = ''
-        auth include login
-      '';
-    };
   };
 
   fonts.packages = with pkgs; [

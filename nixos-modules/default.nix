@@ -8,7 +8,7 @@
 
     ./services/greetd
     ./services/keyd
-    ./services/nextcloud-autosync
+    # ./services/nextcloud-autosync
     ./services/pipewire
     ./services/printing
     ./services/secrets
@@ -37,5 +37,6 @@
     remmina
     wget
     nodejs_24
+    appimage-run
   ];
 }
