@@ -30,6 +30,7 @@
     starship.enable = true;
     tealdeer.enable = true;
     zoxide.enable = true;
+    bash.enable = true;
   };
 
   home = {

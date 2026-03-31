@@ -17,6 +17,7 @@
   programs = {
     dconf.enable = true;
     git.enable = true;
+    nix-ld.enable = true;
   };
 
   xdg.portal = {
@@ -34,5 +35,7 @@
     cifs-utils
     openconnect
     remmina
+    wget
+    nodejs_24
   ];
 }
