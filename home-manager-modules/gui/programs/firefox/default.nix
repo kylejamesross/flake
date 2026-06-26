@@ -7,6 +7,7 @@
   programs = {
     firefox = {
       enable = true;
+      configPath = ".mozilla/firefox";
       profiles.kyle = {
         name = "Kyle Ross";
         isDefault = true;
