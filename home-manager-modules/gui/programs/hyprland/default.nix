@@ -91,17 +91,6 @@
           };
           opacity = 0.90;
         };
-        # windowrulev2 = [
-        #   " opacity 0.80 0.80,class:^(kitty)$"
-        #   " opacity 0.95 0.95,class:^(thunar)$"
-        #   " opacity 0.0 override, class:^(xwaylandvideobridge)$"
-        #   " opacity 0.0 override, class:^(xwaylandvideobridge)$"
-        #   " noanim, class:^(xwaylandvideobridge)$"
-        #   " noinitialfocus, class:^(xwaylandvideobridge)$"
-        #   " maxsize 1 1, class:^(xwaylandvideobridge)$"
-        #   " noblur, class:^(xwaylandvideobridge)$"
-        #   " nofocus, class:^(xwaylandvideobridge)$"
-        # ];
         "$mainMod" = "SUPER";
         binde = [
           " CTRL, HOME, exec, ${pkgs.pamixer}/bin/pamixer -i 10"
