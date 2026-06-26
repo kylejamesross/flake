@@ -84,6 +84,13 @@
           name = "epic-mouse-v1";
           sensitivity = -0.5;
         };
+        windowrule = {
+          name = "transparency";
+          match = {
+            class = "kitty";
+          };
+          opacity = 0.90;
+        };
         # windowrulev2 = [
         #   " opacity 0.80 0.80,class:^(kitty)$"
         #   " opacity 0.95 0.95,class:^(thunar)$"

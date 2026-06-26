@@ -140,7 +140,7 @@
               vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
             end
 
-            if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
               local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
               vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                 buffer = bufnr,
@@ -163,7 +163,7 @@
               })
             end
 
-            if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
               map("<leader>th", function()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
               end, "[T]oggle Inlay [H]ints")

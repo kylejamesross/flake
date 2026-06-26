@@ -2,10 +2,13 @@
   programs.nixvim = {
     plugins = {
       neotest = {
-        enable = false;
+        enable = true;
         adapters = {
-          vitest.enable = false;
-          dotnet.enable = false;
+          vitest = {
+            package = pkgs.vimPlugins.neotest-vitest;
+            enable = true;
+          };
+          dotnet.enable = true;
         };
       };
     };
