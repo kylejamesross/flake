@@ -10,19 +10,10 @@
   hardware.xone.enable = false;
 
   services = {
-    globalprotect.enable = true;
     tailscale.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
-    globalprotect-openconnect
-    gpclient
-    gpauth
+    gp-saml-gui
   ];
-
-  nixpkgs.config = {
-    permittedInsecurePackages = [
-      "qtwebengine-5.15.19"
-    ];
-  };
 }

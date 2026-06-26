@@ -1,16 +1,11 @@
-{
-  pkgs,
-  oldPkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nixvim = {
     plugins = {
       neotest = {
-        enable = true;
-        package = oldPkgs.vimPlugins.neotest;
+        enable = false;
         adapters = {
-          vitest.enable = true;
-          dotnet.enable = true;
+          vitest.enable = false;
+          dotnet.enable = false;
         };
       };
     };
@@ -85,12 +80,6 @@
           desc = "[T]oggle Test [S]ummary";
         };
       }
-    ];
-
-    extraPackages = with pkgs; [
-      vimPlugins.plenary-nvim
-      vimPlugins.nvim-nio
-      vimPlugins.FixCursorHold-nvim
     ];
   };
 }

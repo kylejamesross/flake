@@ -77,10 +77,6 @@
             " workspaces, 1, 6, default"
           ];
         };
-        dwindle = {
-          pseudotile = "yes";
-          preserve_split = "yes";
-        };
         master = {
           new_status = "master";
         };
@@ -88,17 +84,17 @@
           name = "epic-mouse-v1";
           sensitivity = -0.5;
         };
-        windowrulev2 = [
-          " opacity 0.80 0.80,class:^(kitty)$"
-          " opacity 0.95 0.95,class:^(thunar)$"
-          " opacity 0.0 override, class:^(xwaylandvideobridge)$"
-          " opacity 0.0 override, class:^(xwaylandvideobridge)$"
-          " noanim, class:^(xwaylandvideobridge)$"
-          " noinitialfocus, class:^(xwaylandvideobridge)$"
-          " maxsize 1 1, class:^(xwaylandvideobridge)$"
-          " noblur, class:^(xwaylandvideobridge)$"
-          " nofocus, class:^(xwaylandvideobridge)$"
-        ];
+        # windowrulev2 = [
+        #   " opacity 0.80 0.80,class:^(kitty)$"
+        #   " opacity 0.95 0.95,class:^(thunar)$"
+        #   " opacity 0.0 override, class:^(xwaylandvideobridge)$"
+        #   " opacity 0.0 override, class:^(xwaylandvideobridge)$"
+        #   " noanim, class:^(xwaylandvideobridge)$"
+        #   " noinitialfocus, class:^(xwaylandvideobridge)$"
+        #   " maxsize 1 1, class:^(xwaylandvideobridge)$"
+        #   " noblur, class:^(xwaylandvideobridge)$"
+        #   " nofocus, class:^(xwaylandvideobridge)$"
+        # ];
         "$mainMod" = "SUPER";
         binde = [
           " CTRL, HOME, exec, ${pkgs.pamixer}/bin/pamixer -i 10"
@@ -121,7 +117,7 @@
           " $mainMod, F, fullscreen, # fullscreen"
           " $mainMod, P, exec, ags toggle launcher"
           " $mainMod, D, pseudo, # dwindle"
-          " $mainMod, T, togglesplit, # dwindle"
+          " $mainMod, T, layoutmsg,togglesplit, # dwindle"
           " $mainMod, left, movefocus, l"
           " $mainMod, right, movefocus, r"
           " $mainMod, up, movefocus, u"

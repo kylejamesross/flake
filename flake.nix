@@ -2,11 +2,11 @@
   description = "NixOS Flake Configuration (flake-parts edition)";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-26.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
@@ -15,9 +15,9 @@
       url = "github:kylejamesross/wallpapers";
       flake = false;
     };
-    stylix.url = "github:danth/stylix/release-25.11";
+    stylix.url = "github:danth/stylix/release-26.05";
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.11";
+      url = "github:nix-community/nixvim/nixos-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags = {
@@ -28,7 +28,7 @@
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-25.11";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-26.05";
     telescope-git-file-history-nvim = {
       url = "github:isak102/telescope-git-file-history.nvim";
       flake = false;

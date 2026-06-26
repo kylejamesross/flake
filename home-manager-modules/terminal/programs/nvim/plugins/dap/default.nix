@@ -130,9 +130,9 @@ in {
       };
     };
 
-    extraPackages = with pkgs; [
-      vimPlugins.nvim-nio
-    ];
+    # extraPackages = with pkgs; [
+    #   vimPlugins.nvim-nio
+    # ];
     extraConfigLua = ''
       local dap, dapui = require("dap"), require("dapui")
       dap.listeners.after.event_initialized["dapui_config"] = function()

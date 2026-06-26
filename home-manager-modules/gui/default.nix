@@ -42,7 +42,6 @@
       slurp
       wl-clipboard
       wlr-randr
-      xow_dongle-firmware
     ];
 
     pointerCursor = {
