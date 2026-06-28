@@ -8,15 +8,6 @@
             enable = true;
             additional_vim_regex_highlighting = true;
           };
-          incremental_selection = {
-            enable = true;
-            keymaps = {
-              init_selection = "<C-M-k>";
-              node_incremental = "<C-M-k>";
-              scope_incremental = "<C-M-l>";
-              node_decremental = "<C-M-j>";
-            };
-          };
           indent = {
             enable = true;
             disable = ["yaml"];

@@ -6,6 +6,14 @@
         modules = {
           ai = {
             n_lines = 500;
+            mappings = {
+              around = "a";
+              inside = "i";
+              around_next = "";
+              inside_next = "";
+              goto_left = "g[";
+              goto_right = "g]";
+            };
           };
           surround = {};
           files = {};
@@ -29,6 +37,15 @@
       end
 
       MiniAi.setup({
+        n_lines = 500,
+        mappings = {
+          around = "a",
+          inside = "i",
+          around_next = "",
+          inside_next = "",
+          goto_left = "g[",
+          goto_right = "g]",
+        },
         custom_textobjects = {
           e = entire_buffer_textobject,
         },
