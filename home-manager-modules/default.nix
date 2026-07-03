@@ -10,6 +10,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "bak";
     extraSpecialArgs = {
       inherit nixpkgs inputs user unstable system oldPkgs;
     };
