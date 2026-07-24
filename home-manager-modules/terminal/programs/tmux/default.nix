@@ -34,8 +34,6 @@ with config.lib.stylix.colors; {
           bind-key -r R run-shell "tmux source ~/.tmux.conf"
           bind-key -r a run-shell "tmux neww -S -n '󱜙'"
           bind-key -r / run-shell "tmux neww -S -n ''"
-          bind-key -r n run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/TODO.md"
-          bind-key -r N run-shell "tmux neww -S -n '󰠮' nvim /home/${user}/notes/WORK-TODO.md"
           bind-key -r t run-shell "tmux neww -S -n ''"
           bind-key -r e run-shell "tmux neww -c '#{pane_current_path}' -S -n '' 'fish -l -c nvim'"
           bind-key -r - run-shell "tmux neww -S -n '󱁊' tig"
