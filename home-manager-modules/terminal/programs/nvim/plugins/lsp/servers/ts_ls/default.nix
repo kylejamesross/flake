@@ -50,25 +50,21 @@
             end
 
             if target_client then
-              target_client.request(
-                "workspace/executeCommand",
-                {
-                  command = "_typescript.applyRenameFile",
-                  arguments = {
-                    {
-                      sourceUri = vim.uri_from_fname(old_file_name),
-                      targetUri = vim.uri_from_fname(new_file_name),
-                    },
+              target_client.request("workspace/executeCommand", {
+                command = "_typescript.applyRenameFile",
+                arguments = {
+                  {
+                    sourceUri = vim.uri_from_fname(old_file_name),
+                    targetUri = vim.uri_from_fname(new_file_name),
                   },
                 },
-                function(err, result, ctx, config)
-                  if err then
-                    vim.notify("Error executing command: " .. vim.inspect(err), vim.log.levels.ERROR)
-                  else
-                    vim.notify("File renamed. Remember to :wa !", vim.log.levels.INFO)
-                  end
+              }, function(err, result, ctx, config)
+                if err then
+                  vim.notify("Error executing command: " .. vim.inspect(err), vim.log.levels.ERROR)
+                else
+                  vim.notify("File renamed. Remember to :wa !", vim.log.levels.INFO)
                 end
-              )
+              end)
             else
               vim.notify("No ts_ls found among active clients", vim.log.levels.WARN)
             end
@@ -80,7 +76,7 @@
 
         vim.api.nvim_create_user_command("PopulateQuickfixTS", function()
           local command_output =
-            vim.fn.systemlist("${pkgs.nodejs_22}/bin/npx tsc -b --pretty false || ${pkgs.typescript}/bin/tsc")
+            vim.fn.systemlist("${pkgs.nodejs_22}/bin/npx tsc -b --pretty false || ${pkgs.typescript-go}/bin/tsc")
           vim.fn.setqflist({}, "r")
           local quickfix_list = {}
 
