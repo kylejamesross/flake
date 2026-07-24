@@ -31,7 +31,7 @@
       dbus
       krita
       grim
-      inkscape
+      # inkscape
       hyprpaper
       libreoffice-still
       lorien

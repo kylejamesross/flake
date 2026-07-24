@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   osConfig,
   lib,
@@ -134,14 +135,13 @@
           " $mainMod, F6, workspace, 6"
           " $mainMod, F6, exec, ${pkgs.joplin-desktop}/bin/joplin-desktop"
           " $mainMod, F7, workspace, 7"
-          " $mainMod, F7, exec, ${pkgs.brave}/bin/brave --app=https://mail.proton.me/u/8/inbox"
-          " $mainMod, F7 SHIFT, workspace, 7"
-          " $mainMod SHIFT, F7, exec, ${pkgs.brave}/bin/brave --app=https://outlook.office.com/mail/"
+          " $mainMod, F7, exec, ${pkgs.firefox}/bin/firefox -taskbar-tab d15a01c8-2c94-48fb-b68c-7c39d90299d6 -new-window https://mail.proton.me/u/8/inbox -profile ${config.home.homeDirectory}/.mozilla/firefox/kyle -container 0"
+          " $mainMod SHIFT, F7, exec, ${pkgs.firefox}/bin/firefox -taskbar-tab 0d3d0b31-a5ea-4e57-9d56-a41dc1dcae87 -new-window https://outlook.office.com/mail/ -profile ${config.home.homeDirectory}/.mozilla/firefox/kyle -container 0"
           " $mainMod, F8, workspace, 8"
-          " $mainMod, F8, exec, ${pkgs.brave}/bin/brave --app=https://teams.microsoft.com"
+          " $mainMod, F8, exec, ${pkgs.firefox}/bin/firefox -taskbar-tab 0b58dce7-64bb-42fb-90b8-97001b79f643 -new-window https://teams.microsoft.com -profile ${config.home.homeDirectory}/.mozilla/firefox/kyle -container 0"
           " $mainMod, F9, workspace, 9"
-          " $mainMod, F9, exec, ${pkgs.brave}/bin/brave --app=https://music.youtube.com/"
-          " $mainMod SHIFT, F9, exec, ${pkgs.brave}/bin/brave --app=https://app.plex.tv/desktop/#!/"
+          " $mainMod, F9, exec, ${pkgs.firefox}/bin/firefox -taskbar-tab cfd63d87-bd5b-4a3d-8db1-f4b4836cf98e -new-window https://music.youtube.com/ -profile ${config.home.homeDirectory}/.mozilla/firefox/kyle -container 0"
+          " $mainMod SHIFT, F9, exec, ${pkgs.firefox}/bin/firefox -taskbar-tab a4c886e6-f6ab-4498-a3dd-4cb2d58138af -new-window https://app.plex.tv/desktop/#!/ -profile ${config.home.homeDirectory}/.mozilla/firefox/kyle -container 0"
           " SUPER_SHIFT, F11, exec, systemctl reboot"
           " SUPER_SHIFT, F12, exec, systemctl poweroff"
           " $mainMod, F12, exec, wallpaper-randomizer"
