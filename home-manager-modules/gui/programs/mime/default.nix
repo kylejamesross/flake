@@ -7,7 +7,7 @@
         textEditors = ["writer.desktop"];
         browsers = ["firefox.desktop"];
         imageViewers = ["swappy.desktop" "krita.desktop"];
-        # vectorViewers = ["org.inkspace.Inkscape.desktop"];
+        vectorViewers = ["org.inkspace.Inkscape.desktop"];
         videoViewers = ["mpv.desktop"];
       in {
         "inode/directory" = "yazi.desktop";
@@ -46,7 +46,7 @@
         "audio/x-aiff" = videoViewers;
         "audio/x-wav" = videoViewers;
         "application/pdf" = browsers;
-        # "image/svg+xml" = vectorViewers;
+        "image/svg+xml" = vectorViewers;
       };
     };
   };

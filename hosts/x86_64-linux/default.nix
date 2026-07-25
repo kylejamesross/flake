@@ -7,6 +7,7 @@
   imports = [
     ./options
     ./bootloader
+    ./flatpak
   ];
 
   users.users.${user} = {

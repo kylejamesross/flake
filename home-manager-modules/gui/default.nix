@@ -24,14 +24,12 @@
     packages = with pkgs; [
       alsa-utils
       anki-bin
-      brave
       brightnessctl
       calibre
       dbeaver-bin
       dbus
       krita
       grim
-      # inkscape
       hyprpaper
       libreoffice-still
       lorien
