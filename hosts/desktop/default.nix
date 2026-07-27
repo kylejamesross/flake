@@ -15,5 +15,6 @@
 
   environment.systemPackages = with pkgs; [
     gp-saml-gui
+    claude-code
   ];
 }
