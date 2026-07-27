@@ -23,10 +23,7 @@
   home = {
     packages = with pkgs; [
       alsa-utils
-      anki-bin
       brightnessctl
-      calibre
-      dbeaver-bin
       dbus
       krita
       grim
