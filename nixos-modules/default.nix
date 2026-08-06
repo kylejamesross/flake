@@ -12,6 +12,7 @@
     ./services/pipewire
     ./services/printing
     ./services/secrets
+    ./services/sunshine
   ];
 
   programs = {

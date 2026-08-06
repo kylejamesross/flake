@@ -9,7 +9,6 @@
     ./programs/hyprland
     ./programs/kitty
     ./programs/mime
-    ./programs/swappy
     ./services/home-manager-system-tray
     ./services/hypridle
   ];
@@ -34,6 +33,7 @@
       pdfarranger
       piper
       playerctl
+      satty
       slurp
       wl-clipboard
       wlr-randr

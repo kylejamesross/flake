@@ -86,13 +86,22 @@
           name = "epic-mouse-v1";
           sensitivity = -0.5;
         };
-        windowrule = {
-          name = "transparency";
-          match = {
-            class = "kitty";
-          };
-          opacity = 0.90;
-        };
+        windowrule = [
+          {
+            name = "transparency";
+            match = {
+              class = "kitty";
+            };
+            opacity = 0.90;
+          }
+          {
+            name = "steam-idle-inhibit";
+            match = {
+              class = "steam_app_.*";
+            };
+            idle_inhibit = "always";
+          }
+        ];
         "$mainMod" = "SUPER";
         binde = [
           " CTRL, HOME, exec, ${pkgs.pamixer}/bin/pamixer -i 10"
@@ -146,7 +155,7 @@
           " SUPER_SHIFT, F12, exec, systemctl poweroff"
           " $mainMod, F12, exec, wallpaper-randomizer"
           '', Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | wl-copy ''
-          ''SHIFT, Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f - ''
+          ''SHIFT, Print, exec , ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.satty}/bin/satty --filename - ''
           " $mainMod, 1, workspace, 1"
           " $mainMod, 2, workspace, 2"
           " $mainMod, 3, workspace, 3"
