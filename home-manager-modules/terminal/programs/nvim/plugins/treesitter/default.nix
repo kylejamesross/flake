@@ -63,5 +63,45 @@
       ts-context-commentstring.enable = true;
       ts-autotag.enable = true;
     };
+    keymaps = [
+      # Visual mode: keep growing/shrinking while already selecting
+      {
+        mode = "x";
+        key = "<C-A-j>";
+        action = "an";
+        options = {
+          remap = true;
+          desc = "Grow node selection (an)";
+        };
+      }
+      {
+        mode = "x";
+        key = "<C-A-k>";
+        action = "in";
+        options = {
+          remap = true;
+          desc = "Shrink node selection (in)";
+        };
+      }
+      # Normal mode: enter visual, then trigger the same node select
+      {
+        mode = "n";
+        key = "<C-A-j>";
+        action = "van";
+        options = {
+          remap = true;
+          desc = "Enter visual + grow node selection";
+        };
+      }
+      {
+        mode = "n";
+        key = "<C-A-k>";
+        action = "vin";
+        options = {
+          remap = true;
+          desc = "Enter visual + shrink node selection";
+        };
+      }
+    ];
   };
 }
