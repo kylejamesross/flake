@@ -95,22 +95,6 @@
                 desc = "[W]orkspace Symbols";
               };
             }
-            {
-              mode = "n";
-              key = "]d";
-              action.__raw = "vim.diagnostic.goto_next";
-              options = {
-                desc = "Go to next [D]iagnostic message";
-              };
-            }
-            {
-              mode = "n";
-              key = "[d";
-              action.__raw = "vim.diagnostic.goto_prev";
-              options = {
-                desc = "Go to previous [D]iagnostic message";
-              };
-            }
           ];
 
           lspBuf = {
