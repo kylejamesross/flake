@@ -11,6 +11,7 @@
     ./programs/mime
     ./services/home-manager-system-tray
     ./services/hypridle
+    ./services/kdeconnect
   ];
 
   programs = {
