@@ -182,3 +182,15 @@ window#launcher {
     padding: 6px;
   }
 }
+
+window#clipboard-picker {
+  background: transparent;
+  color: $fg-color;
+
+  box#clipboard-picker-content {
+    background: $bg-color;
+    min-width: 400px;
+    border-radius: 12px;
+    padding: 6px;
+  }
+}

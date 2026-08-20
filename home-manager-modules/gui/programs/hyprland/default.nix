@@ -6,11 +6,6 @@
   ...
 }: {
   config = lib.mkIf osConfig.hyprland.enable {
-    # systemd.user.services.xwaylandvideobridge = {
-    #   Unit.Description = "XWaylandVideoBridge";
-    #   Service.ExecStart = lib.getExe pkgs.xwaylandvideobridge;
-    #   Install.WantedBy = ["graphical-session.target"];
-    # };
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -49,9 +44,6 @@
           border_size = 2;
           layout = "dwindle";
           allow_tearing = false;
-        };
-        misc = {
-          # disable_hyprland_logo = "yes";
         };
         decoration = {
           rounding = 10;
@@ -120,8 +112,9 @@
           " $mainMod, Q, exit, "
           " $mainMod, M, exec, systemctl suspend"
           " $mainMod, E, exec, ${pkgs.kitty}/bin/kitty --title Kitty ${pkgs.tmux}/bin/tmux -c ${pkgs.lf}/bin/lf"
-          " $mainMod, V, togglefloating, "
+          " $mainMod SHIFT, F, togglefloating, "
           " $mainMod, F, fullscreen, # fullscreen"
+          ''$mainMod, V, exec, ${pkgs.cliphist}/bin/cliphist list | ags request clipboard-pick "$(cat)" | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy''
           " $mainMod, P, exec, ags toggle launcher"
           " $mainMod, D, pseudo, # dwindle"
           " $mainMod, T, layoutmsg,togglesplit, # dwindle"
