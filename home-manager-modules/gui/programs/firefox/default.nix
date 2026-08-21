@@ -3,7 +3,10 @@
   user,
   ...
 }: {
-  stylix.targets.firefox.profileNames = ["kyle"];
+  stylix.targets.firefox = {
+    profileNames = ["kyle"];
+    firefoxGnomeTheme.enable = true;
+  };
   programs = {
     firefox = {
       enable = true;
