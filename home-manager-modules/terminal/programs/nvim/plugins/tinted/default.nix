@@ -1,21 +1,18 @@
-{...}: {
-  imports = [
-    ./blink-cmp
-    ./colorizer
-    ./conform
-    ./dap
-    ./gitsigns
-    ./indent-blankline
-    ./lint
-    ./lsp
-    ./mini
-    ./neotest
-    ./telescope
-    ./tinted
-    ./treesitter
-    ./which-key
-  ];
+{
+  pkgs,
+  theme,
+  ...
+}: {
   programs.nixvim = {
+    extraPlugins = [pkgs.vimPlugins.tinted-nvim];
+
+    extraConfigLua = ''
+      require("tinted-nvim").setup({
+        default_scheme = "base24-${theme}",
+      })
+      vim.cmd("colorscheme base24-${theme}")
+    '';
+
     plugins = {
       guess-indent.enable = true;
       illuminate.enable = true;

@@ -1,12 +1,13 @@
 {inputs, ...}: {
   flake.nixosConfigurations = let
     user = "kyle";
+    theme = "gruvbox-dark";
     system = "x86_64-linux";
     unstable = import inputs.nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
     };
-    specialArgs = {inherit inputs system user unstable;};
+    specialArgs = {inherit inputs system user unstable theme;};
     home-manager = inputs.home-manager.nixosModules.home-manager;
 
     commonModules = [

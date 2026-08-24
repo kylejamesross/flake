@@ -5,6 +5,7 @@
   unstable,
   system,
   oldPkgs,
+  theme,
   ...
 }: {
   home-manager = {
@@ -12,7 +13,7 @@
     useUserPackages = true;
     backupFileExtension = "bak";
     extraSpecialArgs = {
-      inherit nixpkgs inputs user unstable system oldPkgs;
+      inherit nixpkgs inputs user unstable system oldPkgs theme;
     };
     users.${user} = {
       imports = [
@@ -20,6 +21,7 @@
         ./gui
         ./terminal
         ./stylix
+        ./colors
         inputs.nixvim.homeModules.nixvim
       ];
     };
