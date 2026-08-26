@@ -573,7 +573,6 @@
         "nur": "nur",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
-        "telescope-git-file-history-nvim": "telescope-git-file-history-nvim_2",
         "wallpapers": "wallpapers",
         "yazi-compress-plugin": "yazi-compress-plugin"
       }
@@ -661,22 +660,6 @@
       }
     },
     "telescope-git-file-history-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771262458,
-        "narHash": "sha256-hNSzpFMbR9RFt/RUCw5sesRpdj+rH3iEuUjI7pf2EA4=",
-        "owner": "isak102",
-        "repo": "telescope-git-file-history.nvim",
-        "rev": "4442114f9257e682e60a8cb6de14cf988e26055c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "isak102",
-        "repo": "telescope-git-file-history.nvim",
-        "type": "github"
-      }
-    },
-    "telescope-git-file-history-nvim_2": {
       "flake": false,
       "locked": {
         "lastModified": 1771262458,

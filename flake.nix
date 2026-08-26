@@ -20,17 +20,12 @@
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     ags = {
       url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.astal.follows = "astal";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/release-26.05";
-    telescope-git-file-history-nvim = {
-      url = "github:isak102/telescope-git-file-history.nvim";
-      flake = false;
-    };
     yazi-compress-plugin = {
       url = "github:KKV9/compress.yazi";
       flake = false;
