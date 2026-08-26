@@ -22,7 +22,7 @@
         ./terminal
         ./stylix
         ./colors
-        inputs.nixvim.homeModules.nixvim
+        inputs.nixvim.homeModules.default
       ];
     };
   };

@@ -12,7 +12,6 @@
     ./programs/fish
     ./programs/git
     ./programs/lazygit
-    ./programs/nvim
     ./programs/tmux
     ./programs/yazi
     ./scripts
@@ -31,6 +30,10 @@
     tealdeer.enable = true;
     zoxide.enable = true;
     bash.enable = true;
+    nixvim = {
+      enable = true;
+      defaultEditor = true;
+    };
   };
 
   home = {
