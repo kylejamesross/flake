@@ -16,10 +16,9 @@
         isDefault = true;
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          raindropio
+          linkding-extension
           bitwarden
           react-devtools
-          reduxdevtools
           vimium
           torrent-control
           enhancer-for-youtube
