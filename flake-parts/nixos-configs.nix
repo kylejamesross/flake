@@ -1,7 +1,7 @@
 {inputs, ...}: {
   flake.nixosConfigurations = let
     user = "kyle";
-    theme = "catppuccin-mocha";
+    theme = "dracula";
     system = "x86_64-linux";
     unstable = import inputs.nixpkgs-unstable {
       inherit system;
