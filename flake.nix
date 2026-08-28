@@ -31,6 +31,10 @@
       flake = false;
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
+    tinted-schemes = {
+      url = "github:tinted-theming/schemes/spec-0.11";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:

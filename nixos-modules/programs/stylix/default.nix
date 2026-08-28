@@ -1,11 +1,12 @@
 {
   pkgs,
+  inputs,
   theme,
   ...
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
+    base16Scheme = "${inputs.tinted-schemes}/base16/${theme}.yaml";
     image = ./acoolrocket-dalle2-hokusai-non-prompt-landscape.png;
     cursor = {
       package = pkgs.bibata-cursors;
