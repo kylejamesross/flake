@@ -12,6 +12,35 @@
         };
       };
     };
+
+    # Neotest's subprocess starts with `-u NONE` and only adds parser dirs to rtp.
+    # After neotest#606 it no longer loads nvim-treesitter, so filetype→parser
+    # aliases (typescriptreact→tsx) never register and .tsx discovery fails.
+    # https://github.com/nvim-neotest/neotest/issues/631
+    extraConfigLua =
+      # lua
+      ''
+        do
+          local subprocess = require("neotest.lib.subprocess")
+          local init = subprocess.init
+          subprocess.init = function(...)
+            init(...)
+            if not subprocess.enabled() then
+              return
+            end
+            local paths = {}
+            for _, file in ipairs(vim.api.nvim_get_runtime_file("plugin/filetypes.lua", true)) do
+              if file:find("nvim%-treesitter", 1, false) then
+                paths[#paths + 1] = vim.fs.dirname(vim.fs.dirname(file))
+              end
+            end
+            if #paths > 0 then
+              pcall(subprocess.add_paths_to_rtp, paths)
+            end
+          end
+        end
+      '';
+
     keymaps = [
       {
         mode = "n";
