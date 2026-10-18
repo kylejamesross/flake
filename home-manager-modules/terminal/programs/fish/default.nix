@@ -20,16 +20,16 @@
             set -x CLAUDE_API_KEY (cat $HOME/.anthropic_api_key)
         end
 
-        if test -f $HOME/.openai-api-key
-            set -x OPENAI_API_KEY (cat $HOME/.openai-api-key)
+        if test -f $HOME/.openai_api_key
+            set -x OPENAI_API_KEY (cat $HOME/.openai_api_key)
         end
 
         if test -f $HOME/.deepseek_api_key
             set -x DEEPSEEK_API_KEY (cat $HOME/.deepseek_api_key)
         end
 
-        if test -f $HOME/.github-token
-          set -x GH_TOKEN (cat $HOME/.github-token)
+        if test -f $HOME/.github_token
+          set -x GH_TOKEN (cat $HOME/.github_token)
         end
 
         if test -f $HOME/.work_azure_devops_pull_request_token

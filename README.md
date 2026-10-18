@@ -6,12 +6,12 @@ NixOS and Home Manager modules in `nixos-modules/` and `home-manager-modules/`.
 
 ## Hosts
 
-| Host | Purpose | Notes |
-| --- | --- | --- |
-| `desktop` | Main desktop | Hyprland, AGS, Steam, Sunshine, VMs |
-| `laptop` | Laptop | Hyprland, AGS |
-| `wsl` | Windows Subsystem for Linux | Terminal-only, no GUI services |
-| `kyle` | Standalone Home Manager output | Terminal modules only |
+| Host      | Purpose                        | Notes                               |
+| --------- | ------------------------------ | ----------------------------------- |
+| `desktop` | Main desktop                   | Hyprland, AGS, Steam, Sunshine, VMs |
+| `laptop`  | Laptop                         | Hyprland, AGS                       |
+| `wsl`     | Windows Subsystem for Linux    | Terminal-only, no GUI services      |
+| `kyle`    | Standalone Home Manager output | Terminal modules only               |
 
 Rebuild a NixOS host from the repository root:
 
@@ -79,10 +79,6 @@ mkdir -p "$HOME/.config/sops/age"
 wl-paste > "$HOME/.config/sops/age/keys.txt"
 chmod 600 "$HOME/.config/sops/age/keys.txt"
 ```
-
-Encrypted secrets live in `nixos-modules/programs/sops/secrets.yaml`. The
-`secret-service` systemd unit materialises the user-facing credential files with
-mode `0600`.
 
 ## Flatpak
 

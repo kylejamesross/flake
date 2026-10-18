@@ -8,12 +8,8 @@
 in {
   systemd.services.nextcloud-autosync = {
     description = "Auto sync Nextcloud";
-    after = [
-      "network-online.target"
-      "sops-install-secrets.service"
-    ];
+    after = ["network-online.target"];
     wants = ["network-online.target"];
-    requires = ["sops-install-secrets.service"];
     path = [
       pkgs.coreutils
       pkgs.nextcloud-client
