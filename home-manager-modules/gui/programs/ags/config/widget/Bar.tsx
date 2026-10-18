@@ -95,7 +95,7 @@ function Mpris() {
         <For each={players}>
           {(player) => {
             const [app] = apps.exact_query(player.entry);
-            return <image visible={!!app.iconName} iconName={app?.iconName} />;
+            return <image visible={!!app?.iconName} iconName={app?.iconName} />;
           }}
         </For>
       </box>

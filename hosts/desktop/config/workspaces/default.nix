@@ -1,5 +1,5 @@
-{...}: {
-  config.workspaces = [
+_: {
+  config.my.workspaces = [
     "1,monitor:HDMI-A-1, persistence:true"
     "2,monitor:HDMI-A-1, persistence:true"
     "3,monitor:HDMI-A-1, persistence:true"

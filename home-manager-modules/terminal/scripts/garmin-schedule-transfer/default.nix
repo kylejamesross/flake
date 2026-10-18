@@ -1,36 +1,55 @@
 {pkgs}:
-pkgs.writeShellScriptBin "garmin-schedule-transfer" ''
-  set -euo pipefail
+pkgs.writeShellApplication {
+  name = "garmin-schedule-transfer";
+  runtimeInputs = with pkgs; [
+    coreutils
+    fzf
+    gawk
+    sudo
+    util-linux
+  ];
+  text = ''
+    destination="$HOME/garmin"
+    dest_dir="$destination/GARMIN/NEWFILES"
 
-  USER_HOME="/home/kyle"
-  MOUNT_POINT="$USER_HOME/garmin"
-  DEST_DIR="$MOUNT_POINT/GARMIN/NEWFILES"
-  DEVICE=$(lsblk --list -o NAME,SIZE | awk '$2 == "54.3M" {print "/dev/" $1}')
-  FILE_TO_COPY="$USER_HOME/documents/output-fit/*.fit"
+    mkdir -p "$destination"
 
-  mkdir -p "$MOUNT_POINT"
+    cleanup() {
+      if mountpoint -q "$destination"; then
+        sudo umount "$destination"
+      fi
+    }
+    trap cleanup EXIT
 
-  # Unmount if already mounted
-  if mountpoint -q "$MOUNT_POINT"; then
-    echo "Unmounting previous mount..."
-    sudo umount "$MOUNT_POINT"
-  fi
+    if mountpoint -q "$destination"; then
+      echo "Unmounting previous mount..."
+      sudo umount "$destination"
+    fi
 
-  echo "Mounting $DEVICE to $MOUNT_POINT..."
-  sudo mount -o rw,uid=$(id -u),gid=$(id -g) "$DEVICE" "$MOUNT_POINT"
+    device=$(lsblk -dpno NAME,SIZE,MODEL | fzf | awk '{print $1}' || true)
+    if [ -z "$device" ]; then
+      echo "No device selected." >&2
+      exit 1
+    fi
 
-  if [[ ! -d "$DEST_DIR" ]]; then
-    echo "Error: Expected Garmin directory '$DEST_DIR' not found."
-    exit 1
-  fi
+    echo "Mounting $device to $destination..."
+    sudo mount -o rw,uid="$(id -u)",gid="$(id -g)" "$device" "$destination"
 
-  echo "Copying '$FILE_TO_COPY' to $DEST_DIR..."
-  cp $FILE_TO_COPY "$DEST_DIR"
+    if [ ! -d "$dest_dir" ]; then
+      echo "Error: Expected Garmin directory '$dest_dir' not found." >&2
+      exit 1
+    fi
 
-  sync
+    shopt -s nullglob
+    files=("$HOME"/documents/output-fit/*.fit)
+    if [ "''${#files[@]}" -eq 0 ]; then
+      echo "Error: No .fit files found in $HOME/documents/output-fit." >&2
+      exit 1
+    fi
 
-  echo "✅ File '$FILE_TO_COPY' copied successfully to $DEST_DIR"
-
-  echo "Unmounting $MOUNT_POINT..."
-  sudo umount "$MOUNT_POINT"
-''
+    echo "Copying files to $dest_dir..."
+    cp -- "''${files[@]}" "$dest_dir"
+    sync
+    echo "Files copied successfully to $dest_dir"
+  '';
+}

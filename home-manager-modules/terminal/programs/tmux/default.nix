@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  user,
-  ...
-}:
-with config.lib.stylix.colors; {
+{pkgs, ...}: {
   programs = {
     tmux = {
       enable = true;
@@ -20,6 +14,8 @@ with config.lib.stylix.colors; {
           setw -g mouse on
           set-option -g focus-events on
           set-option -sa terminal-overrides ",alacritty:RGB"
+          set -g extended-keys
+          set -g extended-keys-format csi-u
           set -g allow-passthrough on
           set -ga update-environment TERM
           set -ga update-environment TERM_PROGRAM
@@ -47,9 +43,6 @@ with config.lib.stylix.colors; {
           set -g visual-silence off
           setw -g monitor-activity off
           set -g bell-action none
-          run-shell "tmux set-environment -g OPENAI_API_KEY \"\$(cat $HOME/.openai-api-key)\""
-          run-shell "tmux set-environment -g ANTHROPIC_API_KEY \"\$(cat $HOME/.anthropic_api_key)\""
-          run-shell "tmux set-environment -g CLAUDE_API_KEY \"\$(cat $HOME/.anthropic_api_key)\""
 
           set -g status off
         '';

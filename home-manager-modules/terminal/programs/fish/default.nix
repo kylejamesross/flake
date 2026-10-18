@@ -24,6 +24,10 @@
             set -x OPENAI_API_KEY (cat $HOME/.openai-api-key)
         end
 
+        if test -f $HOME/.deepseek_api_key
+            set -x DEEPSEEK_API_KEY (cat $HOME/.deepseek_api_key)
+        end
+
         if test -f $HOME/.github-token
           set -x GH_TOKEN (cat $HOME/.github-token)
         end

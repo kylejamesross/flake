@@ -1,13 +1,17 @@
-{...}: {
+_: {
   imports = [
     ./monitors
     ./workspaces
   ];
 
-  config.bootloader.enable = true;
-  config.steam.enable = true;
-  config.sunshine.enable = true;
-  config.hyprland.enable = true;
-  config.ags.enable = true;
-  config.keyd.enable = true;
+  config.my = {
+    bootloader.enable = true;
+    steam.enable = true;
+    sunshine.enable = true;
+    hyprland.enable = true;
+    ags.enable = true;
+    keyd.enable = true;
+    gui.enable = true;
+    vm.enable = true;
+  };
 }

@@ -2,9 +2,7 @@
   nixpkgs,
   inputs,
   user,
-  unstable,
   system,
-  oldPkgs,
   theme,
   ...
 }: {
@@ -13,7 +11,7 @@
     useUserPackages = true;
     backupFileExtension = "bak";
     extraSpecialArgs = {
-      inherit nixpkgs inputs user unstable system oldPkgs theme;
+      inherit nixpkgs inputs user system theme;
     };
     users.${user} = {
       imports = [

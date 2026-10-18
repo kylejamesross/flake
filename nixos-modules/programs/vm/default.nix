@@ -1,34 +1,38 @@
 {
   pkgs,
+  lib,
+  config,
   user,
   ...
 }: {
-  users.users.${user} = {
-    extraGroups = ["libvirtd"];
-  };
+  options.my.vm.enable = lib.mkEnableOption "Whether to enable virtualisation support";
 
-  # Install necessary packages
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    virt-viewer
-    spice
-    spice-gtk
-    spice-protocol
-    virtio-win
-    win-spice
-    adwaita-icon-theme
-  ];
-
-  # Manage the virtualisation services
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        swtpm.enable = true;
-      };
+  config = lib.mkIf config.my.vm.enable {
+    users.users.${user} = {
+      extraGroups = ["libvirtd" "docker"];
     };
-    spiceUSBRedirection.enable = true;
-    docker.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      virt-manager
+      virt-viewer
+      spice
+      spice-gtk
+      spice-protocol
+      virtio-win
+      win-spice
+      adwaita-icon-theme
+    ];
+
+    virtualisation = {
+      libvirtd = {
+        enable = true;
+        qemu = {
+          swtpm.enable = true;
+        };
+      };
+      spiceUSBRedirection.enable = true;
+      docker.enable = true;
+    };
+    services.spice-vdagentd.enable = true;
   };
-  services.spice-vdagentd.enable = true;
 }

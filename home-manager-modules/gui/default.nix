@@ -1,9 +1,11 @@
 {
   inputs,
   pkgs,
+  lib,
+  osConfig,
   ...
 }: {
-  imports = [
+  imports = lib.optionals osConfig.my.gui.enable [
     ./programs/ags
     ./programs/firefox
     ./programs/hyprland
@@ -14,55 +16,59 @@
     ./services/kdeconnect
   ];
 
-  programs = {
-    mangohud.enable = true;
-    mpv.enable = true;
-    hyprlock.enable = true;
-  };
-
-  services = {
-    cliphist.enable = true;
-  };
-
-  home = {
-    packages = with pkgs; [
-      alsa-utils
-      brightnessctl
-      dbus
-      krita
-      grim
-      hyprpaper
-      libreoffice-still
-      lorien
-      pamixer
-      pdfarranger
-      piper
-      playerctl
-      satty
-      slurp
-      wl-clipboard
-      wlr-randr
-    ];
-
-    pointerCursor = {
-      size = 32;
+  config = lib.mkIf osConfig.my.gui.enable {
+    programs = {
+      mangohud.enable = true;
+      mpv.enable = true;
+      hyprlock.enable = true;
     };
-  };
 
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+    services = {
+      cliphist.enable = true;
     };
-  };
 
-  qt = {
-    enable = true;
-  };
+    home = {
+      packages = with pkgs; [
+        alsa-utils
+        brightnessctl
+        dbus
+        grim
+        hyprdim
+        hyprpaper
+        krita
+        libreoffice-still
+        lorien
+        lf
+        pamixer
+        pdfarranger
+        piper
+        playerctl
+        satty
+        slurp
+        wl-clipboard
+        wlr-randr
+      ];
 
-  xdg.configFile."wallpapers" = {
-    source = inputs.wallpapers;
-    recursive = true;
+      pointerCursor = {
+        size = 32;
+      };
+    };
+
+    gtk = {
+      enable = true;
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+    };
+
+    qt = {
+      enable = true;
+    };
+
+    xdg.configFile."wallpapers" = {
+      source = inputs.wallpapers;
+      recursive = true;
+    };
   };
 }

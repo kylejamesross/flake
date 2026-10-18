@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  user,
   inputs,
   system,
   ...
@@ -40,7 +39,9 @@
       dust
       ffmpeg
       imagemagick
+      meld
       p7zip
+      pi-coding-agent
       poppler
       sops
       tig
@@ -49,8 +50,8 @@
     ];
 
     activation.createHomeDirectories = lib.mkAfter ''
-      mkdir -p /home/${user}/.ssh/
-      mkdir -p /home/${user}/downloads/
+      mkdir -p "$HOME/.ssh"
+      mkdir -p "$HOME/downloads"
     '';
     file.".ssh/id_ed25519.pub".source = ./files/id_ed25519.pub;
     file.".ssh/authorized_keys".source = ./files/id_ed25519.pub;

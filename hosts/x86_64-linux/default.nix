@@ -32,9 +32,6 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "qtwebengine-5.15.19"
-    ];
   };
 
   system = {
@@ -47,7 +44,7 @@
   };
 
   security = {
-    sudo.wheelNeedsPassword = false;
+    sudo.wheelNeedsPassword = true;
     rtkit.enable = true;
     polkit.enable = true;
   };
@@ -64,7 +61,16 @@
   ];
 
   networking = {
-    firewall.enable = false;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [1716];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+    };
   };
 
   hardware.graphics = {

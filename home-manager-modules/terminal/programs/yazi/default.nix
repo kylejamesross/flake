@@ -22,7 +22,7 @@
           desc = "Drag select files with Dragon";
         }
         {
-          run = "shell '${pkgs.nodejs_22}/bin/npx svgo --multipass -i \"$1\" -o \"$1\"' --confirm";
+          run = "shell '${pkgs.svgo}/bin/svgo --multipass -i \"$1\" -o \"$1\"' --confirm";
           on = ["g" "v"];
           desc = "Optimize SVG file";
         }

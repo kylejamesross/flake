@@ -1,4 +1,18 @@
 {pkgs}:
-pkgs.writeShellScriptBin "generate-resume-into-clipboard" ''
-  ${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_22}/bin/npx hackmyresume build /dev/stdin TO genResume.txt && cat genResume.txt | ${pkgs.wl-clipboard}/bin/wl-copy && rm genResume.txt
-''
+pkgs.writeShellApplication {
+  name = "generate-resume-into-clipboard";
+  runtimeInputs = with pkgs; [
+    coreutils
+    curl
+    nodejs_24
+    wl-clipboard
+  ];
+  text = ''
+    tmp=$(mktemp)
+    trap 'rm -f "$tmp"' EXIT
+
+    curl -fsS https://gitconnected.com/v1/portfolio/kylejamesross \
+      | npx --yes hackmyresume@1.9.0-beta build /dev/stdin TO "$tmp"
+    wl-copy < "$tmp"
+  '';
+}

@@ -1,22 +1,29 @@
 {pkgs}:
-pkgs.writeShellScriptBin "personal-commit-message" ''
+pkgs.writeShellApplication {
+  name = "personal-commit-message";
+  runtimeInputs = with pkgs; [
+    aichat
+    coreutils
+    git
+  ];
+  text = ''
+    code_changes=$(git diff --minimal --cached | head -c 4100 || true)
 
-  code_changes=$(${pkgs.git}/bin/git diff --minimal --cached | head -c 4100)
+    commit_message=$(aichat "Write a commit message in this format, do not show diffs of code:
+    Short summary (50 chars or less) of code changes
+    <newline>
+    Detailed explanation of the code changes (300 chars or less), wrap at 72 chars, Put in bullet point format
 
-  commit_message=$(${pkgs.aichat}/bin/aichat "Write a commit message in this format, do not show diffs of code:
-  Short summary (50 chars or less) of code changes
-  <newline>
-  Detailed explanation of the code changes (300 chars or less), wrap at 72 chars, Put in bullet point format
+    From these code changes:
 
-  From these code changes:
+    <START OF CODE CHANGES>
 
-  <START OF CODE CHANGES>
+    $code_changes
 
-  $code_changes
+    <END OF CODE CHANGES>
 
-  <END OF CODE CHANGES>
+    ")
 
-  ")
-
-  printf "%s\n" "$commit_message"
-''
+    printf "%s\n" "$commit_message"
+  '';
+}

@@ -1,5 +1,10 @@
 {pkgs}:
-# Fake gnome-terminal to allow xdg terminal applications to be run in terminal
-pkgs.writeShellScriptBin "gnome-terminal" ''
-  ${pkgs.kitty}/bin/kitty "$@"
-''
+pkgs.writeShellApplication {
+  name = "gnome-terminal";
+  runtimeInputs = with pkgs; [
+    kitty
+  ];
+  text = ''
+    exec kitty "$@"
+  '';
+}

@@ -1,5 +1,5 @@
-{...}: {
-  config.monitors = [
+_: {
+  config.my.monitors = [
     {
       name = "DP-2";
       width = 1920;

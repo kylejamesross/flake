@@ -3,9 +3,9 @@
   config,
   ...
 }: {
-  options.sunshine.enable = lib.mkEnableOption "Whether to enable sunshine";
+  options.my.sunshine.enable = lib.mkEnableOption "Whether to enable sunshine";
 
-  config = lib.mkIf config.sunshine.enable {
+  config = lib.mkIf config.my.sunshine.enable {
     services.sunshine = {
       enable = true;
       autoStart = true;

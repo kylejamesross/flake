@@ -3,29 +3,47 @@
   config,
   user,
   ...
-}: {
+}: let
+  home = config.users.users.${user}.home;
+in {
   systemd.services.nextcloud-autosync = {
-    script = ''
-      mkdir -p /home/${user}/notes/
-      ${pkgs.nextcloud-client}/bin/nextcloudcmd -u $(cat ${config.sops.secrets.nextcloud_username.path}) -p $(cat ${config.sops.secrets.nextcloud_password.path}) --trust --path /Notes /home/kyle/notes https://nextcloud.kylejamesross.com
-    '';
     description = "Auto sync Nextcloud";
-    after = ["network-online.target"];
+    after = [
+      "network-online.target"
+      "sops-install-secrets.service"
+    ];
     wants = ["network-online.target"];
+    requires = ["sops-install-secrets.service"];
+    path = [
+      pkgs.coreutils
+      pkgs.nextcloud-client
+    ];
+    script = ''
+      mkdir -p "${home}/notes"
+      export NC_USER="$(cat ${config.sops.secrets.nextcloud_username.path})"
+      export NC_PASSWORD="$(cat ${config.sops.secrets.nextcloud_password.path})"
+      nextcloudcmd \
+        --non-interactive \
+        --trust \
+        --path /Notes \
+        "${home}/notes" \
+        https://nextcloud.kylejamesross.com
+    '';
     serviceConfig = {
+      Type = "oneshot";
       User = user;
-      WorkingDirectory = "/home/${user}/";
+      WorkingDirectory = home;
+      UMask = "0077";
     };
-    wantedBy = ["default.target"];
   };
 
   systemd.timers.nextcloud-autosync = {
-    description = "Automatic sync files with Nextcloud when booted up after 5 minutes then rerun every 5 minutes";
+    description = "Sync files with Nextcloud every 5 minutes";
     timerConfig = {
-      OnUnitActiveSec = "5min";
-      OnBootSec = "5min";
+      OnCalendar = "*:0/5";
+      Persistent = true;
       Unit = "nextcloud-autosync.service";
     };
-    wantedBy = ["default.target" "timers.target"];
+    wantedBy = ["timers.target"];
   };
 }

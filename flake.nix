@@ -45,6 +45,7 @@
         ./flake-parts/nixos-configs.nix
         ./flake-parts/home-manager.nix
         ./flake-parts/packages.nix
+        ./flake-parts/dev.nix
       ];
     };
 }

@@ -1,11 +1,10 @@
-{pkgs, ...}: {
+_: {
   programs.nixvim = {
     plugins = {
       neotest = {
         enable = true;
         adapters = {
           vitest = {
-            package = pkgs.vimPlugins.neotest-vitest;
             enable = true;
           };
           dotnet.enable = true;

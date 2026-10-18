@@ -1,10 +1,13 @@
-{...}: {
+_: {
   imports = [
     ./monitors
   ];
-  config.bootloader.enable = true;
-  config.steam.enable = false;
-  config.hyprland.enable = true;
-  config.ags.enable = true;
-  config.keyd.enable = true;
+
+  config.my = {
+    bootloader.enable = true;
+    gui.enable = true;
+    hyprland.enable = true;
+    ags.enable = true;
+    keyd.enable = true;
+  };
 }

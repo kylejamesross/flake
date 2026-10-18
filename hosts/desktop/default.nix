@@ -7,7 +7,6 @@
   boot.initrd.kernelModules = ["amdgpu"];
   services.xserver.videoDrivers = ["amdgpu"];
   networking.hostName = "desktop";
-  hardware.xone.enable = false;
 
   services = {
     tailscale.enable = true;

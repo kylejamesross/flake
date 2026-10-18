@@ -7,7 +7,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${inputs.tinted-schemes}/base16/${theme}.yaml";
-    image = ./acoolrocket-dalle2-hokusai-non-prompt-landscape.png;
+    image = ../../../static/wallpaper.png;
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";

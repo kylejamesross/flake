@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  user,
   ...
 }: {
   stylix.targets.firefox = {
@@ -291,7 +291,7 @@
           "browser.download.always_ask_before_handling_new_types" = true;
           "browser.download.alwaysOpenPanel" = false;
           "pdfjs.sidebarViewOnLoad" = 2;
-          "browser.download.lastDir" = "/home/${user}/downloads";
+          "browser.download.lastDir" = "${config.home.homeDirectory}/downloads";
           # startup / session
           "browser.startup.blankWindow" = true;
           "browser.sessionstore.restore_on_demand" = false;

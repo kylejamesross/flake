@@ -2,16 +2,34 @@
   pkgs,
   user,
 }:
-pkgs.writeShellScriptBin "unraid" ''
-  mount_point="$HOME/unraid"
+pkgs.writeShellApplication {
+  name = "unraid";
+  runtimeInputs = with pkgs; [
+    cifs-utils
+    coreutils
+    sudo
+    util-linux
+  ];
+  text = ''
+    mount_point="$HOME/unraid"
+    host="''${UNRAID_HOST:-//192.168.1.114/data}"
 
-  if [ ! -d "$mount_point" ]; then
-      mkdir -p "$mount_point"
-  fi
+    mkdir -p "$mount_point"
 
-  if grep -qs "$mount_point" /proc/mounts; then
-      sudo umount "$mount_point"
-  else
-      sudo mount -t cifs //192.168.1.114/data "$mount_point" -o username=${user},uid=$(id -u),gid=$(id -g)
-  fi
-''
+    if mountpoint -q "$mount_point"; then
+      if sudo umount "$mount_point"; then
+        echo "Unmounted $mount_point"
+      else
+        echo "Failed to unmount $mount_point" >&2
+        exit 1
+      fi
+    else
+      if sudo mount -t cifs "$host" "$mount_point" -o "username=${user},uid=$(id -u),gid=$(id -g)"; then
+        echo "Mounted $mount_point"
+      else
+        echo "Failed to mount $mount_point" >&2
+        exit 1
+      fi
+    fi
+  '';
+}

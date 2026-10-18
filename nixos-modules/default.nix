@@ -5,6 +5,7 @@
     ./programs/sops
     ./programs/steam
     ./programs/stylix
+    ./programs/vm
 
     ./services/greetd
     ./services/keyd

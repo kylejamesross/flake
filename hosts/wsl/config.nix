@@ -1,7 +1,11 @@
-{...}: {
-  config.steam.enable = false;
-  config.sunshine.enable = false;
-  config.hyprland.enable = false;
-  config.ags.enable = false;
-  config.keyd.enable = false;
+_: {
+  config.my = {
+    gui.enable = false;
+    hyprland.enable = false;
+    ags.enable = false;
+    keyd.enable = false;
+    steam.enable = false;
+    sunshine.enable = false;
+    vm.enable = false;
+  };
 }

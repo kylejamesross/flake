@@ -3,9 +3,9 @@
   config,
   ...
 }: {
-  options.keyd.enable = lib.mkEnableOption "Whether to enable keyd";
+  options.my.keyd.enable = lib.mkEnableOption "Whether to enable keyd";
 
-  config = lib.mkIf config.keyd.enable {
+  config = lib.mkIf config.my.keyd.enable {
     services.keyd = {
       enable = true;
       keyboards.default = {

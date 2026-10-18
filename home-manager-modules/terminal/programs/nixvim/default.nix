@@ -1,4 +1,8 @@
 {config, ...}: {
+  imports = [
+    ../nvim/plugins/neotest
+  ];
+
   programs.nixvim = {
     enable = true;
     highlight = {

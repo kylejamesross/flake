@@ -1,4 +1,4 @@
-{...}: {
+_: {
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";

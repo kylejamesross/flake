@@ -1,4 +1,14 @@
 {pkgs}:
-pkgs.writeShellScriptBin "generate-resume" ''
-  ${pkgs.curl}/bin/curl -s https://gitconnected.com/v1/portfolio/kylejamesross | ${pkgs.nodejs_22}/bin/npx hackmyresume build /dev/stdin TO out/resume.all
-''
+pkgs.writeShellApplication {
+  name = "generate-resume";
+  runtimeInputs = with pkgs; [
+    coreutils
+    curl
+    nodejs_24
+  ];
+  text = ''
+    mkdir -p out
+    curl -fsS https://gitconnected.com/v1/portfolio/kylejamesross \
+      | npx --yes hackmyresume@1.9.0-beta build /dev/stdin TO out/resume.all
+  '';
+}

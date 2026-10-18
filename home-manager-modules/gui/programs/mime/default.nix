@@ -1,4 +1,4 @@
-{...}: {
+_: {
   xdg = {
     configFile."mimeapps.list".force = true;
     mimeApps = {
@@ -7,7 +7,7 @@
         textEditors = ["writer.desktop"];
         browsers = ["firefox.desktop"];
         imageViewers = ["swappy.desktop" "krita.desktop"];
-        vectorViewers = ["org.inkspace.Inkscape.desktop"];
+        vectorViewers = ["org.inkscape.Inkscape.desktop"];
         videoViewers = ["mpv.desktop"];
       in {
         "inode/directory" = "yazi.desktop";

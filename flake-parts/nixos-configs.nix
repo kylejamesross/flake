@@ -7,7 +7,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    specialArgs = {inherit inputs system user unstable theme;};
+    specialArgs = {inherit inputs system user theme;};
     home-manager = inputs.home-manager.nixosModules.home-manager;
 
     commonModules = [
@@ -17,6 +17,13 @@
       inputs.nur.modules.nixos.default
       home-manager
       ../home-manager-modules
+      {
+        nixpkgs.overlays = [
+          (_final: _prev: {
+            inherit (unstable) pi-coding-agent;
+          })
+        ];
+      }
     ];
 
     mkHost = hostPath: extraModules:

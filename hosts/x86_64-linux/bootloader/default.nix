@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: {
-  options.bootloader.enable = lib.mkEnableOption "Whether to enable bootloader";
+  options.my.bootloader.enable = lib.mkEnableOption "Whether to enable bootloader";
 
-  config = lib.mkIf config.bootloader.enable {
+  config = lib.mkIf config.my.bootloader.enable {
     boot = {
       kernelPackages = pkgs.linuxPackages_latest;
       loader = {

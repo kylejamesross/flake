@@ -3,14 +3,15 @@
   config,
   ...
 }: {
-  options.steam.enable = lib.mkEnableOption "Whether to enable steam";
+  options.my.steam.enable = lib.mkEnableOption "Whether to enable steam";
 
-  config = lib.mkIf config.steam.enable {
-    programs.steam.enable = true;
-    programs.steam.gamescopeSession.enable = true;
-    # mangohud enabled in home manager
-
-    programs.gamemode.enable = true;
-    # gamemoderun mangohud %command%
+  config = lib.mkIf config.my.steam.enable {
+    programs = {
+      steam = {
+        enable = true;
+        gamescopeSession.enable = true;
+      };
+      gamemode.enable = true;
+    };
   };
 }
