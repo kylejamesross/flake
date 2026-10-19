@@ -46,6 +46,7 @@
       sops
       tig
       samba
+      wl-clipboard
       inputs.astal.packages.${system}.default
     ];
 
