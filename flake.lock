@@ -483,11 +483,11 @@
         "telescope-git-file-history-nvim": "telescope-git-file-history-nvim"
       },
       "locked": {
-        "lastModified": 1789154925,
-        "narHash": "sha256-l6FjRLNF7WWQQgQLzl7+G08J2KIkKX8ekHDZAnxgB1c=",
+        "lastModified": 1792370219,
+        "narHash": "sha256-t79zcdBXJvSU6kK82qKCGYiHREyc/+BRMNdi1ONEE9Q=",
         "owner": "kylejamesross",
         "repo": "nixvim",
-        "rev": "6150a5e02be10f72bca2623641e0e4bf91a60854",
+        "rev": "cb69881d106a61f766dea3ee4fa6a69e16682d2c",
         "type": "github"
       },
       "original": {
