@@ -46,7 +46,7 @@
       sops
       tig
       samba
-      inputs.astal.packages.${system}.default
+      inputs.astal.packages.${system}.io
     ];
 
     activation.createHomeDirectories = lib.mkAfter ''
