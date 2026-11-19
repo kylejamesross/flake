@@ -45,7 +45,7 @@
       tig
       samba
       wl-clipboard
-      inputs.astal.packages.${system}.default
+      inputs.astal.packages.${system}.io
     ];
 
     activation.createHomeDirectories = lib.mkAfter ''
