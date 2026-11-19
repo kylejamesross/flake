@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./programs/aider
     ./programs/direnv
     ./programs/fish
     ./programs/git
@@ -35,7 +34,6 @@
   home = {
     packages = with pkgs; [
       abcde
-      aichat
       dust
       ffmpeg
       imagemagick
